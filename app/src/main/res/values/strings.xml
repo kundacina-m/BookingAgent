@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">BookingAgent</string>
+	<string name="app_name">BookingAgent</string>
+
+	<!-- Login and register -->
+	<string name="title_login">Login</string>
+	<string name="title_register">Register</string>
+
+	<string name="button_login">Login</string>
+	<string name="button_register">Register</string>
+
+	<string name="label_login">Login</string>
+	<string name="label_username">Username</string>
+	<string name="label_password">Password</string>
+	<string name="login_label_no_account">No account?</string>
+	<string name="register_label_already_have_account">You already have account?</string>
+
+	<string name="hint_username">Enter username</string>
+	<string name="hint_password">Enter password</string>
+	<string name="register_hint_repeat_password">Repeat password</string>
+
+	<string name="login_action_register">Register!</string>
+	<string name="register_action_login">Login!</string>
+
 </resources>

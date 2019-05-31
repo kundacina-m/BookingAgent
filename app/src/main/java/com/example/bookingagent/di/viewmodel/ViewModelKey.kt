@@ -1,4 +1,4 @@
-package com.example.bookingagent.di
+package com.example.bookingagent.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

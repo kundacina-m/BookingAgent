@@ -1,14 +1,15 @@
-package com.example.bookingagent.di.modules
+package com.example.bookingagent.screens.main
 
 import com.example.bookingagent.di.scopes.FragmentScope
+import com.example.bookingagent.di.modules.RouteModule
 import com.example.bookingagent.screens.home.HomeFragment
 import com.example.bookingagent.screens.login.LoginFragment
 import com.example.bookingagent.screens.register.RegisterFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module
-abstract class BindingFragmentModule {
+@Module(includes = [RouteModule::class])
+abstract class MainActivityModule {
 
     @FragmentScope
     @ContributesAndroidInjector

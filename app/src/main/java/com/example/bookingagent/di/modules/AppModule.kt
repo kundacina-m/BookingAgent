@@ -2,7 +2,7 @@ package com.example.bookingagent.di.modules
 
 import android.content.Context
 import com.example.bookingagent.App
-import com.example.bookingagent.di.modules.ViewModelModule
+import com.example.bookingagent.di.viewmodel.ViewModelModule
 import dagger.Module
 import dagger.Provides
 

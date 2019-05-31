@@ -1,8 +1,11 @@
 package com.example.bookingagent.screens.register
 
-import androidx.navigation.NavController
-import com.example.bookingagent.Navigation
+import com.example.bookingagent.Routes
+import com.example.bookingagent.di.routes.NavigationController
 import javax.inject.Inject
 
-class RegisterRoutes @Inject constructor() : Navigation {
+class RegisterRoutes @Inject constructor(val navigationController: NavigationController) : Routes() {
+
+	fun navigateToLogin() =
+		navigationController.route.popBackStack()
 }

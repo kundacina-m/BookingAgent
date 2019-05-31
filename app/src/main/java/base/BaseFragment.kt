@@ -8,17 +8,28 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.example.bookingagent.Routes
+import com.example.bookingagent.di.routes.IRoutesFactory
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
+abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 
 	protected open var TAG: String = "BaseFragment"
 
 	@Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+
+	@Inject lateinit var routesFactory: IRoutesFactory
+
+	val navigation: R by lazy {
+		@Suppress("UNCHECKED_CAST")
+		routesFactory.get(this::class.java) as R
+	}
+
 
 	protected var actionBar: ActionBar? = null
 

@@ -12,4 +12,6 @@ interface TestApi {
 		"Accept-Charset: utf-8", "Content-Length: 420" )
 	@POST("webservices/dilbert.asmx")
 	fun getResponse(@Body dilbert: Envelope): Single<Any>
+
+
 }

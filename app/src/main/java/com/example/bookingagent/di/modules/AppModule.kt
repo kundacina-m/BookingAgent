@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
 import com.example.bookingagent.data.db.dao.UserDao
+import com.example.bookingagent.data.networking.HelloWorldApi
 import com.example.bookingagent.data.networking.TestApi
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
@@ -26,13 +27,24 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun provideArticleApi(): TestApi =
+	fun provideDilbertApi(): TestApi =
 		Retrofit.Builder()
 			.addConverterFactory(SimpleXmlConverterFactory.create())
 			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 			.baseUrl("https://gcomputer.net")
 			.build()
 			.create(TestApi::class.java)
+
+
+	@Singleton
+	@Provides
+	fun provideHelloWorldApi(): HelloWorldApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl("http://10.0.2.2:8080/service/")
+			.build()
+			.create(HelloWorldApi::class.java)
 
 	@Singleton
 	@Provides

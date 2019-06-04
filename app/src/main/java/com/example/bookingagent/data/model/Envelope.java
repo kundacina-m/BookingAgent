@@ -5,15 +5,24 @@ import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.NamespaceList;
 import org.simpleframework.xml.Root;
 
-@Root(name = "soap12:Envelope")
+@Root(name = "soapenv:Envelope")
 @NamespaceList({
-	@Namespace(prefix = "xsi", reference = "http://www.w3.org/2001/XMLSchema-instance"),
-	@Namespace(prefix = "xsd", reference = "http://www.w3.org/2001/XMLSchema"),
-	@Namespace(prefix = "soap12", reference = "http://www.w3.org/2003/05/soap-envelope")
+	@Namespace(prefix = "prob", reference = "http://proba.com"),
+	@Namespace(prefix = "soapenv", reference = "http://schemas.xmlsoap.org/soap/envelope/")
 })
 public class Envelope {
-	
-	@Element(name = "soap12:Body", required = false)
+//	@Element(name = "soapenv:Header")
+//	private EnvelopeHeader header;
+//
+//	public EnvelopeHeader getHeader() {
+//		return header;
+//	}
+//
+//	public void setHeader(EnvelopeHeader header) {
+//		this.header = header;
+//	}
+
+	@Element(name = "soapenv:Body", required = false)
 	private EnvelopeBody body;
 	
 	public EnvelopeBody getBody() {

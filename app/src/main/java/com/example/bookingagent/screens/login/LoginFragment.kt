@@ -5,9 +5,8 @@ import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.LocalUserEntity
-import com.example.bookingagent.data.model.Envelope
-import com.example.bookingagent.data.model.EnvelopeBody
-import com.example.bookingagent.data.model.TodayFuckingGilbert
+import com.example.bookingagent.data.model.*
+import com.example.bookingagent.data.networking.HelloWorldApi
 import com.example.bookingagent.data.networking.TestApi
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -19,7 +18,7 @@ import javax.inject.Inject
 
 class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
-	@Inject lateinit var testApi: TestApi
+	@Inject lateinit var helloWorldApi: HelloWorldApi
 
 	override fun getLayoutId(): Int = R.layout.fragment_login
 
@@ -47,20 +46,18 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
 			val envelope = Envelope()
 			val body = EnvelopeBody()
-			body.gilbert = TodayFuckingGilbert()
+			val hello = HelloWorldRequest()
+			val header = EnvelopeHeader()
+			hello.name = "?"
+			body.body = hello
+//			envelope.header = header
 			envelope.body = body
 
-			testApi.getResponse(envelope).subscribeOn(Schedulers.io())
+			helloWorldApi.getHelloWorld(envelope).subscribeOn(Schedulers.io())
 				.subscribeBy(
 					onError ={ Log.e(TAG,it.toString(),it) },
 					onSuccess = {Log.d(TAG, "setupListeners: ${it}")}
 				)
-
-
-
-
-
-
 
 //			checkProvidedInformation()
 		}

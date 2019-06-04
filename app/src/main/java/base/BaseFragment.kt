@@ -8,12 +8,11 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.bookingagent.Routes
 import com.example.bookingagent.di.routes.IRoutesFactory
+import com.example.bookingagent.di.viewmodel.IViewModelFactory
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -21,8 +20,7 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 
 	protected open var TAG: String = "BaseFragment"
 
-	@Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
+	@Inject lateinit var viewModelFactory: IViewModelFactory
 	@Inject lateinit var routesFactory: IRoutesFactory
 
 	val navigation: R by lazy {
@@ -30,11 +28,19 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 		routesFactory.get(this::class.java) as R
 	}
 
-
 	protected var actionBar: ActionBar? = null
 
 	protected val viewModel: VM by lazy {
-		ViewModelProviders.of(this, viewModelFactory).get(getClassTypeVM())
+		val viewModelClassType = viewModelFactory.getViewModelClassByFragment(this::class)!!
+
+		if (getActivityAsVMOwner())
+			ViewModelProviders.of(activity!!, viewModelFactory).get(viewModelClassType) as VM
+		else ViewModelProviders.of(this, viewModelFactory).get(viewModelClassType) as VM
+
+	}
+
+	protected fun getActivityAsVMOwner(): Boolean {
+		return false
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -52,8 +58,6 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 
 	@LayoutRes
 	abstract fun getLayoutId(): Int
-
-	abstract fun getClassTypeVM(): Class<VM>
 
 	protected fun setActionBar(toolbar: Toolbar, up: Boolean = false) {
 		(activity as AppCompatActivity).setSupportActionBar(toolbar)

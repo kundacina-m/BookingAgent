@@ -1,6 +1,7 @@
 package com.example.bookingagent.di.viewmodel
 
 import androidx.lifecycle.ViewModel
+import base.BaseFragment
 import dagger.MapKey
 import kotlin.reflect.KClass
 
@@ -10,5 +11,5 @@ import kotlin.reflect.KClass
 	AnnotationTarget.PROPERTY_SETTER
 )
 @Retention(AnnotationRetention.RUNTIME)
-@MapKey
-internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
+@MapKey(unwrapValue = false)
+annotation class ViewModelKey(val fragment: KClass<out BaseFragment<*, *>>, val viewModel: KClass<out ViewModel>)

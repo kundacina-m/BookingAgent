@@ -1,13 +1,15 @@
 package com.example.bookingagent.screens.login
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.LocalUserEntity
-import com.example.bookingagent.data.model.*
+import com.example.bookingagent.data.model.helloworld.request.EnvelopeRequest
+import com.example.bookingagent.data.model.helloworld.request.HelloWorldEnvelopeRequestBody
+import com.example.bookingagent.data.model.helloworld.request.HelloWorldRequest
 import com.example.bookingagent.data.networking.HelloWorldApi
-import com.example.bookingagent.data.networking.TestApi
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_login.btLogin
@@ -44,31 +46,38 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
 		btLogin.setOnClickListener {
 
-			val envelope = Envelope()
-			val body = EnvelopeBody()
+			val envelope = EnvelopeRequest()
+			val body = HelloWorldEnvelopeRequestBody()
 			val hello = HelloWorldRequest()
-			val header = EnvelopeHeader()
+			//			val header = EnvelopeHeader()
 			hello.name = "?"
 			body.body = hello
-//			envelope.header = header
+			//			envelope.header = header
 			envelope.body = body
 
 			helloWorldApi.getHelloWorld(envelope).subscribeOn(Schedulers.io())
 				.subscribeBy(
-					onError ={ Log.e(TAG,it.toString(),it) },
-					onSuccess = {Log.d(TAG, "setupListeners: ${it}")}
+					onError = { Log.e(TAG, it.toString(), it) },
+					onSuccess = {
+						serverResponse(it.body.body.name)
+					}
 				)
 
-//			checkProvidedInformation()
+			//			checkProvidedInformation()
 		}
 	}
 
-	private fun checkProvidedInformation(){
+	private fun serverResponse(response: String){
+		Log.d(TAG, "serverResponse: $response")
+
+	}
+
+	private fun checkProvidedInformation() {
 		val password = etPassword.text.toString()
 
-		if (password.length >= 8){
+		if (password.length >= 8) {
 			val username = etUsername.text.toString()
-			viewModel.checkIfUserExists(LocalUserEntity(username,password))
+			viewModel.checkIfUserExists(LocalUserEntity(username, password))
 		}
 	}
 

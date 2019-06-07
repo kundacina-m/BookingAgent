@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../BookingAgent.iml" filepath="$PROJECT_DIR$/../BookingAgent.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../soap_annotations/soap_annotations.iml" filepath="$PROJECT_DIR$/../soap_annotations/soap_annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../soap_processing/soap_processing.iml" filepath="$PROJECT_DIR$/../soap_processing/soap_processing.iml" />
     </modules>
   </component>
 </project>

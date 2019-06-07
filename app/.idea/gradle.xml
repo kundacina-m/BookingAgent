@@ -9,6 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$/.." />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../soap_annotations" />
+            <option value="$PROJECT_DIR$/../soap_processing" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

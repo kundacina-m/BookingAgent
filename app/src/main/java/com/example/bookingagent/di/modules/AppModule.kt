@@ -4,14 +4,11 @@ import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
 import com.example.bookingagent.data.db.dao.UserDao
-import com.example.bookingagent.data.networking.HelloWorldApi
-import com.example.bookingagent.data.networking.TestApi
+import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
 import dagger.Module
 import dagger.Provides
-import org.simpleframework.xml.convert.AnnotationStrategy
-import org.simpleframework.xml.core.Persister
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
@@ -24,17 +21,6 @@ class AppModule {
 	fun provideContext(application: App): Context {
 		return application.applicationContext
 	}
-
-	@Singleton
-	@Provides
-	fun provideDilbertApi(): TestApi =
-		Retrofit.Builder()
-			.addConverterFactory(SimpleXmlConverterFactory.create())
-			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl("https://gcomputer.net")
-			.build()
-			.create(TestApi::class.java)
-
 
 	@Singleton
 	@Provides

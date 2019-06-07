@@ -6,21 +6,14 @@ import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.LocalUserEntity
-import com.example.bookingagent.data.model.helloworld.request.EnvelopeRequest
-import com.example.bookingagent.data.model.helloworld.request.HelloWorldEnvelopeRequestBody
-import com.example.bookingagent.data.model.helloworld.request.HelloWorldRequest
-import com.example.bookingagent.data.networking.HelloWorldApi
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
+import com.example.bookingagent.data.networking.helloworld.models.EnvelopeHelloWorldRequest
+import com.example.bookingagent.data.networking.helloworld.models.HelloWorldRequest
 import kotlinx.android.synthetic.main.fragment_login.btLogin
 import kotlinx.android.synthetic.main.fragment_login.etPassword
 import kotlinx.android.synthetic.main.fragment_login.etUsername
 import kotlinx.android.synthetic.main.fragment_login.tvToRegistration
-import javax.inject.Inject
 
 class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
-
-	@Inject lateinit var helloWorldApi: HelloWorldApi
 
 	override fun getLayoutId(): Int = R.layout.fragment_login
 
@@ -37,6 +30,10 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 				false -> Log.d(TAG, "setObservers: Wrong information")
 			}
 		})
+
+		viewModel.serverResponse.observe(this, Observer {
+			Toast.makeText(activity, "Server says:  $it", Toast.LENGTH_LONG).show()
+		})
 	}
 
 	private fun setupListeners() {
@@ -46,30 +43,10 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
 		btLogin.setOnClickListener {
 
-			val envelope = EnvelopeRequest()
-			val body = HelloWorldEnvelopeRequestBody()
-			val hello = HelloWorldRequest()
-			//			val header = EnvelopeHeader()
-			hello.name = "?"
-			body.body = hello
-			//			envelope.header = header
-			envelope.body = body
-
-			helloWorldApi.getHelloWorld(envelope).subscribeOn(Schedulers.io())
-				.subscribeBy(
-					onError = { Log.e(TAG, it.toString(), it) },
-					onSuccess = {
-						serverResponse(it.body.body.name)
-					}
-				)
-
+			val envelope = EnvelopeHelloWorldRequest(HelloWorldRequest("?"))
+			viewModel.getHelloWorld(envelope)
 			//			checkProvidedInformation()
 		}
-	}
-
-	private fun serverResponse(response: String){
-		Log.d(TAG, "serverResponse: $response")
-
 	}
 
 	private fun checkProvidedInformation() {

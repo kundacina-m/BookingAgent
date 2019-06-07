@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+	<item
+		android:id="@+id/accommodationsFragment"
+		android:color="@color/colorPrimary"
+		android:icon="@drawable/ic_accommodation_black_24dp"
+		android:state_checked="true"
+		android:title="Accommodations"/>
+
+	<item
+		android:id="@+id/reservationsFragment"
+		android:color="@color/colorPrimary"
+		android:icon="@drawable/ic_reservations_black_24dp"
+		android:state_checked="true"
+		android:title="Reservations"/>
+
+
+	<item
+		android:id="@+id/homeFragment"
+		android:color="@color/colorPrimaryDark"
+		android:icon="@drawable/ic_home_black_24dp"
+		android:state_checked="true"
+		android:title="Home"/>
+
+
+	<item
+		android:id="@+id/messagesFragment"
+		android:color="@color/colorPrimaryDark"
+		android:icon="@drawable/ic_message_black_24dp"
+		android:state_checked="true"
+		android:title="Messages"/>
+
+	<item
+		android:id="@+id/addAccommodationFragment"
+		android:color="@color/colorPrimary"
+		android:icon="@drawable/ic_add_accommodation_black_24dp"
+		android:state_checked="true"
+		android:title="Add accommodation"/>
+
+
+</menu>

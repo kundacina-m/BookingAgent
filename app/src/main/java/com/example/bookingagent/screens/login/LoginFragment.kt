@@ -18,6 +18,7 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 	override fun getLayoutId(): Int = R.layout.fragment_login
 
 	override fun initView() {
+
 		setupListeners()
 		setObservers()
 
@@ -43,9 +44,9 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
 		btLogin.setOnClickListener {
 
-			val envelope = EnvelopeHelloWorldRequest(HelloWorldRequest("?"))
-			viewModel.getHelloWorld(envelope)
-			//			checkProvidedInformation()
+//			val envelope = EnvelopeHelloWorldRequest(HelloWorldRequest("?"))
+//			viewModel.getHelloWorld(envelope)
+			checkProvidedInformation()
 		}
 	}
 

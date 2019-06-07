@@ -7,7 +7,5 @@ class HomeFragment : BaseFragment<HomeViewModel,HomeRoutes>() {
 
 	override fun getLayoutId(): Int = R.layout.fragment_home
 
-	override fun initView() {
-
-	}
+	override fun initView() {}
 }

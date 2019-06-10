@@ -8,6 +8,7 @@ import com.example.bookingagent.di.routes.NavigationControllerImpl
 import com.example.bookingagent.di.routes.RouteKey
 import com.example.bookingagent.di.routes.RoutesFactory
 import com.example.bookingagent.screens.accommodations.AccommodationsFragment
+import com.example.bookingagent.screens.accommodations.AccommodationsRoutes
 import com.example.bookingagent.screens.addaccommodation.AddAccommodationFragment
 import com.example.bookingagent.screens.addaccommodation.AddAccommodationRoutes
 import com.example.bookingagent.screens.home.HomeFragment
@@ -60,7 +61,7 @@ abstract class RouteModule {
 	@Binds
 	@IntoMap
 	@RouteKey(AccommodationsFragment::class)
-	internal abstract fun bindAccommodationsRoutes(accommodationRoutes: AddAccommodationRoutes): Routes
+	internal abstract fun bindAccommodationsRoutes(accommodationRoutes: AccommodationsRoutes): Routes
 
 	@Binds
 	@IntoMap

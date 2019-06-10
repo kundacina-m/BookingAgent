@@ -26,10 +26,10 @@ import javax.tools.Diagnostic;
 
 public class SoapProcessor extends AbstractProcessor {
 	
-	static final ClassName classElementAnnotation = ClassName.get("org.simpleframework.xml", "Element");
-	static final ClassName classNamespaceAnnotation = ClassName.get("org.simpleframework.xml", "Namespace");
-	static final ClassName classRootAnnotation = ClassName.get("org.simpleframework.xml", "Root");
-	static final ClassName classNameEnvelopeHeader =
+	private static final ClassName classElementAnnotation = ClassName.get("org.simpleframework.xml", "Element");
+	private static final ClassName classNamespaceAnnotation = ClassName.get("org.simpleframework.xml", "Namespace");
+	private static final ClassName classRootAnnotation = ClassName.get("org.simpleframework.xml", "Root");
+	private static final ClassName classNameEnvelopeHeader =
 		ClassName.get("com.example.bookingagent.data.model", "EnvelopeHeader");
 	
 	private Filer filer;
@@ -126,7 +126,7 @@ public class SoapProcessor extends AbstractProcessor {
 		
 		// Get body Method
 		MethodSpec getBody =
-			createMethodWithoutParameters("getBody", Modifier.PUBLIC, envelopeBodyClass, "return " + "body");
+			createMethodWithoutParameters("getBody", envelopeBodyClass, "return " + "body");
 		
 		// Set body Method
 		MethodSpec setBody =
@@ -136,14 +136,14 @@ public class SoapProcessor extends AbstractProcessor {
 		
 		// Get header Method
 		MethodSpec getHeader =
-			createMethodWithoutParameters("getHeader", Modifier.PUBLIC, classNameEnvelopeHeader, "return " + "header");
+			createMethodWithoutParameters("getHeader", classNameEnvelopeHeader, "return " + "header");
 		
 		// Set header Method
 		MethodSpec setHeader =
 			createMethodWithParameters("setHeader", Modifier.PUBLIC, TypeName.VOID, "this.header = header",
 				classNameEnvelopeHeader, "header");
 		
-		createMethodWithoutParameters("getHeader", Modifier.PUBLIC, classNameEnvelopeHeader, "return " + "header");
+		createMethodWithoutParameters("getHeader", classNameEnvelopeHeader, "return " + "header");
 		
 		envelopeClass.addField(bodyField)
 			.addField(headerField)
@@ -206,18 +206,18 @@ public class SoapProcessor extends AbstractProcessor {
 		
 		// Get body Method
 		MethodSpec getBody =
-			createMethodWithoutParameters("getBody", Modifier.PUBLIC, envelopeBodyClass, "return " + "body");
+			createMethodWithoutParameters("getBody", envelopeBodyClass, "return " + "body");
 		
 		// Get header Method
 		MethodSpec getHeader =
-			createMethodWithoutParameters("getHeader", Modifier.PUBLIC, classNameEnvelopeHeader, "return " + "header");
+			createMethodWithoutParameters("getHeader", classNameEnvelopeHeader, "return " + "header");
 		
 		// Set header Method
 		MethodSpec setHeader =
 			createMethodWithParameters("setHeader", Modifier.PUBLIC, TypeName.VOID, "this.header = header",
 				classNameEnvelopeHeader, "header");
 		
-		createMethodWithoutParameters("getHeader", Modifier.PUBLIC, classNameEnvelopeHeader, "return " + "header");
+		createMethodWithoutParameters("getHeader", classNameEnvelopeHeader, "return " + "header");
 		
 		envelopeClass.addMethod(constructor)
 			.addField(bodyField)
@@ -252,7 +252,7 @@ public class SoapProcessor extends AbstractProcessor {
 			createConstructorWithParameter(Modifier.PUBLIC, classType, "data", "this.data" + " = data");
 		
 		// Get Method
-		MethodSpec getBody = createMethodWithoutParameters("getBody", Modifier.PUBLIC, classType, "return data");
+		MethodSpec getBody = createMethodWithoutParameters("getBody", classType, "return data");
 		
 		bodyClass.addField(dataFiled);
 		bodyClass.addMethod(constructor);
@@ -280,7 +280,7 @@ public class SoapProcessor extends AbstractProcessor {
 			FieldSpec.builder(classType, "data", Modifier.PRIVATE).addAnnotation(elementAnnotation).build();
 		
 		// Get Method
-		MethodSpec getBody = createMethodWithoutParameters("getBody", Modifier.PUBLIC, classType, "return data");
+		MethodSpec getBody = createMethodWithoutParameters("getBody", classType, "return data");
 		
 		// Set Method
 		MethodSpec setBody =
@@ -314,11 +314,11 @@ public class SoapProcessor extends AbstractProcessor {
 			.build();
 	}
 	
-	private MethodSpec createMethodWithoutParameters(String methodName, Modifier visibility, ClassName returnType,
-		String statement) {
+	private MethodSpec createMethodWithoutParameters(String methodName, ClassName returnType,
+													 String statement) {
 		
 		return MethodSpec.methodBuilder(methodName)
-			.addModifiers(visibility)
+			.addModifiers(Modifier.PUBLIC)
 			.returns(returnType)
 			.addStatement(statement)
 			.build();

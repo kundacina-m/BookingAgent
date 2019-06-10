@@ -1,1 +1,1 @@
-include 'app','soap_annotations','soap_processing'
+include ':app',':soap_annotations',':soap_processing'

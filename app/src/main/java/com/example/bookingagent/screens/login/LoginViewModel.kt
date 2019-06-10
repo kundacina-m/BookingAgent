@@ -5,7 +5,11 @@ import base.BaseViewModel
 import com.example.bookingagent.data.db.entities.LocalUserEntity
 import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
 import com.example.bookingagent.data.networking.helloworld.models.EnvelopeHelloWorldRequest
+import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
+import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
+import com.example.bookingagent.data.networking.user.models.LoginRequest
 import com.example.bookingagent.data.repository.UserRepository
+import com.example.bookingagent.utils.WrappedResponse
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -15,6 +19,7 @@ class LoginViewModel @Inject constructor(val repository: UserRepository, val hel
 
 	val identityVerification = MutableLiveData<Boolean>()
 	val serverResponse = MutableLiveData<String>()
+	val loginResponse = MutableLiveData<WrappedResponse<EnvelopeLoginResponse>>()
 
 	fun checkIfUserExists(localUserEntity: LocalUserEntity) {
 		disposables.add(repository.getUser(localUserEntity.username)
@@ -33,6 +38,17 @@ class LoginViewModel @Inject constructor(val repository: UserRepository, val hel
 					serverResponse.postValue(it.body.body.name)
 				}
 			))
+	}
+
+	fun loginUserOnBackend(username: String, password: String) {
+
+		val loginRequest = EnvelopeLoginRequest(LoginRequest(username, password))
+
+		disposables.add(repository.loginUser(loginRequest)
+			.subscribeOn(Schedulers.io())
+			.subscribeBy {
+			loginResponse.postValue(it)
+		})
 	}
 
 }

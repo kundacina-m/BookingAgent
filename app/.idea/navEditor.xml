@@ -20,7 +20,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="addAccommodationFragment2">
+                  <entry key="addAccommodationFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -70,7 +70,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="messagesFragment2">
+                  <entry key="messagesFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -94,7 +94,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="reservationsFragment2">
+                  <entry key="reservationsFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

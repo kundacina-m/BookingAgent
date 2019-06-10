@@ -7,14 +7,14 @@
 		android:color="@color/colorPrimary"
 		android:icon="@drawable/ic_accommodation_black_24dp"
 		android:state_checked="true"
-		android:title="Accommodations"/>
+		android:title="@string/navbar_label_accommodations"/>
 
 	<item
 		android:id="@+id/reservationsFragment"
 		android:color="@color/colorPrimary"
 		android:icon="@drawable/ic_reservations_black_24dp"
 		android:state_checked="true"
-		android:title="Reservations"/>
+		android:title="@string/navbar_label_reservations"/>
 
 
 	<item
@@ -22,7 +22,7 @@
 		android:color="@color/colorPrimaryDark"
 		android:icon="@drawable/ic_home_black_24dp"
 		android:state_checked="true"
-		android:title="Home"/>
+		android:title="@string/navbar_label_home"/>
 
 
 	<item
@@ -30,14 +30,14 @@
 		android:color="@color/colorPrimaryDark"
 		android:icon="@drawable/ic_message_black_24dp"
 		android:state_checked="true"
-		android:title="Messages"/>
+		android:title="@string/navbar_label_messages"/>
 
 	<item
 		android:id="@+id/addAccommodationFragment"
 		android:color="@color/colorPrimary"
 		android:icon="@drawable/ic_add_accommodation_black_24dp"
 		android:state_checked="true"
-		android:title="Add accommodation"/>
+		android:title="@string/navbar_label_add_accommodation"/>
 
 
 </menu>

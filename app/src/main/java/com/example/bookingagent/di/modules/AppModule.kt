@@ -4,7 +4,9 @@ import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
 import com.example.bookingagent.data.db.dao.UserDao
+import com.example.bookingagent.data.networking.accommodation.AccommodationApi
 import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
+import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
 import dagger.Module
@@ -34,6 +36,26 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideUserApi(): UserApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl("http://10.0.2.2:8080/service/")
+			.build()
+			.create(UserApi::class.java)
+
+	@Singleton
+	@Provides
+	fun provideAccommodationApi(): AccommodationApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl("http://10.0.2.2:8080/service/")
+			.build()
+			.create(AccommodationApi::class.java)
+
+	@Singleton
+	@Provides
 	fun provideDb(appContext: Context): AppDatabase =
 		AppDatabase.getInstance(appContext)
 
@@ -44,7 +66,7 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun providesUserRepository(userDao: UserDao) =
-		UserRepository(userDao)
+	fun providesUserRepository(userDao: UserDao, userApi: UserApi, accommodationApi: AccommodationApi) =
+		UserRepository(userDao, userApi, accommodationApi)
 
 }

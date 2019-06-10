@@ -6,6 +6,8 @@ import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.LocalUserEntity
+import com.example.bookingagent.utils.WrappedResponse.OnError
+import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import com.example.bookingagent.utils.checkPasswordMatch
 import kotlinx.android.synthetic.main.fragment_register.btRegister
 import kotlinx.android.synthetic.main.fragment_register.etPassword
@@ -27,6 +29,13 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 			when (it) {
 				true ->  { Log.d(TAG, "setObservers: Successfully registered!"); navigation.navigateToLogin() }
 				false -> Log.d(TAG, "setObservers: That username already exists!")
+			}
+		})
+
+		viewModel.registrationResponse.observe(this, Observer {
+			when (it) {
+				is OnSuccess -> Log.d(TAG, "setObservers: Registrovan na backendu")
+				is OnError -> Log.d(TAG, "setObservers: ERROR NEKI")
 			}
 		})
 	}

@@ -10,7 +10,7 @@ import org.simpleframework.xml.Root;
 @Namespace(prefix = "prob", reference = "http://proba.com")
 public class HelloWorldRequest {
 	
-	@Element(name = "name") private String name;
+	@Element(name = "prob:name") private String name;
 	
 	public HelloWorldRequest(String name) {
 		this.name = name;

@@ -9,6 +9,7 @@ import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
+import com.example.bookingagent.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -30,7 +31,7 @@ class AppModule {
 		Retrofit.Builder()
 			.addConverterFactory(SimpleXmlConverterFactory.create())
 			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl("http://10.0.2.2:8080/service/")
+			.baseUrl(BASE_URL)
 			.build()
 			.create(HelloWorldApi::class.java)
 
@@ -40,7 +41,7 @@ class AppModule {
 		Retrofit.Builder()
 			.addConverterFactory(SimpleXmlConverterFactory.create())
 			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl("http://10.0.2.2:8080/service/")
+			.baseUrl(BASE_URL)
 			.build()
 			.create(UserApi::class.java)
 
@@ -50,7 +51,7 @@ class AppModule {
 		Retrofit.Builder()
 			.addConverterFactory(SimpleXmlConverterFactory.create())
 			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl("http://10.0.2.2:8080/service/")
+			.baseUrl(BASE_URL)
 			.build()
 			.create(AccommodationApi::class.java)
 

@@ -6,7 +6,7 @@ import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 @Root(strict = false)
-@Namespace(prefix = "login", reference = "http://xml/login")
+@Namespace(prefix = "login", reference = "http://xml/auth")
 @SoapResponse
 public class LoginResponse {
 	

@@ -17,6 +17,8 @@ interface UserDao {
 	@Delete
 	fun deleteUser(user: LocalUserEntity)
 
+
+
 	@Query("SELECT * from localUsers where username = :username")
 	fun getUser(username: String): Single<LocalUserEntity>
 }

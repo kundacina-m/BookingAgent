@@ -2,18 +2,19 @@ package com.example.bookingagent.data.networking.accommodation.models;
 
 import java.util.List;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-@Root
-public class AddRoom {
+@Root(name = "room")
+public class AddRoomRequest {
 	
 	@Element(name = "num") private int num;
 	@Element(name = "floor") private int floor;
 	@Element(name = "bedNum") private int bedNum;
 	@Element(name = "price") private int price;
-	@Element(name = "images") private List<String> images;
+	@ElementList(name = "images") private List<String> images;
 	
-	public AddRoom(int num, int floor, int bedNum, int price, List<String> images) {
+	public AddRoomRequest(int num, int floor, int bedNum, int price, List<String> images) {
 		this.num = num;
 		this.floor = floor;
 		this.bedNum = bedNum;

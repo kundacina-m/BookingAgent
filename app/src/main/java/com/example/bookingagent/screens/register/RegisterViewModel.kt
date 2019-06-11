@@ -20,22 +20,24 @@ class RegisterViewModel @Inject constructor(val repository: UserRepository) : Ba
 
 	fun registerUser(localUserEntity: LocalUserEntity) {
 
-//		disposables.add(Single.just(repository)
-//			.subscribeOn(Schedulers.io())
-//			.subscribeBy { repo ->
-//				repo.addUser(localUserEntity)
-//					.subscribeOn(Schedulers.io())
-//					.subscribeBy {
-//						registrationStatus.postValue(it > 0)
-//					}
-//			})
-
 		val registerRequest =
 			EnvelopeRegisterRequest(RegisterRequest(localUserEntity.username, localUserEntity.password))
 
 		disposables.add(repository.registerUser(registerRequest).subscribeOn(Schedulers.io()).subscribeBy {
 			registrationResponse.postValue(it)
 		})
+
+		disposables.add(Single.just(repository)
+			.subscribeOn(Schedulers.io())
+			.subscribeBy { repo ->
+				repo.addUser(localUserEntity)
+					.subscribeOn(Schedulers.io())
+					.subscribeBy {
+						registrationStatus.postValue(it > 0)
+					}
+			})
+
+
 
 	}
 }

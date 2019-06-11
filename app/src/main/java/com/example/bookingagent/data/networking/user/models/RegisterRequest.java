@@ -6,7 +6,7 @@ import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 @Root
-@Namespace(prefix = "register", reference = "http://xml/register")
+@Namespace(prefix = "register", reference = "http://xml/auth")
 @SoapRequest
 public class RegisterRequest {
 	

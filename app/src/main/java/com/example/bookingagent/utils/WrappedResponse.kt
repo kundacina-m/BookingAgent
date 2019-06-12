@@ -16,7 +16,7 @@ sealed class WrappedResponse<out T> {
 }
 
 sealed class RequestError {
-	object UnknownError : RequestError()
+	data class UnknownError(val error: Throwable) : RequestError()
 	object NoInternetError : RequestError()
 	object ServerError : RequestError()
 	object DatabaseError : RequestError()
@@ -29,7 +29,7 @@ object RequestErrorParser {
 		return when (t) {
 			is HttpException -> HttpError(t.code(), t.message())
 			is UnknownHostException -> NoInternetError
-			else -> UnknownError
+			else -> UnknownError(t)
 		}
 	}
 }

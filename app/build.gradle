@@ -6,6 +6,9 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'check-naming-convention'
+
+
 android {
 
 	androidExtensions {
@@ -114,4 +117,9 @@ dependencies {
 	// Google auto value
 	implementation "com.google.auto.value:auto-value-annotations:1.6.2"
 	kapt "com.google.auto.value:auto-value:1.6.2"
+}
+
+checkNamingConvention {
+
+	configFile = "$project.rootDir/milan.json"
 }

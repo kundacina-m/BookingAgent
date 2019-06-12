@@ -19,7 +19,7 @@ fun <T> Flowable<T>.toSealed(): Flowable<WrappedResponse<T>> {
 
 	return this.map<WrappedResponse<T>> { OnSuccess(it) }
 		.onErrorReturn {
-			OnError(UnknownError)
+			OnError(UnknownError(it))
 		}
 }
 
@@ -28,7 +28,7 @@ fun <T> Single<T>.toSealed(): Single<WrappedResponse<T>> {
 
 	return this.map<WrappedResponse<T>> { OnSuccess(it) }
 		.onErrorReturn {
-			OnError(UnknownError)
+			OnError(UnknownError(it))
 		}
 }
 
@@ -37,6 +37,6 @@ fun <T> Observable<T>.toSealed(): Observable<WrappedResponse<T>> {
 
 	return this.map<WrappedResponse<T>> { OnSuccess(it) }
 		.onErrorReturn {
-			OnError(UnknownError)
+			OnError(UnknownError(it))
 		}
 }

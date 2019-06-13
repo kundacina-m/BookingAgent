@@ -1,19 +1,20 @@
 package com.example.bookingagent.data.networking.common;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
-@Root(name = "address")
-public class AddressRequest {
+@Namespace(prefix = "com", reference = "http://complextypes.com")
+public class AddressSOAP {
 
-    @Element(name = "latitude") private int latitude;
-    @Element(name = "longitude") private int longitude;
-    @Element(name = "city") private String city;
-    @Element(name = "zipCode") private int zipCode;
-    @Element(name = "street") private String street;
-    @Element(name = "num") private int num;
+    @Element(name = "Latitude") private int latitude;
+    @Element(name = "Longitude") private int longitude;
+    @Element(name = "Mesto") private String city;
+    @Element(name = "PosBroj") private int zipCode;
+    @Element(name = "Ulica") private String street;
+    @Element(name = "Broj") private int num;
 
-    public AddressRequest(int latitude, int longitude, String city, int zipCode, String street, int num) {
+    public AddressSOAP(int latitude, int longitude, String city, int zipCode, String street, int num) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.city = city;

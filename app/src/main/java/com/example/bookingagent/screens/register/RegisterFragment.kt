@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.LocalUserEntity
+import com.example.bookingagent.data.db.entities.User
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import com.example.bookingagent.utils.checkPasswordMatch
@@ -19,12 +19,7 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 
 	override fun getLayoutId(): Int = R.layout.fragment_register
 
-	override fun initView() {
-		setupListeners()
-		setObservers()
-	}
-
-	private fun setObservers() {
+	override fun setObservers() {
 		viewModel.registrationStatus.observe(this, Observer {
 			when (it) {
 				true ->  { Log.d(TAG, "setObservers: Successfully registered!"); navigation.navigateToLogin() }
@@ -40,6 +35,10 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 		})
 	}
 
+	override fun initView() {
+		setupListeners()
+	}
+
 	private fun setupListeners() {
 		tvToLogin.setOnClickListener {
 			navigation.navigateToLogin()
@@ -48,7 +47,7 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 		btRegister.setOnClickListener {
 
 			etPassword.checkPasswordMatch(etPasswordRepeat)?.let {
-				viewModel.registerUser(LocalUserEntity(etUsername.text.toString(), it))
+				viewModel.registerUser(User(etUsername.text.toString(), it))
 			} ?: Toast.makeText(activity!!, "Passwords don't match or too short!", Toast.LENGTH_LONG).show()
 
 		}

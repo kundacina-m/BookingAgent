@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.login
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
-import com.example.bookingagent.data.db.entities.LocalUserEntity
+import com.example.bookingagent.data.db.entities.User
 import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
 import com.example.bookingagent.data.networking.helloworld.models.EnvelopeHelloWorldRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
@@ -21,10 +21,10 @@ class LoginViewModel @Inject constructor(val repository: UserRepository, val hel
 	val serverResponse = MutableLiveData<String>()
 	val loginResponse = MutableLiveData<WrappedResponse<EnvelopeLoginResponse>>()
 
-	fun checkIfUserExists(localUserEntity: LocalUserEntity) {
-		disposables.add(repository.getUser(localUserEntity.username)
+	fun checkIfUserExists(user: User) {
+		disposables.add(repository.getUser(user.username)
 			.subscribeBy {
-				if (it.password == localUserEntity.password)
+				if (it.password == user.password)
 					identityVerification.postValue(true)
 				else identityVerification.postValue(false)
 			})

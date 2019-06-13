@@ -5,35 +5,19 @@ import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.networking.accommodation.models.AddAccommodationRequest
-import com.example.bookingagent.data.networking.accommodation.models.AddRoomRequest
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationRequest
-import com.example.bookingagent.data.networking.common.AddressRequest
+import com.example.bookingagent.data.networking.common.AddressSOAP
+import com.example.bookingagent.data.networking.common.ServiceSOAP
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_add_accommodation.btAddAccommodation
 
 class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAccommodationRoutes>() {
 
+
 	override fun getLayoutId(): Int = R.layout.fragment_add_accommodation
 
-	override fun initView() {
-
-		btAddAccommodation.setOnClickListener {
-			viewModel.addAccommodation(
-				EnvelopeAddAccommodationRequest(
-					AddAccommodationRequest(
-						"hotel", "Pravo dobar hotel", "Raj", AddressRequest(1, 1, "NS", 1, "1", 2)
-//						listOf(AddRoomRequest(
-//							13,
-//							42,
-//							1,
-//							666,
-//							listOf("slika1", "slika2", "slika3", "slika4", "slika5")
-//						))
-					)
-				)
-			)
-		}
+	override fun setObservers() {
 
 		viewModel.addingAccommodation.observe(this, Observer {
 			when (it) {
@@ -41,6 +25,23 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 				is OnError -> Log.d(TAG, "initView: OnError")
 			}
 		})
+	}
+
+	override fun initView() {
+
+		btAddAccommodation.setOnClickListener {
+			viewModel.addAccommodation(
+				EnvelopeAddAccommodationRequest(
+					AddAccommodationRequest(
+						"hotel", "Pravo dobar hotel", "SMESTAJ_HOTEL",
+						AddressSOAP(1, 1, "idk", 1, "idk", 2), 0, 50,
+						arrayListOf("slika1", "slika2", "slika3")
+					)
+				)
+			)
+		}
+
+
 
 	}
 

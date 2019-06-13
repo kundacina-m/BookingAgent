@@ -1,10 +1,13 @@
 package com.example.bookingagent.data.repository
 
 import com.example.bookingagent.data.db.dao.UserDao
-import com.example.bookingagent.data.db.entities.LocalUserEntity
+import com.example.bookingagent.data.db.entities.User
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationRequest
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationResponse
+import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationsRequest
+import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationsResponse
+import com.example.bookingagent.data.networking.accommodation.models.GetAccommodationsRequest
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
@@ -16,16 +19,15 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class UserRepository @Inject constructor(private val userDao: UserDao, private val userApi: UserApi,
-	private val accommodationApi: AccommodationApi) {
+class UserRepository @Inject constructor(private val userDao: UserDao, private val userApi: UserApi) {
 
-	fun addUser(user: LocalUserEntity) =
+	fun addUser(user: User) =
 		Single.just(userDao.addUser(user))
 
 	fun getUser(username: String) =
 		userDao.getUser(username).subscribeOn(Schedulers.io())
 
-	fun removeUser(user: LocalUserEntity) {
+	fun removeUser(user: User) {
 		userDao.deleteUser(user)
 	}
 
@@ -35,8 +37,6 @@ class UserRepository @Inject constructor(private val userDao: UserDao, private v
 	fun loginUser(loginRequest: EnvelopeLoginRequest): Single<WrappedResponse<EnvelopeLoginResponse>> =
 		userApi.loginUser(loginRequest).toSealed()
 
-	fun addAccommodation(envelopeAddAccommodationRequest: EnvelopeAddAccommodationRequest):
-		Single<WrappedResponse<EnvelopeAddAccommodationResponse>> =
-		accommodationApi.addAccommodation(envelopeAddAccommodationRequest).toSealed()
+
 
 }

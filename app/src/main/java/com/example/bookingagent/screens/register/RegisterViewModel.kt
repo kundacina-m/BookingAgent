@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.register
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
-import com.example.bookingagent.data.db.entities.LocalUserEntity
+import com.example.bookingagent.data.db.entities.User
 import com.example.bookingagent.data.networking.user.models.EnvelopeRegisterRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeRegisterResponse
 import com.example.bookingagent.data.networking.user.models.RegisterRequest
@@ -18,10 +18,10 @@ class RegisterViewModel @Inject constructor(val repository: UserRepository) : Ba
 	val registrationStatus = MutableLiveData<Boolean>()
 	val registrationResponse = MutableLiveData<WrappedResponse<EnvelopeRegisterResponse>>()
 
-	fun registerUser(localUserEntity: LocalUserEntity) {
+	fun registerUser(user: User) {
 
 		val registerRequest =
-			EnvelopeRegisterRequest(RegisterRequest(localUserEntity.username, localUserEntity.password))
+			EnvelopeRegisterRequest(RegisterRequest(user.username, user.password))
 
 		disposables.add(repository.registerUser(registerRequest).subscribeOn(Schedulers.io()).subscribeBy {
 			registrationResponse.postValue(it)
@@ -30,7 +30,7 @@ class RegisterViewModel @Inject constructor(val repository: UserRepository) : Ba
 		disposables.add(Single.just(repository)
 			.subscribeOn(Schedulers.io())
 			.subscribeBy { repo ->
-				repo.addUser(localUserEntity)
+				repo.addUser(user)
 					.subscribeOn(Schedulers.io())
 					.subscribeBy {
 						registrationStatus.postValue(it > 0)

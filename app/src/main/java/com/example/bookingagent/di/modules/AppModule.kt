@@ -7,6 +7,7 @@ import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
 import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
 import com.example.bookingagent.data.networking.user.UserApi
+import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
 import com.example.bookingagent.utils.BASE_URL
@@ -67,7 +68,12 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun providesUserRepository(userDao: UserDao, userApi: UserApi, accommodationApi: AccommodationApi) =
-		UserRepository(userDao, userApi, accommodationApi)
+	fun providesUserRepository(userDao: UserDao, userApi: UserApi) =
+		UserRepository(userDao, userApi)
+
+	@Singleton
+	@Provides
+	fun providesAccommodationRepository(accommodationApi: AccommodationApi) =
+		AccommodationRepository(accommodationApi)
 
 }

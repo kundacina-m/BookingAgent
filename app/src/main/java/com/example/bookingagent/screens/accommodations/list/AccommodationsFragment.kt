@@ -5,8 +5,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
+import com.example.bookingagent.utils.FakeData
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
+import kotlinx.android.synthetic.main.fragment_accommodation.fabAddAccommodation
 import kotlinx.android.synthetic.main.fragment_accommodation.rvAccommodation
 
 class AccommodationsFragment : BaseFragment<AccommodationsViewModel, AccommodationsRoutes>() {
@@ -31,6 +33,16 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 		setupRecyclerView()
 		fetchData()
 
+		setupClickListeners()
+
+		adapter.setData(FakeData.accommodationData)
+
+	}
+
+	private fun setupClickListeners() {
+		fabAddAccommodation.setOnClickListener {
+			navigation.navigateToAddAccommodation()
+		}
 	}
 
 	private fun fetchData() =

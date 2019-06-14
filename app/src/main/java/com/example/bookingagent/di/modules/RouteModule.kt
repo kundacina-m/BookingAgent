@@ -7,8 +7,12 @@ import com.example.bookingagent.di.routes.NavigationController
 import com.example.bookingagent.di.routes.NavigationControllerImpl
 import com.example.bookingagent.di.routes.RouteKey
 import com.example.bookingagent.di.routes.RoutesFactory
-import com.example.bookingagent.screens.accommodations.AccommodationsFragment
-import com.example.bookingagent.screens.accommodations.AccommodationsRoutes
+import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment
+import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsRoutes
+import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditFragment
+import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditRoutes
+import com.example.bookingagent.screens.accommodations.list.AccommodationsFragment
+import com.example.bookingagent.screens.accommodations.list.AccommodationsRoutes
 import com.example.bookingagent.screens.addaccommodation.AddAccommodationFragment
 import com.example.bookingagent.screens.addaccommodation.AddAccommodationRoutes
 import com.example.bookingagent.screens.home.HomeFragment
@@ -18,6 +22,8 @@ import com.example.bookingagent.screens.login.LoginRoutes
 import com.example.bookingagent.screens.main.MainActivity
 import com.example.bookingagent.screens.messages.MessagesFragment
 import com.example.bookingagent.screens.messages.MessagesRoutes
+import com.example.bookingagent.screens.profile.ProfileFragment
+import com.example.bookingagent.screens.profile.ProfileRoutes
 import com.example.bookingagent.screens.register.RegisterFragment
 import com.example.bookingagent.screens.register.RegisterRoutes
 import com.example.bookingagent.screens.reservations.ReservationRoutes
@@ -72,5 +78,20 @@ abstract class RouteModule {
 	@IntoMap
 	@RouteKey(MessagesFragment::class)
 	internal abstract fun bindMessagesRoutes(messagesRoutes: MessagesRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(ProfileFragment::class)
+	internal abstract fun bindProfileRoutes(profileRoutes: ProfileRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(AccommodationDetailsFragment::class)
+	internal abstract fun bindAccommodationDetailsRoutes(accommodationDetailsRoutes: AccommodationDetailsRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(AccommodationEditFragment::class)
+	internal abstract fun bindAccommodationEditRoutes(accommodationEditRoutes: AccommodationEditRoutes): Routes
 
 }

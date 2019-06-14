@@ -1,5 +1,6 @@
 package com.example.bookingagent.screens.login
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
 import com.example.bookingagent.data.db.entities.User
@@ -33,9 +34,13 @@ class LoginViewModel @Inject constructor(val repository: UserRepository, val hel
 	fun getHelloWorld(envelope: EnvelopeHelloWorldRequest) {
 		disposables.add(helloWorldApi.getHelloWorld(envelope).subscribeOn(Schedulers.io())
 			.subscribeBy(
-				onError = { },
+				onError = {
+					serverResponse.postValue(it.message)
+					Log.d("error", "getHelloWorld: error ")
+				},
 				onSuccess = {
 					serverResponse.postValue(it.body.body.name)
+					Log.d("error", "it.body.body.name")
 				}
 			))
 	}

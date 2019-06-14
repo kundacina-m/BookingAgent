@@ -20,8 +20,6 @@ public class AddAccommodationRequest {
 	@Element(name = "Adresa", type = AddressSOAP.class) private AddressSOAP address;
 	@Element(name = "acc:bedsNum") private Integer bedsNum;
 	@Element(name = "acc:cancellingFee") private Long cancelingFee;
-	//@Namespace(prefix = "service", reference = "http://xml/service")
-	//@ElementList(name = "services", type = ServiceSOAP.class) private List<ServiceSOAP> services;
 	@ElementList(inline = true, type = String.class, name = "acc:images", entry = "images") private ArrayList<String>
 		images;
 	
@@ -35,6 +33,8 @@ public class AddAccommodationRequest {
 		this.cancelingFee = cancelingFee;
 		this.images = images;
 	}
+
+	
 	
 	public String getName() {
 		return name;

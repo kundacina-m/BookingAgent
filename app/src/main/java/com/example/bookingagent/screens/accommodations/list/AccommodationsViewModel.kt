@@ -1,4 +1,4 @@
-package com.example.bookingagent.screens.accommodations
+package com.example.bookingagent.screens.accommodations.list
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel

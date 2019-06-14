@@ -1,4 +1,7 @@
 package com.example.bookingagent.screens.accommodations.details
 
-class AccommodationDetailsViewModel {
+import base.BaseViewModel
+import javax.inject.Inject
+
+class AccommodationDetailsViewModel @Inject constructor() : BaseViewModel() {
 }

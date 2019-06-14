@@ -3,6 +3,7 @@ package com.example.bookingagent.di.modules
 import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
+import com.example.bookingagent.data.db.dao.AccommodationDao
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
 import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
@@ -68,12 +69,17 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideAccommodationDao(db: AppDatabase): AccommodationDao =
+		db.accommodationDao()
+
+	@Singleton
+	@Provides
 	fun providesUserRepository(userDao: UserDao, userApi: UserApi) =
 		UserRepository(userDao, userApi)
 
 	@Singleton
 	@Provides
-	fun providesAccommodationRepository(accommodationApi: AccommodationApi) =
-		AccommodationRepository(accommodationApi)
+	fun providesAccommodationRepository(accommodationDao: AccommodationDao, accommodationApi: AccommodationApi) =
+		AccommodationRepository(accommodationDao, accommodationApi)
 
 }

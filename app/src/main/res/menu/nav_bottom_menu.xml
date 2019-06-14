@@ -33,11 +33,11 @@
 		android:title="@string/navbar_label_messages"/>
 
 	<item
-		android:id="@+id/addAccommodationFragment"
+		android:id="@+id/profileFragment"
 		android:color="@color/colorPrimary"
-		android:icon="@drawable/ic_add_accommodation_black_24dp"
+		android:icon="@drawable/ic_profile_black_24dp"
 		android:state_checked="true"
-		android:title="@string/navbar_label_add_accommodation"/>
+		android:title="@string/navbar_label_profile"/>
 
 
 </menu>

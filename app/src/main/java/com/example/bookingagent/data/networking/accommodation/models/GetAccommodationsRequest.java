@@ -5,8 +5,8 @@ import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
 @Root
-@Namespace(prefix = "getallaccommodations", reference = "http://xml/getallaccommodations")
+@Namespace(prefix = "allAcc", reference = "http://xml/accommodation")
 @SoapRequest
 public class GetAccommodationsRequest {
-	
+
 }

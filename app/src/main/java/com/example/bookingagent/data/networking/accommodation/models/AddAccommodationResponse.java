@@ -5,13 +5,16 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Namespace;
 import org.simpleframework.xml.Root;
 
-@Root
+@Root(strict = false)
 @Namespace(prefix = "ns2", reference = "http://xml/accommodation")
 @SoapResponse
 public class AddAccommodationResponse {
 	
 	@Element(name = "idAccommodation") private Integer idAccommodation;
 	@Element(name = "idAddress") private Integer idAddress;
+	
+	public AddAccommodationResponse() {
+	}
 	
 	public AddAccommodationResponse(Integer idAccommodation, Integer idAddress) {
 		this.idAccommodation = idAccommodation;

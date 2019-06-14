@@ -1,10 +1,11 @@
-package com.example.bookingagent.screens.accommodations
+package com.example.bookingagent.screens.accommodations.list
 
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
+import com.example.bookingagent.data.db.entities.Accommodation
 import com.example.bookingagent.utils.FakeData
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
@@ -14,7 +15,9 @@ import kotlinx.android.synthetic.main.fragment_accommodation.rvAccommodation
 class AccommodationsFragment : BaseFragment<AccommodationsViewModel, AccommodationsRoutes>() {
 
 	private val adapter by lazy {
-		AccommodationsAdapter()
+		AccommodationsAdapter().apply {
+			onItemClickListener = this@AccommodationsFragment::itemSelected
+		}
 	}
 
 	override fun getLayoutId(): Int = R.layout.fragment_accommodation
@@ -54,4 +57,8 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 			adapter = this@AccommodationsFragment.adapter
 		}
 	}
+
+	private fun itemSelected(accommodation: Accommodation) =
+		navigation.navigateToSelectedItem(accommodation)
+
 }

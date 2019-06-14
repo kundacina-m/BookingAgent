@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".screens.addaccommodation.AddAccommodationFragment">
+
+	<EditText
+		android:id="@+id/etRoomPrice"
+		android:layout_width="68dp"
+		android:layout_height="35dp"
+		android:ems="10"
+		android:inputType="number"
+		app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+		app:layout_constraintStart_toStartOf="@+id/etFloorNum"
+		app:layout_constraintTop_toTopOf="@+id/tvPrice"/>
+
+	<EditText
+		android:id="@+id/etRoomBedsNum"
+		android:layout_width="68dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:ems="10"
+		android:inputType="number"
+		app:layout_constraintBottom_toBottomOf="@+id/tvBedNum"
+		app:layout_constraintStart_toEndOf="@+id/tvRoomNum"
+		app:layout_constraintTop_toTopOf="@+id/tvBedNum"/>
+
+	<EditText
+		android:id="@+id/etName"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:ems="10"
+		android:hint="Enter name"
+		android:inputType="textPersonName"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<EditText
+		android:id="@+id/etDescription"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:ems="10"
+		android:hint="Enter description"
+		android:inputType="textPersonName"
+		android:maxLines="4"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/etName"/>
+
+	<EditText
+		android:id="@+id/etAddress"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:ems="10"
+		android:hint="Enter Address"
+		android:inputType="textPersonName"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/etDescription"/>
+
+	<TextView
+		android:id="@+id/tvRoom"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="24dp"
+		android:text="Room"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/sp_categories"/>
+
+	<EditText
+		android:id="@+id/etRoomNum"
+		android:layout_width="68dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:ems="10"
+		android:inputType="number"
+		app:layout_constraintBottom_toBottomOf="@+id/tvRoomNum"
+		app:layout_constraintStart_toEndOf="@+id/tvRoomNum"
+		app:layout_constraintTop_toTopOf="@+id/tvRoomNum"/>
+
+	<TextView
+		android:id="@+id/tvRoomNum"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="30dp"
+		android:text="Number:"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tvRoom"/>
+
+	<TextView
+		android:id="@+id/tvRoomFloor"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:text="Floor:"
+		app:layout_constraintBottom_toBottomOf="@+id/etRoomNum"
+		app:layout_constraintStart_toEndOf="@+id/etRoomNum"
+		app:layout_constraintTop_toTopOf="@+id/etRoomNum"/>
+
+	<EditText
+		android:id="@+id/etFloorNum"
+		android:layout_width="68dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:ems="10"
+		android:inputType="number"
+		app:layout_constraintBottom_toBottomOf="@+id/tvRoomFloor"
+		app:layout_constraintStart_toEndOf="@+id/tvRoomFloor"
+		app:layout_constraintTop_toTopOf="@+id/tvRoomFloor"/>
+
+	<TextView
+		android:id="@+id/tvBedNum"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="30dp"
+		android:text="Beds:"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tvRoomNum"/>
+
+	<TextView
+		android:id="@+id/tvPrice"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:text="Price:"
+		app:layout_constraintBottom_toBottomOf="@+id/etRoomBedsNum"
+		app:layout_constraintStart_toEndOf="@+id/etRoomBedsNum"
+		app:layout_constraintTop_toTopOf="@+id/etRoomBedsNum"/>
+
+	<Button
+		android:id="@+id/btAddImages"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Add Images"
+		app:layout_constraintBottom_toBottomOf="@+id/etRoomPrice"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/etFloorNum"
+		app:layout_constraintTop_toTopOf="@+id/etFloorNum"/>
+
+	<Spinner
+		android:id="@+id/sp_categories"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:entries="@array/accommodation_categories"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/etAddress"/>
+
+	<Button
+		android:id="@+id/btAddAccommodation"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="50dp"
+		android:text="@string/navbar_label_add_accommodation"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/etRoomPrice"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

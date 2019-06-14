@@ -5,13 +5,11 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "localUsers")
-data class LocalUserEntity(
+data class User(
 
 	@PrimaryKey
 	val username: String,
-
 	val password: String,
-
 	val linkedAccount: String? = null
 
 )

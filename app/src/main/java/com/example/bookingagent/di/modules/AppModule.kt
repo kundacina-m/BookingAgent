@@ -3,10 +3,15 @@ package com.example.bookingagent.di.modules
 import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
+import com.example.bookingagent.data.db.dao.AccommodationDao
 import com.example.bookingagent.data.db.dao.UserDao
+import com.example.bookingagent.data.networking.accommodation.AccommodationApi
 import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
+import com.example.bookingagent.data.networking.user.UserApi
+import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
+import com.example.bookingagent.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -28,9 +33,29 @@ class AppModule {
 		Retrofit.Builder()
 			.addConverterFactory(SimpleXmlConverterFactory.create())
 			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl("http://10.0.2.2:8080/service/")
+			.baseUrl(BASE_URL)
 			.build()
 			.create(HelloWorldApi::class.java)
+
+	@Singleton
+	@Provides
+	fun provideUserApi(): UserApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(UserApi::class.java)
+
+	@Singleton
+	@Provides
+	fun provideAccommodationApi(): AccommodationApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(AccommodationApi::class.java)
 
 	@Singleton
 	@Provides
@@ -44,7 +69,17 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun providesUserRepository(userDao: UserDao) =
-		UserRepository(userDao)
+	fun provideAccommodationDao(db: AppDatabase): AccommodationDao =
+		db.accommodationDao()
+
+	@Singleton
+	@Provides
+	fun providesUserRepository(userDao: UserDao, userApi: UserApi) =
+		UserRepository(userDao, userApi)
+
+	@Singleton
+	@Provides
+	fun providesAccommodationRepository(accommodationDao: AccommodationDao, accommodationApi: AccommodationApi) =
+		AccommodationRepository(accommodationDao, accommodationApi)
 
 }

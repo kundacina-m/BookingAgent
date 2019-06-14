@@ -43,6 +43,11 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 		return false
 	}
 
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setObservers()
+	}
+
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		val inflated = inflater.inflate(getLayoutId(), container, false)
 		setHasOptionsMenu(true)
@@ -51,8 +56,12 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+
 		initView()
+
 	}
+
+	abstract fun setObservers()
 
 	abstract fun initView()
 

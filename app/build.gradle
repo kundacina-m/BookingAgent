@@ -6,6 +6,11 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'check-naming-convention'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+
 android {
 
 	androidExtensions {
@@ -32,8 +37,8 @@ android {
 
 dependencies {
 
-
 	implementation project(':soap_annotations')
+	implementation 'com.android.support:support-v4:28.0.0'
 	kapt project(':soap_processing')
 
 
@@ -55,17 +60,17 @@ dependencies {
 	implementation 'com.squareup.retrofit2:retrofit:2.3.0'
 	implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
-	implementation ('com.squareup.retrofit2:converter-simplexml:2.1.0'){
+	implementation('com.squareup.retrofit2:converter-simplexml:2.1.0') {
 		exclude group: 'stax', module: 'stax-api'
 		exclude group: 'stax', module: 'stax'
 		exclude group: 'xpp3', module: 'xpp3'
 	}
 
-// Tikxml
-//	implementation 'com.github.Tickaroo.tikxml:annotation:0.8.15'
-//	implementation 'com.github.Tickaroo.tikxml:core:0.8.15'
-//	kapt 'com.github.Tickaroo.tikxml:processor-common:0.8.15'
-//	kapt 'com.github.Tickaroo.tikxml:processor:0.8.15'
+	// Tikxml
+	//	implementation 'com.github.Tickaroo.tikxml:annotation:0.8.15'
+	//	implementation 'com.github.Tickaroo.tikxml:core:0.8.15'
+	//	kapt 'com.github.Tickaroo.tikxml:processor-common:0.8.15'
+	//	kapt 'com.github.Tickaroo.tikxml:processor:0.8.15'
 
 	// Room - Data Persistence
 	implementation 'android.arch.persistence.room:runtime:1.1.1'
@@ -84,7 +89,8 @@ dependencies {
 	testImplementation "io.mockk:mockk:1.9"
 
 	// Routes
-	implementation 'androidx.navigation:navigation-fragment:2.0.0'
+	implementation 'androidx.navigation:navigation-runtime-ktx:2.0.0'
+	implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
 	implementation "androidx.navigation:navigation-ui-ktx:2.0.0"
 
 	// Glide - Image loader
@@ -114,4 +120,9 @@ dependencies {
 	// Google auto value
 	implementation "com.google.auto.value:auto-value-annotations:1.6.2"
 	kapt "com.google.auto.value:auto-value:1.6.2"
+}
+
+checkNamingConvention {
+
+	configFile = "$project.rootDir/milan.json"
 }

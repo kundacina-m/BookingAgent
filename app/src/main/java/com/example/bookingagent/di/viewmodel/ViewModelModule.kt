@@ -7,8 +7,8 @@ import com.example.bookingagent.screens.accommodations.details.edit.Accommodatio
 import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditViewModel
 import com.example.bookingagent.screens.accommodations.list.AccommodationsFragment
 import com.example.bookingagent.screens.accommodations.list.AccommodationsViewModel
-import com.example.bookingagent.screens.addaccommodation.AddAccommodationFragment
-import com.example.bookingagent.screens.addaccommodation.AddAccommodationViewModel
+import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment
+import com.example.bookingagent.screens.accommodations.add.AddAccommodationViewModel
 import com.example.bookingagent.screens.home.HomeFragment
 import com.example.bookingagent.screens.home.HomeViewModel
 import com.example.bookingagent.screens.login.LoginFragment
@@ -19,8 +19,8 @@ import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.profile.ProfileViewModel
 import com.example.bookingagent.screens.register.RegisterFragment
 import com.example.bookingagent.screens.register.RegisterViewModel
-import com.example.bookingagent.screens.reservations.ReservationsFragment
-import com.example.bookingagent.screens.reservations.ReservationsViewModel
+import com.example.bookingagent.screens.reservations.list.ReservationsFragment
+import com.example.bookingagent.screens.reservations.list.ReservationsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

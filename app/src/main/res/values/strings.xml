@@ -1,44 +1,44 @@
 <resources>
-	<string name="app_name">BookingAgent</string>
+    <string name="app_name">BookingAgent</string>
 
-	<!-- Login and register -->
-	<string name="title_login">Login</string>
-	<string name="title_register">Register</string>
+    <!-- Login and register -->
+    <string name="title_login">Login</string>
+    <string name="title_register">Register</string>
 
-	<string name="button_login">Login</string>
-	<string name="button_register">Register</string>
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
 
-	<string name="label_login">Login</string>
-	<string name="label_username">Username</string>
-	<string name="label_password">Password</string>
-	<string name="login_label_no_account">No account?</string>
-	<string name="register_label_already_have_account">You already have account?</string>
+    <string name="label_login">Login</string>
+    <string name="label_username">Username</string>
+    <string name="label_password">Password</string>
+    <string name="login_label_no_account">No account?</string>
+    <string name="register_label_already_have_account">You already have account?</string>
 
-	<string name="hint_username">Enter username</string>
-	<string name="hint_password">Enter password</string>
-	<string name="register_hint_repeat_password">Repeat password</string>
+    <string name="hint_username">Enter username</string>
+    <string name="hint_password">Enter password</string>
+    <string name="register_hint_repeat_password">Repeat password</string>
 
-	<string name="login_action_register">Register!</string>
-	<string name="register_action_login">Login!</string>
-
-
-	<!-- Home Screen -->
-
-	<string name="navbar_label_accommodations">Accommodations</string>
-	<string name="navbar_label_reservations">Reservations</string>
-	<string name="navbar_label_home">Home</string>
-	<string name="navbar_label_messages">Messages</string>
-	<string name="navbar_label_add_accommodation">Add accommodation</string>
+    <string name="login_action_register">Register!</string>
+    <string name="register_action_login">Login!</string>
 
 
-	<string-array name="accommodation_categories">
-		<item>Apartment</item>
-		<item>BedBreakfast</item>
-		<item>Hotel</item>
-	</string-array>
+    <!-- Home Screen -->
 
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="navbar_label_profile">Profile</string>
+    <string name="navbar_label_accommodations">Accommodations</string>
+    <string name="navbar_label_reservations">Reservations</string>
+    <string name="navbar_label_home">Home</string>
+    <string name="navbar_label_messages">Messages</string>
+    <string name="navbar_label_add_accommodation">Add accommodation</string>
+
+
+    <string-array name="accommodation_categories">
+        <item>Apartment</item>
+        <item>BedBreakfast</item>
+        <item>Hotel</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navbar_label_profile">Profile</string>
 
 </resources>

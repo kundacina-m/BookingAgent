@@ -1,4 +1,4 @@
-package com.example.bookingagent.screens.reservations
+package com.example.bookingagent.screens.reservations.list
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.fragment_reservations.rvReservations
 class ReservationsFragment : BaseFragment<ReservationsViewModel, ReservationRoutes>() {
 
 	private val adapter by lazy {
-		ReservationsAdapter()
+        ReservationsAdapter()
 	}
 
 	override fun getLayoutId(): Int = R.layout.fragment_reservations

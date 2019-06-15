@@ -41,7 +41,7 @@
 	</fragment>
 	<fragment
 		android:id="@+id/addAccommodationFragment"
-		android:name="com.example.bookingagent.screens.addaccommodation.AddAccommodationFragment"
+		android:name="com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment"
 		android:label="AddAccommodationFragment"
 		tools:layout="@layout/fragment_add_accommodation"/>
 	<fragment
@@ -51,9 +51,12 @@
 		tools:layout="@layout/fragment_messages"/>
 	<fragment
 		android:id="@+id/reservationsFragment"
-		android:name="com.example.bookingagent.screens.reservations.ReservationsFragment"
+		android:name="com.example.bookingagent.screens.reservations.list.ReservationsFragment"
 		android:label="ReservationsFragment"
-		tools:layout="@layout/fragment_reservations"/>
+		tools:layout="@layout/fragment_reservations">
+		<action android:id="@+id/action_reservationsFragment_to_reservationDetailsFragment"
+				app:destination="@id/reservationDetailsFragment"/>
+	</fragment>
 	<fragment
 		android:id="@+id/profileFragment"
 		android:name="com.example.bookingagent.screens.profile.ProfileFragment"
@@ -91,6 +94,8 @@
 		<action
 			android:id="@+id/action_accommodationDetailsFragment_to_accommodationEditFragment"
 			app:destination="@id/accommodationEditFragment"/>
+		<action android:id="@+id/action_accommodationDetailsFragment_to_roomsFragment"
+				app:destination="@id/roomsFragment"/>
 	</fragment>
 	<fragment
 		android:id="@+id/accommodationEditFragment"
@@ -122,4 +127,22 @@
 			android:name="images"
 			app:argType="string[]"/>
 	</fragment>
+	<fragment android:id="@+id/addRoomFragment" android:name="com.example.bookingagent.screens.rooms.add.AddRoomFragment"
+			  android:label="fragment_add_room" tools:layout="@layout/fragment_add_room"/>
+    <fragment android:id="@+id/roomsFragment" android:name="com.example.bookingagent.screens.rooms.list.RoomsFragment"
+              android:label="fragment_rooms" tools:layout="@layout/fragment_rooms">
+		<action android:id="@+id/action_roomsFragment_to_addRoomFragment" app:destination="@id/addRoomFragment"/>
+		<action android:id="@+id/action_roomsFragment_to_roomDetailsFragment"
+				app:destination="@id/roomDetailsFragment"/>
+	</fragment>
+	<fragment android:id="@+id/roomDetailsFragment" android:name="com.example.bookingagent.screens.rooms.details.RoomDetailsFragment"
+			  android:label="fragment_room_details" tools:layout="@layout/fragment_room_details">
+		<action android:id="@+id/action_roomDetailsFragment_to_editRoomFragment"
+				app:destination="@id/editRoomFragment"/>
+	</fragment>
+	<fragment android:id="@+id/editRoomFragment" android:name="com.example.bookingagent.screens.rooms.edit.EditRoomFragment"
+			  android:label="fragment_edit_room" tools:layout="@layout/fragment_edit_room"/>
+	<fragment android:id="@+id/reservationDetailsFragment"
+			  android:name="com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment"
+			  android:label="fragment_reservation_details" tools:layout="@layout/fragment_reservation_details"/>
 </navigation>

@@ -13,8 +13,8 @@ import com.example.bookingagent.screens.accommodations.details.edit.Accommodatio
 import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditRoutes
 import com.example.bookingagent.screens.accommodations.list.AccommodationsFragment
 import com.example.bookingagent.screens.accommodations.list.AccommodationsRoutes
-import com.example.bookingagent.screens.addaccommodation.AddAccommodationFragment
-import com.example.bookingagent.screens.addaccommodation.AddAccommodationRoutes
+import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment
+import com.example.bookingagent.screens.accommodations.add.AddAccommodationRoutes
 import com.example.bookingagent.screens.home.HomeFragment
 import com.example.bookingagent.screens.home.HomeRoutes
 import com.example.bookingagent.screens.login.LoginFragment
@@ -26,8 +26,8 @@ import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.profile.ProfileRoutes
 import com.example.bookingagent.screens.register.RegisterFragment
 import com.example.bookingagent.screens.register.RegisterRoutes
-import com.example.bookingagent.screens.reservations.ReservationRoutes
-import com.example.bookingagent.screens.reservations.ReservationsFragment
+import com.example.bookingagent.screens.reservations.list.ReservationRoutes
+import com.example.bookingagent.screens.reservations.list.ReservationsFragment
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

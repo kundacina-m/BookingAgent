@@ -18,6 +18,6 @@ data class Accommodation(
 	val beds: Int,
 	val cancelingFee: Long,
 	val images: ArrayList<String>
-	//	val services: List<Service>
-	//	val comments: List<String>
+	//	val services: ArrayList<Service>
+	//	val comments: ArrayList<Comment>
 ) : Parcelable

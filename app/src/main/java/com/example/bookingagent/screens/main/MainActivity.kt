@@ -10,34 +10,40 @@ import kotlinx.android.synthetic.main.activity_main.bottom_navigation
 
 class MainActivity : BaseActivity() {
 
-	private val fragmentsWithoutNavigationBar = listOf(R.id.loginFragment, R.id.registerFragment)
+    private val fragmentsWithNavigationBar = listOf(
+        R.id.homeFragment,
+        R.id.profileFragment,
+        R.id.reservationsFragment,
+        R.id.messagesFragment,
+        R.id.accommodationsFragment
+    )
 
-	private val navCtrl: NavController by lazy {
-		Navigation.findNavController(this, R.id.nav_host_fragment)
-	}
+    private val navCtrl: NavController by lazy {
+        Navigation.findNavController(this, R.id.nav_host_fragment)
+    }
 
-	override fun getViewLayout(): Int = R.layout.activity_main
+    override fun getViewLayout(): Int = R.layout.activity_main
 
-	override fun initView() {
-		setupBottomNavBar()
-		setNavigationListener()
-	}
+    override fun initView() {
+        setupBottomNavBar()
+        setNavigationListener()
+    }
 
-	private fun setupBottomNavBar() {
-		bottom_navigation.setupWithNavController(navCtrl)
-		bottom_navigation.setOnNavigationItemReselectedListener { }
+    private fun setupBottomNavBar() {
+        bottom_navigation.setupWithNavController(navCtrl)
+        bottom_navigation.setOnNavigationItemReselectedListener { }
 
-	}
+    }
 
-	private fun setNavigationListener() {
-		navCtrl.addOnDestinationChangedListener { _, destination, _ ->
-			if (fragmentsWithoutNavigationBar.contains(destination.id))
-				bottom_navigation.visibility = View.GONE
-			else bottom_navigation.visibility = View.VISIBLE
-		}
-	}
+    private fun setNavigationListener() {
+        navCtrl.addOnDestinationChangedListener { _, destination, _ ->
+            if (fragmentsWithNavigationBar.contains(destination.id))
+                bottom_navigation.visibility = View.VISIBLE
+            else bottom_navigation.visibility = View.GONE
+        }
+    }
 
-	override fun onSupportNavigateUp(): Boolean =
-		navCtrl.navigateUp()
+    override fun onSupportNavigateUp(): Boolean =
+        navCtrl.navigateUp()
 
 }

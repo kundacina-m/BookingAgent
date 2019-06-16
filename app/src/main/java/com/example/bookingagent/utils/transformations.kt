@@ -11,10 +11,12 @@ fun AddAccommodationRequest.toModel(idAccommodation: Int, idAddress: Int): Accom
 		name = this.name,
 		description = this.description,
 		type = this.type,
-		beds = this.bedsNum,
 		cancelingFee = this.cancelingFee,
-		address = idAddress,
-		images = this.images
+		address = this.address.toModel(idAddress),
+		category = "nesto",
+		rating = 2.9f,
+		rooms = arrayListOf(),
+		services = arrayListOf()
 	)
 
 fun AddressSOAP.toModel(idAddress: Int): Address =

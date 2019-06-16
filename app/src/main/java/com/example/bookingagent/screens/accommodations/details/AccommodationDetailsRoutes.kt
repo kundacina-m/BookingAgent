@@ -1,6 +1,7 @@
 package com.example.bookingagent.screens.accommodations.details
 
 import com.example.bookingagent.Routes
+import com.example.bookingagent.data.db.entities.Room
 import com.example.bookingagent.di.routes.NavigationController
 import javax.inject.Inject
 
@@ -13,9 +14,19 @@ class AccommodationDetailsRoutes @Inject constructor(val navigationController: N
 			description = accommodation.description,
 			cancellingFee = accommodation.cancellingFee,
 			type = accommodation.type,
-			beds = accommodation.beds,
 			address = accommodation.address,
-			images = accommodation.images
+			rating = accommodation.rating,
+			services = accommodation.services,
+			rooms = accommodation.rooms,
+			category = accommodation.category
+		)
+
+		navigationController.route.navigate(args)
+	}
+
+	fun navigateToRooms(rooms: Array<Room>) {
+		val args = AccommodationDetailsFragmentDirections.actionAccommodationDetailsFragmentToRoomsFragment(
+			rooms = rooms
 		)
 
 		navigationController.route.navigate(args)

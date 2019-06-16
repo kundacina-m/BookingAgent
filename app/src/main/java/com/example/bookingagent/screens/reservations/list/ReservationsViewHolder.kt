@@ -1,4 +1,4 @@
-package com.example.bookingagent.screens.reservations
+package com.example.bookingagent.screens.reservations.list
 
 import android.view.View
 import base.BaseViewHolder

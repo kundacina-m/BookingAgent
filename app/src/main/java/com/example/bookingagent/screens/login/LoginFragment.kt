@@ -5,7 +5,6 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.User
 import com.example.bookingagent.data.networking.helloworld.models.EnvelopeHelloWorldRequest
 import com.example.bookingagent.data.networking.helloworld.models.HelloWorldRequest
 import com.example.bookingagent.utils.RequestError.UnknownError
@@ -71,7 +70,7 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
 		if (password.length >= 8) {
 			val username = etUsername.text.toString()
-			viewModel.checkIfUserExists(User(username, password))
+//			viewModel.checkIfUserExists(User(username, password))
 			viewModel.loginUserOnBackend(username, password)
 		}
 	}

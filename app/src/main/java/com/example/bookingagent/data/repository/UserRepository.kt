@@ -2,12 +2,6 @@ package com.example.bookingagent.data.repository
 
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.db.entities.User
-import com.example.bookingagent.data.networking.accommodation.AccommodationApi
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationRequest
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationResponse
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationsRequest
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationsResponse
-import com.example.bookingagent.data.networking.accommodation.models.GetAccommodationsRequest
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse

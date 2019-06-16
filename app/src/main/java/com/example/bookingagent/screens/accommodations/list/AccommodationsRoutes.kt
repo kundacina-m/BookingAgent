@@ -8,23 +8,25 @@ import javax.inject.Inject
 
 class AccommodationsRoutes @Inject constructor(val navigationController: NavigationController) : Routes() {
 
-	fun navigateToAddAccommodation()  =
-		navigationController.route.navigate(R.id.action_accommodationsFragment_to_addAccommodationFragment)
+    fun navigateToAddAccommodation() =
+        navigationController.route.navigate(R.id.action_accommodationsFragment_to_addAccommodationFragment)
 
-	fun navigateToSelectedItem(accommodation: Accommodation) {
+    fun navigateToSelectedItem(accommodation: Accommodation) {
 
-		val args = AccommodationsFragmentDirections.actionAccommodationsFragmentToAccommodationDetailsFragment(
-			 id = accommodation.id,
-			 name = accommodation.name,
-			 description = accommodation.description,
-			 cancellingFee = accommodation.cancelingFee,
-			 type = accommodation.type,
-			 beds = accommodation.beds,
-			 address = accommodation.address,
-			 images = accommodation.images.toTypedArray()
-		 )
+        val args = AccommodationsFragmentDirections.actionAccommodationsFragmentToAccommodationDetailsFragment(
+            id = accommodation.id,
+            name = accommodation.name,
+            description = accommodation.description,
+            cancellingFee = accommodation.cancelingFee,
+            type = accommodation.type,
+            category = accommodation.category,
+            rooms = accommodation.rooms.toTypedArray(),
+            services = accommodation.services.toTypedArray(),
+            rating = accommodation.rating,
+            address = accommodation.address
+        )
 
-		navigationController.route.navigate(args)
+        navigationController.route.navigate(args)
 
-	}
+    }
 }

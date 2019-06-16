@@ -53,6 +53,7 @@ class LoginViewModel @Inject constructor(val repository: UserRepository, val hel
 			.subscribeOn(Schedulers.io())
 			.subscribeBy {
 			loginResponse.postValue(it)
+				identityVerification.postValue(true)
 		})
 	}
 

@@ -1,6 +1,8 @@
 package com.example.bookingagent.screens.accommodations.add
 
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
@@ -12,6 +14,7 @@ import com.example.bookingagent.utils.RequestError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_add_accommodation.btAddAccommodation
+import kotlinx.android.synthetic.main.toolbar_main.*
 
 class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAccommodationRoutes>() {
 
@@ -32,11 +35,24 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 
 	override fun initView() {
 
+		actionBarSetup()
+
 		btAddAccommodation.setOnClickListener {
 			addAccommodation()
 		}
 
 	}
+
+	private fun actionBarSetup() {
+		setActionBar(toolbar_top, true)
+		actionBar?.title = ""
+	}
+
+	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+		menu.clear()
+		super.onCreateOptionsMenu(menu, inflater)
+	}
+
 
 	private fun addAccommodation() {
 		viewModel.addAccommodation(

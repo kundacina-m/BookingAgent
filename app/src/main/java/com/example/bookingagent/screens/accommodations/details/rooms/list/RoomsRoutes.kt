@@ -1,4 +1,4 @@
-package com.example.bookingagent.screens.rooms.list
+package com.example.bookingagent.screens.accommodations.details.rooms.list
 
 import com.example.bookingagent.Routes
 import com.example.bookingagent.di.routes.NavigationController

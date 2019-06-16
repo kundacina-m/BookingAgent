@@ -1,148 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/nav_graph"
-	app:startDestination="@id/loginFragment">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/loginFragment">
 
-	<fragment
-		android:id="@+id/loginFragment"
-		android:name="com.example.bookingagent.screens.login.LoginFragment"
-		android:label="LoginFragment"
-		tools:layout="@layout/fragment_login">
-		<action
-			android:id="@+id/action_loginFragment_to_registerFragment"
-			app:destination="@id/registerFragment"/>
-		<action
-			android:id="@+id/action_loginFragment_to_homeFragment"
-			app:destination="@id/homeFragment"/>
-	</fragment>
-	<fragment
-		android:id="@+id/registerFragment"
-		android:name="com.example.bookingagent.screens.register.RegisterFragment"
-		android:label="RegisterFragment"
-		tools:layout="@layout/fragment_register"/>
-	<fragment
-		android:id="@+id/homeFragment"
-		android:name="com.example.bookingagent.screens.home.HomeFragment"
-		android:label="HomeFragment"
-		tools:layout="@layout/fragment_home"/>
-	<fragment
-		android:id="@+id/accommodationsFragment"
-		android:name="com.example.bookingagent.screens.accommodations.list.AccommodationsFragment"
-		android:label="AccommodationsFragment"
-		tools:layout="@layout/fragment_accommodation">
-		<action
-			android:id="@+id/action_accommodationsFragment_to_addAccommodationFragment"
-			app:destination="@+id/addAccommodationFragment"/>
-		<action
-			android:id="@+id/action_accommodationsFragment_to_accommodationDetailsFragment"
-			app:destination="@id/accommodationDetailsFragment"/>
-	</fragment>
-	<fragment
-		android:id="@+id/addAccommodationFragment"
-		android:name="com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment"
-		android:label="AddAccommodationFragment"
-		tools:layout="@layout/fragment_add_accommodation"/>
-	<fragment
-		android:id="@+id/messagesFragment"
-		android:name="com.example.bookingagent.screens.messages.MessagesFragment"
-		android:label="MessagesFragment"
-		tools:layout="@layout/fragment_messages"/>
-	<fragment
-		android:id="@+id/reservationsFragment"
-		android:name="com.example.bookingagent.screens.reservations.list.ReservationsFragment"
-		android:label="ReservationsFragment"
-		tools:layout="@layout/fragment_reservations">
-		<action android:id="@+id/action_reservationsFragment_to_reservationDetailsFragment"
-				app:destination="@id/reservationDetailsFragment"/>
-	</fragment>
-	<fragment
-		android:id="@+id/profileFragment"
-		android:name="com.example.bookingagent.screens.profile.ProfileFragment"
-		android:label="fragment_profile"
-		tools:layout="@layout/fragment_profile"/>
-	<fragment
-		android:id="@+id/accommodationDetailsFragment"
-		android:name="com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment"
-		android:label="AccommodationDetailsFragment"
-		tools:layout="@layout/fragment_accommodation_details">
-		<argument
-			android:name="id"
-			app:argType="integer"/>
-		<argument
-			android:name="name"
-			app:argType="string"/>
-		<argument
-			android:name="description"
-			app:argType="string"/>
-		<argument
-			android:name="address"
-			app:argType="integer"/>
-		<argument
-			android:name="type"
-			app:argType="string"/>
-		<argument
-			android:name="beds"
-			app:argType="integer"/>
-		<argument
-			android:name="cancellingFee"
-			app:argType="long"/>
-		<argument
-			android:name="images"
-			app:argType="string[]"/>
-		<action
-			android:id="@+id/action_accommodationDetailsFragment_to_accommodationEditFragment"
-			app:destination="@id/accommodationEditFragment"/>
-		<action android:id="@+id/action_accommodationDetailsFragment_to_roomsFragment"
-				app:destination="@id/roomsFragment"/>
-	</fragment>
-	<fragment
-		android:id="@+id/accommodationEditFragment"
-		android:name="com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditFragment"
-		android:label="fragment_accommodation_edit"
-		tools:layout="@layout/fragment_accommodation_edit">
-		<argument
-			android:name="id"
-			app:argType="integer"/>
-		<argument
-			android:name="name"
-			app:argType="string"/>
-		<argument
-			android:name="description"
-			app:argType="string"/>
-		<argument
-			android:name="address"
-			app:argType="integer"/>
-		<argument
-			android:name="type"
-			app:argType="string"/>
-		<argument
-			android:name="beds"
-			app:argType="integer"/>
-		<argument
-			android:name="cancellingFee"
-			app:argType="long"/>
-		<argument
-			android:name="images"
-			app:argType="string[]"/>
-	</fragment>
-	<fragment android:id="@+id/addRoomFragment" android:name="com.example.bookingagent.screens.rooms.add.AddRoomFragment"
-			  android:label="fragment_add_room" tools:layout="@layout/fragment_add_room"/>
-    <fragment android:id="@+id/roomsFragment" android:name="com.example.bookingagent.screens.rooms.list.RoomsFragment"
+    <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.example.bookingagent.screens.login.LoginFragment"
+            android:label="LoginFragment"
+            tools:layout="@layout/fragment_login">
+        <action
+                android:id="@+id/action_loginFragment_to_registerFragment"
+                app:destination="@id/registerFragment"/>
+        <action
+                android:id="@+id/action_loginFragment_to_homeFragment"
+                app:destination="@id/homeFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.example.bookingagent.screens.register.RegisterFragment"
+            android:label="RegisterFragment"
+            tools:layout="@layout/fragment_register"/>
+    <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.example.bookingagent.screens.home.HomeFragment"
+            android:label="HomeFragment"
+            tools:layout="@layout/fragment_home"/>
+    <fragment
+            android:id="@+id/accommodationsFragment"
+            android:name="com.example.bookingagent.screens.accommodations.list.AccommodationsFragment"
+            android:label="AccommodationsFragment"
+            tools:layout="@layout/fragment_accommodation">
+        <action
+                android:id="@+id/action_accommodationsFragment_to_addAccommodationFragment"
+                app:destination="@+id/addAccommodationFragment"/>
+        <action
+                android:id="@+id/action_accommodationsFragment_to_accommodationDetailsFragment"
+                app:destination="@id/accommodationDetailsFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/addAccommodationFragment"
+            android:name="com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment"
+            android:label="AddAccommodationFragment"
+            tools:layout="@layout/fragment_add_accommodation"/>
+    <fragment
+            android:id="@+id/messagesFragment"
+            android:name="com.example.bookingagent.screens.messages.MessagesFragment"
+            android:label="MessagesFragment"
+            tools:layout="@layout/fragment_messages"/>
+    <fragment
+            android:id="@+id/reservationsFragment"
+            android:name="com.example.bookingagent.screens.reservations.list.ReservationsFragment"
+            android:label="ReservationsFragment"
+            tools:layout="@layout/fragment_reservations">
+        <action android:id="@+id/action_reservationsFragment_to_reservationDetailsFragment"
+                app:destination="@id/reservationDetailsFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/profileFragment"
+            android:name="com.example.bookingagent.screens.profile.ProfileFragment"
+            android:label="fragment_profile"
+            tools:layout="@layout/fragment_profile"/>
+    <fragment
+            android:id="@+id/accommodationDetailsFragment"
+            android:name="com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment"
+            android:label="AccommodationDetailsFragment"
+            tools:layout="@layout/fragment_accommodation_details">
+        <argument
+                android:name="id"
+                app:argType="integer"/>
+        <argument
+                android:name="name"
+                app:argType="string"/>
+        <argument
+                android:name="description"
+                app:argType="string"/>
+        <argument
+                android:name="type"
+                app:argType="string"/>
+        <argument
+                android:name="cancellingFee"
+                app:argType="long"/>
+        <argument android:name="address" app:argType="com.example.bookingagent.data.db.entities.Address"/>
+        <argument android:name="rating" app:argType="float"/>
+        <argument android:name="category" app:argType="string"/>
+        <argument android:name="services" app:argType="com.example.bookingagent.data.db.entities.Service[]"/>
+        <argument android:name="rooms" app:argType="com.example.bookingagent.data.db.entities.Room[]"/>
+        <action
+                android:id="@+id/action_accommodationDetailsFragment_to_accommodationEditFragment"
+                app:destination="@id/accommodationEditFragment"/>
+        <action android:id="@+id/action_accommodationDetailsFragment_to_roomsFragment"
+                app:destination="@id/roomsFragment"/>
+
+    </fragment>
+    <fragment
+            android:id="@+id/accommodationEditFragment"
+            android:name="com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditFragment"
+            android:label="fragment_accommodation_edit"
+            tools:layout="@layout/fragment_accommodation_edit">
+        <argument
+                android:name="id"
+                app:argType="integer"/>
+        <argument
+                android:name="name"
+                app:argType="string"/>
+        <argument
+                android:name="description"
+                app:argType="string"/>
+        <argument
+                android:name="type"
+                app:argType="string"/>
+        <argument
+                android:name="cancellingFee"
+                app:argType="long"/>
+        <argument android:name="address" app:argType="com.example.bookingagent.data.db.entities.Address"/>
+        <argument android:name="rating" app:argType="float"/>
+        <argument android:name="category" app:argType="string"/>
+        <argument android:name="services" app:argType="com.example.bookingagent.data.db.entities.Service[]"/>
+        <argument android:name="rooms" app:argType="com.example.bookingagent.data.db.entities.Room[]"/>
+    </fragment>
+    <fragment android:id="@+id/addRoomFragment"
+              android:name="com.example.bookingagent.screens.accommodations.details.rooms.add.AddRoomFragment"
+              android:label="fragment_add_room" tools:layout="@layout/fragment_add_room"/>
+
+    <fragment android:id="@+id/roomsFragment"
+              android:name="com.example.bookingagent.screens.accommodations.details.rooms.list.RoomsFragment"
               android:label="fragment_rooms" tools:layout="@layout/fragment_rooms">
-		<action android:id="@+id/action_roomsFragment_to_addRoomFragment" app:destination="@id/addRoomFragment"/>
-		<action android:id="@+id/action_roomsFragment_to_roomDetailsFragment"
-				app:destination="@id/roomDetailsFragment"/>
-	</fragment>
-	<fragment android:id="@+id/roomDetailsFragment" android:name="com.example.bookingagent.screens.rooms.details.RoomDetailsFragment"
-			  android:label="fragment_room_details" tools:layout="@layout/fragment_room_details">
-		<action android:id="@+id/action_roomDetailsFragment_to_editRoomFragment"
-				app:destination="@id/editRoomFragment"/>
-	</fragment>
-	<fragment android:id="@+id/editRoomFragment" android:name="com.example.bookingagent.screens.rooms.edit.EditRoomFragment"
-			  android:label="fragment_edit_room" tools:layout="@layout/fragment_edit_room"/>
-	<fragment android:id="@+id/reservationDetailsFragment"
-			  android:name="com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment"
-			  android:label="fragment_reservation_details" tools:layout="@layout/fragment_reservation_details"/>
+        <action android:id="@+id/action_roomsFragment_to_addRoomFragment" app:destination="@id/addRoomFragment"/>
+        <action android:id="@+id/action_roomsFragment_to_roomDetailsFragment"
+                app:destination="@id/roomDetailsFragment"/>
+
+        <argument android:name="rooms" app:argType="com.example.bookingagent.data.db.entities.Room[]"/>
+
+    </fragment>
+    <fragment android:id="@+id/roomDetailsFragment"
+              android:name="com.example.bookingagent.screens.accommodations.details.rooms.details.RoomDetailsFragment"
+              android:label="fragment_room_details" tools:layout="@layout/fragment_room_details">
+        <action android:id="@+id/action_roomDetailsFragment_to_editRoomFragment"
+                app:destination="@id/editRoomFragment"/>
+    </fragment>
+    <fragment android:id="@+id/editRoomFragment"
+              android:name="com.example.bookingagent.screens.accommodations.details.rooms.edit.EditRoomFragment"
+              android:label="fragment_edit_room" tools:layout="@layout/fragment_edit_room"/>
+    <fragment android:id="@+id/reservationDetailsFragment"
+              android:name="com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment"
+              android:label="fragment_reservation_details" tools:layout="@layout/fragment_reservation_details"/>
 </navigation>

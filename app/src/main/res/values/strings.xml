@@ -40,5 +40,23 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navbar_label_profile">Profile</string>
+    <string name="hint_enter_name">Enter name</string>
+    <string name="hint_enter_description">Enter description</string>
+    <string name="hint_enter_street_name">Enter Street name</string>
+    <string name="hint_enter_city">Enter city</string>
+    <string name="hint_enter_zip_code">Enter zip code</string>
+    <string name="hint_enter_street_num">Enter number</string>
+    <string name="label_name_accommodation">Name:</string>
+    <string name="label_description_accommodation">Description:</string>
+    <string name="label_location_accommodation">Location:</string>
+    <string name="label_type_accommodation">Type:</string>
+    <string name="label_latitude_accommodation">Latitude:</string>
+    <string name="label_longitude_accommodation">Longitude:</string>
+    <string name="label_city_accommodation">City:</string>
+    <string name="label_zip_code_accommodation">Zip code:</string>
+    <string name="label_street_accommodation">Street:</string>
+    <string name="label_number_accommodation">Number:</string>
+    <string name="button_submit_change">Submit change</string>
+    <string name="button_add_accommodation">Add accommodation</string>
 
 </resources>

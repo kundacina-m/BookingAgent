@@ -26,8 +26,18 @@ import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.profile.ProfileRoutes
 import com.example.bookingagent.screens.register.RegisterFragment
 import com.example.bookingagent.screens.register.RegisterRoutes
+import com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment
+import com.example.bookingagent.screens.reservations.details.ReservationDetailsRoutes
 import com.example.bookingagent.screens.reservations.list.ReservationRoutes
 import com.example.bookingagent.screens.reservations.list.ReservationsFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.add.AddRoomFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.add.AddRoomRoutes
+import com.example.bookingagent.screens.accommodations.details.rooms.details.RoomDetailsFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.details.RoomDetailsRoutes
+import com.example.bookingagent.screens.accommodations.details.rooms.edit.EditRoomFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.edit.EditRoomRoutes
+import com.example.bookingagent.screens.accommodations.details.rooms.list.RoomsFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.list.RoomsRoutes
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -93,5 +103,30 @@ abstract class RouteModule {
 	@IntoMap
 	@RouteKey(AccommodationEditFragment::class)
 	internal abstract fun bindAccommodationEditRoutes(accommodationEditRoutes: AccommodationEditRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(AddRoomFragment::class)
+	internal abstract fun bindAddRoomRoutes(addRoomRoutes: AddRoomRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(RoomDetailsFragment::class)
+	internal abstract fun bindRoomDetailsRoutes(roomDetailsRoutes: RoomDetailsRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(EditRoomFragment::class)
+	internal abstract fun bindEditRoomRoutes(editRoomRoutes: EditRoomRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(RoomsFragment::class)
+	internal abstract fun bindRoomsRoutes(roomsRoutes: RoomsRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(ReservationDetailsFragment::class)
+	internal abstract fun bindReservationDetailsRoutes(reservationDetailsRoutes: ReservationDetailsRoutes): Routes
 
 }

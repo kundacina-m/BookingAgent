@@ -5,7 +5,7 @@ import android.view.MenuInflater
 import androidx.navigation.fragment.navArgs
 import base.BaseFragment
 import com.example.bookingagent.R
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.tvName
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.*
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 
 class AccommodationEditFragment : BaseFragment<AccommodationEditViewModel, AccommodationEditRoutes>() {
@@ -18,7 +18,19 @@ class AccommodationEditFragment : BaseFragment<AccommodationEditViewModel, Accom
 
 	override fun initView() {
 		actionBarSetup()
-		tvName.text = args.name
+		fillViewWithData()
+	}
+
+	private fun fillViewWithData() {
+		etName.setText(args.name)
+		etDescription.setText(args.description)
+		etLatitude.setText(args.address.latitude.toString())
+		etLongitude.setText(args.address.longitude.toString())
+		etCity.setText(args.address.city)
+		etZipCode.setText(args.address.zipCode.toString())
+		etAddress.setText(args.address.street)
+		etNum.setText(args.address.num.toString())
+
 	}
 
 	private fun actionBarSetup() {

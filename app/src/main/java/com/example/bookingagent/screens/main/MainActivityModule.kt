@@ -11,7 +11,12 @@ import com.example.bookingagent.screens.login.LoginFragment
 import com.example.bookingagent.screens.messages.MessagesFragment
 import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.register.RegisterFragment
+import com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment
 import com.example.bookingagent.screens.reservations.list.ReservationsFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.add.AddRoomFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.details.RoomDetailsFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.edit.EditRoomFragment
+import com.example.bookingagent.screens.accommodations.details.rooms.list.RoomsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -58,6 +63,25 @@ abstract class MainActivityModule {
     @ContributesAndroidInjector
     abstract fun contributeAccommodationEditFragmentInjector(): AccommodationEditFragment
 
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun contributeAddRoomFragmentInjector(): AddRoomFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun contributeRoomDetailsFragmentInjector(): RoomDetailsFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun contributeEditRoomFragmentInjector(): EditRoomFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun contributeRoomsFragmentInjector(): RoomsFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun contributeReservationDetailsFragmentInjector(): ReservationDetailsFragment
 
 
 

@@ -1,4 +1,4 @@
-package com.example.bookingagent.screens.rooms.add
+package com.example.bookingagent.screens.accommodations.details.rooms.add
 
 import base.BaseViewModel
 import javax.inject.Inject

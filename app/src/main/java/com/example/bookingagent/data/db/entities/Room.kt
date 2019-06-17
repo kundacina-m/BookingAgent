@@ -7,13 +7,14 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Room(
 
-    @PrimaryKey
-    val id: Long,
-    val roomNum: Int,
-    val floor: Int,
-    val bedNums: Int,
-    val price: Int,
-    val availability: Boolean,
-    val comments: ArrayList<String>,
-    val images: ArrayList<String>
+	@PrimaryKey
+	val id: Long,
+	val roomNum: Int? = null,
+	val floor: Int? = null,
+	val bedNums: Int? = null,
+	val price: Int? = null,
+	val availability: Boolean? = null,
+	val comments: ArrayList<String>? = null,
+	val images: ArrayList<Image>? = null,
+	val schedule: ArrayList<ScheduleUnit>? = null
 ) : Parcelable

@@ -32,7 +32,8 @@ class AddAccommodationViewModel @Inject constructor(private val accommodationRep
 					if (it is OnSuccess) {
 						val response = it.item.body.body
 						addingAccommodation.postValue(it)
-						addAccommodationToDB(addAccommodationRequest.toModel(response.idAccommodation, response.idAddress))
+						addAccommodationToDB(
+							addAccommodationRequest.toModel(response.idAccommodation, response.idAddress))
 						addAddressToDB(addAccommodationRequest.address.toModel(response.idAddress))
 					}
 				})

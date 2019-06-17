@@ -11,9 +11,8 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
 
 	val userInfo = MutableLiveData<WrappedResponse<User>>()
 
-	fun getUserInfo(){
+	fun getUserInfo() {
 
 	}
-
 
 }

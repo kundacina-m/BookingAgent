@@ -22,7 +22,9 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 	override fun setObservers() {
 		viewModel.registrationStatus.observe(this, Observer {
 			when (it) {
-				true ->  { Log.d(TAG, "setObservers: Successfully registered!"); navigation.navigateToLogin() }
+				true -> {
+					Log.d(TAG, "setObservers: Successfully registered!"); navigation.navigateToLogin()
+				}
 				false -> Log.d(TAG, "setObservers: That username already exists!")
 			}
 		})

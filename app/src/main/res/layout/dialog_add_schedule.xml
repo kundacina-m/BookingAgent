@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+
+	<Button
+		android:id="@+id/btConfirm"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Confirm"
+		app:layout_constraintStart_toStartOf="@+id/etPrice"
+		app:layout_constraintTop_toBottomOf="@+id/etPrice"/>
+
+	<Button
+		android:id="@+id/btCancel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginTop="8dp"
+		android:text="Cancel"
+		app:layout_constraintEnd_toEndOf="@+id/etPrice"
+		app:layout_constraintTop_toBottomOf="@+id/etPrice"/>
+
+	<EditText
+		android:id="@+id/etCheckIn"
+		android:layout_width="150dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="8dp"
+		android:ems="10"
+		android:inputType="date"
+		android:textAlignment="center"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tvLabelStart"/>
+
+	<EditText
+		android:id="@+id/etCheckOut"
+		android:layout_width="150dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="24dp"
+		android:layout_marginTop="8dp"
+		android:ems="10"
+		android:inputType="date"
+		android:textAlignment="center"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tvLabelEnd"/>
+
+	<EditText
+		android:id="@+id/etPrice"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="100dp"
+		android:layout_marginStart="100dp"
+		android:layout_marginTop="8dp"
+		android:ems="10"
+		android:inputType="number"
+		android:textAlignment="center"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tvLabelPrice"/>
+
+	<TextView
+		android:id="@+id/tvLabelStart"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:text="Start"
+		app:layout_constraintEnd_toEndOf="@+id/etCheckIn"
+		app:layout_constraintStart_toStartOf="@+id/etCheckIn"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<TextView
+		android:id="@+id/tvLabelEnd"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginTop="8dp"
+		android:text="End"
+		app:layout_constraintEnd_toEndOf="@+id/etCheckOut"
+		app:layout_constraintStart_toStartOf="@+id/etCheckOut"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<TextView
+		android:id="@+id/tvDivider"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:text="----"
+		app:layout_constraintBottom_toBottomOf="@+id/etCheckIn"
+		app:layout_constraintEnd_toStartOf="@+id/etCheckOut"
+		app:layout_constraintStart_toEndOf="@+id/etCheckIn"
+		app:layout_constraintTop_toBottomOf="@+id/tvLabelStart"/>
+
+	<TextView
+		android:id="@+id/tvLabelPrice"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:text="Price"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/etCheckIn"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

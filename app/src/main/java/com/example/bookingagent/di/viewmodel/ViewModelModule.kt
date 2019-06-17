@@ -1,14 +1,22 @@
 package com.example.bookingagent.di.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment
+import com.example.bookingagent.screens.accommodations.add.AddAccommodationViewModel
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsViewModel
 import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditFragment
 import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditViewModel
+import com.example.bookingagent.screens.rooms.add.AddRoomFragment
+import com.example.bookingagent.screens.rooms.add.AddRoomViewModel
+import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment
+import com.example.bookingagent.screens.rooms.details.RoomDetailsViewModel
+import com.example.bookingagent.screens.rooms.edit.EditRoomFragment
+import com.example.bookingagent.screens.rooms.edit.EditRoomViewModel
+import com.example.bookingagent.screens.rooms.list.RoomsFragment
+import com.example.bookingagent.screens.rooms.list.RoomsViewModel
 import com.example.bookingagent.screens.accommodations.list.AccommodationsFragment
 import com.example.bookingagent.screens.accommodations.list.AccommodationsViewModel
-import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment
-import com.example.bookingagent.screens.accommodations.add.AddAccommodationViewModel
 import com.example.bookingagent.screens.home.HomeFragment
 import com.example.bookingagent.screens.home.HomeViewModel
 import com.example.bookingagent.screens.login.LoginFragment
@@ -23,14 +31,6 @@ import com.example.bookingagent.screens.reservations.details.ReservationDetailsF
 import com.example.bookingagent.screens.reservations.details.ReservationDetailsViewModel
 import com.example.bookingagent.screens.reservations.list.ReservationsFragment
 import com.example.bookingagent.screens.reservations.list.ReservationsViewModel
-import com.example.bookingagent.screens.accommodations.details.rooms.add.AddRoomFragment
-import com.example.bookingagent.screens.accommodations.details.rooms.add.AddRoomViewModel
-import com.example.bookingagent.screens.accommodations.details.rooms.details.RoomDetailsFragment
-import com.example.bookingagent.screens.accommodations.details.rooms.details.RoomDetailsViewModel
-import com.example.bookingagent.screens.accommodations.details.rooms.edit.EditRoomFragment
-import com.example.bookingagent.screens.accommodations.details.rooms.edit.EditRoomViewModel
-import com.example.bookingagent.screens.accommodations.details.rooms.list.RoomsFragment
-import com.example.bookingagent.screens.accommodations.details.rooms.list.RoomsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -92,7 +92,8 @@ abstract class ViewModelModule {
 	@Binds
 	@IntoMap
 	@ViewModelKey(AccommodationEditFragment::class, AccommodationEditViewModel::class)
-	internal abstract fun bindAccommodationEditViewModel(accommodationEditViewModel: AccommodationEditViewModel): ViewModel
+	internal abstract fun bindAccommodationEditViewModel(
+		accommodationEditViewModel: AccommodationEditViewModel): ViewModel
 
 	@Binds
 	@IntoMap
@@ -117,6 +118,7 @@ abstract class ViewModelModule {
 	@Binds
 	@IntoMap
 	@ViewModelKey(ReservationDetailsFragment::class, ReservationDetailsViewModel::class)
-	internal abstract fun bindReservationDetailsViewModel(reservationDetailsViewModel: ReservationDetailsViewModel): ViewModel
+	internal abstract fun bindReservationDetailsViewModel(
+		reservationDetailsViewModel: ReservationDetailsViewModel): ViewModel
 
 }

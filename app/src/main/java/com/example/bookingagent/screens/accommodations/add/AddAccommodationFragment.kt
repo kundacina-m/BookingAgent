@@ -14,7 +14,7 @@ import com.example.bookingagent.utils.RequestError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_add_accommodation.btAddAccommodation
-import kotlinx.android.synthetic.main.toolbar_main.*
+import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 
 class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAccommodationRoutes>() {
 
@@ -53,14 +53,13 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 		super.onCreateOptionsMenu(menu, inflater)
 	}
 
-
 	private fun addAccommodation() {
 		viewModel.addAccommodation(
-				AddAccommodationRequest(
-					"hotel", "Pravo dobar hotel", "SMESTAJ_HOTEL",
-					AddressSOAP(1, 1, "idk", 1, "idk", 2), 0, 50,
-					arrayListOf("slika1", "slika2", "slika3")
-				)
+			AddAccommodationRequest(
+				"hotel", "Pravo dobar hotel", "SMESTAJ_HOTEL",
+				AddressSOAP(1, 1, "idk", 1, "idk", 2), 0, 50,
+				arrayListOf("slika1", "slika2", "slika3")
+			)
 		)
 	}
 

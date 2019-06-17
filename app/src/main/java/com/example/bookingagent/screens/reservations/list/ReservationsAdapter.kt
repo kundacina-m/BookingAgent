@@ -9,9 +9,9 @@ import com.example.bookingagent.data.db.entities.Reservation
 
 class ReservationsAdapter : BaseAdapter<Reservation>() {
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ReservationsViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_reservation, parent, false
-            )
-        )
+		ReservationsViewHolder(
+			LayoutInflater.from(parent.context).inflate(
+				R.layout.item_reservation, parent, false
+			)
+		)
 }

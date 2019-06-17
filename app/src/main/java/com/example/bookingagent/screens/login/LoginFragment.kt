@@ -70,7 +70,7 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
 		if (password.length >= 8) {
 			val username = etUsername.text.toString()
-//			viewModel.checkIfUserExists(User(username, password))
+			//			viewModel.checkIfUserExists(User(username, password))
 			viewModel.loginUserOnBackend(username, password)
 		}
 	}

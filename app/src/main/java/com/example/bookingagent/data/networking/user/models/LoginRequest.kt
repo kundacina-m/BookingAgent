@@ -9,6 +9,6 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "log", reference = "http://xml/auth")
 @SoapRequest
 data class LoginRequest(
-    @field:Element(name = "username") var username: String? = null,
-    @field:Element(name = "password") var password: String? = null
+	@field:Element(name = "username") var username: String? = null,
+	@field:Element(name = "password") var password: String? = null
 )

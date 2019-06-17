@@ -27,22 +27,24 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 	override fun setObservers() {
 		viewModel.accommodations.observe(this, Observer {
 			when (it) {
-				is OnSuccess -> {printWholeObj(it.item.body.body.accommodation[0])}
+				is OnSuccess -> {
+					printWholeObj(it.item.body.body.accommodation[0])
+				}
 				is OnError -> Log.d(TAG, "initView: ${(it.error as RequestError.UnknownError).error}")
 			}
 		})
 	}
 
-	private fun printWholeObj(fullAccommodation: FullAccommodation){
+	private fun printWholeObj(fullAccommodation: FullAccommodation) {
 		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.id}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.name}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.cancellingFee}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.category}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.desc}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rating}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.address?.city}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.roomNum}")
-        Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.images?.get(0)?.src}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.name}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.cancellingFee}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.category}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.desc}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rating}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.address?.city}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.roomNum}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.images?.get(0)?.src}")
 		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(1)?.images?.get(0)?.src}")
 
 	}

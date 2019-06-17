@@ -9,5 +9,4 @@ class HomeRoutes @Inject constructor(val navigationController: NavigationControl
 	fun navigateToLogin() =
 		navigationController.route.popBackStack()
 
-
 }

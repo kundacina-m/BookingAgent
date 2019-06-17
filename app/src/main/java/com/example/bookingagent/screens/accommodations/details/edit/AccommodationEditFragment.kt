@@ -5,7 +5,14 @@ import android.view.MenuInflater
 import androidx.navigation.fragment.navArgs
 import base.BaseFragment
 import com.example.bookingagent.R
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.*
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etAddress
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etCity
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etDescription
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etLatitude
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etLongitude
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etName
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etNum
+import kotlinx.android.synthetic.main.fragment_accommodation_edit.etZipCode
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 
 class AccommodationEditFragment : BaseFragment<AccommodationEditViewModel, AccommodationEditRoutes>() {
@@ -34,7 +41,7 @@ class AccommodationEditFragment : BaseFragment<AccommodationEditViewModel, Accom
 	}
 
 	private fun actionBarSetup() {
-		setActionBar(toolbar_top,true)
+		setActionBar(toolbar_top, true)
 		actionBar?.title = args.name
 	}
 

@@ -31,6 +31,4 @@ class UserRepository @Inject constructor(private val userDao: UserDao, private v
 	fun loginUser(loginRequest: EnvelopeLoginRequest): Single<WrappedResponse<EnvelopeLoginResponse>> =
 		userApi.loginUser(loginRequest).toSealed()
 
-
-
 }

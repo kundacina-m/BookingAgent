@@ -11,7 +11,7 @@ typealias OnWrappedResponse<T> = (WrappedResponse<T>) -> Unit
 sealed class WrappedResponse<out T> {
 
 	data class OnSuccess<out T>(val item: T) : WrappedResponse<T>()
-	data class OnError<out T >(val error: RequestError) : WrappedResponse<T>()
+	data class OnError<out T>(val error: RequestError) : WrappedResponse<T>()
 
 }
 

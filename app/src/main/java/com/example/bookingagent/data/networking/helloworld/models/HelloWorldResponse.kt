@@ -9,5 +9,5 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "ns2", reference = "http://proba.com")
 @SoapResponse
 data class HelloWorldResponse(
-    @field:Element(name = "hello") var name: String? = null
+	@field:Element(name = "hello") var name: String? = null
 )

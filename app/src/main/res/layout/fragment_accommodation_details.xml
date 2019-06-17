@@ -12,103 +12,130 @@
 	<include layout="@layout/toolbar_main"/>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:orientation="vertical">
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
 
 
 		<TextView
-				android:id="@+id/tvName"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="16dp"
-				android:layout_marginStart="16dp"
-				android:layout_marginTop="8dp"
-				android:textSize="24sp"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" android:textAlignment="center"/>
+			android:id="@+id/tvName"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="16dp"
+			android:layout_marginStart="16dp"
+			android:layout_marginTop="8dp"
+			android:textAlignment="center"
+			android:textSize="24sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"/>
 
 		<TextView
-				android:id="@+id/tvDesc"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="16dp"
-				android:layout_marginStart="16dp"
-				android:layout_marginTop="8dp"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/tvName" android:textAlignment="center"/>
+			android:id="@+id/tvDesc"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="16dp"
+			android:layout_marginStart="16dp"
+			android:layout_marginTop="8dp"
+			android:textAlignment="center"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvName"/>
+
 		<TextView
-				android:text="Cancelling Fee:"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvLabelCancellingFee"
-				app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="24dp"
-				app:layout_constraintTop_toTopOf="@+id/tvStreet"/>
+			android:id="@+id/tvLabelCancellingFee"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="24dp"
+			android:text="Cancelling Fee:"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/tvStreet"/>
+
 		<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvCancellingFee"
-				app:layout_constraintTop_toTopOf="@+id/tvLabelCancellingFee"
-				app:layout_constraintBottom_toBottomOf="@+id/tvLabelCancellingFee"
-				app:layout_constraintStart_toEndOf="@+id/tvLabelCancellingFee" android:layout_marginStart="8dp"/>
+			android:id="@+id/tvCancellingFee"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			app:layout_constraintBottom_toBottomOf="@+id/tvLabelCancellingFee"
+			app:layout_constraintStart_toEndOf="@+id/tvLabelCancellingFee"
+			app:layout_constraintTop_toTopOf="@+id/tvLabelCancellingFee"/>
+
 		<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvStreet"
-				app:layout_constraintTop_toBottomOf="@+id/tvDesc" app:layout_constraintEnd_toStartOf="@+id/tvStreetNum"
-				android:layout_marginTop="16dp" android:layout_marginEnd="4dp"/>
+			android:id="@+id/tvStreet"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="4dp"
+			android:layout_marginTop="16dp"
+			app:layout_constraintEnd_toStartOf="@+id/tvStreetNum"
+			app:layout_constraintTop_toBottomOf="@+id/tvDesc"/>
+
 		<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvStreetNum"
-				app:layout_constraintEnd_toEndOf="parent"
-				android:layout_marginEnd="24dp"
-				app:layout_constraintTop_toTopOf="@+id/tvStreet"/>
+			android:id="@+id/tvStreetNum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="24dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/tvStreet"/>
+
 		<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvCity"
-				app:layout_constraintTop_toBottomOf="@+id/tvStreetNum" app:layout_constraintEnd_toEndOf="parent"
-				android:layout_marginEnd="24dp"/>
+			android:id="@+id/tvCity"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="24dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvStreetNum"/>
+
 		<TextView
-				android:text="Rating:"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvLabelRating"
-				app:layout_constraintTop_toBottomOf="@+id/tvCancellingFee"
-				app:layout_constraintStart_toStartOf="parent"
-				android:layout_marginStart="24dp"/>
+			android:id="@+id/tvLabelRating"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="24dp"
+			android:text="Rating:"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvCancellingFee"/>
+
 		<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvRating"
-				app:layout_constraintStart_toEndOf="@+id/tvLabelRating" android:layout_marginStart="8dp"
-				app:layout_constraintTop_toTopOf="@+id/tvLabelRating"/>
+			android:id="@+id/tvRating"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			app:layout_constraintStart_toEndOf="@+id/tvLabelRating"
+			app:layout_constraintTop_toTopOf="@+id/tvLabelRating"/>
+
 		<androidx.recyclerview.widget.RecyclerView
-				android:layout_width="0dp"
-				android:layout_height="0dp"
-				app:layout_constraintTop_toBottomOf="@+id/tvLabelServices"
-				android:layout_marginTop="24dp" android:layout_marginEnd="8dp"
-				app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-				android:layout_marginStart="8dp"
-				android:id="@+id/rvServices"
-				android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+			android:id="@+id/rvServices"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginBottom="8dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="24dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelServices"/>
+
 		<TextView
-				android:text="Services"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvLabelServices"
-				app:layout_constraintTop_toBottomOf="@+id/tvLabelRating" app:layout_constraintEnd_toEndOf="parent"
-				android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-				android:layout_marginStart="8dp" android:layout_marginTop="16dp"/>
+			android:id="@+id/tvLabelServices"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="16dp"
+			android:text="Services"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelRating"/>
+
 		<TextView
-				android:text="Rooms >>"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/tvLabelToRooms" app:layout_constraintEnd_toEndOf="parent"
-				android:layout_marginEnd="8dp"
-				app:layout_constraintTop_toBottomOf="@+id/tvCity" android:layout_marginTop="16dp"/>
+			android:id="@+id/tvLabelToRooms"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:layout_marginTop="16dp"
+			android:textColor="@android:color/holo_blue_dark"
+			android:text="Rooms >>"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvCity"/>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

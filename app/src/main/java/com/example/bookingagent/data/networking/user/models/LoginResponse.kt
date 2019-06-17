@@ -9,5 +9,5 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "login", reference = "http://xml/auth")
 @SoapResponse
 data class LoginResponse(
-    @field:Element(required = false, name = "token") var token: String? = null
+	@field:Element(required = false, name = "token") var token: String? = null
 )

@@ -1,8 +1,8 @@
 package com.example.bookingagent.di.component
 
 import com.example.bookingagent.App
-import com.example.bookingagent.di.modules.AppModule
 import com.example.bookingagent.di.modules.ActivitiesInjector
+import com.example.bookingagent.di.modules.AppModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule

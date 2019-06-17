@@ -37,7 +37,5 @@ class RegisterViewModel @Inject constructor(val repository: UserRepository) : Ba
 					}
 			})
 
-
-
 	}
 }

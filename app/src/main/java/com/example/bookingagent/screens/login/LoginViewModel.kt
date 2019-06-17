@@ -52,9 +52,9 @@ class LoginViewModel @Inject constructor(val repository: UserRepository, val hel
 		disposables.add(repository.loginUser(loginRequest)
 			.subscribeOn(Schedulers.io())
 			.subscribeBy {
-			loginResponse.postValue(it)
+				loginResponse.postValue(it)
 				identityVerification.postValue(true)
-		})
+			})
 	}
 
 }

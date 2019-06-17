@@ -12,7 +12,7 @@ import io.reactivex.Single
 interface UserDao {
 
 	@Insert(onConflict = OnConflictStrategy.FAIL)
-	fun addUser(user: User) : Long
+	fun addUser(user: User): Long
 
 	@Delete
 	fun deleteUser(user: User)

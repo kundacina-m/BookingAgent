@@ -33,8 +33,6 @@ public class AddAccommodationRequest {
 		this.cancelingFee = cancelingFee;
 		this.images = images;
 	}
-
-	
 	
 	public String getName() {
 		return name;

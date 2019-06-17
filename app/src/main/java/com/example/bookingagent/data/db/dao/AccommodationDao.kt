@@ -10,7 +10,7 @@ import com.example.bookingagent.data.db.entities.Address
 interface AccommodationDao {
 
 	@Insert(onConflict = OnConflictStrategy.FAIL)
-	fun addAccommodation(accommodation: Accommodation) : Long
+	fun addAccommodation(accommodation: Accommodation): Long
 
 	@Insert(onConflict = OnConflictStrategy.FAIL)
 	fun addAddress(address: Address): Long

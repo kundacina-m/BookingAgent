@@ -1,4 +1,16 @@
 package com.example.bookingagent.screens.accommodations.details
 
-class ServicesViewHolder {
+import android.view.View
+import base.BaseViewHolder
+import com.example.bookingagent.data.db.entities.Service
+import kotlinx.android.synthetic.main.item_service.view.tvDesc
+import kotlinx.android.synthetic.main.item_service.view.tvName
+import kotlinx.android.synthetic.main.item_service.view.tvPrice
+
+class ServicesViewHolder(itemView: View) : BaseViewHolder<Service>(itemView) {
+	override fun bind(dataItem: Service) {
+		itemView.tvName.text = dataItem.name
+		itemView.tvDesc.text = dataItem.description
+		itemView.tvPrice.text = dataItem.price.toString()
+	}
 }

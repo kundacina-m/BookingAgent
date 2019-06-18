@@ -12,7 +12,6 @@ import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAdd
 import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
-import com.example.bookingagent.utils.toModel
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -32,9 +31,8 @@ class AddAccommodationViewModel @Inject constructor(private val accommodationRep
 					if (it is OnSuccess) {
 						val response = it.item.body.body
 						addingAccommodation.postValue(it)
-						addAccommodationToDB(
-							addAccommodationRequest.toModel(response.idAccommodation, response.idAddress))
-						addAddressToDB(addAccommodationRequest.address.toModel(response.idAddress))
+
+						// TODO map response to DB
 					}
 				})
 	}

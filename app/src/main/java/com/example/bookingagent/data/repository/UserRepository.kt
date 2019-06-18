@@ -5,8 +5,6 @@ import com.example.bookingagent.data.db.entities.User
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
-import com.example.bookingagent.data.networking.user.models.EnvelopeRegisterRequest
-import com.example.bookingagent.data.networking.user.models.EnvelopeRegisterResponse
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.toSealed
 import io.reactivex.Single
@@ -24,9 +22,6 @@ class UserRepository @Inject constructor(private val userDao: UserDao, private v
 	fun removeUser(user: User) {
 		userDao.deleteUser(user)
 	}
-
-	fun registerUser(registerRequest: EnvelopeRegisterRequest): Single<WrappedResponse<EnvelopeRegisterResponse>> =
-		userApi.registerUser(registerRequest).toSealed()
 
 	fun loginUser(loginRequest: EnvelopeLoginRequest): Single<WrappedResponse<EnvelopeLoginResponse>> =
 		userApi.loginUser(loginRequest).toSealed()

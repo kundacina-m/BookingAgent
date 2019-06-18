@@ -28,9 +28,9 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 		viewModel.accommodations.observe(this, Observer {
 			when (it) {
 				is OnSuccess -> {
-					printWholeObj(it.item.body.body.accommodation[0])
+					it.item.body.body.accommodation?.get(0)?.let { it1 -> printWholeObj(it1) }
 				}
-				is OnError -> Log.d(TAG, "initView: ${(it.error as RequestError.UnknownError).error}")
+				is OnError -> Log.d(TAG, "initView: ${(it.error as RequestError.UnknownError).t}")
 			}
 		})
 	}
@@ -44,8 +44,8 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rating}")
 		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.address?.city}")
 		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.roomNum}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.images?.get(0)?.src}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(1)?.images?.get(0)?.src}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.images?.get(0)}")
+		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(1)?.images?.get(0)}")
 
 	}
 

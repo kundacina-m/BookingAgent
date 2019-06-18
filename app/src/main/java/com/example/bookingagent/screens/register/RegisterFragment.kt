@@ -28,13 +28,6 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 				false -> Log.d(TAG, "setObservers: That username already exists!")
 			}
 		})
-
-		viewModel.registrationResponse.observe(this, Observer {
-			when (it) {
-				is OnSuccess -> Log.d(TAG, "setObservers: Registrovan na backendu")
-				is OnError -> Log.d(TAG, "setObservers: ERROR NEKI")
-			}
-		})
 	}
 
 	override fun initView() {

@@ -27,13 +27,13 @@ class DialogAddSchedule private constructor(private val builder: Builder) : Dial
 		val month = cldr.get(Calendar.MONTH)
 		val year = cldr.get(Calendar.YEAR)
 
-		etCheckIn.setOnFocusChangeListener { view, focused ->
+		etCheckIn.setOnFocusChangeListener { _, focused ->
 
 			if (focused) {
 
 				// date picker dialog
 				val picker = DatePickerDialog(builder.context,
-					DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+					DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
 						etCheckIn.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
 						checkInDay = GregorianCalendar(year, monthOfYear, dayOfMonth)
 					}, year, month, day)
@@ -41,12 +41,12 @@ class DialogAddSchedule private constructor(private val builder: Builder) : Dial
 			}
 		}
 
-		etCheckOut.setOnFocusChangeListener { view, focused ->
+		etCheckOut.setOnFocusChangeListener { _, focused ->
 			if (focused) {
 
 				// date picker dialog
 				val picker = DatePickerDialog(builder.context,
-					DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+					DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
 						etCheckOut.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
 						checkOutDay = GregorianCalendar(year, monthOfYear, dayOfMonth)
 					}, year, month, day)

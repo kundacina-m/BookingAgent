@@ -4,7 +4,7 @@ import com.example.bookingagent.di.modules.RouteModule
 import com.example.bookingagent.di.scopes.FragmentScope
 import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment
-import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditFragment
+import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationFragment
 import com.example.bookingagent.screens.rooms.add.AddRoomFragment
 import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment
 import com.example.bookingagent.screens.rooms.edit.EditRoomFragment
@@ -61,7 +61,7 @@ abstract class MainActivityModule {
 
 	@FragmentScope
 	@ContributesAndroidInjector
-	abstract fun contributeAccommodationEditFragmentInjector(): AccommodationEditFragment
+	abstract fun contributeAccommodationEditFragmentInjector(): EditAccommodationFragment
 
 	@FragmentScope
 	@ContributesAndroidInjector

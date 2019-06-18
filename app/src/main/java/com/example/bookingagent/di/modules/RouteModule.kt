@@ -11,8 +11,8 @@ import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragm
 import com.example.bookingagent.screens.accommodations.add.AddAccommodationRoutes
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsRoutes
-import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditFragment
-import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditRoutes
+import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationFragment
+import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationRoutes
 import com.example.bookingagent.screens.rooms.add.AddRoomFragment
 import com.example.bookingagent.screens.rooms.add.AddRoomRoutes
 import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment
@@ -101,8 +101,8 @@ abstract class RouteModule {
 
 	@Binds
 	@IntoMap
-	@RouteKey(AccommodationEditFragment::class)
-	internal abstract fun bindAccommodationEditRoutes(accommodationEditRoutes: AccommodationEditRoutes): Routes
+	@RouteKey(EditAccommodationFragment::class)
+	internal abstract fun bindAccommodationEditRoutes(editAccommodationRoutes: EditAccommodationRoutes): Routes
 
 	@Binds
 	@IntoMap

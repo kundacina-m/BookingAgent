@@ -36,7 +36,7 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 				is OnSuccess -> Log.d(TAG, "setObservers: OnSuccess")
 				is OnError -> {
 					val error = it.error as UnknownError
-					Log.e(TAG, "setObservers: " + error.error)
+					Log.e(TAG, "setObservers: " + error.t)
 				}
 			}
 		})

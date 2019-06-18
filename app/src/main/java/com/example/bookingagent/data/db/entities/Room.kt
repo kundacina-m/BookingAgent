@@ -15,6 +15,6 @@ data class Room(
 	val price: Int? = null,
 	val availability: Boolean? = null,
 	val comments: ArrayList<String>? = null,
-	val images: ArrayList<Image>? = null,
+	val images: ArrayList<String>? = null,
 	val schedule: ArrayList<ScheduleUnit>? = null
 ) : Parcelable

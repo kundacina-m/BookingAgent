@@ -1,17 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/linearLayout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:focusable="false"
+	android:focusableInTouchMode="true"
 	android:orientation="vertical"
 	tools:context=".screens.rooms.edit.EditRoomFragment">
 
 	<include layout="@layout/toolbar_main"/>
 
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<ScrollView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-	</androidx.constraintlayout.widget.ConstraintLayout>
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/editRoomContainer"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<TextView
+				android:id="@+id/tvLabelNumber"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="40dp"
+				android:layout_marginTop="24dp"
+				android:text="Room number:"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"/>
+
+			<EditText
+				android:id="@+id/etNumber"
+				android:layout_width="50dp"
+				android:layout_height="wrap_content"
+				android:ems="10"
+				android:inputType="number"
+				android:textAlignment="center"
+				app:layout_constraintBottom_toBottomOf="@+id/tvLabelNumber"
+				app:layout_constraintEnd_toEndOf="@+id/etBedNums"
+				app:layout_constraintStart_toStartOf="@+id/etBedNums"
+				app:layout_constraintTop_toTopOf="@+id/tvLabelNumber"/>
+
+			<TextView
+				android:id="@+id/tvLabelFloor"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:text="Floor:"
+				app:layout_constraintBottom_toBottomOf="@+id/etNumber"
+				app:layout_constraintEnd_toStartOf="@+id/etFloor"
+				app:layout_constraintTop_toTopOf="@+id/etNumber"/>
+
+			<EditText
+				android:id="@+id/etFloor"
+				android:layout_width="70dp"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="40dp"
+				android:ems="10"
+				android:inputType="number"
+				android:textAlignment="center"
+				app:layout_constraintBottom_toBottomOf="@+id/tvLabelFloor"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/tvLabelFloor"/>
+
+			<TextView
+				android:id="@+id/tvLabelBedNums"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dp"
+				android:text="Number of beds:"
+				app:layout_constraintStart_toStartOf="@+id/tvLabelNumber"
+				app:layout_constraintTop_toBottomOf="@+id/etNumber"/>
+
+			<EditText
+				android:id="@+id/etBedNums"
+				android:layout_width="50dp"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="8dp"
+				android:ems="10"
+				android:inputType="number"
+				android:textAlignment="center"
+				app:layout_constraintBottom_toBottomOf="@+id/tvLabelBedNums"
+				app:layout_constraintStart_toEndOf="@+id/tvLabelBedNums"
+				app:layout_constraintTop_toTopOf="@+id/tvLabelBedNums"/>
+
+			<TextView
+				android:id="@+id/tvLabelPrice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:text="Price:"
+				app:layout_constraintBottom_toBottomOf="@+id/etBedNums"
+				app:layout_constraintEnd_toStartOf="@+id/etPrice"
+				app:layout_constraintTop_toTopOf="@+id/etBedNums"/>
+
+			<EditText
+				android:id="@+id/etPrice"
+				android:layout_width="70dp"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="40dp"
+				android:ems="10"
+				android:inputType="number"
+				android:textAlignment="center"
+				app:layout_constraintBottom_toBottomOf="@+id/tvLabelPrice"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/tvLabelPrice"/>
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvImages"
+				android:layout_width="0dp"
+				android:layout_height="120dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginTop="32dp"
+				android:orientation="horizontal"
+				app:layout_constraintEnd_toStartOf="@+id/btAddImage"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/etBedNums"/>
+
+			<Button
+				android:id="@+id/btAddImage"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="16dp"
+				android:text="Add image"
+				app:layout_constraintBottom_toBottomOf="@+id/rvImages"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/rvImages"/>
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvSchedule"
+				android:layout_width="0dp"
+				android:layout_height="250dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginStart="8dp"
+				app:layout_constraintEnd_toStartOf="@+id/btAddSchedule"
+				app:layout_constraintHorizontal_bias="0.0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/tvLabelSchedule"/>
+
+			<Button
+				android:id="@+id/btAddSchedule"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="16dp"
+				android:text="Add schedule"
+				app:layout_constraintBottom_toBottomOf="@+id/rvSchedule"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/rvSchedule"/>
+
+			<Button
+				android:id="@+id/btSubmit"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="8dp"
+				android:layout_marginTop="8dp"
+				android:text="Submit"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/rvSchedule"/>
+
+			<TextView
+				android:id="@+id/tvLabelSchedule"
+				android:layout_width="wrap_content"
+				android:layout_height="19dp"
+				android:layout_marginTop="8dp"
+				android:text="Schedule:"
+				app:layout_constraintEnd_toEndOf="@+id/rvSchedule"
+				app:layout_constraintStart_toStartOf="@+id/rvSchedule"
+				app:layout_constraintTop_toBottomOf="@+id/rvImages"/>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</ScrollView>
 
 </LinearLayout>

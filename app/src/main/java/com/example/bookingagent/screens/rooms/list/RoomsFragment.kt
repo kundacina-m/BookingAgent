@@ -30,7 +30,7 @@ class RoomsFragment : BaseFragment<RoomsViewModel, RoomsRoutes>() {
 		setupRecyclerView()
 
 		fabAddRoom.setOnClickListener {
-			navigation.navigateToAddRoom()
+			navigation.navigateToAddRoom(args.accId)
 		}
 
 		adapter.setData(args.rooms.toList())
@@ -52,9 +52,7 @@ class RoomsFragment : BaseFragment<RoomsViewModel, RoomsRoutes>() {
 			adapter = this@RoomsFragment.adapter
 		}
 
-
 	private fun itemSelected(room: Room) =
-		navigation.navigateToSelectedRoom(room)
-
+		navigation.navigateToSelectedRoom(args.accId, room)
 
 }

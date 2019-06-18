@@ -5,21 +5,21 @@ import android.view.MenuInflater
 import androidx.navigation.fragment.navArgs
 import base.BaseFragment
 import com.example.bookingagent.R
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etAddress
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etCity
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etDescription
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etLatitude
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etLongitude
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etName
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etNum
-import kotlinx.android.synthetic.main.fragment_accommodation_edit.etZipCode
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etAddress
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etCity
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etDescription
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etLatitude
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etLongitude
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etName
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etNum
+import kotlinx.android.synthetic.main.fragment_edit_accommodation.etZipCode
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 
-class AccommodationEditFragment : BaseFragment<AccommodationEditViewModel, AccommodationEditRoutes>() {
+class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditAccommodationRoutes>() {
 
-	private val args: AccommodationEditFragmentArgs by navArgs()
+	private val args: EditAccommodationFragmentArgs by navArgs()
 
-	override fun getLayoutId(): Int = R.layout.fragment_accommodation_edit
+	override fun getLayoutId(): Int = R.layout.fragment_edit_accommodation
 
 	override fun setObservers() {}
 

@@ -3,18 +3,18 @@ package com.example.bookingagent.screens.rooms.add
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.net.Uri
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.Image
 import com.example.bookingagent.data.db.entities.Room
 import com.example.bookingagent.data.db.entities.ScheduleUnit
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
+import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
 import com.example.bookingagent.utils.asString
 import com.example.bookingagent.utils.toBase64
 import kotlinx.android.synthetic.main.fragment_add_room.addRoomContainer
@@ -33,15 +33,10 @@ import kotlin.random.Random
 
 class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 
-	private val PICK_IMAGE_REQUEST = 1
+	private val args: AddRoomFragmentArgs by navArgs()
 
-	private val scheduleAdapter by lazy {
-		ScheduleAdapter()
-	}
-
-	private val imagesAdapter by lazy {
-		ImagesAdapter()
-	}
+	private val scheduleAdapter by lazy { ScheduleAdapter() }
+	private val imagesAdapter by lazy { ImagesAdapter() }
 
 	override fun getLayoutId(): Int = R.layout.fragment_add_room
 
@@ -92,7 +87,8 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 		}
 
 		btSubmit.setOnClickListener {
-			viewModel.addRoom(Room(
+			viewModel.addRoom(args.accId,
+				Room(
 				id = Random.nextLong(),
 				roomNum = etNumber.asString()?.toIntOrNull(),
 				floor = etFloor.asString()?.toIntOrNull(),
@@ -123,7 +119,7 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 
 	private fun addImage(encodedImage: String) =
 		imagesAdapter.getData().toMutableList().apply {
-			add(Image(Random.nextInt(), encodedImage))
+			add(encodedImage)
 		}.run { viewModel.images.postValue(this) }
 
 	// Choose image from storage
@@ -132,14 +128,16 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 		with(Intent()) {
 			type = "image/*"
 			action = Intent.ACTION_GET_CONTENT
-			startActivityForResult(this, PICK_IMAGE_REQUEST)
+			startActivityForResult(this, FILE_CHOOSER_IMAGE)
 		}
+
+	// On image chosen
 
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 		super.onActivityResult(requestCode, resultCode, data)
 
 		data?.data?.run {
-			if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK)
+			if (requestCode == FILE_CHOOSER_IMAGE && resultCode == RESULT_OK)
 				activity?.contentResolver?.openInputStream(this).also {
 					addImage(BitmapFactory.decodeStream(it).toBase64())
 				}

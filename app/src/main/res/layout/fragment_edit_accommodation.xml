@@ -7,7 +7,7 @@
 	android:layout_height="match_parent"
 	android:layout_gravity="center"
 	android:orientation="vertical"
-	tools:context=".screens.accommodations.details.edit.AccommodationEditFragment">
+	tools:context=".screens.accommodations.details.edit.EditAccommodationFragment">
 
 	<include layout="@layout/toolbar_main"/>
 

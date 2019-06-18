@@ -5,8 +5,8 @@ import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragm
 import com.example.bookingagent.screens.accommodations.add.AddAccommodationViewModel
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsViewModel
-import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditFragment
-import com.example.bookingagent.screens.accommodations.details.edit.AccommodationEditViewModel
+import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationFragment
+import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationViewModel
 import com.example.bookingagent.screens.rooms.add.AddRoomFragment
 import com.example.bookingagent.screens.rooms.add.AddRoomViewModel
 import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment
@@ -91,9 +91,9 @@ abstract class ViewModelModule {
 
 	@Binds
 	@IntoMap
-	@ViewModelKey(AccommodationEditFragment::class, AccommodationEditViewModel::class)
+	@ViewModelKey(EditAccommodationFragment::class, EditAccommodationViewModel::class)
 	internal abstract fun bindAccommodationEditViewModel(
-		accommodationEditViewModel: AccommodationEditViewModel): ViewModel
+		editAccommodationViewModel: EditAccommodationViewModel): ViewModel
 
 	@Binds
 	@IntoMap

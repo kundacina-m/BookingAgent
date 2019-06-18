@@ -1,6 +1,5 @@
 package com.example.bookingagent.utils
 
-import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.util.Base64
 import android.widget.EditText
@@ -35,7 +34,7 @@ fun <T> Single<T>.toSealed(): Single<WrappedResponse<T>> {
 
 	return this.map<WrappedResponse<T>> { OnSuccess(it) }
 		.onErrorReturn {
-			OnError(UnknownError(it))
+			OnError(RequestErrorParser.parse(exception = it))
 		}
 }
 
@@ -48,7 +47,7 @@ fun <T> Observable<T>.toSealed(): Observable<WrappedResponse<T>> {
 		}
 }
 
-fun Bitmap.toBase64() : String =
+fun Bitmap.toBase64(): String =
 	ByteArrayOutputStream().let {
 		this.compress(Bitmap.CompressFormat.JPEG, 100, it)
 		Base64.encodeToString(it.toByteArray(), Base64.DEFAULT)

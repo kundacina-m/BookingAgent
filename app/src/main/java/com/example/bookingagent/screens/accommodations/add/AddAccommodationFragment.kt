@@ -9,7 +9,6 @@ import com.example.bookingagent.R
 import com.example.bookingagent.data.networking.accommodation.models.AddAccommodationRequest
 import com.example.bookingagent.data.networking.accommodation.models.AddServiceRequest
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddServiceRequest
-import com.example.bookingagent.data.networking.common.AddressSOAP
 import com.example.bookingagent.utils.RequestError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
@@ -26,9 +25,9 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 			when (it) {
 				is OnSuccess -> {
 					val response = it.item.body.body
-					addService(response.idAccommodation)
+					addService(response.idAccommodation!!)
 				}
-				is OnError -> Log.d(TAG, "initView: OnError" + (it.error as RequestError.UnknownError).error.message)
+				is OnError -> Log.d(TAG, "initView: OnError" + (it.error as RequestError.UnknownError).t.message)
 			}
 		})
 	}
@@ -57,9 +56,7 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 		viewModel.addAccommodation(
 			AddAccommodationRequest(
 				"hotel", "Pravo dobar hotel", "SMESTAJ_HOTEL",
-				AddressSOAP(1, 1, "idk", 1, "idk", 2), 0, 50,
-				arrayListOf("slika1", "slika2", "slika3")
-			)
+				1, 1, 1, 2, "idk", 2, "idk", 50)
 		)
 	}
 

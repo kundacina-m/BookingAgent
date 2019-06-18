@@ -2,6 +2,8 @@ package com.example.bookingagent.data.networking.accommodation
 
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationRequest
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationResponse
+import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddRoomRequest
+import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddRoomResponse
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddServiceRequest
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddServiceResponse
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationRequest
@@ -28,9 +30,9 @@ interface AccommodationApi {
 	fun addService(@Body envelopeAddServiceRequest: EnvelopeAddServiceRequest):
 		Single<EnvelopeAddServiceResponse>
 
-	//    @Headers("Content-Type: text/xml;charset=utf-8")
-	//    @POST("getaccommodation")
-	//    fun test(@Body envelopeGetAccommodationResponse: EnvelopeGetAccommodationResponse):
-	//            Single<EnvelopeGetAccommodationResponse>
+	@Headers("Content-Type: text/xml;charset=utf-8")
+	@POST("accommodation")
+	fun addRoom(@Body envelopeAddRoomRequest: EnvelopeAddRoomRequest):
+		Single<EnvelopeAddRoomResponse>
 
 }

@@ -71,7 +71,7 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 
 	private fun setOnClickListeners() =
 		tvLabelToRooms.setOnClickListener {
-			navigation.navigateToRooms(args.rooms)
+			navigation.navigateToRooms(args.id,args.rooms)
 		}
 
 	private fun populateViewWithData() {

@@ -19,21 +19,15 @@ data class FullAccommodation(
 	var desc: String? = null,
 	@field:Element(required = false, name = "adresa", type = AddressUtilResponse::class)
 	var address: AddressUtilResponse? = null,
-	@field:ElementList(
-		required = false,
-		inline = true,
-		type = ServiceUtilResponse::class,
-		name = "usluga",
-		entry = "usluga"
-	)
-	var services: ArrayList<ServiceUtilResponse>? = null,
+	@field:ElementList(required = false, inline = true, type = String::class, name = "usluga", entry = "usluga")
+	var services: ArrayList<String>? = null,
 	@field:ElementList(required = false, inline = true, type = RoomUtilResponse::class, name = "soba", entry = "soba")
 	var rooms: ArrayList<RoomUtilResponse>? = null,
 	@field:Element(required = false, name = "kategorija")
 	var category: String? = null,
-	@field:Element(name = "ocena")
+	@field:Element(name = "ocena", required = false)
 	var rating: Float? = null,
 	@field:Element(name = "besplatnoOtkazivanje")
-	var cancellingFee: Int = 0
+	var cancellingFee: Float = 0f
 
 )

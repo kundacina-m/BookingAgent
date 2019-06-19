@@ -11,7 +11,10 @@ class RoomDetailsRoutes @Inject constructor(val navigationController: Navigation
 		val direction = RoomDetailsFragmentDirections.actionRoomDetailsFragmentToEditRoomFragment(
 			room = room
 		)
-
 		navigationController.route.navigate(direction)
 	}
+
+	fun navigateToRooms() =
+		navigationController.route.navigateUp()
+
 }

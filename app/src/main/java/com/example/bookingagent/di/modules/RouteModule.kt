@@ -11,8 +11,8 @@ import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragm
 import com.example.bookingagent.screens.accommodations.add.AddAccommodationRoutes
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsRoutes
-import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationFragment
-import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationRoutes
+import com.example.bookingagent.screens.accommodations.edit.EditAccommodationFragment
+import com.example.bookingagent.screens.accommodations.edit.EditAccommodationRoutes
 import com.example.bookingagent.screens.rooms.add.AddRoomFragment
 import com.example.bookingagent.screens.rooms.add.AddRoomRoutes
 import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment

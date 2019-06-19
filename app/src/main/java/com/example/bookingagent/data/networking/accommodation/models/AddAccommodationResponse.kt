@@ -8,7 +8,7 @@ import org.simpleframework.xml.Root
 @Root(strict = false)
 @Namespace(prefix = "ns2", reference = "http://xml/accommodation")
 @SoapResponse
-data class AddAccommodationResponse(
-	@field:Element(name = "idAccommodation") var idAccommodation: Int? = null,
-	@field:Element(name = "idAddress") var idAddress: Int? = null
+data class AddChangeAccommodationResponse(
+	@field:Element(name = "idAccommodation", required = false) var idAccommodation: Int? = null,
+	@field:Element(name = "idAddress", required = false) var idAddress: Int? = null
 )

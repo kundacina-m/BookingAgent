@@ -12,6 +12,7 @@ import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.Room
 import com.example.bookingagent.data.db.entities.ScheduleUnit
+import com.example.bookingagent.screens.rooms.DialogAddSchedule
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
 import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
@@ -87,18 +88,7 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 		}
 
 		btSubmit.setOnClickListener {
-			viewModel.addRoom(args.accId,
-				Room(
-				id = Random.nextLong(),
-				roomNum = etNumber.asString()?.toIntOrNull(),
-				floor = etFloor.asString()?.toIntOrNull(),
-				bedNums = etBedNums.asString()?.toIntOrNull(),
-				price = etPrice.asString()?.toIntOrNull(),
-				availability = true,
-				comments = arrayListOf(),
-				images = ArrayList(imagesAdapter.getData()),
-				schedule = ArrayList(scheduleAdapter.getData())
-			))
+			viewModel.addRoom(args.accId, createRoom())
 		}
 	}
 
@@ -109,12 +99,33 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 		menu.clear()
+		inflater.inflate(R.menu.confirm_action, menu)
+		setOnMenuItemClickListener(menu)
 		super.onCreateOptionsMenu(menu, inflater)
 	}
 
+	private fun setOnMenuItemClickListener(menu: Menu) {
+		menu.findItem(R.id.confirmAction).setOnMenuItemClickListener {
+			true
+		}
+	}
+
+	private fun createRoom() =
+		Room(
+			id = Random.nextLong(),
+			roomNum = etNumber.asString()?.toIntOrNull(),
+			floor = etFloor.asString()?.toIntOrNull(),
+			bedNums = etBedNums.asString()?.toIntOrNull(),
+			price = etPrice.asString()?.toFloatOrNull(),
+			availability = true,
+			comments = arrayListOf(),
+			images = ArrayList(imagesAdapter.getData()),
+			schedule = ArrayList(scheduleAdapter.getData())
+		)
+
 	private fun addSchedule(checkIn: GregorianCalendar, checkOut: GregorianCalendar, price: Float) =
 		scheduleAdapter.getData().toMutableList().apply {
-			add(ScheduleUnit(Random.nextInt(), checkIn, checkOut, price))
+			add(ScheduleUnit(checkIn, checkOut, price))
 		}.run { viewModel.schedule.postValue(this) }
 
 	private fun addImage(encodedImage: String) =

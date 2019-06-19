@@ -7,8 +7,10 @@ import com.example.bookingagent.data.db.dao.AccommodationDao
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
 import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
+import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.repository.AccommodationRepository
+import com.example.bookingagent.data.repository.RoomRepository
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
 import com.example.bookingagent.utils.BASE_URL
@@ -29,16 +31,6 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun provideHelloWorldApi(): HelloWorldApi =
-		Retrofit.Builder()
-			.addConverterFactory(SimpleXmlConverterFactory.create())
-			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl(BASE_URL)
-			.build()
-			.create(HelloWorldApi::class.java)
-
-	@Singleton
-	@Provides
 	fun provideUserApi(): UserApi =
 		Retrofit.Builder()
 			.addConverterFactory(SimpleXmlConverterFactory.create())
@@ -56,6 +48,16 @@ class AppModule {
 			.baseUrl(BASE_URL)
 			.build()
 			.create(AccommodationApi::class.java)
+
+	@Singleton
+	@Provides
+	fun provideRoomApi(): RoomApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(RoomApi::class.java)
 
 	@Singleton
 	@Provides
@@ -81,5 +83,10 @@ class AppModule {
 	@Provides
 	fun providesAccommodationRepository(accommodationDao: AccommodationDao, accommodationApi: AccommodationApi) =
 		AccommodationRepository(accommodationDao, accommodationApi)
+
+	@Singleton
+	@Provides
+	fun providesRoomRepository(roomApi: RoomApi) =
+		RoomRepository(roomApi)
 
 }

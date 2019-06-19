@@ -8,13 +8,13 @@ data class Accommodation(
 
 	@PrimaryKey
 	val id: Int,
-	val name: String,
-	val description: String,
+	val name: String? = "",
+	val description: String? = "",
 	val address: Address,
-	val type: String,
-	val cancelingFee: Long,
-	val rating: Float,
-	val category: String,
-	val services: ArrayList<Service>,
-	val rooms: ArrayList<Room>
+	val type: String? = "",
+	val cancelingFee: Float? = 0f,
+	val rating: Float? = 0f,
+	val category: String? = "",
+	val services: ArrayList<Service> = arrayListOf(),
+	val rooms: ArrayList<Room> = arrayListOf()
 )

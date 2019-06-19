@@ -5,8 +5,8 @@ import com.example.bookingagent.screens.accommodations.add.AddAccommodationFragm
 import com.example.bookingagent.screens.accommodations.add.AddAccommodationViewModel
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsViewModel
-import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationFragment
-import com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationViewModel
+import com.example.bookingagent.screens.accommodations.edit.EditAccommodationFragment
+import com.example.bookingagent.screens.accommodations.edit.EditAccommodationViewModel
 import com.example.bookingagent.screens.rooms.add.AddRoomFragment
 import com.example.bookingagent.screens.rooms.add.AddRoomViewModel
 import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment

@@ -4,18 +4,34 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.networking.accommodation.models.AddAccommodationRequest
-import com.example.bookingagent.data.networking.accommodation.models.AddServiceRequest
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddServiceRequest
+import com.example.bookingagent.data.db.entities.Accommodation
+import com.example.bookingagent.data.db.entities.Address
+import com.example.bookingagent.data.db.entities.Service
+import com.example.bookingagent.screens.accommodations.DialogAddService
+import com.example.bookingagent.screens.accommodations.ServicesAdapter
 import com.example.bookingagent.utils.RequestError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
-import kotlinx.android.synthetic.main.fragment_add_accommodation.btAddAccommodation
+import kotlinx.android.synthetic.main.fragment_add_accommodation.btAddService
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etAddress
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etCancellingFee
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etCity
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etDescription
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etLatitude
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etLongitude
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etName
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etNum
+import kotlinx.android.synthetic.main.fragment_add_accommodation.etZipCode
+import kotlinx.android.synthetic.main.fragment_add_accommodation.focusContainer
+import kotlinx.android.synthetic.main.fragment_add_accommodation.rvServices
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 
 class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAccommodationRoutes>() {
+
+	private val adapter by lazy { ServicesAdapter() }
 
 	override fun getLayoutId(): Int = R.layout.fragment_add_accommodation
 
@@ -25,7 +41,7 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 			when (it) {
 				is OnSuccess -> {
 					val response = it.item.body.body
-					addService(response.idAccommodation!!)
+					navigation.navigateToAccommodations()
 				}
 				is OnError -> Log.d(TAG, "initView: OnError" + (it.error as RequestError.UnknownError).t.message)
 			}
@@ -35,12 +51,24 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 	override fun initView() {
 
 		actionBarSetup()
+		setupRecyclerView()
+		setClickListeners()
+	}
 
-		btAddAccommodation.setOnClickListener {
-			addAccommodation()
+	private fun setClickListeners() =
+		btAddService.setOnClickListener {
+			DialogAddService.build(context!!) {
+				confirmedService = this@AddAccommodationFragment::addService
+			}.show()
+			focusContainer.clearFocus()
+
 		}
 
-	}
+	private fun setupRecyclerView() =
+		rvServices.apply {
+			layoutManager = LinearLayoutManager(context)
+			adapter = this@AddAccommodationFragment.adapter
+		}
 
 	private fun actionBarSetup() {
 		setActionBar(toolbar_top, true)
@@ -49,23 +77,57 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 		menu.clear()
+		inflater.inflate(R.menu.confirm_action, menu)
+		setOnMenuItemClickListener(menu)
 		super.onCreateOptionsMenu(menu, inflater)
 	}
 
-	private fun addAccommodation() {
-		viewModel.addAccommodation(
-			AddAccommodationRequest(
-				"hotel", "Pravo dobar hotel", "SMESTAJ_HOTEL",
-				1, 1, 1, 2, "idk", 2, "idk", 50)
-		)
-	}
+	private fun setOnMenuItemClickListener(menu: Menu) =
+		menu.findItem(R.id.confirmAction).setOnMenuItemClickListener {
+			addAccommodation()
+			true
+		}
 
-	private fun addService(idAccommodation: Int) {
-		viewModel.addService(
-			EnvelopeAddServiceRequest(
-				AddServiceRequest(idAccommodation.toLong(), "MASAZA", "dobra masaza", 50)
-			)
+	private fun addAccommodation() =
+		viewModel.addAccommodation(createAccommodation())
+
+	private fun createAccommodation() =
+		Accommodation(
+			id = 0,
+			name = etName.text.toString(),
+			type = "SMESTAJ_HOTEL",
+			cancelingFee = etCancellingFee.text.toString().toFloat(),
+			description = etDescription.text.toString(),
+			services = ArrayList(adapter.getData()),
+			address = Address(
+				id = 0,
+				latitude = etLatitude.text.toString().toFloat(),
+				longitude = etLongitude.text.toString().toFloat(),
+				city = etCity.text.toString(),
+				street = etAddress.text.toString(),
+				zipCode = etZipCode.text.toString().toInt(),
+				num = etNum.text.toString().toInt()
+			),
+			rooms = arrayListOf(),
+			category = "",
+			rating = 0f
 		)
+
+	private fun addService(name: String, desc: String, price: Float) {
+		with(adapter) {
+			ArrayList<Service>().also {
+				it.addAll(getData() + Service(1, name, desc, price))
+				setData(it)
+			}
+		}
+
+//		adapter.getData().run {
+//			ArrayList<Service>().also {
+//				it.addAll(this + Service(1, name, desc, price))
+//				adapter.setData(it)
+//			}
+//		}
+
 	}
 
 }

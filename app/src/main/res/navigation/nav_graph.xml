@@ -82,7 +82,7 @@
 			app:argType="string"/>
 		<argument
 			android:name="cancellingFee"
-			app:argType="long"/>
+			app:argType="float"/>
 		<argument
 			android:name="address"
 			app:argType="com.example.bookingagent.data.db.entities.Address"/>
@@ -108,7 +108,7 @@
 	</fragment>
 	<fragment
 		android:id="@+id/accommodationEditFragment"
-		android:name="com.example.bookingagent.screens.accommodations.details.edit.EditAccommodationFragment"
+		android:name="com.example.bookingagent.screens.accommodations.edit.EditAccommodationFragment"
 		android:label="fragment_accommodation_edit"
 		tools:layout="@layout/fragment_edit_accommodation">
 		<argument
@@ -125,7 +125,7 @@
 			app:argType="string"/>
 		<argument
 			android:name="cancellingFee"
-			app:argType="long"/>
+			app:argType="float"/>
 		<argument
 			android:name="address"
 			app:argType="com.example.bookingagent.data.db.entities.Address"/>

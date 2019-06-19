@@ -8,11 +8,11 @@ import kotlinx.android.parcel.Parcelize
 data class Room(
 
 	@PrimaryKey
-	val id: Long,
+	val id: Int,
 	val roomNum: Int? = null,
 	val floor: Int? = null,
 	val bedNums: Int? = null,
-	val price: Int? = null,
+	val price: Float? = null,
 	val availability: Boolean? = null,
 	val comments: ArrayList<String>? = null,
 	val images: ArrayList<String>? = null,

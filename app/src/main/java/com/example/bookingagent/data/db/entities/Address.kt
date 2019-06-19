@@ -10,11 +10,11 @@ import kotlinx.android.parcel.Parcelize
 data class Address(
 
 	@PrimaryKey
-	val id: Int,
-	val latitude: Int,
-	val longitude: Int,
-	val city: String,
-	val zipCode: Int,
-	val street: String,
-	val num: Int
+	val id: Int? = 0,
+	val latitude: Float? = 0f,
+	val longitude: Float? = 0f,
+	val city: String? = "",
+	val zipCode: Int? = 0,
+	val street: String? = "",
+	val num: Int? = 0
 ) : Parcelable

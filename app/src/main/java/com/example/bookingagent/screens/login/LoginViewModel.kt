@@ -1,11 +1,8 @@
 package com.example.bookingagent.screens.login
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
 import com.example.bookingagent.data.db.entities.User
-import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
-import com.example.bookingagent.data.networking.helloworld.models.EnvelopeHelloWorldRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
 import com.example.bookingagent.data.networking.user.models.LoginRequest
@@ -15,11 +12,9 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class LoginViewModel @Inject constructor(val repository: UserRepository, val helloWorldApi: HelloWorldApi) :
-	BaseViewModel() {
+class LoginViewModel @Inject constructor(val repository: UserRepository) : BaseViewModel() {
 
 	val identityVerification = MutableLiveData<Boolean>()
-	val serverResponse = MutableLiveData<String>()
 	val loginResponse = MutableLiveData<WrappedResponse<EnvelopeLoginResponse>>()
 
 	fun checkIfUserExists(user: User) {
@@ -29,20 +24,6 @@ class LoginViewModel @Inject constructor(val repository: UserRepository, val hel
 					identityVerification.postValue(true)
 				else identityVerification.postValue(false)
 			})
-	}
-
-	fun getHelloWorld(envelope: EnvelopeHelloWorldRequest) {
-		disposables.add(helloWorldApi.getHelloWorld(envelope).subscribeOn(Schedulers.io())
-			.subscribeBy(
-				onError = {
-					serverResponse.postValue(it.message)
-					Log.d("error", "getHelloWorld: error ")
-				},
-				onSuccess = {
-					serverResponse.postValue(it.body.body.name)
-					Log.d("error", "it.body.body.name")
-				}
-			))
 	}
 
 	fun loginUserOnBackend(username: String, password: String) {

@@ -10,7 +10,7 @@ data class RoomUtilResponse(
 	@field:Element(required = false, name = "brojSobe") var roomNum: Int = 0,
 	@field:Element(required = false, name = "sprat") var floor: Int = 0,
 	@field:Element(required = false, name = "brojKreveta") var bedsNum: Int = 0,
-	@field:Element(required = false, name = "cena") var price: Int = 0,
+	@field:Element(required = false, name = "cena") var price: Float = 0f,
 	@field:Element(required = false, name = "dostupnost") var isAvaiability: Boolean? = null,
 	@field:ElementList(
 		required = false,
@@ -30,10 +30,10 @@ data class RoomUtilResponse(
 	@field:ElementList(
 		required = false,
 		inline = true,
-		type = TimePriceUtilResponse::class,
+		type = String::class,
 		name = "termin",
 		entry = "termin"
 	)
-	var timePrice: ArrayList<TimePriceUtilResponse>? = null
+	var timePrice: ArrayList<String>? = null
 
 )

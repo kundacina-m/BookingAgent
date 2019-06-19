@@ -15,14 +15,14 @@ class AccommodationsRoutes @Inject constructor(val navigationController: Navigat
 
 		val args = AccommodationsFragmentDirections.actionAccommodationsFragmentToAccommodationDetailsFragment(
 			id = accommodation.id,
-			name = accommodation.name,
-			description = accommodation.description,
-			cancellingFee = accommodation.cancelingFee,
-			type = accommodation.type,
-			category = accommodation.category,
+			name = accommodation.name!!,
+			description = accommodation.description!!,
+			cancellingFee = accommodation.cancelingFee!!,
+			type = accommodation.type!!,
+			category = "okej",
 			rooms = accommodation.rooms.toTypedArray(),
 			services = accommodation.services.toTypedArray(),
-			rating = accommodation.rating,
+			rating = 3f,
 			address = accommodation.address
 		)
 

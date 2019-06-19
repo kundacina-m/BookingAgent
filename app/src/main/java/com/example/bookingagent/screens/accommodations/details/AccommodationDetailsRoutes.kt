@@ -24,7 +24,7 @@ class AccommodationDetailsRoutes @Inject constructor(val navigationController: N
 		navigationController.route.navigate(args)
 	}
 
-	fun navigateToRooms(accId: Int,rooms: Array<Room>) {
+	fun navigateToRooms(accId: Int, rooms: Array<Room>) {
 		val args = AccommodationDetailsFragmentDirections.actionAccommodationDetailsFragmentToRoomsFragment(
 			rooms = rooms,
 			accId = accId
@@ -32,4 +32,7 @@ class AccommodationDetailsRoutes @Inject constructor(val navigationController: N
 
 		navigationController.route.navigate(args)
 	}
+
+	fun navigateToAccommodations() =
+		navigationController.route.navigateUp()
 }

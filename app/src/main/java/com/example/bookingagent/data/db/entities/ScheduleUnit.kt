@@ -7,8 +7,6 @@ import java.util.GregorianCalendar
 
 @Parcelize
 data class ScheduleUnit(
-	@PrimaryKey
-	val id: Int,
 	val checkIn: GregorianCalendar,
 	val checkOut: GregorianCalendar,
 	val price: Float

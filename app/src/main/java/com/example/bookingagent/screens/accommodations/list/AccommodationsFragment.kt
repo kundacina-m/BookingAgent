@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.networking.common.FullAccommodation
-import com.example.bookingagent.utils.FakeData
-import com.example.bookingagent.utils.RequestError
+import com.example.bookingagent.utils.RequestError.UnknownError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
+import com.example.bookingagent.utils.toModel
 import kotlinx.android.synthetic.main.fragment_accommodation.fabAddAccommodation
 import kotlinx.android.synthetic.main.fragment_accommodation.rvAccommodation
 
@@ -25,28 +24,17 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 	override fun getLayoutId(): Int = R.layout.fragment_accommodation
 
 	override fun setObservers() {
-		viewModel.accommodations.observe(this, Observer {
-			when (it) {
+		viewModel.accommodations.observe(this, Observer { response ->
+			when (response) {
 				is OnSuccess -> {
-					it.item.body.body.accommodation?.get(0)?.let { it1 -> printWholeObj(it1) }
+					arrayListOf<Accommodation>().run {
+						response.item.body.body.accommodation?.forEach { add(it.toModel())}
+						adapter.setData(this)
+					}
 				}
-				is OnError -> Log.d(TAG, "initView: ${(it.error as RequestError.UnknownError).t}")
+				is OnError -> Log.d(TAG, "initView: ${(response.error as UnknownError).t}")
 			}
 		})
-	}
-
-	private fun printWholeObj(fullAccommodation: FullAccommodation) {
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.id}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.name}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.cancellingFee}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.category}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.desc}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rating}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.address?.city}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.roomNum}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(0)?.images?.get(0)}")
-		Log.d(TAG, "initView: OnSuccess ${fullAccommodation.rooms?.get(1)?.images?.get(0)}")
-
 	}
 
 	override fun initView() {
@@ -56,25 +44,22 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 
 		setupClickListeners()
 
-		adapter.setData(FakeData.accommodationData)
-
 	}
 
-	private fun setupClickListeners() {
+	private fun setupClickListeners() =
 		fabAddAccommodation.setOnClickListener {
 			navigation.navigateToAddAccommodation()
+
 		}
-	}
 
 	private fun fetchData() =
 		viewModel.getAccommodations()
 
-	private fun setupRecyclerView() {
+	private fun setupRecyclerView() =
 		rvAccommodation.apply {
 			layoutManager = LinearLayoutManager(context)
 			adapter = this@AccommodationsFragment.adapter
 		}
-	}
 
 	private fun itemSelected(accommodation: Accommodation) =
 		navigation.navigateToSelectedItem(accommodation)

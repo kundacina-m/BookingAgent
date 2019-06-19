@@ -1,5 +1,6 @@
 package com.example.bookingagent.screens.rooms.details
 
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.lifecycle.Observer
@@ -9,6 +10,8 @@ import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
+import com.example.bookingagent.utils.WrappedResponse.OnError
+import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_room_details.tvNumber
 import kotlinx.android.synthetic.main.fragment_room_details.*
 
@@ -30,6 +33,13 @@ class RoomDetailsFragment : BaseFragment<RoomDetailsViewModel, RoomDetailsRoutes
 
 		viewModel.schedule.observe(this, Observer {
 			scheduleAdapter.setData(it)
+		})
+
+		viewModel.deleteStatus.observe(this, Observer {
+			when (it) {
+				is OnSuccess -> navigation.navigateToRooms()
+				is OnError -> Log.d(TAG, "setObservers: ERROR")
+			}
 		})
 	}
 
@@ -84,6 +94,7 @@ class RoomDetailsFragment : BaseFragment<RoomDetailsViewModel, RoomDetailsRoutes
 		}
 
 		menu.findItem(R.id.deleteRoom).setOnMenuItemClickListener {
+			viewModel.deleteRoom(args.room.id)
 			true
 		}
 	}

@@ -1,11 +1,16 @@
 package com.example.bookingagent.screens.accommodations.details
 
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
+import com.example.bookingagent.screens.accommodations.ServicesAdapter
+import com.example.bookingagent.utils.WrappedResponse.OnError
+import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_accommodation_details.rvServices
 import kotlinx.android.synthetic.main.fragment_accommodation_details.tvCancellingFee
 import kotlinx.android.synthetic.main.fragment_accommodation_details.tvCity
@@ -27,7 +32,16 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 
 	override fun getLayoutId(): Int = R.layout.fragment_accommodation_details
 
-	override fun setObservers() {}
+	override fun setObservers() {
+
+		viewModel.isDeleted.observe(this, Observer {
+			when (it) {
+				is OnSuccess -> navigation.navigateToAccommodations()
+				is OnError -> Log.d(TAG, "setObservers: ERROR")
+			}
+		})
+
+	}
 
 	override fun initView() {
 		actionBarSetup()
@@ -64,6 +78,7 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 				true
 			}
 			findItem(R.id.deleteAccommodation).setOnMenuItemClickListener {
+				viewModel.deleteAccommodation(args.id)
 				true
 			}
 		}
@@ -83,7 +98,6 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 		tvStreetNum.text = args.address.num.toString()
 		tvRating.text = args.rating.toString()
 		adapter.setData(args.services.toList())
-
 	}
 
 }

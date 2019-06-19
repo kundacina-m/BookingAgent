@@ -4,11 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
 import com.example.bookingagent.data.db.entities.Accommodation
 import com.example.bookingagent.data.db.entities.Address
-import com.example.bookingagent.data.networking.accommodation.models.AddAccommodationRequest
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationRequest
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddAccommodationResponse
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddServiceRequest
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddServiceResponse
+import com.example.bookingagent.data.networking.accommodation.models.AddChangeAccommodationRequest
+import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddChangeAccommodationRequest
+import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddChangeAccommodationResponse
 import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
@@ -20,12 +18,11 @@ import javax.inject.Inject
 class AddAccommodationViewModel @Inject constructor(private val accommodationRepository: AccommodationRepository) :
 	BaseViewModel() {
 
-	val addingAccommodation = MutableLiveData<WrappedResponse<EnvelopeAddAccommodationResponse>>()
-	val addingService = MutableLiveData<WrappedResponse<EnvelopeAddServiceResponse>>()
+	val addingAccommodation = MutableLiveData<WrappedResponse<EnvelopeAddChangeAccommodationResponse>>()
 
-	fun addAccommodation(addAccommodationRequest: AddAccommodationRequest) {
+	fun addAccommodation(accommodation: Accommodation) {
 		disposables.add(
-			accommodationRepository.addAccommodation(EnvelopeAddAccommodationRequest(addAccommodationRequest))
+			accommodationRepository.addAccommodation(accommodation)
 				.subscribeOn(Schedulers.io())
 				.subscribeBy {
 					if (it is OnSuccess) {
@@ -35,16 +32,6 @@ class AddAccommodationViewModel @Inject constructor(private val accommodationRep
 						// TODO map response to DB
 					}
 				})
-	}
-
-	fun addService(envelopeAddServiceRequest: EnvelopeAddServiceRequest) {
-		disposables.add(
-			accommodationRepository.addService(envelopeAddServiceRequest)
-				.subscribeOn(Schedulers.io())
-				.subscribeBy {
-					addingService.postValue(it)
-				}
-		)
 	}
 
 	private fun addAccommodationToDB(accommodation: Accommodation) =

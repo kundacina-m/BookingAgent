@@ -5,9 +5,10 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import com.example.bookingagent.data.db.entities.Accommodation
 import com.example.bookingagent.data.db.entities.Address
+import com.example.bookingagent.domain.crud.LocalCRUD
 
 @Dao
-interface AccommodationDao {
+interface AccommodationDao{
 
 	@Insert(onConflict = OnConflictStrategy.FAIL)
 	fun addAccommodation(accommodation: Accommodation): Long

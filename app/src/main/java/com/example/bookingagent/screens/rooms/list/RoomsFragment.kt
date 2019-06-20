@@ -1,12 +1,16 @@
 package com.example.bookingagent.screens.rooms.list
 
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.utils.WrappedResponse.OnError
+import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_rooms.fabAddRoom
 import kotlinx.android.synthetic.main.fragment_rooms.rvRooms
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
@@ -23,18 +27,28 @@ class RoomsFragment : BaseFragment<RoomsViewModel, RoomsRoutes>() {
 
 	override fun getLayoutId(): Int = R.layout.fragment_rooms
 
-	override fun setObservers() {}
+	override fun setObservers() =
+		viewModel.rooms.observe(this, Observer {
+			when (it) {
+				is OnSuccess -> adapter.setData(it.item)
+				is OnError -> Log.d(TAG, "setObservers: ERROR")
+			}
+		})
 
 	override fun initView() {
 		actionBarSetup()
 		setupRecyclerView()
+		setClickListeners()
+		fetchRooms()
+	}
 
+	private fun fetchRooms() =
+		viewModel.getAllRoomsByAccId(args.accId)
+
+	private fun setClickListeners() =
 		fabAddRoom.setOnClickListener {
 			navigation.navigateToAddRoom(args.accId)
 		}
-
-		adapter.setData(args.rooms.toList())
-	}
 
 	private fun actionBarSetup() {
 		setActionBar(toolbar_top, true)
@@ -53,6 +67,6 @@ class RoomsFragment : BaseFragment<RoomsViewModel, RoomsRoutes>() {
 		}
 
 	private fun itemSelected(room: Room) =
-		navigation.navigateToSelectedRoom(args.accId, room)
+		navigation.navigateToSelectedRoom(args.accId, room.id)
 
 }

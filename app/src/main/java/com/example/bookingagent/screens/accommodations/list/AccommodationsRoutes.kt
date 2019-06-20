@@ -11,22 +11,10 @@ class AccommodationsRoutes @Inject constructor(val navigationController: Navigat
 	fun navigateToAddAccommodation() =
 		navigationController.route.navigate(R.id.action_accommodationsFragment_to_addAccommodationFragment)
 
-	fun navigateToSelectedItem(accommodation: Accommodation) {
+	fun navigateToSelectedItem(accommodation: Accommodation) =
+		AccommodationsFragmentDirections
+			.actionAccommodationsFragmentToAccommodationDetailsFragment(
+				id = accommodation.id)
+			.run { navigationController.route.navigate(this) }
 
-		val args = AccommodationsFragmentDirections.actionAccommodationsFragmentToAccommodationDetailsFragment(
-			id = accommodation.id,
-			name = accommodation.name,
-			description = accommodation.description,
-			cancellingFee = accommodation.cancelingFee,
-			type = accommodation.type,
-			category = accommodation.category,
-			rooms = accommodation.rooms.toTypedArray(),
-			services = accommodation.services.toTypedArray(),
-			rating = accommodation.rating,
-			address = accommodation.address
-		)
-
-		navigationController.route.navigate(args)
-
-	}
 }

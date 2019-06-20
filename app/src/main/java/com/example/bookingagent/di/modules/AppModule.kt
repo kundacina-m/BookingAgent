@@ -3,12 +3,15 @@ package com.example.bookingagent.di.modules
 import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
+import com.example.bookingagent.data.db.dao.AccRoomDao
 import com.example.bookingagent.data.db.dao.AccommodationDao
+import com.example.bookingagent.data.db.dao.RoomDao
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
-import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
+import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.repository.AccommodationRepository
+import com.example.bookingagent.data.repository.RoomRepository
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
 import com.example.bookingagent.utils.BASE_URL
@@ -26,16 +29,6 @@ class AppModule {
 	fun provideContext(application: App): Context {
 		return application.applicationContext
 	}
-
-	@Singleton
-	@Provides
-	fun provideHelloWorldApi(): HelloWorldApi =
-		Retrofit.Builder()
-			.addConverterFactory(SimpleXmlConverterFactory.create())
-			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-			.baseUrl(BASE_URL)
-			.build()
-			.create(HelloWorldApi::class.java)
 
 	@Singleton
 	@Provides
@@ -59,6 +52,16 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideRoomApi(): RoomApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(RoomApi::class.java)
+
+	@Singleton
+	@Provides
 	fun provideDb(appContext: Context): AppDatabase =
 		AppDatabase.getInstance(appContext)
 
@@ -69,8 +72,18 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideAccRoomDao(db: AppDatabase): AccRoomDao =
+		db.accRoomDao()
+
+	@Singleton
+	@Provides
 	fun provideAccommodationDao(db: AppDatabase): AccommodationDao =
 		db.accommodationDao()
+
+	@Singleton
+	@Provides
+	fun provideRoomDao(db: AppDatabase): RoomDao =
+		db.roomDao()
 
 	@Singleton
 	@Provides
@@ -81,5 +94,10 @@ class AppModule {
 	@Provides
 	fun providesAccommodationRepository(accommodationDao: AccommodationDao, accommodationApi: AccommodationApi) =
 		AccommodationRepository(accommodationDao, accommodationApi)
+
+	@Singleton
+	@Provides
+	fun providesRoomRepository(roomApi: RoomApi, roomDao: RoomDao, accRoomDao: AccRoomDao) =
+		RoomRepository(roomApi, roomDao, accRoomDao)
 
 }

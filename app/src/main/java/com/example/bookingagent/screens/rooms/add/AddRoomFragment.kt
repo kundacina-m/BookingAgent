@@ -3,6 +3,7 @@ package com.example.bookingagent.screens.rooms.add
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.lifecycle.Observer
@@ -11,10 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.Room
-import com.example.bookingagent.data.db.entities.ScheduleUnit
+import com.example.bookingagent.data.model.ScheduleUnit
+import com.example.bookingagent.screens.rooms.DialogAddSchedule
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
 import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
+import com.example.bookingagent.utils.WrappedResponse.OnError
+import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import com.example.bookingagent.utils.asString
 import com.example.bookingagent.utils.toBase64
 import kotlinx.android.synthetic.main.fragment_add_room.addRoomContainer
@@ -40,19 +44,24 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 
 	override fun getLayoutId(): Int = R.layout.fragment_add_room
 
-	override fun setObservers() {
-		viewModel.images.observe(this, Observer {
-			imagesAdapter.setData(it)
-		})
+	override fun setObservers() =
+		with(viewModel) {
 
-		viewModel.schedule.observe(this, Observer {
-			scheduleAdapter.setData(it)
-		})
+			images.observe(this@AddRoomFragment, Observer {
+				imagesAdapter.setData(it)
+			})
 
-		viewModel.roomAddedResponse.observe(this, Observer {
-			navigation.navigateToRoomsList()
-		})
-	}
+			schedule.observe(this@AddRoomFragment, Observer {
+				scheduleAdapter.setData(it)
+			})
+
+			roomAddedResponse.observe(this@AddRoomFragment, Observer {
+				when (it) {
+					is OnSuccess -> navigation.navigateToRoomsList()
+					is OnError -> Log.d(TAG, "setObservers: ERROR")
+				}
+			})
+		}
 
 	override fun initView() {
 		actionBarSetup()
@@ -87,18 +96,7 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 		}
 
 		btSubmit.setOnClickListener {
-			viewModel.addRoom(args.accId,
-				Room(
-				id = Random.nextLong(),
-				roomNum = etNumber.asString()?.toIntOrNull(),
-				floor = etFloor.asString()?.toIntOrNull(),
-				bedNums = etBedNums.asString()?.toIntOrNull(),
-				price = etPrice.asString()?.toIntOrNull(),
-				availability = true,
-				comments = arrayListOf(),
-				images = ArrayList(imagesAdapter.getData()),
-				schedule = ArrayList(scheduleAdapter.getData())
-			))
+			viewModel.addRoom(args.accId, createRoom())
 		}
 	}
 
@@ -109,12 +107,32 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 		menu.clear()
+		inflater.inflate(R.menu.confirm_action, menu)
+		setOnMenuItemClickListener(menu)
 		super.onCreateOptionsMenu(menu, inflater)
 	}
 
+	private fun setOnMenuItemClickListener(menu: Menu) =
+		menu.findItem(R.id.confirmAction).setOnMenuItemClickListener {
+			true
+		}
+
+	private fun createRoom() =
+		Room(
+			id = Random.nextInt(),
+			roomNum = etNumber.asString()?.toIntOrNull(),
+			floor = etFloor.asString()?.toIntOrNull(),
+			bedNums = etBedNums.asString()?.toIntOrNull(),
+			price = etPrice.asString()?.toFloatOrNull(),
+			availability = true,
+			comments = arrayListOf(),
+			images = ArrayList(imagesAdapter.getData()),
+			schedule = ArrayList(scheduleAdapter.getData())
+		)
+
 	private fun addSchedule(checkIn: GregorianCalendar, checkOut: GregorianCalendar, price: Float) =
 		scheduleAdapter.getData().toMutableList().apply {
-			add(ScheduleUnit(Random.nextInt(), checkIn, checkOut, price))
+			add(ScheduleUnit(checkIn, checkOut, price))
 		}.run { viewModel.schedule.postValue(this) }
 
 	private fun addImage(encodedImage: String) =

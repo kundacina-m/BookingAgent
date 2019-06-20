@@ -1,12 +1,9 @@
 package com.example.bookingagent.screens.login
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.networking.helloworld.models.EnvelopeHelloWorldRequest
-import com.example.bookingagent.data.networking.helloworld.models.HelloWorldRequest
 import com.example.bookingagent.utils.RequestError.UnknownError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
@@ -27,10 +24,6 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 			}
 		})
 
-		viewModel.serverResponse.observe(this, Observer {
-			Toast.makeText(activity, "Server says:  $it", Toast.LENGTH_LONG).show()
-		})
-
 		viewModel.loginResponse.observe(this, Observer {
 			when (it) {
 				is OnSuccess -> Log.d(TAG, "setObservers: OnSuccess")
@@ -49,7 +42,6 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 	override fun initView() {
 
 		setupListeners()
-
 	}
 
 	private fun setupListeners() {
@@ -58,9 +50,6 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 		}
 
 		btLogin.setOnClickListener {
-
-			val envelope = EnvelopeHelloWorldRequest(HelloWorldRequest("?"))
-			viewModel.getHelloWorld(envelope)
 			checkProvidedInformation()
 		}
 	}

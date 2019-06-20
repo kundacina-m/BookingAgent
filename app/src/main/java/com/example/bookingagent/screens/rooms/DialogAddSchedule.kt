@@ -1,4 +1,4 @@
-package com.example.bookingagent.screens.rooms.add
+package com.example.bookingagent.screens.rooms
 
 import android.app.DatePickerDialog
 import android.app.Dialog

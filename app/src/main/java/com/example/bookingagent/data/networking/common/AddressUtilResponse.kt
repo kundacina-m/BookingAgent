@@ -7,9 +7,9 @@ data class AddressUtilResponse(
 	@field:Element(name = "id")
 	var id: Int = 0,
 	@field:Element(name = "latitude")
-	var latitude: Int = 0,
+	var latitude: Float = 0f,
 	@field:Element(name = "longitude")
-	var longitude: Int = 0,
+	var longitude: Float = 0f,
 	@field:Element(name = "mesto")
 	var city: String? = null,
 	@field:Element(name = "posBroj")

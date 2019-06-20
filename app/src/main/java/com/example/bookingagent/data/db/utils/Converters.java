@@ -1,9 +1,10 @@
 package com.example.bookingagent.data.db.utils;
 
 import androidx.room.TypeConverter;
-import com.example.bookingagent.data.db.entities.Address;
+import com.example.bookingagent.data.model.Address;
 import com.example.bookingagent.data.db.entities.Room;
-import com.example.bookingagent.data.db.entities.Service;
+import com.example.bookingagent.data.model.ScheduleUnit;
+import com.example.bookingagent.data.model.Service;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -16,6 +17,13 @@ public class Converters {
 		Type type = new TypeToken<ArrayList<Service>>() {
 		}.getType();
 		return new Gson().toJson(services, type);
+	}
+	
+	@TypeConverter
+	public static String fromScheduleArrayList(ArrayList<ScheduleUnit> schedules) {
+		Type type = new TypeToken<ArrayList<ScheduleUnit>>() {
+		}.getType();
+		return new Gson().toJson(schedules, type);
 	}
 	
 	//    @TypeConverter
@@ -48,6 +56,13 @@ public class Converters {
 		Type type = new TypeToken<ArrayList<Service>>() {
 		}.getType();
 		return new Gson().fromJson(services, type);
+	}
+	
+	@TypeConverter
+	public static ArrayList<ScheduleUnit> toScheduleArrayList(String schedules) {
+		Type type = new TypeToken<ArrayList<ScheduleUnit>>() {
+		}.getType();
+		return new Gson().fromJson(schedules, type);
 	}
 	
 	//    @TypeConverter

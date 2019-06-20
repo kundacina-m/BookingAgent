@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.accommodations.list
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
-import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationResponse
+import com.example.bookingagent.data.db.entities.Accommodation
 import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.utils.WrappedResponse
 import io.reactivex.rxkotlin.subscribeBy
@@ -13,14 +13,13 @@ class AccommodationsViewModel @Inject constructor(val accommodationRepository: A
 	BaseViewModel() {
 
 	val accommodations
-		by lazy { MutableLiveData<WrappedResponse<EnvelopeGetAccommodationResponse>>() }
+		by lazy { MutableLiveData<WrappedResponse<List<Accommodation>>>() }
 
 	fun getAccommodations() {
-		disposables.add(
-			accommodationRepository.getAccommodations()
-				.subscribeOn(Schedulers.io())
-				.subscribeBy {
-					accommodations.postValue(it)
-				})
+		disposables.add(accommodationRepository.getAllAccommodationFromDB()
+			.subscribeOn(Schedulers.io())
+			.subscribeBy {
+				accommodations.postValue(it)
+			})
 	}
 }

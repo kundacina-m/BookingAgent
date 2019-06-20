@@ -7,11 +7,12 @@ import javax.inject.Inject
 
 class RoomDetailsRoutes @Inject constructor(val navigationController: NavigationController) : Routes() {
 
-	fun navigateToEdit(room: Room) {
-		val direction = RoomDetailsFragmentDirections.actionRoomDetailsFragmentToEditRoomFragment(
+	fun navigateToEdit(room: Room) =
+		RoomDetailsFragmentDirections.actionRoomDetailsFragmentToEditRoomFragment(
 			room = room
-		)
+		).run { navigationController.route.navigate(this) }
 
-		navigationController.route.navigate(direction)
-	}
+	fun navigateToRooms() =
+		navigationController.route.navigateUp()
+
 }

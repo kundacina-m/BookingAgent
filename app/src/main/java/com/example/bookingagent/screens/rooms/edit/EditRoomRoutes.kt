@@ -5,4 +5,7 @@ import com.example.bookingagent.di.routes.NavigationController
 import javax.inject.Inject
 
 class EditRoomRoutes @Inject constructor(val navigationController: NavigationController) : Routes() {
+
+	fun navigateToRooms() =
+		navigationController.route.navigateUp()
 }

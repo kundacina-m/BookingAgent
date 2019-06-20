@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.db.entities.Address
-import com.example.bookingagent.data.db.entities.Service
+import com.example.bookingagent.data.model.Address
+import com.example.bookingagent.data.model.Service
 import com.example.bookingagent.screens.accommodations.DialogAddService
 import com.example.bookingagent.screens.accommodations.ServicesAdapter
 import com.example.bookingagent.utils.WrappedResponse.OnError
@@ -40,7 +40,7 @@ class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditA
 	override fun setObservers() {
 		viewModel.editStatus.observe(this, Observer {
 			when (it) {
-				is OnSuccess -> navigation.navigateToAccommodations()
+				is OnSuccess -> navigation.navigateToAccommodationDetails()
 				is OnError -> Log.d(TAG, "setObservers: ERROR")
 			}
 		})
@@ -109,7 +109,7 @@ class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditA
 	private fun changedAccommodation() =
 		Accommodation(
 			id = args.id,
-			cancelingFee = etCancellingFee.text.toString().toFloat(),
+			cancellingFee = etCancellingFee.text.toString().toFloat(),
 			type = args.type,
 			address = Address(
 				latitude = etLatitude.text.toString().toFloat(),
@@ -120,7 +120,8 @@ class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditA
 				num = etNum.text.toString().toInt()
 			),
 			description = etDescription.text.toString(),
-			name = etName.text.toString()
+			name = etName.text.toString(),
+			services = ArrayList(adapter.getData())
 		)
 
 	private fun addService(name: String, desc: String, price: Float) {

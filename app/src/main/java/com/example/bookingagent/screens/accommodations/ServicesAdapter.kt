@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import base.BaseAdapter
 import com.example.bookingagent.R.layout
-import com.example.bookingagent.data.db.entities.Service
+import com.example.bookingagent.data.model.Service
 
 class ServicesAdapter : BaseAdapter<Service>() {
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

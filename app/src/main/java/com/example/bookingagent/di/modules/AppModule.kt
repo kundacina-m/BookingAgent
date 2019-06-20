@@ -3,10 +3,11 @@ package com.example.bookingagent.di.modules
 import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
+import com.example.bookingagent.data.db.dao.AccRoomDao
 import com.example.bookingagent.data.db.dao.AccommodationDao
+import com.example.bookingagent.data.db.dao.RoomDao
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
-import com.example.bookingagent.data.networking.helloworld.HelloWorldApi
 import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.repository.AccommodationRepository
@@ -71,8 +72,18 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideAccRoomDao(db: AppDatabase): AccRoomDao =
+		db.accRoomDao()
+
+	@Singleton
+	@Provides
 	fun provideAccommodationDao(db: AppDatabase): AccommodationDao =
 		db.accommodationDao()
+
+	@Singleton
+	@Provides
+	fun provideRoomDao(db: AppDatabase): RoomDao =
+		db.roomDao()
 
 	@Singleton
 	@Provides
@@ -86,7 +97,7 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun providesRoomRepository(roomApi: RoomApi) =
-		RoomRepository(roomApi)
+	fun providesRoomRepository(roomApi: RoomApi, roomDao: RoomDao, accRoomDao: AccRoomDao) =
+		RoomRepository(roomApi, roomDao, accRoomDao)
 
 }

@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.accommodations
 
 import android.view.View
 import base.BaseViewHolder
-import com.example.bookingagent.data.db.entities.Service
+import com.example.bookingagent.data.model.Service
 import kotlinx.android.synthetic.main.item_service.view.tvDesc
 import kotlinx.android.synthetic.main.item_service.view.tvName
 import kotlinx.android.synthetic.main.item_service.view.tvPrice

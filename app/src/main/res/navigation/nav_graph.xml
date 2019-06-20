@@ -71,33 +71,6 @@
 		<argument
 			android:name="id"
 			app:argType="integer"/>
-		<argument
-			android:name="name"
-			app:argType="string"/>
-		<argument
-			android:name="description"
-			app:argType="string"/>
-		<argument
-			android:name="type"
-			app:argType="string"/>
-		<argument
-			android:name="cancellingFee"
-			app:argType="float"/>
-		<argument
-			android:name="address"
-			app:argType="com.example.bookingagent.data.db.entities.Address"/>
-		<argument
-			android:name="rating"
-			app:argType="float"/>
-		<argument
-			android:name="category"
-			app:argType="string"/>
-		<argument
-			android:name="services"
-			app:argType="com.example.bookingagent.data.db.entities.Service[]"/>
-		<argument
-			android:name="rooms"
-			app:argType="com.example.bookingagent.data.db.entities.Room[]"/>
 		<action
 			android:id="@+id/action_accommodationDetailsFragment_to_accommodationEditFragment"
 			app:destination="@id/accommodationEditFragment"/>
@@ -128,7 +101,7 @@
 			app:argType="float"/>
 		<argument
 			android:name="address"
-			app:argType="com.example.bookingagent.data.db.entities.Address"/>
+			app:argType="com.example.bookingagent.data.model.Address"/>
 		<argument
 			android:name="rating"
 			app:argType="float"/>
@@ -137,10 +110,7 @@
 			app:argType="string"/>
 		<argument
 			android:name="services"
-			app:argType="com.example.bookingagent.data.db.entities.Service[]"/>
-		<argument
-			android:name="rooms"
-			app:argType="com.example.bookingagent.data.db.entities.Room[]"/>
+			app:argType="com.example.bookingagent.data.model.Service[]"/>
 	</fragment>
 	<fragment
 		android:id="@+id/addRoomFragment"
@@ -165,9 +135,6 @@
 			app:destination="@id/roomDetailsFragment"/>
 
 		<argument
-			android:name="rooms"
-			app:argType="com.example.bookingagent.data.db.entities.Room[]"/>
-		<argument
 			android:name="accId"
 			app:argType="integer"/>
 
@@ -181,8 +148,8 @@
 			android:id="@+id/action_roomDetailsFragment_to_editRoomFragment"
 			app:destination="@id/editRoomFragment"/>
 		<argument
-			android:name="room"
-			app:argType="com.example.bookingagent.data.db.entities.Room"/>
+			android:name="roomId"
+			app:argType="integer"/>
 		<argument
 			android:name="accId"
 			app:argType="integer"/>

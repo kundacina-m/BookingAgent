@@ -1,15 +1,17 @@
 package com.example.bookingagent.utils
 
 import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.db.entities.Address
+import com.example.bookingagent.data.model.Address
 import com.example.bookingagent.data.db.entities.Room
-import com.example.bookingagent.data.db.entities.ScheduleUnit
-import com.example.bookingagent.data.db.entities.Service
+import com.example.bookingagent.data.model.ScheduleUnit
+import com.example.bookingagent.data.model.Service
 import com.example.bookingagent.data.networking.accommodation.models.AddChangeAccommodationRequest
 import com.example.bookingagent.data.networking.common.FullAccommodation
+import com.example.bookingagent.data.networking.common.RoomUtilResponse
 import java.util.GregorianCalendar
 
-fun AddChangeAccommodationRequest.toModel(idAcc: Int, idAddress: Int, rating: Float = 0f, category: String = "") =
+fun AddChangeAccommodationRequest.toAccommodationModel(idAcc: Int, idAddress: Int, rating: Float = 0f,
+	category: String = "") =
 	Accommodation(
 		id = idAcc,
 		name = name,
@@ -25,13 +27,12 @@ fun AddChangeAccommodationRequest.toModel(idAcc: Int, idAddress: Int, rating: Fl
 		),
 		type = type,
 		rating = rating,
-		cancelingFee = cancellingFee,
+		cancellingFee = cancellingFee,
 		category = category,
-		rooms = arrayListOf(),
 		services = arrayListOf()
 	)
 
-fun FullAccommodation.toModel() =
+fun FullAccommodation.toAccommodationModel() =
 	Accommodation(
 		id = id,
 		name = name,
@@ -47,43 +48,47 @@ fun FullAccommodation.toModel() =
 		),
 		type = type,
 		rating = if (rating == null) 0f else rating,
-		cancelingFee = cancellingFee,
+		cancellingFee = cancellingFee,
 		category = if (category == null) "" else category,
-		rooms = rooms.run {
-			val listOfRooms = arrayListOf<Room>()
-			this?.forEach {
-				listOfRooms.add(Room(
-					id = it.id.toLong(),
-					price = it.price,
-					floor = it.floor,
-					roomNum = it.roomNum,
-					bedNums = it.bedsNum,
-					availability = it.isAvaiability,
-					images = it.images,
-					comments = it.comments,
-					schedule = it.timePrice.run {
-						val listOfSchedule = arrayListOf<ScheduleUnit>()
-						this?.forEach { schedule ->
-							schedule.split("~").also { splitted ->
-								listOfSchedule.add(
-									ScheduleUnit(GregorianCalendar(), GregorianCalendar(), splitted[0].toFloat()))
-							}
-						}
-						listOfSchedule
-					}
-				))
-			}
-			listOfRooms
-		},
 		services = this.services.run {
 			val listOfServices = arrayListOf<Service>()
 			this?.forEach {
 				it.split("~").also { splitted ->
-					listOfServices.add(Service(1, splitted[0], splitted[1], splitted[2].toFloat()))
+					listOfServices.add(
+						Service(1, splitted[0], splitted[1], splitted[2].toFloat()))
 				}
 			}
 			listOfServices
 		}
 	)
+
+fun RoomUtilResponse.toRoomsModel() =
+	Room(
+		id = id,
+		price = price,
+		floor = floor,
+		roomNum = roomNum,
+		bedNums = bedsNum,
+		availability = isAvaiability,
+		images = images,
+		comments = comments,
+		schedule = timePrice.run {
+			val listOfSchedule = arrayListOf<ScheduleUnit>()
+			this?.forEach { schedule ->
+				schedule.split("~").also { splitted ->
+					listOfSchedule.add(
+						ScheduleUnit(GregorianCalendar(), GregorianCalendar(),
+							splitted[0].toFloat()))
+				}
+			}
+			listOfSchedule
+		}
+	)
+
+fun Accommodation.addId(accId: Int) =
+	Accommodation(accId, name, description, address, type, cancellingFee, rating, category, services)
+
+
+
 
 

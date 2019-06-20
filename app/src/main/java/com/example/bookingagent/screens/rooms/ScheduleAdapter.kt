@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import base.BaseAdapter
 import com.example.bookingagent.R.layout
-import com.example.bookingagent.data.db.entities.ScheduleUnit
+import com.example.bookingagent.data.model.ScheduleUnit
 
 class ScheduleAdapter : BaseAdapter<ScheduleUnit>() {
 

@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
+import com.example.bookingagent.data.db.entities.Accommodation
 import com.example.bookingagent.screens.accommodations.ServicesAdapter
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
@@ -25,6 +26,7 @@ import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel, AccommodationDetailsRoutes>() {
 
 	private val args: AccommodationDetailsFragmentArgs by navArgs()
+	private lateinit var accommodation: Accommodation
 
 	private val adapter by lazy {
 		ServicesAdapter()
@@ -32,36 +34,46 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 
 	override fun getLayoutId(): Int = R.layout.fragment_accommodation_details
 
-	override fun setObservers() {
-
-		viewModel.isDeleted.observe(this, Observer {
-			when (it) {
-				is OnSuccess -> navigation.navigateToAccommodations()
-				is OnError -> Log.d(TAG, "setObservers: ERROR")
-			}
-		})
-
-	}
+	override fun setObservers() =
+		with(viewModel) {
+			deletingStatus.observe(this@AccommodationDetailsFragment, Observer {
+				when (it) {
+					is OnSuccess -> navigation.navigateToAccommodations()
+					is OnError -> Log.d(TAG, "setObservers: ERROR")
+				}
+			})
+			accommodation.observe(this@AccommodationDetailsFragment, Observer {
+				when (it) {
+					is OnSuccess -> onAccommodationDetails(it.item)
+					is OnError -> Log.d(TAG, "setObservers: ERROR")
+				}
+			})
+		}
 
 	override fun initView() {
-		actionBarSetup()
-		populateViewWithData()
+		viewModel.getAccommodationDetails(args.id)
 
 		setupRecyclerView()
 		setOnClickListeners()
 
 	}
 
-	private fun setupRecyclerView() {
+	private fun onAccommodationDetails(accommodation: Accommodation) {
+		this.accommodation = accommodation
+		actionBarSetup()
+		populateViewWithData()
+	}
+
+	private fun setupRecyclerView() =
 		rvServices.apply {
 			layoutManager = LinearLayoutManager(context)
 			adapter = this@AccommodationDetailsFragment.adapter
 		}
-	}
+
 
 	private fun actionBarSetup() {
 		setActionBar(toolbar_top, true)
-		actionBar?.title = args.name
+		actionBar?.title = accommodation.name
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -74,7 +86,7 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 	private fun setOnMenuItemClickListener(menu: Menu) =
 		menu.apply {
 			findItem(R.id.editAccommodation).setOnMenuItemClickListener {
-				navigation.navigateToEdit(args)
+				navigation.navigateToEdit(accommodation)
 				true
 			}
 			findItem(R.id.deleteAccommodation).setOnMenuItemClickListener {
@@ -83,21 +95,20 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 			}
 		}
 
-
 	private fun setOnClickListeners() =
 		tvLabelToRooms.setOnClickListener {
-			navigation.navigateToRooms(args.id,args.rooms)
+			navigation.navigateToRooms(args.id)
 		}
 
 	private fun populateViewWithData() {
-		tvName.text = args.name
-		tvDesc.text = args.description
-		tvCancellingFee.text = args.cancellingFee.toString()
-		tvCity.text = args.address.city
-		tvStreet.text = args.address.street
-		tvStreetNum.text = args.address.num.toString()
-		tvRating.text = args.rating.toString()
-		adapter.setData(args.services.toList())
+		tvName.text = accommodation.name
+		tvDesc.text = accommodation.description
+		tvCancellingFee.text = accommodation.cancellingFee.toString()
+		tvCity.text = accommodation.address.city
+		tvStreet.text = accommodation.address.street
+		tvStreetNum.text = accommodation.address.num.toString()
+		tvRating.text = accommodation.rating.toString()
+		adapter.setData(accommodation.services.toList())
 	}
 
 }

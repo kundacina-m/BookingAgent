@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.db.entities.Address
-import com.example.bookingagent.data.db.entities.Service
+import com.example.bookingagent.data.model.Address
+import com.example.bookingagent.data.model.Service
 import com.example.bookingagent.screens.accommodations.DialogAddService
 import com.example.bookingagent.screens.accommodations.ServicesAdapter
 import com.example.bookingagent.utils.RequestError
@@ -39,10 +39,7 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 
 		viewModel.addingAccommodation.observe(this, Observer {
 			when (it) {
-				is OnSuccess -> {
-					val response = it.item.body.body
-					navigation.navigateToAccommodations()
-				}
+				is OnSuccess -> navigation.navigateToAccommodations()
 				is OnError -> Log.d(TAG, "initView: OnError" + (it.error as RequestError.UnknownError).t.message)
 			}
 		})
@@ -96,7 +93,7 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 			id = 0,
 			name = etName.text.toString(),
 			type = "SMESTAJ_HOTEL",
-			cancelingFee = etCancellingFee.text.toString().toFloat(),
+			cancellingFee = etCancellingFee.text.toString().toFloat(),
 			description = etDescription.text.toString(),
 			services = ArrayList(adapter.getData()),
 			address = Address(
@@ -108,7 +105,6 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 				zipCode = etZipCode.text.toString().toInt(),
 				num = etNum.text.toString().toInt()
 			),
-			rooms = arrayListOf(),
 			category = "",
 			rating = 0f
 		)
@@ -120,13 +116,6 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 				setData(it)
 			}
 		}
-
-//		adapter.getData().run {
-//			ArrayList<Service>().also {
-//				it.addAll(this + Service(1, name, desc, price))
-//				adapter.setData(it)
-//			}
-//		}
 
 	}
 

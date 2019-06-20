@@ -2,7 +2,6 @@ package com.example.bookingagent.data.repository
 
 import com.example.bookingagent.data.db.dao.AccommodationDao
 import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.db.entities.Address
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
 import com.example.bookingagent.data.networking.accommodation.models.DeleteAccommodationRequest
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeAddChangeAccommodationRequest
@@ -19,6 +18,8 @@ class AccommodationRepository @Inject constructor(
 	private val accommodationApi: AccommodationApi
 ) {
 
+	// region NETWORK
+
 	fun addAccommodation(accommodation: Accommodation) =
 		accommodationApi.addAccommodation(EnvelopeAddChangeAccommodationRequest(accommodation.toRequest())).toSealed()
 
@@ -32,11 +33,25 @@ class AccommodationRepository @Inject constructor(
 	fun editAccommodation(accommodation: Accommodation) =
 		accommodationApi.editAccommodation(EnvelopeAddChangeAccommodationRequest(accommodation.toRequest())).toSealed()
 
+	// endregion NETWORK
 
+	// region DB
 
 	fun addAccommodationToDB(accommodation: Accommodation) =
 		Single.just(accommodationDao.addAccommodation(accommodation)).toSealed()
 
-	fun addAddressToDB(address: Address) =
-		Single.just(accommodationDao.addAddress(address)).toSealed()
+	fun getAllAccommodationFromDB() =
+		accommodationDao.getAllAccommodation().toSealed()
+
+	fun deleteAccommodationFromDB(id: Int) =
+		Single.just(accommodationDao.deleteAccommodation(id)).toSealed()
+
+	fun updateAccommodationInDB(accommodation: Accommodation) =
+		Single.just(accommodationDao.updateAccommodation(accommodation)).toSealed()
+
+	fun getAccommodationFromDB(id: Int) =
+		accommodationDao.getAccommodation(id).toSealed()
+
+	// endregion DB
+
 }

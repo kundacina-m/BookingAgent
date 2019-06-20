@@ -6,6 +6,6 @@ import javax.inject.Inject
 
 class EditAccommodationRoutes @Inject constructor(val navigationController: NavigationController) : Routes() {
 
-	fun navigateToAccommodations() =
+	fun navigateToAccommodationDetails() =
 		navigationController.route.navigateUp()
 }

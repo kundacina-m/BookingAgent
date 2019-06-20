@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.Room
-import com.example.bookingagent.data.db.entities.ScheduleUnit
+import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.screens.rooms.DialogAddSchedule
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
@@ -43,26 +43,28 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 
 	override fun getLayoutId(): Int = R.layout.fragment_edit_room
 
-	override fun setObservers() {
-		viewModel.images.observe(this, Observer {
-			imagesAdapter.setData(it)
-		})
+	override fun setObservers() =
 
-		viewModel.schedule.observe(this, Observer {
-			scheduleAdapter.setData(it)
-		})
+		with(viewModel) {
 
-		viewModel.editStatus.observe(this, Observer {
-			when (it) {
-				is OnSuccess -> navigation.navigateToRooms()
-				is OnError -> when (it.error) {
-					is UnknownError -> Log.d(TAG, "setObservers: ${it.error.t}")
-					is HttpError -> Log.d(TAG, "setObservers: ${it.error.message}")
+			images.observe(this@EditRoomFragment, Observer {
+				imagesAdapter.setData(it)
+			})
+
+			schedule.observe(this@EditRoomFragment, Observer {
+				scheduleAdapter.setData(it)
+			})
+
+			editStatus.observe(this@EditRoomFragment, Observer {
+				when (it) {
+					is OnSuccess -> navigation.navigateToRooms()
+					is OnError -> when (it.error) {
+						is UnknownError -> Log.d(TAG, "setObservers: ${it.error.t}")
+						is HttpError -> Log.d(TAG, "setObservers: ${it.error.message}")
+					}
 				}
-			}
-
-		})
-	}
+			})
+		}
 
 	override fun initView() {
 		actionBarSetup()

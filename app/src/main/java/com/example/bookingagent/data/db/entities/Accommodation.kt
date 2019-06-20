@@ -2,19 +2,20 @@ package com.example.bookingagent.data.db.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.bookingagent.data.model.Address
+import com.example.bookingagent.data.model.Service
 
-@Entity(tableName = "accommodation")
+@Entity
 data class Accommodation(
 
 	@PrimaryKey
-	val id: Int,
-	val name: String? = "",
-	val description: String? = "",
-	val address: Address,
-	val type: String? = "",
-	val cancelingFee: Float? = 0f,
-	val rating: Float? = 0f,
-	val category: String? = "",
-	val services: ArrayList<Service> = arrayListOf(),
-	val rooms: ArrayList<Room> = arrayListOf()
+	var id: Int,
+	var name: String? = "",
+	var description: String? = "",
+	var address: Address,
+	var type: String? = "",
+	var cancellingFee: Float? = 0f,
+	var rating: Float? = 0f,
+	var category: String? = "",
+	var services: ArrayList<Service> = arrayListOf()
 )

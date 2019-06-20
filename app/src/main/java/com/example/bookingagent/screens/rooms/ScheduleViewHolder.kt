@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.rooms
 
 import android.view.View
 import base.BaseViewHolder
-import com.example.bookingagent.data.db.entities.ScheduleUnit
+import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.utils.asString
 import kotlinx.android.synthetic.main.item_schedule.view.tvActionRemove
 import kotlinx.android.synthetic.main.item_schedule.view.tvCheckIn

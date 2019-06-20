@@ -9,7 +9,6 @@ import com.example.bookingagent.data.db.entities.Accommodation
 import com.example.bookingagent.utils.RequestError.UnknownError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
-import com.example.bookingagent.utils.toModel
 import kotlinx.android.synthetic.main.fragment_accommodation.fabAddAccommodation
 import kotlinx.android.synthetic.main.fragment_accommodation.rvAccommodation
 
@@ -24,15 +23,10 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 	override fun getLayoutId(): Int = R.layout.fragment_accommodation
 
 	override fun setObservers() {
-		viewModel.accommodations.observe(this, Observer { response ->
-			when (response) {
-				is OnSuccess -> {
-					arrayListOf<Accommodation>().run {
-						response.item.body.body.accommodation?.forEach { add(it.toModel())}
-						adapter.setData(this)
-					}
-				}
-				is OnError -> Log.d(TAG, "initView: ${(response.error as UnknownError).t}")
+		viewModel.accommodations.observe(this, Observer {
+			when (it) {
+				is OnSuccess -> adapter.setData(it.item)
+				is OnError -> Log.d(TAG, "initView: ${(it.error as UnknownError).t}")
 			}
 		})
 	}
@@ -49,7 +43,6 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 	private fun setupClickListeners() =
 		fabAddAccommodation.setOnClickListener {
 			navigation.navigateToAddAccommodation()
-
 		}
 
 	private fun fetchData() =

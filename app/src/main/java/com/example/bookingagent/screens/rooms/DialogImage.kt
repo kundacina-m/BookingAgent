@@ -1,4 +1,4 @@
-package com.example.bookingagent.utils
+package com.example.bookingagent.screens.rooms
 
 import android.app.Dialog
 import android.content.Context

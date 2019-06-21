@@ -5,6 +5,6 @@ import org.simpleframework.xml.Namespace
 import org.simpleframework.xml.Root
 
 @Root
-@Namespace(prefix = "acc", reference = "http://xml/accommodation")
+@Namespace(prefix = "acc", reference = "http://xml/accommodationResponse")
 @SoapRequest
 class GetAccommodationRequest

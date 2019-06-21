@@ -7,7 +7,9 @@ import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
 import com.example.bookingagent.data.networking.user.models.LoginRequest
 import com.example.bookingagent.data.repository.UserRepository
+import com.example.bookingagent.utils.apiHeaders
 import com.example.bookingagent.utils.WrappedResponse
+import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -33,8 +35,13 @@ class LoginViewModel @Inject constructor(val repository: UserRepository) : BaseV
 		disposables.add(repository.loginUser(loginRequest)
 			.subscribeOn(Schedulers.io())
 			.subscribeBy {
-				loginResponse.postValue(it)
-				identityVerification.postValue(true)
+				when (it) {
+					is OnSuccess -> {
+						loginResponse.postValue(it)
+						apiHeaders.addToken(it.item.body.body.token)
+						identityVerification.postValue(true)
+					}
+				}
 			})
 	}
 

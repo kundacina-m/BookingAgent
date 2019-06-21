@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="MAPPING" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -202,52 +203,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eead895e-b33d-4aa3-986a-ff58600a7f26" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/dao/AccRoomDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/dao/RoomDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/AccRoom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/AppDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/dao/AccommodationDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/dao/AccommodationDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Accommodation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Accommodation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Address.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/model/Address.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Room.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Room.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/ScheduleUnit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/model/ScheduleUnit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Service.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/model/Service.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/utils/Converters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/utils/Converters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/AccommodationRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/AccommodationRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/RoomRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/RoomRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/di/modules/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/di/modules/AppModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/ServicesAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/ServicesAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/ServicesViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/ServicesViewHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/add/AddAccommodationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/add/AddAccommodationFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/add/AddAccommodationViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/add/AddAccommodationViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/details/AccommodationDetailsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/details/AccommodationDetailsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/details/AccommodationDetailsRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/details/AccommodationDetailsRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/details/AccommodationDetailsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/details/AccommodationDetailsViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/home/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/AccommodationApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/AccommodationApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/AddAccommodationResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/AddAccommodationResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/AddChangeAccommodationRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/AddChangeAccommodationRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/DeleteAccommodationRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/DeleteAccommodationRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/DeleteAccommodationResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/DeleteAccommodationResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/GetAccommodationRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/GetAccommodationRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/GetAccommodationResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/GetAccommodationResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/AddressUtilResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/AddressResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/FullAccommodation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/AccommodationResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/RoomUtilResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/RoomResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/ServiceSOAP.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/ServiceUtilResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/TimePriceNoId.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/TimePriceUtilResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/helloworld/HelloWorldApi.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/helloworld/models/HelloWorldRequest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/helloworld/models/HelloWorldResponse.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/RoomApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/RoomApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/AddChangeRoomRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/AddChangeRoomRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/AddChangeRoomResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/AddChangeRoomResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/DeleteRoomRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/DeleteRoomRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/DeleteRoomResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/models/DeleteRoomResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginRequest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginResponse.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/home/HomeViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/home/HomeViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/ScheduleAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/ScheduleAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/ScheduleViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/ScheduleViewHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/add/AddRoomFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/add/AddRoomFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/add/AddRoomViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/add/AddRoomViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/list/RoomsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/list/RoomsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/list/RoomsRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/list/RoomsRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/list/RoomsViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/list/RoomsViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/transformationsFromModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/transformationsFromModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/ImagesViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/ImagesViewHolder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/Constants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/DialogImage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/DialogImage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/transformationsToModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/transformationsToModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/item_room.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/item_room.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/navigation/nav_graph.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -313,30 +301,69 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/RoomRepository.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/Constants.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="87">
+              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/AccommodationApi.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
+              <folding>
+                <element signature="e#64#852#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/RoomApi.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/UserApi.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/RoomResponse.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/AccommodationResponse.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomFragment.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/AddressResponse.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomViewModel.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -378,18 +405,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/AccommodationRemoteStorageImpl.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/domain/RoomRemoteStorage.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/RoomApi.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/domain/crud/LocalCRUD.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/models/AddChangeAccommodationRequest.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/transformationsFromModel.kt" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/item_service.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Comment.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/list/RoomsViewHolder.kt" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/item_room.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/AccRoom.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Room.kt" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/utils/Converters.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsRoutes.kt" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/home/HomeFragment.kt" />
@@ -429,6 +444,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/RoomRepository.kt" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomViewModel.kt" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomFragment.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginFragment.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/UserRepository.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginRequest.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/UserApi.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginResponse.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginViewModel.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/Constants.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/AccommodationApi.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/RoomApi.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/AddressResponse.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/mapsresponse/AddressResponse.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/AddressResponse.kt" />
       </list>
     </option>
   </component>
@@ -444,6 +471,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -482,7 +510,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -506,6 +533,21 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="bookingagent" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bookingagent" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="networking" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bookingagent" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="screens" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -514,7 +556,7 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="bookingagent" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="screens" type="462c0819:PsiDirectoryNode" />
-              <item name="rooms" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
@@ -522,25 +564,14 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="bookingagent" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="screens" type="462c0819:PsiDirectoryNode" />
-              <item name="rooms" type="462c0819:PsiDirectoryNode" />
-              <item name="edit" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="navigation" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bookingagent" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
@@ -574,11 +605,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.bookingagent.screens.rooms" />
+      <recent name="com.example.bookingagent.screens.rooms.list" />
       <recent name="com.example.bookingagent.data.model" />
       <recent name="com.example.bookingagent.domain" />
-      <recent name="com.example.bookingagent.screens.rooms" />
       <recent name="com.example.bookingagent.screens.accommodations" />
-      <recent name="com.example.bookingagent.data.networking.room.models" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.example.bookingagent.data.db" />
@@ -770,20 +801,20 @@
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
-      <window_info id="Resources Explorer" order="7" />
-      <window_info id="Capture Tool" order="8" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Resources Explorer" order="8" weight="0.32977587" />
       <window_info anchor="bottom" id="Thumbnails" order="0" weight="0.3297414" />
       <window_info anchor="bottom" id="Run" order="1" weight="0.32963374" />
       <window_info anchor="bottom" id="Logcat" order="2" weight="0.36403996" />
       <window_info anchor="bottom" id="TODO" order="3" weight="0.32963374" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2963374" />
-      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49893278" weight="0.2863485" />
+      <window_info anchor="bottom" id="Terminal" order="5" sideWeight="0.49893278" weight="0.2857143" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5010672" side_tool="true" weight="0.42175362" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32963374" />
-      <window_info anchor="bottom" id="Build" order="8" visible="true" weight="0.3207547" />
+      <window_info anchor="bottom" id="Build" order="8" weight="0.3207547" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32963374" />
       <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.32963374" />
-      <window_info anchor="bottom" id="Android Profiler" order="11" weight="0.51387346" />
+      <window_info anchor="bottom" id="Android Profiler" order="11" weight="0.5960044" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32977587" />
@@ -812,148 +843,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/register/RegisterRoutes.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/add/AddAccommodationRoutes.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomRoutes.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/AccRoom.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="e#51#150#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/di/modules/AppModule.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="100" column="51" selection-start-line="100" selection-start-column="51" selection-end-line="100" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/home/HomeFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
-          <folding>
-            <element signature="e#62#428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/list/AccommodationsFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/add/AddAccommodationViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="15" column="98" lean-forward="true" selection-start-line="15" selection-start-column="98" selection-end-line="15" selection-end-column="98" />
-          <folding>
-            <element signature="e#61#624#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/transformationsToModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="86" column="10" lean-forward="true" selection-start-line="86" selection-start-column="10" selection-end-line="86" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/add/AddAccommodationFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="93" column="42" lean-forward="true" selection-start-line="93" selection-start-column="42" selection-end-line="93" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Accommodation.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.navigation/navigation-runtime/2.0.0/d8ad82a1ae5222a5c294450bc7dee16eed8e433/navigation-runtime-2.0.0-sources.jar!/androidx/navigation/NavController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5280">
-          <caret line="321" column="42" lean-forward="true" selection-start-line="321" selection-start-column="42" selection-end-line="321" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationRoutes.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/edit/EditAccommodationFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="45" column="10" lean-forward="true" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/AccommodationRepository.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-livedata-core/2.0.0/c158207594782b42f3a2e08a5a029eb3319e4404/lifecycle-livedata-core-2.0.0-sources.jar!/androidx/lifecycle/Observer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-livedata-core/2.0.0/c158207594782b42f3a2e08a5a029eb3319e4404/lifecycle-livedata-core-2.0.0-sources.jar!/androidx/lifecycle/LiveData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="186" lean-forward="true" selection-start-line="186" selection-end-line="186" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/accommodations/details/AccommodationDetailsViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1052,13 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Room.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/details/RoomDetailsRoutes.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1084,13 +966,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/RoomApi.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1157,6 +1032,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="66" column="9" lean-forward="true" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/RoomRepository.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -1166,15 +1048,158 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
+        <state relative-caret-position="141">
           <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/rooms/edit/EditRoomFragment.kt">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/76f3c69879d3e01c082f49d8661c5590838148e1/retrofit-2.3.0-sources.jar!/retrofit2/http/Header.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+        <state relative-caret-position="75">
+          <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/repository/UserRepository.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Room.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/AccRoom.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/db/entities/Accommodation.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/home/HomeFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginRequest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/models/LoginResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/utils/Constants.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/screens/login/LoginViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/accommodation/AccommodationApi.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
+          <folding>
+            <element signature="e#64#852#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/room/RoomApi.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/ServiceSOAP.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/ServiceUtilResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/TimePriceNoId.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/common/TimePriceUtilResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/user/UserApi.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/RoomResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/AccommodationResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/bookingagent/data/networking/utilresponse/AddressResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>

@@ -5,7 +5,6 @@ import android.view.View
 import base.BaseViewHolder
 import com.bumptech.glide.Glide
 import com.example.bookingagent.utils.BROKEN_IMAGE
-import com.example.bookingagent.utils.DialogImage
 import kotlinx.android.synthetic.main.item_image.view.ivImage
 
 class ImagesViewHolder(itemView: View) : BaseViewHolder<String>(itemView) {

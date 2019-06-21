@@ -6,8 +6,8 @@ import com.example.bookingagent.data.db.entities.Room
 import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.data.model.Service
 import com.example.bookingagent.data.networking.accommodation.models.AddChangeAccommodationRequest
-import com.example.bookingagent.data.networking.common.FullAccommodation
-import com.example.bookingagent.data.networking.common.RoomUtilResponse
+import com.example.bookingagent.data.networking.utilresponse.AccommodationResponse
+import com.example.bookingagent.data.networking.utilresponse.RoomResponse
 import java.util.GregorianCalendar
 
 fun AddChangeAccommodationRequest.toAccommodationModel(idAcc: Int, idAddress: Int, rating: Float = 0f,
@@ -32,7 +32,7 @@ fun AddChangeAccommodationRequest.toAccommodationModel(idAcc: Int, idAddress: In
 		services = arrayListOf()
 	)
 
-fun FullAccommodation.toAccommodationModel() =
+fun AccommodationResponse.toAccommodationModel() =
 	Accommodation(
 		id = id,
 		name = name,
@@ -62,7 +62,7 @@ fun FullAccommodation.toAccommodationModel() =
 		}
 	)
 
-fun RoomUtilResponse.toRoomsModel() =
+fun RoomResponse.toRoomsModel() =
 	Room(
 		id = id,
 		price = price,

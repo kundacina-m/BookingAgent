@@ -1,10 +1,10 @@
-package com.example.bookingagent.data.networking.common
+package com.example.bookingagent.data.networking.utilresponse
 
 import org.simpleframework.xml.Element
 import org.simpleframework.xml.ElementList
 import java.util.ArrayList
 
-data class RoomUtilResponse(
+data class RoomResponse(
 
 	@field:Element(required = false, name = "id") var id: Int = 0,
 	@field:Element(required = false, name = "brojSobe") var roomNum: Int = 0,

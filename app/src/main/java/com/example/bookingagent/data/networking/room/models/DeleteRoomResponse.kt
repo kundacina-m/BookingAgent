@@ -5,6 +5,6 @@ import org.simpleframework.xml.Namespace
 import org.simpleframework.xml.Root
 
 @Root
-@Namespace(prefix = "ns2", reference = "http://xml/accommodation")
+@Namespace(prefix = "ns2", reference = "http://xml/accommodationResponse")
 @SoapResponse
 class DeleteRoomResponse

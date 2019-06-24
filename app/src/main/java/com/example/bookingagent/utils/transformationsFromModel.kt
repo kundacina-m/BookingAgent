@@ -5,7 +5,7 @@ import com.example.bookingagent.data.db.entities.Room
 import com.example.bookingagent.data.networking.accommodation.models.AddChangeAccommodationRequest
 import com.example.bookingagent.data.networking.room.models.AddChangeRoomRequest
 
-fun Room.toRequest(accId: Int = this.id.toInt()) =
+fun Room.toRequest(accId: Int = this.id) =
 	AddChangeRoomRequest(
 		accId = accId,
 		roomNum = roomNum!!,
@@ -38,5 +38,6 @@ fun Accommodation.toRequest() =
 			}
 			listOfServices
 
-		}
+		},
+		pictures = pictures
 	)

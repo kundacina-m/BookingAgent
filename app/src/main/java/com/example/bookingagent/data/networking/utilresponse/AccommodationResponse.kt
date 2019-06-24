@@ -28,6 +28,8 @@ data class AccommodationResponse(
 	@field:Element(name = "ocena", required = false)
 	var rating: Float? = null,
 	@field:Element(name = "besplatnoOtkazivanje")
-	var cancellingFee: Float = 0f
+	var cancellingFee: Int = 0,
+	@field:ElementList(required = false, inline = true, type = String::class, name = "slika", entry = "slika")
+	var images: ArrayList<String>? = arrayListOf()
 
 )

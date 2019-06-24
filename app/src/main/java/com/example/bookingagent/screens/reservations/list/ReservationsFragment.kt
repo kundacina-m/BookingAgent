@@ -16,7 +16,7 @@ class ReservationsFragment : BaseFragment<ReservationsViewModel, ReservationRout
 	override fun setObservers() {}
 
 	override fun initView() {
-
+		viewModel.getAllReservations()
 		setupRecyclerView()
 
 	}

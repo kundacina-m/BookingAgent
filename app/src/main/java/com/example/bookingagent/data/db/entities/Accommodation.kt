@@ -17,5 +17,6 @@ data class Accommodation(
 	var cancellingFee: Float? = 0f,
 	var rating: Float? = 0f,
 	var category: String? = "",
-	var services: ArrayList<Service> = arrayListOf()
+	var services: ArrayList<Service> = arrayListOf(),
+	var pictures: ArrayList<String> = arrayListOf()
 )

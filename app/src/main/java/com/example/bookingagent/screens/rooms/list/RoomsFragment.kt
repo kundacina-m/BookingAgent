@@ -3,8 +3,11 @@ package com.example.bookingagent.screens.rooms.list
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
@@ -52,7 +55,6 @@ class RoomsFragment : BaseFragment<RoomsViewModel, RoomsRoutes>() {
 
 	private fun actionBarSetup() {
 		setActionBar(toolbar_top, true)
-		actionBar?.title = ""
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -14,19 +14,19 @@ import retrofit2.http.POST
 interface RoomApi {
 
 	@Headers("Content-Type: text/xml;charset=utf-8")
-	@POST("accommodationResponse")
+	@POST("accommodation")
 	fun addRoom(@Body envelopeAddChangeRoomRequest: EnvelopeAddChangeRoomRequest,
 		@HeaderMap headers: Map<String,String> = apiHeaders.map):
 		Single<EnvelopeAddChangeRoomResponse>
 
 	@Headers("Content-Type: text/xml;charset=utf-8")
-	@POST("accommodationResponse")
+	@POST("accommodation")
 	fun editRoom(@Body envelopeAddChangeRoomRequest: EnvelopeAddChangeRoomRequest,
 		@HeaderMap headers: Map<String,String> = apiHeaders.map):
 		Single<EnvelopeAddChangeRoomResponse>
 
 	@Headers("Content-Type: text/xml;charset=utf-8")
-	@POST("accommodationResponse")
+	@POST("accommodation")
 	fun deleteRoom(@Body envelopeDeleteRoomRequest: EnvelopeDeleteRoomRequest,
 		@HeaderMap headers: Map<String,String> = apiHeaders.map):
 		Single<EnvelopeDeleteRoomResponse>

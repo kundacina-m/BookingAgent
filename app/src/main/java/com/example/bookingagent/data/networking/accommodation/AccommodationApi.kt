@@ -14,7 +14,7 @@ import retrofit2.http.POST
 
 interface AccommodationApi {
 
-	@POST("accommodationResponse")
+	@POST("accommodation")
 	fun addAccommodation(@Body envelopeAddChangeAccommodationRequest: EnvelopeAddChangeAccommodationRequest,
 		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeAddChangeAccommodationResponse>
@@ -24,12 +24,12 @@ interface AccommodationApi {
 		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeGetAccommodationResponse>
 
-	@POST("accommodationResponse")
+	@POST("accommodation")
 	fun deleteAccommodation(@Body envelopeDeleteAccommodationRequest: EnvelopeDeleteAccommodationRequest,
 		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeDeleteAccommodationResponse>
 
-	@POST("accommodationResponse")
+	@POST("accommodation")
 	fun editAccommodation(@Body envelopeAddChangeAccommodationRequest: EnvelopeAddChangeAccommodationRequest,
 		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeAddChangeAccommodationResponse>

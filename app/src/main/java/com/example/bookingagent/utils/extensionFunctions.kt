@@ -25,7 +25,7 @@ fun <T> Flowable<T>.toSealed(): Flowable<WrappedResponse<T>> {
 
 	return this.map<WrappedResponse<T>> { OnSuccess(it) }
 		.onErrorReturn {
-			OnError(UnknownError(it))
+			OnError(RequestErrorParser.parse(exception = it))
 		}
 }
 
@@ -43,7 +43,7 @@ fun <T> Observable<T>.toSealed(): Observable<WrappedResponse<T>> {
 
 	return this.map<WrappedResponse<T>> { OnSuccess(it) }
 		.onErrorReturn {
-			OnError(UnknownError(it))
+			OnError(RequestErrorParser.parse(exception = it))
 		}
 }
 

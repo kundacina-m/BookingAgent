@@ -1,8 +1,9 @@
 package com.example.bookingagent.utils
 
 import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.model.Address
 import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.model.Address
+import com.example.bookingagent.data.model.OccupiedTime
 import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.data.model.Service
 import com.example.bookingagent.data.networking.accommodation.models.AddChangeAccommodationRequest
@@ -48,7 +49,7 @@ fun AccommodationResponse.toAccommodationModel() =
 		),
 		type = type,
 		rating = if (rating == null) 0f else rating,
-		cancellingFee = cancellingFee,
+		cancellingFee = cancellingFee.toFloat(),
 		category = if (category == null) "" else category,
 		services = this.services.run {
 			val listOfServices = arrayListOf<Service>()
@@ -69,7 +70,16 @@ fun RoomResponse.toRoomsModel() =
 		floor = floor,
 		roomNum = roomNum,
 		bedNums = bedsNum,
-		availability = isAvaiability,
+		occupied = occupied.run {
+			val listOfOccupation = arrayListOf<OccupiedTime>()
+			this?.forEach { time ->
+				time.split("~").also { splitted ->
+					listOfOccupation.add(
+						OccupiedTime(GregorianCalendar(), GregorianCalendar()))
+				}
+			}
+			listOfOccupation
+		},
 		images = images,
 		comments = comments,
 		schedule = timePrice.run {

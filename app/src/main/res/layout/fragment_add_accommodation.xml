@@ -108,7 +108,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginEnd="8dp"
 				android:layout_marginStart="8dp"
-				android:layout_marginTop="10dp"
+				android:layout_marginTop="8dp"
 				android:text="@string/label_location_accommodation"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +129,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="16dp"
-				android:layout_marginTop="24dp"
+				android:layout_marginTop="18dp"
 				android:text="@string/label_latitude_accommodation"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/tvLocation"/>
@@ -277,6 +277,25 @@
 				app:layout_constraintBottom_toBottomOf="@+id/tvLabelCancellingFee"
 				app:layout_constraintStart_toEndOf="@+id/tvLabelCancellingFee"
 				app:layout_constraintTop_toTopOf="@+id/tvLabelCancellingFee"/>
+
+			<Button
+				android:id="@+id/btAddImage"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:text="Add image"
+				app:layout_constraintStart_toStartOf="@+id/btAddService"
+				app:layout_constraintTop_toBottomOf="@+id/btAddService"/>
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvImages"
+				android:layout_width="135dp"
+				android:layout_height="82dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginTop="8dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="@+id/btAddImage"
+				app:layout_constraintTop_toBottomOf="@+id/btAddImage"/>
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</ScrollView>

@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.example.bookingagent.Routes
 import com.example.bookingagent.di.routes.IRoutesFactory
 import com.example.bookingagent.di.viewmodel.IViewModelFactory
@@ -71,8 +73,10 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 	protected fun setActionBar(toolbar: Toolbar, up: Boolean = false) {
 		(activity as AppCompatActivity).setSupportActionBar(toolbar)
 		val supportActionBar = (activity as AppCompatActivity).supportActionBar
-		supportActionBar?.setDisplayHomeAsUpEnabled(up)
 		actionBar = supportActionBar
+		Navigation.findNavController(activity!!, com.example.bookingagent.R.id.nav_host_fragment).run {
+			NavigationUI.setupActionBarWithNavController(activity!! as AppCompatActivity,this)
+		}
 	}
 
 	protected fun setActionBarTitle(title: String) {

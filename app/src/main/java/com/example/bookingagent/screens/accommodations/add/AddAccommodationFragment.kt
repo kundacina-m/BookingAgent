@@ -40,7 +40,7 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 		viewModel.addingAccommodation.observe(this, Observer {
 			when (it) {
 				is OnSuccess -> navigation.navigateToAccommodations()
-				is OnError -> Log.d(TAG, "initView: OnError" + (it.error as RequestError.UnknownError).t.message)
+				is OnError -> Log.d(TAG, "initView: OnError")
 			}
 		})
 	}
@@ -106,7 +106,8 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 				num = etNum.text.toString().toInt()
 			),
 			category = "",
-			rating = 0f
+			rating = 0f,
+			pictures = arrayListOf()
 		)
 
 	private fun addService(name: String, desc: String, price: Float) {

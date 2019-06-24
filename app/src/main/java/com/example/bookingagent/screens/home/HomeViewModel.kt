@@ -22,24 +22,24 @@ class HomeViewModel @Inject constructor(
 
 	val syncingStatus = MutableLiveData<Boolean>()
 
-	fun getAccommodations() {
+	fun getAccommodations() =
 		disposables.add(
 			accommodationRepository.getAccommodations()
 				.subscribeOn(Schedulers.io())
 				.subscribeBy {
 					when (it) {
 						is OnSuccess -> mapResponseToModel(it.item)
-						is OnError -> syncingStatus.postValue(false)
+						is OnError -> {
+							syncingStatus.postValue(false)
+							Log.d("GRESA", "getAccommodations: ${it.error}")
+						}
 					}
 				})
-	}
 
-	private fun mapResponseToModel(response: EnvelopeGetAccommodationResponse) {
+	private fun mapResponseToModel(response: EnvelopeGetAccommodationResponse) =
 		response.body.body.accommodationResponse?.forEach { accommodationResponse ->
 			addAccommodationToDB(accommodationResponse)
 		}
-
-	}
 
 	private fun addAccommodationToDB(accommodationResponseResponse: AccommodationResponse) =
 		disposables.add(

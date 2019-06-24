@@ -8,7 +8,7 @@ import org.simpleframework.xml.Root
 import java.util.ArrayList
 
 @Root(strict = false)
-@Namespace(prefix = "ns4", reference = "http://xml/accommodationResponse")
+@Namespace(prefix = "ns4", reference = "http://xml/accommodation")
 @SoapResponse
 data class GetAccommodationResponse(
 

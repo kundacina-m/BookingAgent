@@ -11,7 +11,13 @@ data class RoomResponse(
 	@field:Element(required = false, name = "sprat") var floor: Int = 0,
 	@field:Element(required = false, name = "brojKreveta") var bedsNum: Int = 0,
 	@field:Element(required = false, name = "cena") var price: Float = 0f,
-	@field:Element(required = false, name = "dostupnost") var isAvaiability: Boolean? = null,
+	@field:ElementList(
+		required = false,
+		inline = true,
+		type = String::class,
+		name = "dostupnost",
+		entry = "dostupnost"
+	) var occupied: ArrayList<String>? = null,
 	@field:ElementList(
 		required = false,
 		inline = true,

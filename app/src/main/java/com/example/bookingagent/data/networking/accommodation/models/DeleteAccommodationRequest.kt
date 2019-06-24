@@ -6,7 +6,7 @@ import org.simpleframework.xml.Namespace
 import org.simpleframework.xml.Root
 
 @Root
-@Namespace(prefix = "acc", reference = "http://xml/accommodationResponse")
+@Namespace(prefix = "acc", reference = "http://xml/accommodation")
 @SoapRequest
 data class DeleteAccommodationRequest(
 	@field:Element(name = "acc:id") val id: Int?

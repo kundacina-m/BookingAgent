@@ -8,9 +8,11 @@ import com.example.bookingagent.data.db.dao.AccommodationDao
 import com.example.bookingagent.data.db.dao.RoomDao
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
+import com.example.bookingagent.data.networking.reservation.ReservationApi
 import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.repository.AccommodationRepository
+import com.example.bookingagent.data.repository.ReservationRespository
 import com.example.bookingagent.data.repository.RoomRepository
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
@@ -62,6 +64,16 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideReservationApi(): ReservationApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(ReservationApi::class.java)
+
+	@Singleton
+	@Provides
 	fun provideDb(appContext: Context): AppDatabase =
 		AppDatabase.getInstance(appContext)
 
@@ -100,4 +112,8 @@ class AppModule {
 	fun providesRoomRepository(roomApi: RoomApi, roomDao: RoomDao, accRoomDao: AccRoomDao) =
 		RoomRepository(roomApi, roomDao, accRoomDao)
 
+	@Singleton
+	@Provides
+	fun providesReservationRepository(reservationApi: ReservationApi) =
+		ReservationRespository(reservationApi)
 }

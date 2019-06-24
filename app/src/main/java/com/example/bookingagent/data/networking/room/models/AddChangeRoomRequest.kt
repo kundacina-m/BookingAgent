@@ -8,7 +8,7 @@ import org.simpleframework.xml.Root
 import java.util.ArrayList
 
 @Root
-@Namespace(prefix = "acc", reference = "http://xml/accommodationResponse")
+@Namespace(prefix = "acc", reference = "http://xml/accommodation")
 @SoapRequest
 data class AddChangeRoomRequest(
 	@field:Element(required = false, name = "acc:accommodationId") var accId: Int = 0,

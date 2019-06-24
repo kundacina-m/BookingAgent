@@ -136,7 +136,7 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 			floor = etFloor.asString()?.toIntOrNull(),
 			bedNums = etBedNums.asString()?.toIntOrNull(),
 			price = etPrice.asString()?.toFloatOrNull(),
-			availability = true,
+			occupied = arrayListOf(),
 			comments = arrayListOf(),
 			images = ArrayList(imagesAdapter.getData()),
 			schedule = ArrayList(scheduleAdapter.getData())

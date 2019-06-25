@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.accommodations.details
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
-import com.example.bookingagent.data.db.entities.Accommodation
+import com.example.bookingagent.data.db.entities.AccommodationEntity
 import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.WrappedResponse.OnError
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class AccommodationDetailsViewModel @Inject constructor(private val accommodationRepository: AccommodationRepository) :
 	BaseViewModel() {
 
-	val accommodation = MutableLiveData<WrappedResponse<Accommodation>>()
+	val accommodation = MutableLiveData<WrappedResponse<AccommodationEntity>>()
 	val deletingStatus = MutableLiveData<WrappedResponse<Boolean>>()
 
 	fun deleteAccommodation(id: Int) =

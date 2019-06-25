@@ -6,14 +6,15 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.model.ScheduleUnit
-import com.example.bookingagent.screens.rooms.DialogAddSchedule
+import com.example.bookingagent.screens.rooms.AddScheduleDialog
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
 import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
@@ -67,7 +68,7 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 		}
 
 	override fun initView() {
-		actionBarSetup()
+		setActionBar(toolbar_top, true)
 		setRecyclerView()
 		populateViewWithData()
 		setOnClickListeners()
@@ -86,7 +87,7 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 	}
 
 	private fun populateViewWithData() =
-		with(args.room) {
+		with(args.roomEntity) {
 			etNumber.setText(roomNum.toString())
 			etFloor.setText(floor.toString())
 			etBedNums.setText(bedNums.toString())
@@ -94,11 +95,6 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 			viewModel.images.postValue(images)
 			viewModel.schedule.postValue(schedule)
 		}
-
-	private fun actionBarSetup() {
-		setActionBar(toolbar_top, true)
-		actionBar?.title = ""
-	}
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 		menu.clear()
@@ -109,7 +105,7 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 
 	private fun setOnMenuItemClickListener(menu: Menu) {
 		menu.findItem(R.id.confirmAction).setOnMenuItemClickListener {
-			viewModel.editRoom(createRoom())
+			checkIfAllFilled()
 			true
 		}
 	}
@@ -120,7 +116,7 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 		}
 
 		btAddSchedule.setOnClickListener {
-			DialogAddSchedule.build(context!!) {
+			AddScheduleDialog.build(context!!) {
 				confirmedTag = this@EditRoomFragment::addSchedule
 			}.show()
 
@@ -130,12 +126,12 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 	}
 
 	private fun createRoom() =
-		Room(
-			id = args.room.id,
-			roomNum = etNumber.asString()?.toIntOrNull(),
-			floor = etFloor.asString()?.toIntOrNull(),
-			bedNums = etBedNums.asString()?.toIntOrNull(),
-			price = etPrice.asString()?.toFloatOrNull(),
+		RoomEntity(
+			id = args.roomEntity.id,
+			roomNum = etNumber.asString().toIntOrNull(),
+			floor = etFloor.asString().toIntOrNull(),
+			bedNums = etBedNums.asString().toIntOrNull(),
+			price = etPrice.asString().toFloatOrNull(),
 			occupied = arrayListOf(),
 			comments = arrayListOf(),
 			images = ArrayList(imagesAdapter.getData()),
@@ -173,5 +169,20 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
 				}
 		}
 	}
+
+	private fun checkIfAllFilled() {
+		when {
+			imagesAdapter.getData().isEmpty() -> showToast("You need to add at least one image!")
+			etNumber.asString().isEmpty() -> showToast("You must enter room number!")
+			etFloor.asString().isEmpty() -> showToast("You must enter floor number!")
+			etBedNums.asString().isEmpty() -> showToast("You must enter beds number!")
+			etPrice.asString().isEmpty() -> showToast("You must enter price!")
+			else -> viewModel.editRoom(createRoom())
+
+		}
+	}
+
+	private fun showToast(message: String) =
+		Toast.makeText(activity!!, message, Toast.LENGTH_SHORT).show()
 
 }

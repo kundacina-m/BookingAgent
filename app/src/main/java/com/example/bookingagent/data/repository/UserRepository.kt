@@ -1,7 +1,7 @@
 package com.example.bookingagent.data.repository
 
 import com.example.bookingagent.data.db.dao.UserDao
-import com.example.bookingagent.data.db.entities.User
+import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
@@ -13,14 +13,14 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val userDao: UserDao, private val userApi: UserApi) {
 
-	fun addUser(user: User) =
-		Single.just(userDao.addUser(user))
+	fun addUser(userEntity: UserEntity) =
+		Single.just(userDao.addUser(userEntity))
 
 	fun getUser(username: String) =
 		userDao.getUser(username).subscribeOn(Schedulers.io())
 
-	fun removeUser(user: User) {
-		userDao.deleteUser(user)
+	fun removeUser(userEntity: UserEntity) {
+		userDao.deleteUser(userEntity)
 	}
 
 	fun loginUser(loginRequest: EnvelopeLoginRequest): Single<WrappedResponse<EnvelopeLoginResponse>> =

@@ -1,7 +1,7 @@
 package com.example.bookingagent.utils
 
-import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.AccommodationEntity
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.model.Address
 import com.example.bookingagent.data.model.OccupiedTime
 import com.example.bookingagent.data.model.ScheduleUnit
@@ -13,7 +13,7 @@ import java.util.GregorianCalendar
 
 fun AddChangeAccommodationRequest.toAccommodationModel(idAcc: Int, idAddress: Int, rating: Float = 0f,
 	category: String = "") =
-	Accommodation(
+	AccommodationEntity(
 		id = idAcc,
 		name = name,
 		description = description,
@@ -34,7 +34,7 @@ fun AddChangeAccommodationRequest.toAccommodationModel(idAcc: Int, idAddress: In
 	)
 
 fun AccommodationResponse.toAccommodationModel() =
-	Accommodation(
+	AccommodationEntity(
 		id = id,
 		name = name,
 		description = desc,
@@ -60,11 +60,12 @@ fun AccommodationResponse.toAccommodationModel() =
 				}
 			}
 			listOfServices
-		}
+		},
+		pictures = images!!
 	)
 
 fun RoomResponse.toRoomsModel() =
-	Room(
+	RoomEntity(
 		id = id,
 		price = price,
 		floor = floor,
@@ -95,9 +96,9 @@ fun RoomResponse.toRoomsModel() =
 		}
 	)
 
-fun Accommodation.addId(accId: Int) =
-	Accommodation(accId, name, description, address, type, cancellingFee, rating, category, services)
-
+fun AccommodationEntity.addId(accId: Int) =
+	AccommodationEntity(accId, name, description, address, type, cancellingFee, cancellingDays, rating, category,
+		services, pictures)
 
 
 

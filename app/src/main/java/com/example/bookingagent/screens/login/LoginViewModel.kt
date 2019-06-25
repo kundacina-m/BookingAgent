@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.login
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
-import com.example.bookingagent.data.db.entities.User
+import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
 import com.example.bookingagent.data.networking.user.models.LoginRequest
@@ -19,10 +19,10 @@ class LoginViewModel @Inject constructor(val repository: UserRepository) : BaseV
 	val identityVerification = MutableLiveData<Boolean>()
 	val loginResponse = MutableLiveData<WrappedResponse<EnvelopeLoginResponse>>()
 
-	fun checkIfUserExists(user: User) {
-		disposables.add(repository.getUser(user.username)
+	fun checkIfUserExists(userEntity: UserEntity) {
+		disposables.add(repository.getUser(userEntity.username)
 			.subscribeBy {
-				if (it.password == user.password)
+				if (it.password == userEntity.password)
 					identityVerification.postValue(true)
 				else identityVerification.postValue(false)
 			})

@@ -3,7 +3,7 @@ package com.example.bookingagent.data.repository
 import com.example.bookingagent.data.db.dao.AccRoomDao
 import com.example.bookingagent.data.db.dao.RoomDao
 import com.example.bookingagent.data.db.entities.AccRoom
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.room.models.DeleteRoomRequest
 import com.example.bookingagent.data.networking.room.models.EnvelopeAddChangeRoomRequest
@@ -22,11 +22,11 @@ class RoomRepository @Inject constructor(
 
 	// region NETWORK
 
-	fun addRoom(accId: Int, room: Room) =
-		roomApi.addRoom(EnvelopeAddChangeRoomRequest(room.toRequest(accId))).toSealed()
+	fun addRoom(accId: Int, roomEntity: RoomEntity) =
+		roomApi.addRoom(EnvelopeAddChangeRoomRequest(roomEntity.toRequest(accId))).toSealed()
 
-	fun editRoom(room: Room) =
-		roomApi.editRoom(EnvelopeAddChangeRoomRequest(room.toRequest())).toSealed()
+	fun editRoom(roomEntity: RoomEntity) =
+		roomApi.editRoom(EnvelopeAddChangeRoomRequest(roomEntity.toRequest())).toSealed()
 
 	fun deleteRoom(id: Int) =
 		roomApi.deleteRoom(EnvelopeDeleteRoomRequest(DeleteRoomRequest(id = id.toInt()))).toSealed()
@@ -35,8 +35,8 @@ class RoomRepository @Inject constructor(
 
 	// region DB
 
-	fun addRoomToDB(room: Room) =
-		Single.just(roomDao.addRoom(room)).toSealed()
+	fun addRoomToDB(roomEntity: RoomEntity) =
+		Single.just(roomDao.addRoom(roomEntity)).toSealed()
 
 	fun getAllRoomsByAccId(accId: Int) =
 		accRoomDao.getRoomsByAccId(accId).toSealed()
@@ -53,8 +53,8 @@ class RoomRepository @Inject constructor(
 	fun deleteRoomFromDB(id: Int) =
 		Single.just(roomDao.deleteRoom(id)).toSealed()
 
-	fun updateRoomInDB(room: Room) =
-		Single.just(roomDao.updateRoom(room)).toSealed()
+	fun updateRoomInDB(roomEntity: RoomEntity) =
+		Single.just(roomDao.updateRoom(roomEntity)).toSealed()
 
 	// endregion DB
 }

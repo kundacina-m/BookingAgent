@@ -30,7 +30,7 @@
 	<fragment
 		android:id="@+id/accommodationsFragment"
 		android:name="com.example.bookingagent.screens.accommodations.list.AccommodationsFragment"
-		android:label="AccommodationsFragment"
+		android:label="Accommodations"
 		tools:layout="@layout/fragment_accommodation">
 		<action
 			android:id="@+id/action_accommodationsFragment_to_addAccommodationFragment"
@@ -42,7 +42,7 @@
 	<fragment
 		android:id="@+id/addAccommodationFragment"
 		android:name="com.example.bookingagent.screens.accommodations.add.AddAccommodationFragment"
-		android:label="AddAccommodationFragment"
+		android:label="Add accommodation"
 		tools:layout="@layout/fragment_add_accommodation"/>
 	<fragment
 		android:id="@+id/messagesFragment"
@@ -66,7 +66,7 @@
 	<fragment
 		android:id="@+id/accommodationDetailsFragment"
 		android:name="com.example.bookingagent.screens.accommodations.details.AccommodationDetailsFragment"
-		android:label="AccommodationDetailsFragment"
+		android:label="Accommodation Details"
 		tools:layout="@layout/fragment_accommodation_details">
 		<argument
 			android:name="id"
@@ -82,7 +82,7 @@
 	<fragment
 		android:id="@+id/accommodationEditFragment"
 		android:name="com.example.bookingagent.screens.accommodations.edit.EditAccommodationFragment"
-		android:label="fragment_accommodation_edit"
+		android:label="Edit accommodation"
 		tools:layout="@layout/fragment_edit_accommodation">
 		<argument
 			android:name="id"
@@ -111,11 +111,14 @@
 		<argument
 			android:name="services"
 			app:argType="com.example.bookingagent.data.model.Service[]"/>
+		<argument
+			android:name="cancellingDays"
+			app:argType="integer"/>
 	</fragment>
 	<fragment
 		android:id="@+id/addRoomFragment"
 		android:name="com.example.bookingagent.screens.rooms.add.AddRoomFragment"
-		android:label="fragment_add_room"
+		android:label="Add room"
 		tools:layout="@layout/fragment_add_room">
 		<argument
 			android:name="accId"
@@ -125,7 +128,7 @@
 	<fragment
 		android:id="@+id/roomsFragment"
 		android:name="com.example.bookingagent.screens.rooms.list.RoomsFragment"
-		android:label="fragment_rooms"
+		android:label="Rooms"
 		tools:layout="@layout/fragment_rooms">
 		<action
 			android:id="@+id/action_roomsFragment_to_addRoomFragment"
@@ -142,7 +145,7 @@
 	<fragment
 		android:id="@+id/roomDetailsFragment"
 		android:name="com.example.bookingagent.screens.rooms.details.RoomDetailsFragment"
-		android:label="fragment_room_details"
+		android:label="Room details"
 		tools:layout="@layout/fragment_room_details">
 		<action
 			android:id="@+id/action_roomDetailsFragment_to_editRoomFragment"
@@ -157,11 +160,11 @@
 	<fragment
 		android:id="@+id/editRoomFragment"
 		android:name="com.example.bookingagent.screens.rooms.edit.EditRoomFragment"
-		android:label="fragment_edit_room"
+		android:label="Edit room"
 		tools:layout="@layout/fragment_edit_room">
 		<argument
-			android:name="room"
-			app:argType="com.example.bookingagent.data.db.entities.Room"/>
+			android:name="roomEntity"
+			app:argType="com.example.bookingagent.data.db.entities.RoomEntity"/>
 	</fragment>
 	<fragment
 		android:id="@+id/reservationDetailsFragment"

@@ -7,16 +7,19 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.bookingagent.data.db.dao.AccRoomDao
 import com.example.bookingagent.data.db.dao.AccommodationDao
+import com.example.bookingagent.data.db.dao.ReservationDao
 import com.example.bookingagent.data.db.dao.RoomDao
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.db.entities.AccRoom
-import com.example.bookingagent.data.db.entities.Accommodation
-import com.example.bookingagent.data.db.entities.User
+import com.example.bookingagent.data.db.entities.AccommodationEntity
+import com.example.bookingagent.data.db.entities.ReservationEntity
+import com.example.bookingagent.data.db.entities.RoomEntity
+import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.data.db.utils.Converters
 
 @TypeConverters(Converters::class)
-@Database(entities = [User::class, Accommodation::class, AccRoom::class, com.example
-	.bookingagent.data.db.entities.Room::class], version
+@Database(entities = [UserEntity::class, AccommodationEntity::class, AccRoom::class, RoomEntity::class,
+	ReservationEntity::class], version
 = 1)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -24,6 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
 	abstract fun accommodationDao(): AccommodationDao
 	abstract fun accRoomDao(): AccRoomDao
 	abstract fun roomDao(): RoomDao
+	abstract fun reservationDao(): ReservationDao
 
 	companion object {
 		private var INSTANCE: AppDatabase? = null

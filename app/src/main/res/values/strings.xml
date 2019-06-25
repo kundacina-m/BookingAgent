@@ -28,7 +28,7 @@
 	<string name="navbar_label_reservations">Reservations</string>
 	<string name="navbar_label_home">Home</string>
 	<string name="navbar_label_messages">Messages</string>
-	<string name="navbar_label_add_accommodation">Add accommodation</string>
+	<string name="navbar_label_add_accommodation">Add accommodationEntity</string>
 
 
 	<string-array name="accommodation_categories">
@@ -57,6 +57,6 @@
 	<string name="label_street_accommodation">Street:</string>
 	<string name="label_number_accommodation">Number:</string>
 	<string name="button_submit_change">Submit change</string>
-	<string name="button_add_accommodation">Add accommodation</string>
+	<string name="button_add_accommodation">Add accommodationEntity</string>
 
 </resources>

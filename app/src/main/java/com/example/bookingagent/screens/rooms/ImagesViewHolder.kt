@@ -4,21 +4,29 @@ import android.util.Base64
 import android.view.View
 import base.BaseViewHolder
 import com.bumptech.glide.Glide
-import com.example.bookingagent.utils.BROKEN_IMAGE
+import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_image.view.ivImage
 
 class ImagesViewHolder(itemView: View) : BaseViewHolder<String>(itemView) {
 	override fun bind(dataItem: String) {
-//		val imageByteArray = Base64.decode(dataItem.src, Base64.DEFAULT)
-		val imageByteArray = Base64.decode(BROKEN_IMAGE, Base64.DEFAULT)
+		val imageByteArray = Base64.decode(dataItem, Base64.DEFAULT)
+
+		val options = RequestOptions()
+			.centerCrop()
+			.diskCacheStrategy(DiskCacheStrategy.ALL)
+			.priority(Priority.HIGH)
+
 		Glide.with(itemView.context)
 			.asBitmap()
 			.load(imageByteArray)
+			.apply(options)
 			.into(itemView.ivImage)
 
 		itemView.ivImage.setOnClickListener {
-			DialogImage.build(itemView.context) {
-				base64 = BROKEN_IMAGE
+			ImageDialog.build(itemView.context) {
+				base64 = dataItem
 			}.show()
 		}
 	}

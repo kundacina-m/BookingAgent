@@ -59,7 +59,7 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
 		if (password.length >= 0) {
 			val username = etUsername.text.toString()
-			//			viewModel.checkIfUserExists(User(username, password))
+			//			viewModel.checkIfUserExists(UserEntity(username, password))
 			viewModel.loginUserOnBackend(username, password)
 		}
 	}

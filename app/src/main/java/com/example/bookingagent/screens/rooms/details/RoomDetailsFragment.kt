@@ -8,7 +8,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
 import com.example.bookingagent.utils.WrappedResponse.OnError
@@ -25,7 +25,7 @@ class RoomDetailsFragment : BaseFragment<RoomDetailsViewModel, RoomDetailsRoutes
 
 	private val imagesAdapter by lazy { ImagesAdapter() }
 	private val scheduleAdapter by lazy { ScheduleAdapter() }
-	private lateinit var room: Room
+	private lateinit var roomEntity: RoomEntity
 
 	private val args: RoomDetailsFragmentArgs by navArgs()
 
@@ -57,20 +57,19 @@ class RoomDetailsFragment : BaseFragment<RoomDetailsViewModel, RoomDetailsRoutes
 		}
 	}
 
-	private fun onDetailsFetched(room: Room) {
-		this.room = room
-		populateViewWithData(room)
+	private fun onDetailsFetched(roomEntity: RoomEntity) {
+		this.roomEntity = roomEntity
+		populateViewWithData(roomEntity)
 	}
 
 	override fun initView() {
-		actionBarSetup()
+		setActionBar(toolbar_top, true)
 		setupRecyclerViews()
 		fetchRoomDetails()
 	}
 
-	private fun fetchRoomDetails() {
+	private fun fetchRoomDetails() =
 		viewModel.getRoomById(args.roomId)
-	}
 
 	private fun setupRecyclerViews() {
 		rvImages.apply {
@@ -84,22 +83,15 @@ class RoomDetailsFragment : BaseFragment<RoomDetailsViewModel, RoomDetailsRoutes
 		}
 	}
 
-	private fun populateViewWithData(room: Room) {
-		with(room) {
+	private fun populateViewWithData(roomEntity: RoomEntity) =
+		with(roomEntity) {
 			tvNumber.text = roomNum.toString()
 			tvFloor.text = floor.toString()
 			tvPrice.text = price.toString()
 			tvBedsNum.text = bedNums.toString()
-			imagesAdapter.setData(images!!)
-			scheduleAdapter.setData(schedule!!)
+			images?.run { imagesAdapter.setData(this) }
+			schedule?.run { scheduleAdapter.setData(this) }
 		}
-
-	}
-
-	private fun actionBarSetup() {
-		setActionBar(toolbar_top, true)
-		actionBar?.title = ""
-	}
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 		menu.clear()
@@ -111,12 +103,12 @@ class RoomDetailsFragment : BaseFragment<RoomDetailsViewModel, RoomDetailsRoutes
 	private fun setOnMenuItemClickListener(menu: Menu) {
 
 		menu.findItem(R.id.editRoom).setOnMenuItemClickListener {
-			navigation.navigateToEdit(room)
+			navigation.navigateToEdit(roomEntity)
 			true
 		}
 
 		menu.findItem(R.id.deleteRoom).setOnMenuItemClickListener {
-			viewModel.deleteRoom(room.id)
+			viewModel.deleteRoom(roomEntity.id)
 			true
 		}
 	}

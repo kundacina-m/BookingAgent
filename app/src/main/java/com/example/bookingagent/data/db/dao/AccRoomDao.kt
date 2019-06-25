@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.bookingagent.data.db.entities.AccRoom
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import io.reactivex.Single
 
 @Dao
@@ -18,10 +18,10 @@ interface AccRoomDao {
 	fun getRoomIdsByAccId(accId: Int): Single<List<Int>>
 
 	@Query("""
-		 SELECT * from Room room 
-		 left join AccRoom accRoom on room.id = accRoom.roomId 
+		 SELECT * from RoomEntity roomEntity 
+		 left join AccRoom accRoom on roomEntity.id = accRoom.roomId 
 		 where accRoom.accId == :accId
 		""")
-	fun getRoomsByAccId(accId: Int): Single<List<Room>>
+	fun getRoomsByAccId(accId: Int): Single<List<RoomEntity>>
 
 }

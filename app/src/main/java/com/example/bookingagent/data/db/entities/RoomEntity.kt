@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity
-data class Room(
+data class RoomEntity(
 
 	@PrimaryKey
 	val id: Int,

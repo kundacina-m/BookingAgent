@@ -5,6 +5,7 @@ import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
 import com.example.bookingagent.data.db.dao.AccRoomDao
 import com.example.bookingagent.data.db.dao.AccommodationDao
+import com.example.bookingagent.data.db.dao.ReservationDao
 import com.example.bookingagent.data.db.dao.RoomDao
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
@@ -12,7 +13,7 @@ import com.example.bookingagent.data.networking.reservation.ReservationApi
 import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.user.UserApi
 import com.example.bookingagent.data.repository.AccommodationRepository
-import com.example.bookingagent.data.repository.ReservationRespository
+import com.example.bookingagent.data.repository.ReservationRepository
 import com.example.bookingagent.data.repository.RoomRepository
 import com.example.bookingagent.data.repository.UserRepository
 import com.example.bookingagent.di.viewmodel.ViewModelModule
@@ -97,6 +98,10 @@ class AppModule {
 	fun provideRoomDao(db: AppDatabase): RoomDao =
 		db.roomDao()
 
+	@Provides
+	fun provideReservationDao(db: AppDatabase): ReservationDao =
+		db.reservationDao()
+
 	@Singleton
 	@Provides
 	fun providesUserRepository(userDao: UserDao, userApi: UserApi) =
@@ -114,6 +119,6 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun providesReservationRepository(reservationApi: ReservationApi) =
-		ReservationRespository(reservationApi)
+	fun providesReservationRepository(reservationApi: ReservationApi, reservationDao: ReservationDao) =
+		ReservationRepository(reservationApi, reservationDao)
 }

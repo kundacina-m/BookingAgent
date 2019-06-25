@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import base.BaseAdapter
 import com.example.bookingagent.R.layout
-import com.example.bookingagent.data.db.entities.Accommodation
+import com.example.bookingagent.data.db.entities.AccommodationEntity
 
-class AccommodationsAdapter : BaseAdapter<Accommodation>() {
+class AccommodationsAdapter : BaseAdapter<AccommodationEntity>() {
 
-	lateinit var onItemClickListener: (Accommodation) -> Unit
+	lateinit var onItemClickListener: (AccommodationEntity) -> Unit
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
 		AccommodationsViewHolder(

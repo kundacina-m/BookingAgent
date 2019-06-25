@@ -8,13 +8,13 @@ import androidx.room.ForeignKey.CASCADE
 	primaryKeys = ["accId", "roomId"],
 	foreignKeys = [
 		ForeignKey(
-			entity = Accommodation::class,
+			entity = AccommodationEntity::class,
 			parentColumns = arrayOf("id"),
 			childColumns = arrayOf("accId"),
 			onDelete = CASCADE
 		),
 		ForeignKey(
-			entity = Room::class,
+			entity = RoomEntity::class,
 			parentColumns = arrayOf("id"),
 			childColumns = arrayOf("roomId"),
 			onDelete = CASCADE

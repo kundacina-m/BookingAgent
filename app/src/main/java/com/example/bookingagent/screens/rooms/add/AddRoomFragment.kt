@@ -6,14 +6,15 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.model.ScheduleUnit
-import com.example.bookingagent.screens.rooms.DialogAddSchedule
+import com.example.bookingagent.screens.rooms.AddScheduleDialog
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.screens.rooms.ScheduleAdapter
 import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
@@ -24,7 +25,6 @@ import com.example.bookingagent.utils.toBase64
 import kotlinx.android.synthetic.main.fragment_add_room.addRoomContainer
 import kotlinx.android.synthetic.main.fragment_add_room.btAddImage
 import kotlinx.android.synthetic.main.fragment_add_room.btAddSchedule
-import kotlinx.android.synthetic.main.fragment_add_room.btSubmit
 import kotlinx.android.synthetic.main.fragment_add_room.etBedNums
 import kotlinx.android.synthetic.main.fragment_add_room.etFloor
 import kotlinx.android.synthetic.main.fragment_add_room.etNumber
@@ -64,7 +64,7 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 		}
 
 	override fun initView() {
-		actionBarSetup()
+		setActionBar(toolbar_top, true)
 		setOnClickListeners()
 
 		setRecyclerView()
@@ -88,21 +88,12 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 		}
 
 		btAddSchedule.setOnClickListener {
-			DialogAddSchedule.build(context!!) {
+			AddScheduleDialog.build(context!!) {
 				confirmedTag = this@AddRoomFragment::addSchedule
 			}.show()
 
 			addRoomContainer.clearFocus()
 		}
-
-		btSubmit.setOnClickListener {
-			viewModel.addRoom(args.accId, createRoom())
-		}
-	}
-
-	private fun actionBarSetup() {
-		setActionBar(toolbar_top, true)
-		actionBar?.title = ""
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -114,16 +105,17 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 
 	private fun setOnMenuItemClickListener(menu: Menu) =
 		menu.findItem(R.id.confirmAction).setOnMenuItemClickListener {
+			checkIfAllFilled()
 			true
 		}
 
 	private fun createRoom() =
-		Room(
+		RoomEntity(
 			id = Random.nextInt(),
-			roomNum = etNumber.asString()?.toIntOrNull(),
-			floor = etFloor.asString()?.toIntOrNull(),
-			bedNums = etBedNums.asString()?.toIntOrNull(),
-			price = etPrice.asString()?.toFloatOrNull(),
+			roomNum = etNumber.asString().toIntOrNull(),
+			floor = etFloor.asString().toIntOrNull(),
+			bedNums = etBedNums.asString().toIntOrNull(),
+			price = etPrice.asString().toFloatOrNull(),
 			occupied = arrayListOf(),
 			comments = arrayListOf(),
 			images = ArrayList(imagesAdapter.getData()),
@@ -161,4 +153,18 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 				}
 		}
 	}
+
+	private fun checkIfAllFilled() {
+		when {
+			imagesAdapter.getData().isEmpty() -> showToast("You need to add at least one image!")
+			etNumber.asString().isEmpty() -> showToast("You must enter room number!")
+			etFloor.asString().isEmpty() -> showToast("You must enter floor number!")
+			etBedNums.asString().isEmpty() -> showToast("You must enter beds number!")
+			etPrice.asString().isEmpty() -> showToast("You must enter price!")
+			else -> viewModel.addRoom(args.accId, createRoom())
+		}
+	}
+
+	private fun showToast(message: String) =
+		Toast.makeText(activity!!, message, Toast.LENGTH_SHORT).show()
 }

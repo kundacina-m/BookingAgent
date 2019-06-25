@@ -5,21 +5,21 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import io.reactivex.Single
 
 @Dao
 interface RoomDao {
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun addRoom(room: Room): Long
+	fun addRoom(roomEntity: RoomEntity): Long
 
-	@Query("SELECT * from Room where id == :id")
-	fun getRoomById(id: Int): Single<Room>
+	@Query("SELECT * from RoomEntity where id == :id")
+	fun getRoomById(id: Int): Single<RoomEntity>
 
-	@Query("DELETE from Room where id == :id")
+	@Query("DELETE from RoomEntity where id == :id")
 	fun deleteRoom(id: Int): Int
 
 	@Update
-	fun updateRoom(room: Room): Int
+	fun updateRoom(roomEntity: RoomEntity): Int
 }

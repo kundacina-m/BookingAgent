@@ -7,11 +7,12 @@ import androidx.room.PrimaryKey
 data class ReservationEntity(
 	@PrimaryKey
 	val id: Int,
-	val firstName: String? = "",
-	val lastName: String? = "",
-	val email: String? = "",
-	val room: RoomEntity? = null,
-	val from: String? = "",
-	val to: String? = "",
-	val price: Float? = 0f
+	val firstname: String = "",
+	val lastname: String = "",
+	val email: String = "",
+	val room: RoomEntity? = null ,
+	val from: String = "",
+	val to: String = "",
+	val price: Float = 0f,
+	val reservationUsed: Boolean = false
 )

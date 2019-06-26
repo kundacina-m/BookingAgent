@@ -112,10 +112,10 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
 	private fun createRoom() =
 		RoomEntity(
 			id = Random.nextInt(),
-			roomNum = etNumber.asString().toIntOrNull(),
-			floor = etFloor.asString().toIntOrNull(),
-			bedNums = etBedNums.asString().toIntOrNull(),
-			price = etPrice.asString().toFloatOrNull(),
+			roomNum = etNumber.asString().toInt(),
+			floor = etFloor.asString().toInt(),
+			bedNums = etBedNums.asString().toInt(),
+			price = etPrice.asString().toFloat(),
 			occupied = arrayListOf(),
 			comments = arrayListOf(),
 			images = ArrayList(imagesAdapter.getData()),

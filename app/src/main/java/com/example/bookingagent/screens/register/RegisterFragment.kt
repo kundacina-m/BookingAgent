@@ -40,7 +40,7 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 		btRegister.setOnClickListener {
 
 			etPassword.checkPasswordMatch(etPasswordRepeat)?.let {
-				viewModel.registerUser(UserEntity(etUsername.text.toString(), it))
+//				viewModel.registerUser(UserEntity(etUsername.text.toString(), it))
 			} ?: Toast.makeText(activity!!, "Passwords don't match or too short!", Toast.LENGTH_LONG).show()
 
 		}

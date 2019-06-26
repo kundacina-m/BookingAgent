@@ -15,30 +15,33 @@ import kotlinx.android.synthetic.main.item_accommodation.view.tvName
 
 class AccommodationsViewHolder(itemView: View) : BaseViewHolder<AccommodationEntity>(itemView) {
 
-	override fun bind(dataItem: AccommodationEntity) {
-		itemView.apply {
-			tvName.text = dataItem.name
-			tvDesc.text = dataItem.description
-		}
+    override fun bind(dataItem: AccommodationEntity) {
+        itemView.apply {
+            tvName.text = dataItem.name
+            tvDesc.text = dataItem.description
+        }
 
-		val imageByteArray = Base64.decode(dataItem.pictures[0], Base64.DEFAULT)
+        if (dataItem.pictures.isNotEmpty()) {
 
-		val options = RequestOptions()
-			.centerCrop()
-			.diskCacheStrategy(DiskCacheStrategy.ALL)
-			.priority(Priority.HIGH)
+            val imageByteArray = Base64.decode(dataItem.pictures[0], Base64.DEFAULT)
 
-		Glide.with(itemView.context)
-			.asBitmap()
-			.load(imageByteArray)
-			.apply(options)
-			.into(itemView.ivImage)
+            val options = RequestOptions()
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH)
 
-		itemView.ivImage.setOnClickListener {
-			ImageDialog.build(itemView.context) {
-				base64 = dataItem.pictures[0]
-			}.show()
-		}
-	}
+            Glide.with(itemView.context)
+                .asBitmap()
+                .load(imageByteArray)
+                .apply(options)
+                .into(itemView.ivImage)
+
+            itemView.ivImage.setOnClickListener {
+                ImageDialog.build(itemView.context) {
+                    base64 = dataItem.pictures[0]
+                }.show()
+            }
+        }
+    }
 
 }

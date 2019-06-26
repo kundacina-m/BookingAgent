@@ -17,14 +17,14 @@ data class RoomResponse(
 		type = String::class,
 		name = "dostupnost",
 		entry = "dostupnost"
-	) var occupied: ArrayList<String>? = null,
+	) var occupied: ArrayList<String> = arrayListOf(),
 	@field:ElementList(
 		required = false,
 		inline = true,
 		type = String::class,
 		name = "komentar",
 		entry = "komentar"
-	) var comments: ArrayList<String>? = null,
+	) var comments: ArrayList<String> = arrayListOf(),
 	@field:ElementList(
 		required = false,
 		inline = true,
@@ -32,7 +32,7 @@ data class RoomResponse(
 		name = "slika",
 		entry = "slika"
 	)
-	var images: ArrayList<String>? = null,
+	var images: ArrayList<String> = arrayListOf(),
 	@field:ElementList(
 		required = false,
 		inline = true,
@@ -40,6 +40,6 @@ data class RoomResponse(
 		name = "termin",
 		entry = "termin"
 	)
-	var timePrice: ArrayList<String>? = null
+	var timePrice: ArrayList<String> = arrayListOf()
 
 )

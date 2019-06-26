@@ -20,7 +20,7 @@ data class AccommodationResponse(
 	@field:Element(required = false, name = "adresa", type = AddressResponse::class)
 	var address: AddressResponse? = null,
 	@field:ElementList(required = false, inline = true, type = String::class, name = "usluga", entry = "usluga")
-	var services: ArrayList<String>? = null,
+	var services: ArrayList<String> = arrayListOf(),
 	@field:ElementList(required = false, inline = true, type = RoomResponse::class, name = "soba", entry = "soba")
 	var rooms: ArrayList<RoomResponse>? = null,
 	@field:Element(required = false, name = "kategorija")

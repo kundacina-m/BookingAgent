@@ -13,12 +13,12 @@ data class RoomEntity(
 
 	@PrimaryKey
 	val id: Int,
-	val roomNum: Int? = 0,
-	val floor: Int? = 0,
-	val bedNums: Int? = 0,
-	val price: Float? = 0f,
-	val occupied: ArrayList<OccupiedTime>? = arrayListOf(),
-	val comments: ArrayList<String>? = arrayListOf(),
-	val images: ArrayList<String>? = arrayListOf(),
-	val schedule: ArrayList<ScheduleUnit>? = arrayListOf()
+	val roomNum: Int = 0,
+	val floor: Int = 0,
+	val bedNums: Int = 0,
+	val price: Float = 0f,
+	val occupied: ArrayList<OccupiedTime> = arrayListOf(),
+	val comments: ArrayList<String> = arrayListOf(),
+	val images: ArrayList<String> = arrayListOf(),
+	val schedule: ArrayList<ScheduleUnit> = arrayListOf()
 ) : Parcelable

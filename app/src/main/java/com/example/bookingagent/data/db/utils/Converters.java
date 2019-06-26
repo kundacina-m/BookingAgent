@@ -1,11 +1,9 @@
 package com.example.bookingagent.data.db.utils;
 
 import androidx.room.TypeConverter;
+import com.example.bookingagent.data.db.entities.MessageEntity;
 import com.example.bookingagent.data.db.entities.RoomEntity;
-import com.example.bookingagent.data.model.Address;
-import com.example.bookingagent.data.model.OccupiedTime;
-import com.example.bookingagent.data.model.ScheduleUnit;
-import com.example.bookingagent.data.model.Service;
+import com.example.bookingagent.data.model.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -19,7 +17,14 @@ public class Converters {
 		}.getType();
 		return new Gson().toJson(services, type);
 	}
-	
+
+	@TypeConverter
+	public static String fromMessageArrayList(ArrayList<MessageEntity> messages) {
+		Type type = new TypeToken<ArrayList<MessageEntity>>() {
+		}.getType();
+		return new Gson().toJson(messages, type);
+	}
+
 	@TypeConverter
 	public static String fromScheduleArrayList(ArrayList<ScheduleUnit> schedules) {
 		Type type = new TypeToken<ArrayList<ScheduleUnit>>() {
@@ -63,6 +68,13 @@ public class Converters {
 		Type type = new TypeToken<ArrayList<Service>>() {
 		}.getType();
 		return new Gson().fromJson(services, type);
+	}
+
+	@TypeConverter
+	public static ArrayList<MessageEntity> toMessageArrayList(String messages) {
+		Type type = new TypeToken<ArrayList<MessageEntity>>() {
+		}.getType();
+		return new Gson().fromJson(messages, type);
 	}
 	
 	@TypeConverter

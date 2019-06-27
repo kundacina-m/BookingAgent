@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.MessageEntity
-import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import com.example.bookingagent.utils.asString
 import kotlinx.android.synthetic.main.fragment_message_thread.*
-import kotlinx.android.synthetic.main.fragment_message_thread.view.*
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 
 class MessageThreadFragment : BaseFragment<MessageThreadViewModel, MessageThreadRoutes>() {
@@ -36,7 +34,7 @@ class MessageThreadFragment : BaseFragment<MessageThreadViewModel, MessageThread
 
         viewModel.messages.observe(this, Observer {
             when (it) {
-                is OnSuccess -> onMessagesRecieved(it.item)
+                is OnSuccess -> onMessagesReceived(it.item)
                 is OnError -> Log.d(TAG, "setObservers: ERROR KOD THREAD MESASGE")
             }
         })
@@ -64,7 +62,7 @@ class MessageThreadFragment : BaseFragment<MessageThreadViewModel, MessageThread
         setActionBar(toolbar_top, true)
     }
 
-    private fun onMessagesRecieved(list: List<MessageEntity>) {
+    private fun onMessagesReceived(list: List<MessageEntity>) {
         adapter.setData(list)
         rvMessageThread.scrollToPosition(adapter.itemCount - 1)
         actionBar?.title = list[0].firstname + " " + list[0].lastname

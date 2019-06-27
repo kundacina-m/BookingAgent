@@ -1,6 +1,7 @@
 package com.example.bookingagent.screens.reservations.list
 
 import android.util.Log
+import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
@@ -11,8 +12,11 @@ import kotlinx.android.synthetic.main.fragment_reservations.rvReservations
 
 class ReservationsFragment : BaseFragment<ReservationsViewModel, ReservationRoutes>() {
 
+
 	private val adapter by lazy {
-		ReservationsAdapter()
+		ReservationsAdapter().apply {
+			onUsedClicked = this@ReservationsFragment::reservationUsed
+		}
 	}
 
 	override fun getLayoutId(): Int = R.layout.fragment_reservations
@@ -21,6 +25,13 @@ class ReservationsFragment : BaseFragment<ReservationsViewModel, ReservationRout
 		viewModel.reservations.observe(this, Observer {
 			when (it) {
 				is OnSuccess -> adapter.setData(it.item)
+				is OnError -> Log.d(TAG, "setObservers: ERROR")
+			}
+		})
+
+		viewModel.reservationUsed.observe(this, Observer {
+			when (it) {
+				is OnSuccess -> Log.d("SUCCES","SUCCES")
 				is OnError -> Log.d(TAG, "setObservers: ERROR")
 			}
 		})
@@ -37,6 +48,10 @@ class ReservationsFragment : BaseFragment<ReservationsViewModel, ReservationRout
 			layoutManager = LinearLayoutManager(context)
 			this.adapter = this@ReservationsFragment.adapter
 		}
+	}
+
+	private fun reservationUsed(id: Int) {
+		viewModel.reservationUsed(id)
 	}
 
 }

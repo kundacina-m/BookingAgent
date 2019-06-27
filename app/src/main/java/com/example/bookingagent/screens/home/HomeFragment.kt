@@ -20,8 +20,10 @@ class HomeFragment : BaseFragment<HomeViewModel, HomeRoutes>() {
 		fetchData()
 	}
 
-	private fun fetchData() =
+	private fun fetchData() {
 		viewModel.getAccommodations()
+		viewModel.getAllReservations()
+	}
 
 	private fun failedSyncing() {
 

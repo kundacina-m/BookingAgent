@@ -146,6 +146,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="messageThreadFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1385" />
+                            <option name="y" value="401" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="messagesFragment">
                     <value>
                       <LayoutPositions>
@@ -154,6 +166,15 @@
                             <option name="x" value="-1377" />
                             <option name="y" value="2" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_messagesFragment_to_messageThreadFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

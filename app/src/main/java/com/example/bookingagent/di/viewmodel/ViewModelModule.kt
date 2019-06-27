@@ -7,14 +7,6 @@ import com.example.bookingagent.screens.accommodations.details.AccommodationDeta
 import com.example.bookingagent.screens.accommodations.details.AccommodationDetailsViewModel
 import com.example.bookingagent.screens.accommodations.edit.EditAccommodationFragment
 import com.example.bookingagent.screens.accommodations.edit.EditAccommodationViewModel
-import com.example.bookingagent.screens.rooms.add.AddRoomFragment
-import com.example.bookingagent.screens.rooms.add.AddRoomViewModel
-import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment
-import com.example.bookingagent.screens.rooms.details.RoomDetailsViewModel
-import com.example.bookingagent.screens.rooms.edit.EditRoomFragment
-import com.example.bookingagent.screens.rooms.edit.EditRoomViewModel
-import com.example.bookingagent.screens.rooms.list.RoomsFragment
-import com.example.bookingagent.screens.rooms.list.RoomsViewModel
 import com.example.bookingagent.screens.accommodations.list.AccommodationsFragment
 import com.example.bookingagent.screens.accommodations.list.AccommodationsViewModel
 import com.example.bookingagent.screens.home.HomeFragment
@@ -23,6 +15,8 @@ import com.example.bookingagent.screens.login.LoginFragment
 import com.example.bookingagent.screens.login.LoginViewModel
 import com.example.bookingagent.screens.messages.MessagesFragment
 import com.example.bookingagent.screens.messages.MessagesViewModel
+import com.example.bookingagent.screens.messages.thread.MessageThreadFragment
+import com.example.bookingagent.screens.messages.thread.MessageThreadViewModel
 import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.profile.ProfileViewModel
 import com.example.bookingagent.screens.register.RegisterFragment
@@ -31,6 +25,14 @@ import com.example.bookingagent.screens.reservations.details.ReservationDetailsF
 import com.example.bookingagent.screens.reservations.details.ReservationDetailsViewModel
 import com.example.bookingagent.screens.reservations.list.ReservationsFragment
 import com.example.bookingagent.screens.reservations.list.ReservationsViewModel
+import com.example.bookingagent.screens.rooms.add.AddRoomFragment
+import com.example.bookingagent.screens.rooms.add.AddRoomViewModel
+import com.example.bookingagent.screens.rooms.details.RoomDetailsFragment
+import com.example.bookingagent.screens.rooms.details.RoomDetailsViewModel
+import com.example.bookingagent.screens.rooms.edit.EditRoomFragment
+import com.example.bookingagent.screens.rooms.edit.EditRoomViewModel
+import com.example.bookingagent.screens.rooms.list.RoomsFragment
+import com.example.bookingagent.screens.rooms.list.RoomsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -120,5 +122,11 @@ abstract class ViewModelModule {
 	@ViewModelKey(ReservationDetailsFragment::class, ReservationDetailsViewModel::class)
 	internal abstract fun bindReservationDetailsViewModel(
 		reservationDetailsViewModel: ReservationDetailsViewModel): ViewModel
+
+	@Binds
+	@IntoMap
+	@ViewModelKey(MessageThreadFragment::class, MessageThreadViewModel::class)
+	internal abstract fun bindMessageThreadViewModel(
+		messageThreadViewModel: MessageThreadViewModel): ViewModel
 
 }

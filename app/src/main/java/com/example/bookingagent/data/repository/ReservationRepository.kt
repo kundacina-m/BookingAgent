@@ -10,11 +10,16 @@ import com.example.bookingagent.utils.toSealed
 import io.reactivex.Single
 import javax.inject.Inject
 
-class ReservationRepository @Inject constructor(private val reservationApi: ReservationApi, val reservationDao: ReservationDao) {
+class ReservationRepository @Inject constructor(
+	private val reservationApi: ReservationApi,
+	private val reservationDao: ReservationDao) {
 
 	fun getAllReservations() =
 		reservationApi.getAllReservations(EnvelopeGetReservationRequest(GetReservationRequest())).toSealed()
 
-	fun addReservationToDB(reservation: ReservationEntity) : Single<WrappedResponse<Long>> =
+	fun addReservationToDB(reservation: ReservationEntity): Single<WrappedResponse<Long>> =
 		Single.just(reservationDao.addReservation(reservation)).toSealed()
+
+	fun getAllReservationsFromDB() =
+		reservationDao.getAllReservations().toSealed()
 }

@@ -48,7 +48,11 @@
 		android:id="@+id/messagesFragment"
 		android:name="com.example.bookingagent.screens.messages.MessagesFragment"
 		android:label="MessagesFragment"
-		tools:layout="@layout/fragment_messages"/>
+		tools:layout="@layout/fragment_messages">
+		<action
+			android:id="@+id/action_messagesFragment_to_messageThreadFragment"
+			app:destination="@id/messageThreadFragment"/>
+	</fragment>
 	<fragment
 		android:id="@+id/reservationsFragment"
 		android:name="com.example.bookingagent.screens.reservations.list.ReservationsFragment"
@@ -171,4 +175,13 @@
 		android:name="com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment"
 		android:label="fragment_reservation_details"
 		tools:layout="@layout/fragment_reservation_details"/>
+	<fragment
+		android:id="@+id/messageThreadFragment"
+		android:name="com.example.bookingagent.screens.messages.thread.MessageThreadFragment"
+		android:label="MessageThreadFragment"
+		tools:layout="@layout/fragment_message_thread">
+		<argument
+			android:name="resId"
+			app:argType="integer"/>
+	</fragment>
 </navigation>

@@ -14,5 +14,6 @@ data class ReservationEntity(
 	val from: String = "",
 	val to: String = "",
 	val price: Float = 0f,
-	val reservationUsed: Boolean = false
+	val reservationUsed: Boolean = false,
+	val accommodationName: String = ""
 )

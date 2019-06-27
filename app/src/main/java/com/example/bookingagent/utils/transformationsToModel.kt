@@ -144,7 +144,8 @@ fun ReservationResponse.toReservationModel() =
             comments = room.comments,
             occupied = room.occupied.toOccupiedModel(),
             schedule = room.timePrice.toScheduleModel()
-        )
+        ),
+        accommodationName = accommodationName
     )
 
 fun MessageResponse.toMessageModel() =

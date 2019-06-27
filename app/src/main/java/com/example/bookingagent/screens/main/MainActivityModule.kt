@@ -13,6 +13,7 @@ import com.example.bookingagent.screens.accommodations.list.AccommodationsFragme
 import com.example.bookingagent.screens.home.HomeFragment
 import com.example.bookingagent.screens.login.LoginFragment
 import com.example.bookingagent.screens.messages.MessagesFragment
+import com.example.bookingagent.screens.messages.thread.MessageThreadFragment
 import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.register.RegisterFragment
 import com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment
@@ -82,5 +83,9 @@ abstract class MainActivityModule {
 	@FragmentScope
 	@ContributesAndroidInjector
 	abstract fun contributeReservationDetailsFragmentInjector(): ReservationDetailsFragment
+
+	@FragmentScope
+	@ContributesAndroidInjector
+	abstract fun contributeMessageThreadFragmentInjector(): MessageThreadFragment
 
 }

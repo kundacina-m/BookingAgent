@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_margin="8dp"
@@ -14,22 +15,144 @@
 		android:layout_height="wrap_content"
 		android:orientation="vertical">
 
-
 		<TextView
-			android:id="@+id/tvName"
+			android:id="@+id/tvAccommodationName"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginStart="20dp"
-			android:layout_marginTop="20dp"
+			android:layout_marginEnd="8dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="8dp"
+			android:text="Accommodation Name"
+			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"/>
+
+		<TextView
+			android:id="@+id/tvLabelRoomNum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:text="Room num:"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvAccommodationName"/>
+
+		<TextView
+			android:id="@+id/tvRoomNum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="4dp"
+			app:layout_constraintStart_toEndOf="@+id/tvLabelRoomNum"
+			app:layout_constraintTop_toTopOf="@+id/tvLabelRoomNum"/>
+
+		<TextView
+			android:id="@+id/tvLabelFloor"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Floor num:"
+			app:layout_constraintStart_toStartOf="@+id/tvLabelRoomNum"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelRoomNum"/>
+
+		<TextView
+			android:id="@+id/tvFloorNum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="4dp"
+			app:layout_constraintStart_toEndOf="@+id/tvLabelFloor"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelRoomNum"/>
 
 		<TextView
 			android:id="@+id/tvPrice"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="20dp"
-			app:layout_constraintStart_toStartOf="@+id/tvName"
-			app:layout_constraintTop_toBottomOf="@+id/tvName"/>
+			android:layout_marginEnd="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/tvLabelTotalPrice"/>
+
+		<TextView
+			android:id="@+id/tvLabelTotalPrice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:text="Total price:"
+			app:layout_constraintEnd_toStartOf="@+id/tvPrice"
+			app:layout_constraintTop_toBottomOf="@+id/textView18"/>
+
+		<TextView
+			android:id="@+id/tvLabelBedsNum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Bed num:"
+			app:layout_constraintStart_toStartOf="@+id/tvLabelFloor"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelFloor"/>
+
+		<TextView
+			android:id="@+id/tvBedNum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="4dp"
+			app:layout_constraintStart_toEndOf="@+id/tvLabelBedsNum"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelFloor"/>
+
+		<Button
+			android:id="@+id/btUsed"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:text="Used"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelTotalPrice"/>
+
+		<TextView
+			android:id="@+id/tvLabelName"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			android:layout_marginTop="16dp"
+			android:text="On name:"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelBedsNum"/>
+
+		<TextView
+			android:id="@+id/tvOnName"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="8dp"
+			app:layout_constraintStart_toEndOf="@+id/tvLabelName"
+			app:layout_constraintTop_toTopOf="@+id/tvLabelName"/>
+
+		<TextView
+			android:id="@+id/tvLabelFrom"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:text="From:"
+			app:layout_constraintEnd_toStartOf="@+id/tvFrom"
+			app:layout_constraintTop_toTopOf="@+id/tvLabelRoomNum"/>
+
+		<TextView
+			android:id="@+id/tvFrom"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/tvLabelFrom"/>
+
+		<TextView
+			android:id="@+id/textView18"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			android:text="To:"
+			app:layout_constraintEnd_toStartOf="@+id/tvTo"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelFrom"/>
+
+		<TextView
+			android:id="@+id/tvTo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="8dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelFrom"/>
+
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

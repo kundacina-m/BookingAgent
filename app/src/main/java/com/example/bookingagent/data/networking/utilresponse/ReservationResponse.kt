@@ -32,5 +32,8 @@ data class ReservationResponse(
         entry = "poruka"
     )
     var messages: ArrayList<MessageResponse> = arrayListOf(),
-    @field:Element(name = "successful", required = false) var reservationUsed: Boolean = false
+    @field:Element(name = "successful", required = false) var reservationUsed: Boolean = false,
+    @field:Element(name = "accommodationName") var accommodationName: String = ""
+
+
 )

@@ -5,6 +5,7 @@ import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
 import com.example.bookingagent.data.db.dao.*
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
+import com.example.bookingagent.data.networking.message.MessageApi
 import com.example.bookingagent.data.networking.reservation.ReservationApi
 import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.user.UserApi
@@ -68,6 +69,16 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideMessageApi(): MessageApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(MessageApi::class.java)
+
+	@Singleton
+	@Provides
 	fun provideDb(appContext: Context): AppDatabase =
 		AppDatabase.getInstance(appContext)
 
@@ -125,6 +136,6 @@ class AppModule {
 
 	@Singleton
 	@Provides
-	fun providesMessagesRepository(messageDao: MessageDao, resMessDao: ResMessDao) =
-		MessagesRepository(messageDao, resMessDao)
+	fun providesMessagesRepository(messageDao: MessageDao, resMessDao: ResMessDao, messageApi: MessageApi) =
+		MessagesRepository(messageDao, resMessDao, messageApi)
 }

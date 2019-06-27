@@ -12,19 +12,21 @@ import kotlinx.android.synthetic.main.fragment_message_thread.view.etMessage
 
 class MessageThreadAdapter : BaseAdapter<MessageEntity>() {
 
-	lateinit var onMessageSend: (String) -> Unit
+    lateinit var onLongClickListener: (Int) -> Unit
 
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-		MessageThreadViewHolder(LayoutInflater.from(parent.context).inflate(
-			R.layout.item_message_thread, parent, false
-		))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        MessageThreadViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_message_thread, parent, false
+            )
+        )
 
-	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-		super.onBindViewHolder(holder, position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        super.onBindViewHolder(holder, position)
+        holder.itemView.setOnLongClickListener {
+            onLongClickListener.invoke(getItemOnPosition(holder.adapterPosition).id)
+            true
+        }
+    }
 
-		holder.itemView.btSendMessage.setOnClickListener {
-			val message = holder.itemView.etMessage.asString()
-			onMessageSend.invoke(message)
-		}
-	}
 }

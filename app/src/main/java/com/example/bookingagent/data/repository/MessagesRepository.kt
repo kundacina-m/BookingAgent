@@ -4,13 +4,18 @@ import com.example.bookingagent.data.db.dao.MessageDao
 import com.example.bookingagent.data.db.dao.ResMessDao
 import com.example.bookingagent.data.db.entities.MessageEntity
 import com.example.bookingagent.data.db.entities.ResMessEntity
+import com.example.bookingagent.data.networking.message.MessageApi
+import com.example.bookingagent.data.networking.message.models.AddMessageRequest
+import com.example.bookingagent.data.networking.message.models.DeleteMessageRequest
+import com.example.bookingagent.data.networking.message.models.EnvelopeAddMessageRequest
+import com.example.bookingagent.data.networking.message.models.EnvelopeDeleteMessageRequest
 import com.example.bookingagent.utils.toSealed
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MessagesRepository @Inject constructor(val messageDao: MessageDao, val resMessDao: ResMessDao) {
+class MessagesRepository @Inject constructor(val messageDao: MessageDao, val resMessDao: ResMessDao, val messageApi: MessageApi) {
 
 	fun addMessage(resId: Int, message: MessageEntity) {
 		Single.just(messageDao.addMessage(message))
@@ -27,5 +32,18 @@ class MessagesRepository @Inject constructor(val messageDao: MessageDao, val res
 	fun getMessageThread(resId: Int) =
 		resMessDao.getMessageThreadByResId(resId).toSealed()
 
-	fun sendMessage(resId: Int, message: String) {}
+	fun deleteMessageFromDB(id: Int) =
+		messageDao.deleteMessage(id)
+
+
+	// region NETWORK
+
+	fun sendMessage(resId: Int, message: String) =
+		messageApi.addMessage(EnvelopeAddMessageRequest(AddMessageRequest(resId,message))).toSealed()
+
+	fun deleteMessage(messageId: Int) =
+		messageApi.deleteMessage(EnvelopeDeleteMessageRequest(DeleteMessageRequest(messageId))).toSealed()
+
+    // endregion NETWORK
+
 }

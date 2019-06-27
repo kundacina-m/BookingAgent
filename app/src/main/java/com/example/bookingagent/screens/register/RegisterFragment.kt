@@ -5,9 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.User
-import com.example.bookingagent.utils.WrappedResponse.OnError
-import com.example.bookingagent.utils.WrappedResponse.OnSuccess
+import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.utils.checkPasswordMatch
 import kotlinx.android.synthetic.main.fragment_register.btRegister
 import kotlinx.android.synthetic.main.fragment_register.etPassword
@@ -42,7 +40,7 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 		btRegister.setOnClickListener {
 
 			etPassword.checkPasswordMatch(etPasswordRepeat)?.let {
-				viewModel.registerUser(User(etUsername.text.toString(), it))
+//				viewModel.registerUser(UserEntity(etUsername.text.toString(), it))
 			} ?: Toast.makeText(activity!!, "Passwords don't match or too short!", Toast.LENGTH_LONG).show()
 
 		}

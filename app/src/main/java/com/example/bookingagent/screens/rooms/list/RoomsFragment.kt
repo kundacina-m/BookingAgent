@@ -8,7 +8,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_rooms.fabAddRoom
@@ -52,7 +52,6 @@ class RoomsFragment : BaseFragment<RoomsViewModel, RoomsRoutes>() {
 
 	private fun actionBarSetup() {
 		setActionBar(toolbar_top, true)
-		actionBar?.title = ""
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -66,7 +65,7 @@ class RoomsFragment : BaseFragment<RoomsViewModel, RoomsRoutes>() {
 			adapter = this@RoomsFragment.adapter
 		}
 
-	private fun itemSelected(room: Room) =
-		navigation.navigateToSelectedRoom(args.accId, room.id)
+	private fun itemSelected(roomEntity: RoomEntity) =
+		navigation.navigateToSelectedRoom(args.accId, roomEntity.id)
 
 }

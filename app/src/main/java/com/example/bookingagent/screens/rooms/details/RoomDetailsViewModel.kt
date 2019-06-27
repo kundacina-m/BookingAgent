@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.rooms.details
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.data.repository.RoomRepository
 import com.example.bookingagent.utils.WrappedResponse
@@ -18,7 +18,7 @@ class RoomDetailsViewModel @Inject constructor(private val roomRepository: RoomR
 	val deleteStatus = MutableLiveData<WrappedResponse<Boolean>>()
 	val images = MutableLiveData<List<String>>()
 	val schedule = MutableLiveData<List<ScheduleUnit>>()
-	val room = MutableLiveData<WrappedResponse<Room>>()
+	val room = MutableLiveData<WrappedResponse<RoomEntity>>()
 
 	fun getRoomById(id: Int) =
 		disposables.add(roomRepository.getRoom(id)

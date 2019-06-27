@@ -19,7 +19,7 @@
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/addRoomContainer"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent">
+			android:layout_height="wrap_content">
 
 			<TextView
 				android:id="@+id/tvLabelNumber"
@@ -111,10 +111,13 @@
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/rvImages"
 				android:layout_width="0dp"
-				android:layout_height="120dp"
+				android:layout_height="wrap_content"
 				android:layout_marginEnd="8dp"
-				android:layout_marginTop="32dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="40dp"
 				android:orientation="horizontal"
+				android:minHeight="50dp"
+				android:maxHeight="200dp"
 				app:layout_constraintEnd_toStartOf="@+id/btAddImage"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/etBedNums"/>
@@ -132,45 +135,50 @@
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/rvSchedule"
 				android:layout_width="0dp"
-				android:layout_height="250dp"
+				android:layout_height="wrap_content"
 				android:layout_marginEnd="8dp"
 				android:layout_marginStart="8dp"
+				android:layout_marginTop="16dp"
+				android:maxHeight="200dp"
+				android:minHeight="50dp"
 				app:layout_constraintEnd_toStartOf="@+id/btAddSchedule"
 				app:layout_constraintHorizontal_bias="0.0"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/tvLabelSchedule"/>
+				app:layout_constraintTop_toBottomOf="@+id/rvImages"/>
 
 			<Button
-				android:id="@+id/btAddSchedule"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="16dp"
-				android:text="Add schedule"
-				app:layout_constraintBottom_toBottomOf="@+id/rvSchedule"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintTop_toTopOf="@+id/rvSchedule"/>
+					android:id="@+id/btAddSchedule"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="16dp"
+					android:text="Add schedule"
+					app:layout_constraintBottom_toBottomOf="@+id/rvSchedule"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="@+id/rvSchedule"/>
 
-			<Button
-				android:id="@+id/btSubmit"
-				android:layout_width="wrap_content"
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvNotAvailable"
+				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginBottom="8dp"
-				android:layout_marginTop="8dp"
-				android:text="Submit"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
+				android:layout_marginEnd="8dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="16dp"
+				android:maxHeight="200dp"
+				android:minHeight="50dp"
+				app:layout_constraintEnd_toStartOf="@+id/btAddNotAvailable"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/rvSchedule"/>
 
-			<TextView
-				android:id="@+id/tvLabelSchedule"
-				android:layout_width="wrap_content"
-				android:layout_height="19dp"
-				android:layout_marginTop="8dp"
-				android:text="Schedule:"
-				app:layout_constraintEnd_toEndOf="@+id/rvSchedule"
-				app:layout_constraintStart_toStartOf="@+id/rvSchedule"
-				app:layout_constraintTop_toBottomOf="@+id/rvImages"/>
+			<Button
+					android:id="@+id/btAddNotAvailable"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="8dp"
+					android:layout_marginEnd="16dp"
+					android:text="Add occupied"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/rvNotAvailable"/>
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</ScrollView>

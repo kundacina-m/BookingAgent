@@ -1,6 +1,6 @@
 package com.example.bookingagent.data.networking.accommodation.models
 
-import com.example.bookingagent.data.networking.common.FullAccommodation
+import com.example.bookingagent.data.networking.utilresponse.AccommodationResponse
 import com.example.soap_annotations.SoapResponse
 import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Namespace
@@ -13,7 +13,7 @@ import java.util.ArrayList
 data class GetAccommodationResponse(
 
 	@Namespace(prefix = "ns3", reference = "http://accomodation.com")
-	@field:ElementList(required = false, inline = true, type = FullAccommodation::class, name = "ns3:Smestaj", entry =
+	@field:ElementList(required = false, inline = true, type = AccommodationResponse::class, name = "ns3:Smestaj", entry =
 	"Smestaj")
-	var accommodation: ArrayList<FullAccommodation>? = null
+	var accommodationResponse: ArrayList<AccommodationResponse>? = null
 )

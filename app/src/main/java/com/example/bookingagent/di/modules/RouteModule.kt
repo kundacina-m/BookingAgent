@@ -30,6 +30,8 @@ import com.example.bookingagent.screens.login.LoginRoutes
 import com.example.bookingagent.screens.main.MainActivity
 import com.example.bookingagent.screens.messages.MessagesFragment
 import com.example.bookingagent.screens.messages.MessagesRoutes
+import com.example.bookingagent.screens.messages.thread.MessageThreadFragment
+import com.example.bookingagent.screens.messages.thread.MessageThreadRoutes
 import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.profile.ProfileRoutes
 import com.example.bookingagent.screens.register.RegisterFragment
@@ -128,5 +130,10 @@ abstract class RouteModule {
 	@IntoMap
 	@RouteKey(ReservationDetailsFragment::class)
 	internal abstract fun bindReservationDetailsRoutes(reservationDetailsRoutes: ReservationDetailsRoutes): Routes
+
+	@Binds
+	@IntoMap
+	@RouteKey(MessageThreadFragment::class)
+	internal abstract fun bindMessageThreadRoutes(messageThreadRoutes: MessageThreadRoutes): Routes
 
 }

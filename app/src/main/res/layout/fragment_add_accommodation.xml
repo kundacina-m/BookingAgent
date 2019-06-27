@@ -17,10 +17,10 @@
 		android:layout_height="match_parent">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/focusContainer"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:orientation="vertical"
-			android:id="@+id/focusContainer">
+			android:orientation="vertical">
 
 			<EditText
 				android:id="@+id/etLatitude"
@@ -29,20 +29,20 @@
 				android:layout_marginStart="8dp"
 				android:ems="10"
 				android:inputType="numberDecimal"
+				android:textSize="14sp"
 				app:layout_constraintBottom_toBottomOf="@+id/tvLatitude"
 				app:layout_constraintStart_toEndOf="@+id/tvLatitude"
 				app:layout_constraintTop_toTopOf="@+id/tvLatitude"/>
 
 			<EditText
 				android:id="@+id/etName"
-				android:layout_width="match_parent"
+				android:layout_width="150dp"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginStart="8dp"
+				android:layout_marginStart="16dp"
 				android:ems="10"
 				android:hint="@string/hint_enter_name"
 				android:inputType="textPersonName"
-				app:layout_constraintEnd_toEndOf="parent"
+				android:textSize="14sp"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/tvName"/>
 
@@ -50,57 +50,60 @@
 				android:id="@+id/etDescription"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginStart="8dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginStart="16dp"
 				android:ems="10"
+				android:gravity="top"
 				android:hint="@string/hint_enter_description"
-				android:inputType="textPersonName"
+				android:inputType="textMultiLine|textNoSuggestions|textPersonName|textCapSentences"
+				android:maxHeight="110dp"
 				android:maxLines="4"
+				android:minLines="1"
+				android:textSize="14sp"
 				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/tvDesc"/>
+				app:layout_constraintStart_toEndOf="@+id/etName"
+				app:layout_constraintTop_toBottomOf="@+id/tvPrice"/>
 
 			<EditText
 				android:id="@+id/etAddress"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="16dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginStart="8dp"
 				android:ems="10"
 				android:hint="@string/hint_enter_street_name"
 				android:inputType="textPersonName"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/tvStreet"/>
+				android:textSize="14sp"
+				app:layout_constraintBottom_toBottomOf="@+id/tvStreet"
+				app:layout_constraintEnd_toStartOf="@+id/tvNum"
+				app:layout_constraintStart_toEndOf="@+id/tvStreet"
+				app:layout_constraintTop_toTopOf="@+id/tvStreet"/>
 
 			<Spinner
 				android:id="@+id/sp_categories"
-				android:layout_width="0dp"
+				android:layout_width="150dp"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginStart="8dp"
 				android:entries="@array/accommodation_categories"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintStart_toStartOf="@+id/etName"
 				app:layout_constraintTop_toBottomOf="@+id/tvType"/>
 
 			<TextView
 				android:id="@+id/tvName"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="16dp"
 				android:layout_marginTop="8dp"
 				android:text="@string/label_name_accommodation"
-				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintStart_toStartOf="@+id/etName"
 				app:layout_constraintTop_toTopOf="parent"/>
 
 			<TextView
-				android:id="@+id/tvDesc"
+				android:id="@+id/tvPrice"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="16dp"
-				android:layout_marginTop="8dp"
+				android:layout_marginStart="8dp"
 				android:text="@string/label_description_accommodation"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/etName"/>
+				app:layout_constraintStart_toStartOf="@+id/etDescription"
+				app:layout_constraintTop_toTopOf="@+id/tvName"/>
 
 			<TextView
 				android:id="@+id/tvLocation"
@@ -108,7 +111,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginEnd="8dp"
 				android:layout_marginStart="8dp"
-				android:layout_marginTop="10dp"
+				android:layout_marginTop="8dp"
 				android:text="@string/label_location_accommodation"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -118,18 +121,16 @@
 				android:id="@+id/tvType"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="16dp"
-				android:layout_marginTop="8dp"
 				android:text="@string/label_type_accommodation"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/etDescription"/>
+				app:layout_constraintStart_toStartOf="@+id/tvName"
+				app:layout_constraintTop_toBottomOf="@+id/etName"/>
 
 			<TextView
 				android:id="@+id/tvLatitude"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="16dp"
-				android:layout_marginTop="24dp"
+				android:layout_marginTop="8dp"
 				android:text="@string/label_latitude_accommodation"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/tvLocation"/>
@@ -151,6 +152,7 @@
 				android:layout_marginEnd="16dp"
 				android:ems="10"
 				android:inputType="numberDecimal"
+				android:textSize="14sp"
 				app:layout_constraintBottom_toBottomOf="@+id/etLatitude"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toTopOf="@+id/etLatitude"/>
@@ -159,7 +161,7 @@
 				android:id="@+id/tvCity"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
+				android:layout_marginTop="16dp"
 				android:text="@string/label_city_accommodation"
 				app:layout_constraintStart_toStartOf="@+id/tvLatitude"
 				app:layout_constraintTop_toBottomOf="@+id/etLatitude"/>
@@ -168,57 +170,64 @@
 				android:id="@+id/etCity"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginStart="8dp"
 				android:ems="10"
 				android:hint="@string/hint_enter_city"
 				android:inputType="textPersonName"
-				app:layout_constraintStart_toStartOf="@+id/tvCity"
-				app:layout_constraintTop_toBottomOf="@+id/tvCity"/>
+				android:textSize="14sp"
+				app:layout_constraintBottom_toBottomOf="@+id/tvCity"
+				app:layout_constraintStart_toEndOf="@+id/tvCity"
+				app:layout_constraintTop_toTopOf="@+id/tvCity"/>
 
 			<TextView
 				android:id="@+id/tvZipCode"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="24dp"
+				android:layout_marginEnd="8dp"
 				android:text="@string/label_zip_code_accommodation"
-				app:layout_constraintStart_toEndOf="@+id/etCity"
+				app:layout_constraintEnd_toStartOf="@+id/etZipCode"
 				app:layout_constraintTop_toTopOf="@+id/tvCity"/>
 
 			<EditText
 				android:id="@+id/etZipCode"
-				android:layout_width="130dp"
+				android:layout_width="50dp"
 				android:layout_height="wrap_content"
+				android:layout_marginEnd="16dp"
 				android:ems="10"
-				android:hint="@string/hint_enter_zip_code"
 				android:inputType="number"
-				app:layout_constraintStart_toStartOf="@+id/tvZipCode"
-				app:layout_constraintTop_toBottomOf="@+id/tvZipCode"/>
+				android:textSize="14sp"
+				app:layout_constraintBottom_toBottomOf="@+id/tvZipCode"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/tvZipCode"/>
 
 			<TextView
 				android:id="@+id/tvStreet"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
+				android:layout_marginTop="16dp"
 				android:text="@string/label_street_accommodation"
-				app:layout_constraintStart_toStartOf="@+id/etCity"
+				app:layout_constraintStart_toStartOf="@+id/tvCity"
 				app:layout_constraintTop_toBottomOf="@+id/etCity"/>
 
 			<TextView
 				android:id="@+id/tvNum"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="24dp"
-				android:text="@string/label_number_accommodation"
-				app:layout_constraintStart_toEndOf="@+id/etAddress"
-				app:layout_constraintTop_toTopOf="@+id/tvStreet"/>
+				android:layout_marginEnd="8dp"
+				android:text="Num:"
+				app:layout_constraintBottom_toBottomOf="@+id/etNum"
+				app:layout_constraintEnd_toStartOf="@+id/etNum"
+				app:layout_constraintTop_toTopOf="@+id/etNum"/>
 
 			<EditText
 				android:id="@+id/etNum"
-				android:layout_width="130dp"
+				android:layout_width="50dp"
 				android:layout_height="wrap_content"
+				android:layout_marginEnd="16dp"
 				android:ems="10"
-				android:hint="@string/hint_enter_street_num"
 				android:inputType="number"
-				app:layout_constraintStart_toStartOf="@+id/tvNum"
+				android:textSize="14sp"
+				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toTopOf="@+id/etAddress"/>
 
 			<androidx.recyclerview.widget.RecyclerView
@@ -226,36 +235,29 @@
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="8dp"
-				android:layout_marginEnd="8dp"
-				android:layout_marginStart="8dp"
-				android:layout_marginTop="8dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="16dp"
+				android:maxHeight="250dp"
+				android:minHeight="50dp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toStartOf="@+id/btAddService"
 				app:layout_constraintHorizontal_bias="1.0"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/tvLabelServices"
-				app:layout_constraintVertical_bias="1.0"/>
-
-			<TextView
-				android:id="@+id/tvLabelServices"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Services:"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/etAddress"/>
+				app:layout_constraintTop_toBottomOf="@+id/rvImages"/>
 
 			<Button
-				android:id="@+id/btAddService"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginEnd="8dp"
-				android:layout_marginStart="8dp"
-				android:layout_marginTop="24dp"
-				android:text="Add service"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toEndOf="@+id/tvLabelServices"
-				app:layout_constraintTop_toBottomOf="@+id/etNum"/>
+					android:id="@+id/btAddService"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="16dp"
+					android:layout_marginTop="56dp"
+					android:text="Add service"
+					android:textSize="12sp"
+
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="@+id/rvServices" android:layout_marginBottom="8dp"
+					app:layout_constraintBottom_toBottomOf="parent"/>
 
 			<TextView
 				android:id="@+id/tvLabelCancellingFee"
@@ -269,14 +271,62 @@
 
 			<EditText
 				android:id="@+id/etCancellingFee"
-				android:layout_width="wrap_content"
+				android:layout_width="70dp"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="8dp"
 				android:ems="10"
 				android:inputType="number"
+				android:textSize="14sp"
 				app:layout_constraintBottom_toBottomOf="@+id/tvLabelCancellingFee"
 				app:layout_constraintStart_toEndOf="@+id/tvLabelCancellingFee"
 				app:layout_constraintTop_toTopOf="@+id/tvLabelCancellingFee"/>
+
+			<Button
+					android:id="@+id/btAddImage"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="16dp"
+					android:layout_marginTop="8dp"
+					android:text="Add image"
+					android:textSize="12sp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/etAddress" android:layout_marginBottom="8dp"
+					app:layout_constraintBottom_toBottomOf="@+id/rvImages"/>
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/rvImages"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="16dp"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="8dp"
+				android:maxHeight="200dp"
+				android:minHeight="50dp"
+				app:layout_constraintEnd_toStartOf="@+id/btAddImage"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/etAddress"/>
+
+			<TextView
+				android:id="@+id/tvLabelCancellingDays"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:text="Cancelling days:"
+				app:layout_constraintBottom_toBottomOf="@+id/etCancellingFee"
+				app:layout_constraintEnd_toStartOf="@+id/etCancellingDays"
+				app:layout_constraintTop_toTopOf="@+id/etCancellingFee"/>
+
+			<EditText
+				android:id="@+id/etCancellingDays"
+				android:layout_width="50dp"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="16dp"
+				android:ems="10"
+				android:inputType="number"
+				android:textSize="14sp"
+				app:layout_constraintBottom_toBottomOf="@+id/tvLabelCancellingDays"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/tvLabelCancellingDays"/>
 
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</ScrollView>

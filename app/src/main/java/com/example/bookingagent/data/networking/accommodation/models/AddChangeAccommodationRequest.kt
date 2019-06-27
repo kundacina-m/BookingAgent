@@ -21,5 +21,6 @@ data class AddChangeAccommodationRequest(
 	@field:Element(name = "acc:countyNum") var zipCode: Int?,
 	@field:Element(name = "acc:street") var street: String?,
 	@field:Element(name = "acc:number") var num: Int?,
-	@field:ElementList(name = "acc:services", inline = true, entry = "acc:services") var services: ArrayList<String>?
+	@field:ElementList(name = "acc:services", inline = true, entry = "acc:services") var services: ArrayList<String>?,
+	@field:ElementList(name = "acc:pictures", inline = true, entry = "acc:pictures") var pictures: ArrayList<String>?
 )

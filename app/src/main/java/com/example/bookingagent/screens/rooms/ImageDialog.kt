@@ -1,4 +1,4 @@
-package com.example.bookingagent.utils
+package com.example.bookingagent.screens.rooms
 
 import android.app.Dialog
 import android.content.Context
@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.bookingagent.R
 import kotlinx.android.synthetic.main.dialog_image.imageDialog
 
-class DialogImage
+class ImageDialog
 private constructor(private val builder: Builder) : Dialog(builder.context) {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ private constructor(private val builder: Builder) : Dialog(builder.context) {
 
 	companion object {
 
-		fun build(context: Context, block: Builder.() -> Unit): DialogImage {
+		fun build(context: Context, block: Builder.() -> Unit): ImageDialog {
 			return Builder(context).apply(block).build()
 
 		}
@@ -37,7 +37,7 @@ private constructor(private val builder: Builder) : Dialog(builder.context) {
 	class Builder(var context: Context) {
 		var base64: String? = null
 
-		fun build() = DialogImage(this)
+		fun build() = ImageDialog(this)
 
 	}
 }

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.dialog_add_schedule.etPrice
 import java.util.Calendar
 import java.util.GregorianCalendar
 
-class DialogAddSchedule private constructor(private val builder: Builder) : Dialog(builder.context) {
+class AddScheduleDialog private constructor(private val builder: Builder) : Dialog(builder.context) {
 
 	lateinit var checkInDay: GregorianCalendar
 	lateinit var checkOutDay: GregorianCalendar
@@ -71,7 +71,7 @@ class DialogAddSchedule private constructor(private val builder: Builder) : Dial
 
 	companion object {
 
-		fun build(context: Context, block: Builder.() -> Unit): DialogAddSchedule {
+		fun build(context: Context, block: Builder.() -> Unit): AddScheduleDialog {
 			return Builder(context).apply(block).build()
 
 		}
@@ -81,7 +81,7 @@ class DialogAddSchedule private constructor(private val builder: Builder) : Dial
 
 		lateinit var confirmedTag: ((GregorianCalendar, GregorianCalendar, Float) -> Unit?)
 
-		fun build() = DialogAddSchedule(this)
+		fun build() = AddScheduleDialog(this)
 
 	}
 }

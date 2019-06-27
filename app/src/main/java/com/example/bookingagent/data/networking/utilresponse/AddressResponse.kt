@@ -1,8 +1,8 @@
-package com.example.bookingagent.data.networking.common
+package com.example.bookingagent.data.networking.utilresponse
 
 import org.simpleframework.xml.Element
 
-data class AddressUtilResponse(
+data class AddressResponse(
 
 	@field:Element(name = "id")
 	var id: Int = 0,

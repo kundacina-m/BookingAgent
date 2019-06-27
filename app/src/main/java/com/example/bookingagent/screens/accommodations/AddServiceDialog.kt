@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.dialog_add_service.btConfirm
 import kotlinx.android.synthetic.main.dialog_add_service.etDescription
 import kotlinx.android.synthetic.main.dialog_add_service.etName
 
-class DialogAddService private constructor(private val builder: Builder) : Dialog(builder.context) {
+class AddServiceDialog private constructor(private val builder: Builder) : Dialog(builder.context) {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class DialogAddService private constructor(private val builder: Builder) : Dialo
 
 	companion object {
 
-		fun build(context: Context, block: Builder.() -> Unit): DialogAddService {
+		fun build(context: Context, block: Builder.() -> Unit): AddServiceDialog {
 			return Builder(context).apply(block).build()
 
 		}
@@ -41,7 +41,7 @@ class DialogAddService private constructor(private val builder: Builder) : Dialo
 
 		lateinit var confirmedService: ((String, String, Float) -> Unit?)
 
-		fun build() = DialogAddService(this)
+		fun build() = AddServiceDialog(this)
 
 	}
 

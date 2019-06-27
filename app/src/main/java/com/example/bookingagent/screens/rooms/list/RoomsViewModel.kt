@@ -2,7 +2,7 @@ package com.example.bookingagent.screens.rooms.list
 
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
-import com.example.bookingagent.data.db.entities.Room
+import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.repository.RoomRepository
 import com.example.bookingagent.utils.WrappedResponse
 import io.reactivex.rxkotlin.subscribeBy
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class RoomsViewModel @Inject constructor(private val roomRepository: RoomRepository) : BaseViewModel() {
 
-	val rooms = MutableLiveData<WrappedResponse<List<Room>>>()
+	val rooms = MutableLiveData<WrappedResponse<List<RoomEntity>>>()
 
 	fun getAllRoomsByAccId(accId: Int) =
 		disposables.add(roomRepository.getAllRoomsByAccId(accId)

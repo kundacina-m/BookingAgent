@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.bookingagent.data.db.entities.Accommodation
+import com.example.bookingagent.data.db.entities.AccommodationEntity
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -13,17 +13,17 @@ import io.reactivex.Single
 interface AccommodationDao {
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun addAccommodation(accommodation: Accommodation): Long
+	fun addAccommodation(accommodationEntity: AccommodationEntity): Long
 
-	@Query("SELECT * from Accommodation")
-	fun getAllAccommodation(): Flowable<List<Accommodation>>
+	@Query("SELECT * from AccommodationEntity")
+	fun getAllAccommodation(): Flowable<List<AccommodationEntity>>
 
-	@Query("DELETE from Accommodation where id == :id")
+	@Query("DELETE from AccommodationEntity where id == :id")
 	fun deleteAccommodation(id: Int): Int
 
 	@Update
-	fun updateAccommodation(accommodation: Accommodation): Int
+	fun updateAccommodation(accommodationEntity: AccommodationEntity): Int
 
-	@Query("SELECT * from Accommodation where id == :id")
-	fun getAccommodation(id: Int): Single<Accommodation>
+	@Query("SELECT * from AccommodationEntity where id == :id")
+	fun getAccommodation(id: Int): Single<AccommodationEntity>
 }

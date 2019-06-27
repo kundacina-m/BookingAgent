@@ -6,7 +6,7 @@ import com.example.bookingagent.data.model.Address
 import com.example.bookingagent.data.model.Service
 
 @Entity
-data class Accommodation(
+data class AccommodationEntity(
 
 	@PrimaryKey
 	var id: Int,
@@ -15,7 +15,9 @@ data class Accommodation(
 	var address: Address,
 	var type: String? = "",
 	var cancellingFee: Float? = 0f,
+	var cancellingDays: Int? = 0,
 	var rating: Float? = 0f,
 	var category: String? = "",
-	var services: ArrayList<Service> = arrayListOf()
+	var services: ArrayList<Service> = arrayListOf(),
+	var pictures: ArrayList<String> = arrayListOf()
 )

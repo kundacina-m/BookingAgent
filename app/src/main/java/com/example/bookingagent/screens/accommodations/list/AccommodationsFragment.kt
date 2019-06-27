@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.Accommodation
+import com.example.bookingagent.data.db.entities.AccommodationEntity
 import com.example.bookingagent.utils.RequestError.UnknownError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
@@ -54,7 +54,7 @@ class AccommodationsFragment : BaseFragment<AccommodationsViewModel, Accommodati
 			adapter = this@AccommodationsFragment.adapter
 		}
 
-	private fun itemSelected(accommodation: Accommodation) =
-		navigation.navigateToSelectedItem(accommodation)
+	private fun itemSelected(accommodationEntity: AccommodationEntity) =
+		navigation.navigateToSelectedItem(accommodationEntity)
 
 }

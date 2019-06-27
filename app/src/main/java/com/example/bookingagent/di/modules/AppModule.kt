@@ -3,16 +3,13 @@ package com.example.bookingagent.di.modules
 import android.content.Context
 import com.example.bookingagent.App
 import com.example.bookingagent.data.db.AppDatabase
-import com.example.bookingagent.data.db.dao.AccRoomDao
-import com.example.bookingagent.data.db.dao.AccommodationDao
-import com.example.bookingagent.data.db.dao.RoomDao
-import com.example.bookingagent.data.db.dao.UserDao
+import com.example.bookingagent.data.db.dao.*
 import com.example.bookingagent.data.networking.accommodation.AccommodationApi
+import com.example.bookingagent.data.networking.message.MessageApi
+import com.example.bookingagent.data.networking.reservation.ReservationApi
 import com.example.bookingagent.data.networking.room.RoomApi
 import com.example.bookingagent.data.networking.user.UserApi
-import com.example.bookingagent.data.repository.AccommodationRepository
-import com.example.bookingagent.data.repository.RoomRepository
-import com.example.bookingagent.data.repository.UserRepository
+import com.example.bookingagent.data.repository.*
 import com.example.bookingagent.di.viewmodel.ViewModelModule
 import com.example.bookingagent.utils.BASE_URL
 import dagger.Module
@@ -62,6 +59,26 @@ class AppModule {
 
 	@Singleton
 	@Provides
+	fun provideReservationApi(): ReservationApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(ReservationApi::class.java)
+
+	@Singleton
+	@Provides
+	fun provideMessageApi(): MessageApi =
+		Retrofit.Builder()
+			.addConverterFactory(SimpleXmlConverterFactory.create())
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.baseUrl(BASE_URL)
+			.build()
+			.create(MessageApi::class.java)
+
+	@Singleton
+	@Provides
 	fun provideDb(appContext: Context): AppDatabase =
 		AppDatabase.getInstance(appContext)
 
@@ -85,6 +102,18 @@ class AppModule {
 	fun provideRoomDao(db: AppDatabase): RoomDao =
 		db.roomDao()
 
+	@Provides
+	fun provideReservationDao(db: AppDatabase): ReservationDao =
+		db.reservationDao()
+
+	@Provides
+	fun provideMessagesDao(db: AppDatabase): MessageDao =
+		db.messageDao()
+
+	@Provides
+	fun provideResMessDao(db: AppDatabase): ResMessDao =
+		db.resMessDao()
+
 	@Singleton
 	@Provides
 	fun providesUserRepository(userDao: UserDao, userApi: UserApi) =
@@ -100,4 +129,13 @@ class AppModule {
 	fun providesRoomRepository(roomApi: RoomApi, roomDao: RoomDao, accRoomDao: AccRoomDao) =
 		RoomRepository(roomApi, roomDao, accRoomDao)
 
+	@Singleton
+	@Provides
+	fun providesReservationRepository(reservationApi: ReservationApi, reservationDao: ReservationDao) =
+		ReservationRepository(reservationApi, reservationDao)
+
+	@Singleton
+	@Provides
+	fun providesMessagesRepository(messageDao: MessageDao, resMessDao: ResMessDao, messageApi: MessageApi) =
+		MessagesRepository(messageDao, resMessDao, messageApi)
 }

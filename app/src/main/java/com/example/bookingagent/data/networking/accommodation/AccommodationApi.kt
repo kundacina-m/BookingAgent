@@ -6,35 +6,32 @@ import com.example.bookingagent.data.networking.accommodation.models.EnvelopeDel
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeDeleteAccommodationResponse
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationRequest
 import com.example.bookingagent.data.networking.accommodation.models.EnvelopeGetAccommodationResponse
-import com.example.bookingagent.data.networking.room.models.EnvelopeAddChangeRoomRequest
-import com.example.bookingagent.data.networking.room.models.EnvelopeAddChangeRoomResponse
-import com.example.bookingagent.data.networking.room.models.EnvelopeDeleteRoomRequest
-import com.example.bookingagent.data.networking.room.models.EnvelopeDeleteRoomResponse
+import com.example.bookingagent.utils.apiHeaders
 import io.reactivex.Single
 import retrofit2.http.Body
-import retrofit2.http.Headers
+import retrofit2.http.HeaderMap
 import retrofit2.http.POST
 
 interface AccommodationApi {
 
-	@Headers("Content-Type: text/xml;charset=utf-8")
 	@POST("accommodation")
-	fun addAccommodation(@Body envelopeAddChangeAccommodationRequest: EnvelopeAddChangeAccommodationRequest):
+	fun addAccommodation(@Body envelopeAddChangeAccommodationRequest: EnvelopeAddChangeAccommodationRequest,
+		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeAddChangeAccommodationResponse>
 
-	@Headers("Content-Type: text/xml;charset=utf-8")
 	@POST("getaccommodation")
-	fun getAccommodations(@Body envelopeGetAccommodationsRequest: EnvelopeGetAccommodationRequest):
+	fun getAccommodations(@Body envelopeGetAccommodationsRequest: EnvelopeGetAccommodationRequest,
+		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeGetAccommodationResponse>
 
-	@Headers("Content-Type: text/xml;charset=utf-8")
 	@POST("accommodation")
-	fun deleteAccommodation(@Body envelopeDeleteAccommodationRequest: EnvelopeDeleteAccommodationRequest):
+	fun deleteAccommodation(@Body envelopeDeleteAccommodationRequest: EnvelopeDeleteAccommodationRequest,
+		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeDeleteAccommodationResponse>
 
-	@Headers("Content-Type: text/xml;charset=utf-8")
 	@POST("accommodation")
-	fun editAccommodation(@Body envelopeAddChangeAccommodationRequest: EnvelopeAddChangeAccommodationRequest):
+	fun editAccommodation(@Body envelopeAddChangeAccommodationRequest: EnvelopeAddChangeAccommodationRequest,
+		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeAddChangeAccommodationResponse>
 
 }

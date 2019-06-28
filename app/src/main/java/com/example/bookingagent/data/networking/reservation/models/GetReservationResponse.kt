@@ -10,14 +10,14 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "ns4", reference = "http://xml/reservation")
 @SoapResponse
 data class GetReservationResponse(
-    @Namespace(prefix = "ns3", reference = "http://rezervacija.com")
-    @field:ElementList(
-        required = false,
-        inline = true,
-        type = ReservationResponse::class,
-        name = "Rezervacija",
-        entry = "Rezervacija"
-    )
-    var reservationsResponse: ArrayList<ReservationResponse> = arrayListOf()
+	@Namespace(prefix = "ns3", reference = "http://rezervacija.com")
+	@field:ElementList(
+		required = false,
+		inline = true,
+		type = ReservationResponse::class,
+		name = "Rezervacija",
+		entry = "Rezervacija"
+	)
+	var reservationsResponse: ArrayList<ReservationResponse> = arrayListOf()
 
 )

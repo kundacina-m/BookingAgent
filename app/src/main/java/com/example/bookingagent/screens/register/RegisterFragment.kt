@@ -5,12 +5,10 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.utils.checkPasswordMatch
 import kotlinx.android.synthetic.main.fragment_register.btRegister
 import kotlinx.android.synthetic.main.fragment_register.etPassword
 import kotlinx.android.synthetic.main.fragment_register.etPasswordRepeat
-import kotlinx.android.synthetic.main.fragment_register.etUsername
 import kotlinx.android.synthetic.main.fragment_register.tvToLogin
 
 class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
@@ -40,7 +38,7 @@ class RegisterFragment : BaseFragment<RegisterViewModel, RegisterRoutes>() {
 		btRegister.setOnClickListener {
 
 			etPassword.checkPasswordMatch(etPasswordRepeat)?.let {
-//				viewModel.registerUser(UserEntity(etUsername.text.toString(), it))
+				//				viewModel.registerUser(UserEntity(etUsername.text.toString(), it))
 			} ?: Toast.makeText(activity!!, "Passwords don't match or too short!", Toast.LENGTH_LONG).show()
 
 		}

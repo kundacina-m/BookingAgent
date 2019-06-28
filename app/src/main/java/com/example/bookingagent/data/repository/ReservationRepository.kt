@@ -10,26 +10,26 @@ import com.example.bookingagent.data.networking.reservation.models.SuccessfulRes
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.toSealed
 import io.reactivex.Single
-import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 class ReservationRepository @Inject constructor(
-    private val reservationApi: ReservationApi,
-    private val reservationDao: ReservationDao
+	private val reservationApi: ReservationApi,
+	private val reservationDao: ReservationDao
 ) {
 
-    fun getAllReservations() =
-        reservationApi.getAllReservations(EnvelopeGetReservationRequest(GetReservationRequest())).toSealed()
+	fun getAllReservations() =
+		reservationApi.getAllReservations(EnvelopeGetReservationRequest(GetReservationRequest())).toSealed()
 
-    fun addReservationToDB(reservation: ReservationEntity): Single<WrappedResponse<Long>> =
-        Single.just(reservationDao.addReservation(reservation)).toSealed()
+	fun addReservationToDB(reservation: ReservationEntity): Single<WrappedResponse<Long>> =
+		Single.just(reservationDao.addReservation(reservation)).toSealed()
 
-    fun getAllReservationsFromDB() =
-        reservationDao.getAllReservations().toSealed()
+	fun getAllReservationsFromDB() =
+		reservationDao.getAllReservations().toSealed()
 
-    fun reservationUsed(id: Int) =
-        reservationApi.successfulReservation(EnvelopeSuccessfulReservationRequest(SuccessfulReservationRequest(id))).toSealed()
+	fun reservationUsed(id: Int) =
+		reservationApi.successfulReservation(
+			EnvelopeSuccessfulReservationRequest(SuccessfulReservationRequest(id))).toSealed()
 
-    fun updateReservation(id: Int) =
-        reservationDao.updateUsedInReservation(id, true)
+	fun updateReservation(id: Int) =
+		reservationDao.updateUsedInReservation(id, true)
 }

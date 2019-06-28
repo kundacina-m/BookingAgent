@@ -8,23 +8,22 @@ import com.example.bookingagent.utils.apiHeaders
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.HeaderMap
-import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface RoomApi {
 
 	@POST("accommodation")
 	fun addRoom(@Body envelopeAddChangeRoomRequest: EnvelopeAddChangeRoomRequest,
-		@HeaderMap headers: Map<String,String> = apiHeaders.map):
+		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeAddChangeRoomResponse>
 
 	@POST("accommodation")
 	fun editRoom(@Body envelopeAddChangeRoomRequest: EnvelopeAddChangeRoomRequest,
-		@HeaderMap headers: Map<String,String> = apiHeaders.map):
+		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeAddChangeRoomResponse>
 
 	@POST("accommodation")
 	fun deleteRoom(@Body envelopeDeleteRoomRequest: EnvelopeDeleteRoomRequest,
-		@HeaderMap headers: Map<String,String> = apiHeaders.map):
+		@HeaderMap headers: Map<String, String> = apiHeaders.map):
 		Single<EnvelopeDeleteRoomResponse>
 }

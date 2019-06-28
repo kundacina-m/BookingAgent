@@ -13,21 +13,21 @@ import io.reactivex.Single
 @Dao
 interface ResMessDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addResMess(resMess: ResMessEntity) : Long
+	@Insert(onConflict = OnConflictStrategy.REPLACE)
+	fun addResMess(resMess: ResMessEntity): Long
 
-    @Query("""
+	@Query("""
 		 SELECT * from ReservationEntity reservationEntity 
 		 left join ResMessEntity resMess on reservationEntity.id = resMess.resId 
 		 group by resId
 		""")
-    fun getReservationsThatHaveMessages() : Single<List<ReservationEntity>>
+	fun getReservationsThatHaveMessages(): Single<List<ReservationEntity>>
 
-    @Query("""
+	@Query("""
         SELECT * FROM MessageEntity messageEntity
          left join ResMessEntity resMess on messageEntity.id = resMess.messId
          where resId = :resId order by messId
     """)
-    fun getMessageThreadByResId(resId: Int) : Flowable<List<MessageEntity>>
+	fun getMessageThreadByResId(resId: Int): Flowable<List<MessageEntity>>
 
 }

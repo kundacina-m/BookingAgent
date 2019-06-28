@@ -13,18 +13,19 @@ import javax.inject.Inject
 
 class ProfileViewModel @Inject constructor(private val userRepository: UserRepository) : BaseViewModel() {
 
-    val userInfo = MutableLiveData<WrappedResponse<UserEntity>>()
+	val userInfo = MutableLiveData<WrappedResponse<UserEntity>>()
 
-    fun getUserInfo() {
-        disposables.add(
-            userRepository.getUserProfile()
-                .subscribeOn(Schedulers.io())
-                .subscribeBy {
-                    when (it) {
-                        is WrappedResponse.OnSuccess -> userInfo.postValue(WrappedResponse.OnSuccess(it.item.body.body.userResponse?.toUserModel()!!))
-                        is WrappedResponse.OnError -> Log.d("bad mapping bro", "ERROR")
-                    }
-                })
-    }
+	fun getUserInfo() {
+		disposables.add(
+			userRepository.getUserProfile()
+				.subscribeOn(Schedulers.io())
+				.subscribeBy {
+					when (it) {
+						is WrappedResponse.OnSuccess -> userInfo.postValue(
+							WrappedResponse.OnSuccess(it.item.body.body.userResponse?.toUserModel()!!))
+						is WrappedResponse.OnError -> Log.d("bad mapping bro", "ERROR")
+					}
+				})
+	}
 
 }

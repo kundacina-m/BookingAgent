@@ -3,7 +3,11 @@ package com.example.bookingagent.data.repository
 import com.example.bookingagent.data.db.dao.UserDao
 import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.data.networking.user.UserApi
-import com.example.bookingagent.data.networking.user.models.*
+import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
+import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
+import com.example.bookingagent.data.networking.user.models.EnvelopeUserDetailsRequest
+import com.example.bookingagent.data.networking.user.models.EnvelopeUserDetailsResponse
+import com.example.bookingagent.data.networking.user.models.UserDetailsRequest
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.toSealed
 import io.reactivex.Single
@@ -25,8 +29,7 @@ class UserRepository @Inject constructor(private val userDao: UserDao, private v
 	fun loginUser(loginRequest: EnvelopeLoginRequest): Single<WrappedResponse<EnvelopeLoginResponse>> =
 		userApi.loginUser(loginRequest).toSealed()
 
-	fun getUserProfile() : Single<WrappedResponse<EnvelopeUserDetailsResponse>> =
+	fun getUserProfile(): Single<WrappedResponse<EnvelopeUserDetailsResponse>> =
 		userApi.getUserProfile(EnvelopeUserDetailsRequest(UserDetailsRequest())).toSealed()
-
 
 }

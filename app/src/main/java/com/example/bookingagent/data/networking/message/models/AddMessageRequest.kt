@@ -9,6 +9,6 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "res", reference = "http://xml/reservation")
 @SoapRequest
 data class AddMessageRequest(
-    @field:Element(name = "res:reservationId") val resId: Int,
-    @field:Element(name = "res:text") val content: String
+	@field:Element(name = "res:reservationId") val resId: Int,
+	@field:Element(name = "res:text") val content: String
 )

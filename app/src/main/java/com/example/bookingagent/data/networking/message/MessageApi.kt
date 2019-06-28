@@ -12,16 +12,16 @@ import retrofit2.http.POST
 
 interface MessageApi {
 
-    @POST("reservation")
-    fun addMessage(
-        @Body envelopeAddMessageRequest: EnvelopeAddMessageRequest,
-        @HeaderMap headers: Map<String, String> = apiHeaders.map
-    ): Single<EnvelopeAddMessageResponse>
+	@POST("reservation")
+	fun addMessage(
+		@Body envelopeAddMessageRequest: EnvelopeAddMessageRequest,
+		@HeaderMap headers: Map<String, String> = apiHeaders.map
+	): Single<EnvelopeAddMessageResponse>
 
-    @POST("reservation")
-    fun deleteMessage(
-        @Body envelopeDeleteMessageRequest: EnvelopeDeleteMessageRequest,
-        @HeaderMap headers: Map<String, String> = apiHeaders.map
-    ): Single<EnvelopeDeleteMessageResponse>
+	@POST("reservation")
+	fun deleteMessage(
+		@Body envelopeDeleteMessageRequest: EnvelopeDeleteMessageRequest,
+		@HeaderMap headers: Map<String, String> = apiHeaders.map
+	): Single<EnvelopeDeleteMessageResponse>
 
 }

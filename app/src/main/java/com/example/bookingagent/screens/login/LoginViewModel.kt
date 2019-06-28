@@ -8,9 +8,9 @@ import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
 import com.example.bookingagent.data.networking.user.models.LoginRequest
 import com.example.bookingagent.data.repository.UserRepository
-import com.example.bookingagent.utils.apiHeaders
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
+import com.example.bookingagent.utils.apiHeaders
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -38,12 +38,12 @@ class LoginViewModel @Inject constructor(val repository: UserRepository) : BaseV
 			.subscribeBy {
 				when (it) {
 					is OnSuccess -> {
-						Log.d("ERROR","NIJE DOBIO LOGIN ${it.item.body.body.token}")
+						Log.d("ERROR", "NIJE DOBIO LOGIN ${it.item.body.body.token}")
 						loginResponse.postValue(it)
 						apiHeaders.addToken(it.item.body.body.token!!)
 						identityVerification.postValue(true)
 					}
-					is WrappedResponse.OnError -> Log.d("ERROR","NIJE DOBIO LOGIN ${it.error}")
+					is WrappedResponse.OnError -> Log.d("ERROR", "NIJE DOBIO LOGIN ${it.error}")
 				}
 			})
 	}

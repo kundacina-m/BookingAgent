@@ -1,7 +1,6 @@
 package com.example.bookingagent.screens.reservations.list
 
 import android.util.Log
-import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
@@ -11,7 +10,6 @@ import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_reservations.rvReservations
 
 class ReservationsFragment : BaseFragment<ReservationsViewModel, ReservationRoutes>() {
-
 
 	private val adapter by lazy {
 		ReservationsAdapter().apply {
@@ -31,7 +29,7 @@ class ReservationsFragment : BaseFragment<ReservationsViewModel, ReservationRout
 
 		viewModel.reservationUsed.observe(this, Observer {
 			when (it) {
-				is OnSuccess -> Log.d("SUCCES","SUCCES")
+				is OnSuccess -> Log.d("SUCCES", "SUCCES")
 				is OnError -> Log.d(TAG, "setObservers: ERROR")
 			}
 		})

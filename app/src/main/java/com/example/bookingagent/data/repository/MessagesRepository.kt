@@ -15,7 +15,8 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MessagesRepository @Inject constructor(val messageDao: MessageDao, val resMessDao: ResMessDao, val messageApi: MessageApi) {
+class MessagesRepository @Inject constructor(val messageDao: MessageDao, val resMessDao: ResMessDao,
+	val messageApi: MessageApi) {
 
 	fun addMessage(resId: Int, message: MessageEntity) {
 		Single.just(messageDao.addMessage(message))
@@ -35,15 +36,14 @@ class MessagesRepository @Inject constructor(val messageDao: MessageDao, val res
 	fun deleteMessageFromDB(id: Int) =
 		messageDao.deleteMessage(id)
 
-
 	// region NETWORK
 
 	fun sendMessage(resId: Int, message: String) =
-		messageApi.addMessage(EnvelopeAddMessageRequest(AddMessageRequest(resId,message))).toSealed()
+		messageApi.addMessage(EnvelopeAddMessageRequest(AddMessageRequest(resId, message))).toSealed()
 
 	fun deleteMessage(messageId: Int) =
 		messageApi.deleteMessage(EnvelopeDeleteMessageRequest(DeleteMessageRequest(messageId))).toSealed()
 
-    // endregion NETWORK
+	// endregion NETWORK
 
 }

@@ -12,7 +12,7 @@ import io.reactivex.Single
 interface AccRoomDao {
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	fun addAccRoomRow(accRoom: AccRoom) : Long
+	fun addAccRoomRow(accRoom: AccRoom): Long
 
 	@Query("SELECT roomId from AccRoom where accId == :accId")
 	fun getRoomIdsByAccId(accId: Int): Single<List<Int>>

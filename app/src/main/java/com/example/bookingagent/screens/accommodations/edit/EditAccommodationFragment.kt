@@ -23,6 +23,7 @@ import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import com.example.bookingagent.utils.asString
 import com.example.bookingagent.utils.showToast
 import com.example.bookingagent.utils.toBase64
+import kotlinx.android.synthetic.main.fragment_add_accommodation.sp_categories
 import kotlinx.android.synthetic.main.fragment_edit_accommodation.btAddImage
 import kotlinx.android.synthetic.main.fragment_edit_accommodation.btAddService
 import kotlinx.android.synthetic.main.fragment_edit_accommodation.etAddress
@@ -138,7 +139,11 @@ class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditA
 			id = args.id,
 			cancellingFee = etCancellingFee.text.toString().toFloat(),
 			cancellingDays = etCancellingDays.text.toString().toInt(),
-			type = args.type,
+			type = when (sp_categories.selectedItemPosition) {
+				0 -> "SMESTAJ_APARTMAN"
+				1 -> "SMESTAJ_BB"
+				else -> "SMESTAJ_HOTEL"
+			},
 			address = Address(
 				latitude = etLatitude.text.toString().toFloat(),
 				longitude = etLongitude.text.toString().toFloat(),

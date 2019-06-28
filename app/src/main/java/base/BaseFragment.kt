@@ -75,7 +75,7 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 		val supportActionBar = (activity as AppCompatActivity).supportActionBar
 		actionBar = supportActionBar
 		Navigation.findNavController(activity!!, com.example.bookingagent.R.id.nav_host_fragment).run {
-			NavigationUI.setupActionBarWithNavController(activity!! as AppCompatActivity,this)
+			NavigationUI.setupActionBarWithNavController(activity!! as AppCompatActivity, this)
 		}
 	}
 

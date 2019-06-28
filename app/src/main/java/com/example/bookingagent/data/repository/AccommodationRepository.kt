@@ -21,7 +21,8 @@ class AccommodationRepository @Inject constructor(
 	// region NETWORK
 
 	fun addAccommodation(accommodationEntity: AccommodationEntity) =
-		accommodationApi.addAccommodation(EnvelopeAddChangeAccommodationRequest(accommodationEntity.toRequest())).toSealed()
+		accommodationApi.addAccommodation(
+			EnvelopeAddChangeAccommodationRequest(accommodationEntity.toRequest())).toSealed()
 
 	fun getAccommodations() =
 		accommodationApi.getAccommodations(EnvelopeGetAccommodationRequest(GetAccommodationRequest())).toSealed()
@@ -31,7 +32,8 @@ class AccommodationRepository @Inject constructor(
 			EnvelopeDeleteAccommodationRequest(DeleteAccommodationRequest(id = id))).toSealed()
 
 	fun editAccommodation(accommodationEntity: AccommodationEntity) =
-		accommodationApi.editAccommodation(EnvelopeAddChangeAccommodationRequest(accommodationEntity.toRequest())).toSealed()
+		accommodationApi.editAccommodation(
+			EnvelopeAddChangeAccommodationRequest(accommodationEntity.toRequest())).toSealed()
 
 	// endregion NETWORK
 

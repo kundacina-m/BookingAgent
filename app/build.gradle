@@ -66,6 +66,8 @@ dependencies {
 		exclude group: 'xpp3', module: 'xpp3'
 	}
 
+	implementation 'android.arch.work:work-runtime-ktx:1.0.1'
+
 	// Tikxml
 	//	implementation 'com.github.Tickaroo.tikxml:annotation:0.8.15'
 	//	implementation 'com.github.Tickaroo.tikxml:core:0.8.15'

@@ -1,5 +1,6 @@
 package com.example.bookingagent.screens.accommodations.add
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import base.BaseViewModel
 import com.example.bookingagent.data.db.entities.AccommodationEntity
@@ -25,8 +26,11 @@ class AddAccommodationViewModel @Inject constructor(private val accommodationRep
 				.subscribeOn(Schedulers.io())
 				.subscribeBy {
 					when (it) {
-						is OnSuccess -> addAccommodationToDB(accommodationEntity.addId(it.item.body.body.idAccommodation!!))
-						is OnError -> addingAccommodation.postValue(OnError(it.error))
+						is OnSuccess -> addAccommodationToDB(
+							accommodationEntity.addId(it.item.body.body.idAccommodation!!))
+						is OnError -> {
+							Log.d("ERROR", "addAccommodation: ")
+						}
 					}
 				})
 
@@ -42,4 +46,5 @@ class AddAccommodationViewModel @Inject constructor(private val accommodationRep
 				}
 			}
 		)
+
 }

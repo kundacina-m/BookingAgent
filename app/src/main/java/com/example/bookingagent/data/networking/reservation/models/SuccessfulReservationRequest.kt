@@ -9,5 +9,5 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "res", reference = "http://xml/reservation")
 @SoapRequest
 data class SuccessfulReservationRequest(
-    @field:Element(name = "res:reservationId") val reservationId: Int
+	@field:Element(name = "res:reservationId") val reservationId: Int
 )

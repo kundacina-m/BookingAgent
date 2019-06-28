@@ -37,6 +37,7 @@ import kotlinx.android.synthetic.main.fragment_add_accommodation.etZipCode
 import kotlinx.android.synthetic.main.fragment_add_accommodation.focusContainer
 import kotlinx.android.synthetic.main.fragment_add_accommodation.rvImages
 import kotlinx.android.synthetic.main.fragment_add_accommodation.rvServices
+import kotlinx.android.synthetic.main.fragment_add_accommodation.sp_categories
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 
 class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAccommodationRoutes>() {
@@ -117,7 +118,11 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 		AccommodationEntity(
 			id = 0,
 			name = etName.asString(),
-			type = "SMESTAJ_HOTEL",
+			type = when (sp_categories.selectedItemPosition) {
+				0 -> "SMESTAJ_APARTMAN"
+				1 -> "SMESTAJ_BB"
+				else -> "SMESTAJ_HOTEL"
+			},
 			cancellingFee = if (etCancellingFee.asString().isNotEmpty()) etCancellingFee.asString().toFloat() else 0f,
 			cancellingDays = if (etCancellingDays.asString().isNotEmpty()) etCancellingDays.asString().toInt() else 0,
 			description = etDescription.text.toString(),
@@ -164,10 +169,11 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
 		super.onActivityResult(requestCode, resultCode, data)
 
 		data?.data?.run {
-			if (requestCode == FILE_CHOOSER_IMAGE && resultCode == Activity.RESULT_OK)
+			if (requestCode == FILE_CHOOSER_IMAGE && resultCode == Activity.RESULT_OK) {
 				activity?.contentResolver?.openInputStream(this).also {
 					addImage(BitmapFactory.decodeStream(it).toBase64())
 				}
+			}
 		}
 	}
 

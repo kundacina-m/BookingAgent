@@ -24,4 +24,7 @@ interface AccRoomDao {
 		""")
 	fun getRoomsByAccId(accId: Int): Single<List<RoomEntity>>
 
+	@Query("DELETE from AccRoom")
+	fun nukeAccRoomTable()
+
 }

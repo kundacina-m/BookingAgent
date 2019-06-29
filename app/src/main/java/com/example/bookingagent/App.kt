@@ -1,5 +1,6 @@
 package com.example.bookingagent
 
+import android.content.Context
 import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.data.repository.MessagesRepository
 import com.example.bookingagent.data.repository.ReservationRepository
@@ -12,25 +13,36 @@ import javax.inject.Inject
 
 class App : DaggerApplication() {
 
-	@Inject lateinit var accommodationRepository: AccommodationRepository
-	@Inject lateinit var messagesRepository: MessagesRepository
-	@Inject lateinit var roomRepository: RoomRepository
-	@Inject lateinit var reservationRepository: ReservationRepository
+    @Inject
+    lateinit var accommodationRepository: AccommodationRepository
+    @Inject
+    lateinit var messagesRepository: MessagesRepository
+    @Inject
+    lateinit var roomRepository: RoomRepository
+    @Inject
+    lateinit var reservationRepository: ReservationRepository
 
-	companion object {
-		lateinit var app: App
-		fun getInstance() = app
-	}
+    companion object {
+        lateinit var app: App
+        fun getInstance() = app
+    }
 
-	override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-		DaggerAppComponent.factory().create(this)
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
+        DaggerAppComponent.factory().create(this)
 
-	override fun onCreate() {
-		super.onCreate()
-		app = this
-		if (BuildConfig.DEBUG) {
-			Stetho.initializeWithDefaults(this)
-		}
-	}
+    override fun onCreate() {
+        super.onCreate()
+        app = this
+
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+        }
+    }
+
+//    override fun attachBaseContext(base: Context) {
+//        super.attachBaseContext(base)
+//        MultiDex.install(this)
+//    }
+
 
 }

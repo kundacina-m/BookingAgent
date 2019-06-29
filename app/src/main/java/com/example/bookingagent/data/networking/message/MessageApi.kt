@@ -4,7 +4,7 @@ import com.example.bookingagent.data.networking.message.models.EnvelopeAddMessag
 import com.example.bookingagent.data.networking.message.models.EnvelopeAddMessageResponse
 import com.example.bookingagent.data.networking.message.models.EnvelopeDeleteMessageRequest
 import com.example.bookingagent.data.networking.message.models.EnvelopeDeleteMessageResponse
-import com.example.bookingagent.utils.apiHeaders
+import com.example.bookingagent.utils.ApiHeaders
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.HeaderMap
@@ -15,13 +15,13 @@ interface MessageApi {
 	@POST("reservation")
 	fun addMessage(
 		@Body envelopeAddMessageRequest: EnvelopeAddMessageRequest,
-		@HeaderMap headers: Map<String, String> = apiHeaders.map
+		@HeaderMap headers: Map<String, String> = ApiHeaders.map
 	): Single<EnvelopeAddMessageResponse>
 
 	@POST("reservation")
 	fun deleteMessage(
 		@Body envelopeDeleteMessageRequest: EnvelopeDeleteMessageRequest,
-		@HeaderMap headers: Map<String, String> = apiHeaders.map
+		@HeaderMap headers: Map<String, String> = ApiHeaders.map
 	): Single<EnvelopeDeleteMessageResponse>
 
 }

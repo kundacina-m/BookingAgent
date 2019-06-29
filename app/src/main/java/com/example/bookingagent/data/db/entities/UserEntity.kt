@@ -9,11 +9,11 @@ data class UserEntity(
 
 	@PrimaryKey
 	var id: Int = 0,
-	val username: String? = null,
-	val password: String? = null,
-	var firstname: String? = null,
-	var lastname: String? = null,
-	var address: Address? = null,
-	var email: String? = null
-
+	val username: String = "",
+	val password: String = "",
+	var firstname: String = "",
+	var lastname: String = "",
+	var address: Address,
+	var email: String = "",
+	var token: String = ""
 )

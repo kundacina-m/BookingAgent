@@ -18,7 +18,7 @@ interface ResMessDao {
 
 	@Query("""
 		 SELECT * from ReservationEntity reservationEntity 
-		 left join ResMessEntity resMess on reservationEntity.id = resMess.resId 
+		 inner join ResMessEntity resMess on reservationEntity.id = resMess.resId 
 		 group by resId
 		""")
 	fun getReservationsThatHaveMessages(): Single<List<ReservationEntity>>
@@ -29,5 +29,8 @@ interface ResMessDao {
          where resId = :resId order by messId
     """)
 	fun getMessageThreadByResId(resId: Int): Flowable<List<MessageEntity>>
+
+	@Query("DELETE from ResMessEntity")
+	fun nukeResMessTable()
 
 }

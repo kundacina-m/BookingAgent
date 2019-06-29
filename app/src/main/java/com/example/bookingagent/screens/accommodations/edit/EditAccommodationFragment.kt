@@ -17,12 +17,9 @@ import com.example.bookingagent.data.model.Service
 import com.example.bookingagent.screens.accommodations.AddServiceDialog
 import com.example.bookingagent.screens.accommodations.ServicesAdapter
 import com.example.bookingagent.screens.rooms.ImagesAdapter
-import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
+import com.example.bookingagent.utils.*
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
-import com.example.bookingagent.utils.asString
-import com.example.bookingagent.utils.showToast
-import com.example.bookingagent.utils.toBase64
 import kotlinx.android.synthetic.main.fragment_add_accommodation.sp_categories
 import kotlinx.android.synthetic.main.fragment_edit_accommodation.btAddImage
 import kotlinx.android.synthetic.main.fragment_edit_accommodation.btAddService
@@ -187,8 +184,8 @@ class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditA
 		data?.data?.run {
 			if (requestCode == FILE_CHOOSER_IMAGE && resultCode == Activity.RESULT_OK)
 				activity?.contentResolver?.openInputStream(this).also {
-					addImage(BitmapFactory.decodeStream(it).toBase64())
-				}
+					val image = BitmapFactory.decodeStream(it).toBase64()
+					addImage(image.compressBase64())				}
 		}
 	}
 

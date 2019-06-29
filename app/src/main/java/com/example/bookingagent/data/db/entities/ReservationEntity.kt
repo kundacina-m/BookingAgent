@@ -10,7 +10,7 @@ data class ReservationEntity(
 	val firstname: String = "",
 	val lastname: String = "",
 	val email: String = "",
-	val room: RoomEntity? = null,
+	val room: RoomEntity,
 	val from: String = "",
 	val to: String = "",
 	val price: Float = 0f,

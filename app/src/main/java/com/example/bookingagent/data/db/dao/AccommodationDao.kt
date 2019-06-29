@@ -26,4 +26,7 @@ interface AccommodationDao {
 
 	@Query("SELECT * from AccommodationEntity where id == :id")
 	fun getAccommodation(id: Int): Single<AccommodationEntity>
+
+	@Query("DELETE from AccommodationEntity")
+	fun nukeAccommodationTable()
 }

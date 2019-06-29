@@ -15,4 +15,6 @@ interface MessageDao {
 	@Query("DELETE from MessageEntity where id = :id")
 	fun deleteMessage(id: Int): Int
 
+	@Query("DELETE from MessageEntity")
+	fun nukeMessageTable()
 }

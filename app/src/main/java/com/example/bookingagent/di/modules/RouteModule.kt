@@ -26,10 +26,6 @@ import com.example.bookingagent.screens.messages.thread.MessageThreadFragment
 import com.example.bookingagent.screens.messages.thread.MessageThreadRoutes
 import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.profile.ProfileRoutes
-import com.example.bookingagent.screens.register.RegisterFragment
-import com.example.bookingagent.screens.register.RegisterRoutes
-import com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment
-import com.example.bookingagent.screens.reservations.details.ReservationDetailsRoutes
 import com.example.bookingagent.screens.reservations.list.ReservationRoutes
 import com.example.bookingagent.screens.reservations.list.ReservationsFragment
 import com.example.bookingagent.screens.rooms.add.AddRoomFragment
@@ -60,11 +56,6 @@ abstract class RouteModule {
 	@IntoMap
 	@RouteKey(LoginFragment::class)
 	internal abstract fun bindLoginRoutes(loginRoutes: LoginRoutes): Routes
-
-	@Binds
-	@IntoMap
-	@RouteKey(RegisterFragment::class)
-	internal abstract fun bindRegisterRoutes(loginRoutes: RegisterRoutes): Routes
 
 	@Binds
 	@IntoMap
@@ -125,11 +116,6 @@ abstract class RouteModule {
 	@IntoMap
 	@RouteKey(RoomsFragment::class)
 	internal abstract fun bindRoomsRoutes(roomsRoutes: RoomsRoutes): Routes
-
-	@Binds
-	@IntoMap
-	@RouteKey(ReservationDetailsFragment::class)
-	internal abstract fun bindReservationDetailsRoutes(reservationDetailsRoutes: ReservationDetailsRoutes): Routes
 
 	@Binds
 	@IntoMap

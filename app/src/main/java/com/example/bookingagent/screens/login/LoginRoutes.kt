@@ -7,9 +7,6 @@ import javax.inject.Inject
 
 class LoginRoutes @Inject constructor(val navigationController: NavigationController) : Routes() {
 
-	fun navigateToRegister() =
-		navigationController.route.navigate(R.id.action_loginFragment_to_registerFragment)
-
 	fun navigateToHome() =
 		navigationController.route.navigate(R.id.action_loginFragment_to_homeFragment)
 

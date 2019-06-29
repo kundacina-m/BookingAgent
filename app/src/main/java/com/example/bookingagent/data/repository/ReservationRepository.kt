@@ -32,4 +32,7 @@ class ReservationRepository @Inject constructor(
 
 	fun updateReservation(id: Int) =
 		reservationDao.updateUsedInReservation(id, true)
+
+	fun deleteAllReservations() =
+		reservationDao.nukeReservationTable()
 }

@@ -8,6 +8,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import base.BaseViewModel
 import com.example.bookingagent.data.db.entities.RoomEntity
+import com.example.bookingagent.data.model.OccupiedTime
 import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.data.repository.RoomRepository
 import com.example.bookingagent.utils.RequestError.NoInternetError
@@ -22,9 +23,12 @@ import javax.inject.Inject
 class RoomDetailsViewModel @Inject constructor(private val roomRepository: RoomRepository) : BaseViewModel() {
 
 	val deleteStatus = MutableLiveData<WrappedResponse<Boolean>>()
+	val room = MutableLiveData<WrappedResponse<RoomEntity>>()
+
 	val images = MutableLiveData<List<String>>()
 	val schedule = MutableLiveData<List<ScheduleUnit>>()
-	val room = MutableLiveData<WrappedResponse<RoomEntity>>()
+	val comments = MutableLiveData<List<String>>()
+	val notAvailable = MutableLiveData<List<OccupiedTime>>()
 
 	fun getRoomById(id: Int) =
 		disposables.add(roomRepository.getRoom(id)

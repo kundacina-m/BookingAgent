@@ -54,6 +54,9 @@ class AccommodationRepository @Inject constructor(
 	fun getAccommodationFromDB(id: Int) =
 		accommodationDao.getAccommodation(id).toSealed()
 
+	fun deleteAllAccommodation() =
+		accommodationDao.nukeAccommodationTable()
+
 	// endregion DB
 
 }

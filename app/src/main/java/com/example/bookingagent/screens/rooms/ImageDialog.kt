@@ -15,16 +15,14 @@ private constructor(private val builder: Builder) : Dialog(builder.context) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.dialog_image)
 
-		setImageDialog()
+		invokeImageDialog()
 	}
 
-	private fun setImageDialog() {
-		val imageByteArray = Base64.decode(builder.base64, Base64.DEFAULT)
+	private fun invokeImageDialog() =
 		Glide.with(context)
 			.asBitmap()
-			.load(imageByteArray)
+			.load(Base64.decode(builder.base64, Base64.DEFAULT))
 			.into(imageDialog)
-	}
 
 	companion object {
 
@@ -38,6 +36,5 @@ private constructor(private val builder: Builder) : Dialog(builder.context) {
 		var base64: String? = null
 
 		fun build() = ImageDialog(this)
-
 	}
 }

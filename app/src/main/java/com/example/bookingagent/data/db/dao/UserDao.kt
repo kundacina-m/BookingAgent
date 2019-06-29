@@ -11,12 +11,14 @@ import io.reactivex.Single
 @Dao
 interface UserDao {
 
-	@Insert(onConflict = OnConflictStrategy.FAIL)
-	fun addUser(userEntity: UserEntity): Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addUser(userEntity: UserEntity): Long
 
-	@Delete
-	fun deleteUser(userEntity: UserEntity)
+    @Query("SELECT token from localUsers where username = :username and password = :password")
+    fun getUserToken(username: String, password: String): Single<String>
 
-	@Query("SELECT * from localUsers where username = :username")
-	fun getUser(username: String): Single<UserEntity>
+    @Query("SELECT * from localUsers where token = :token")
+    fun getUserByToken(token: String) : Single<UserEntity>
+
+
 }

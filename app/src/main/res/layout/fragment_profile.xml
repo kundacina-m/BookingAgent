@@ -1,98 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-	<androidx.constraintlayout.widget.ConstraintLayout
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center"
-		tools:context=".screens.profile.ProfileFragment">
+    <include layout="@layout/toolbar_main"/>
 
-		<TextView
-			android:id="@+id/tvLabelUsername"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="16dp"
-			android:layout_marginTop="8dp"
-			android:text="Username:"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:context=".screens.profile.ProfileFragment">
 
-		<TextView
-			android:id="@+id/tvUsername"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="4dp"
-			app:layout_constraintStart_toEndOf="@+id/tvLabelUsername"
-			app:layout_constraintTop_toTopOf="@+id/tvLabelUsername"/>
+            <TextView
+                    android:id="@+id/tvLabelUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Username:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-		<TextView
-			android:id="@+id/tvLabelFullName"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="16dp"
-			android:text="Full name:"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/tvLabelUsername"/>
+            <TextView
+                    android:id="@+id/tvUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/tvLabelUsername"
+                    app:layout_constraintTop_toTopOf="@+id/tvLabelUsername"/>
 
-		<TextView
-			android:id="@+id/tvFullName"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="8dp"
-			app:layout_constraintStart_toEndOf="@+id/tvLabelFullName"
-			app:layout_constraintTop_toBottomOf="@+id/tvLabelUsername"/>
+            <TextView
+                    android:id="@+id/tvLabelFullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Full name:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLabelUsername"/>
 
-		<TextView
-			android:id="@+id/tvLabelEmail"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="16dp"
-			android:text="Label:"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/tvLabelFullName"/>
+            <TextView
+                    android:id="@+id/tvFullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/tvLabelFullName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLabelUsername"/>
 
-		<TextView
-			android:id="@+id/tvEmail"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="4dp"
-			app:layout_constraintStart_toEndOf="@+id/tvLabelEmail"
-			app:layout_constraintTop_toTopOf="@+id/tvLabelEmail"/>
+            <TextView
+                    android:id="@+id/tvLabelEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Label:"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLabelFullName"/>
 
-		<TextView
-			android:id="@+id/tvLabelAddress"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginEnd="16dp"
-			android:layout_marginStart="16dp"
-			android:layout_marginTop="24dp"
-			android:text="Address:"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/tvLabelEmail"/>
+            <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/tvLabelEmail"
+                    app:layout_constraintTop_toTopOf="@+id/tvLabelEmail"/>
 
-		<TextView
-			android:id="@+id/tvStreet"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginEnd="16dp"
-			android:layout_marginStart="16dp"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/tvLabelAddress"/>
+            <TextView
+                    android:id="@+id/tvLabelAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Address:"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLabelEmail"/>
 
-		<TextView
-			android:id="@+id/tvCity"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginEnd="16dp"
-			android:layout_marginStart="16dp"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/tvStreet"/>
-	</androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            <TextView
+                    android:id="@+id/tvStreet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLabelAddress"/>
+
+            <TextView
+                    android:id="@+id/tvCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStreet"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</LinearLayout>

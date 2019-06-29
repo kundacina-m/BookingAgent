@@ -15,9 +15,9 @@ class ScheduleAdapter : BaseAdapter<ScheduleUnit>() {
 			itemRemove = this@ScheduleAdapter::removeItem
 		}
 
-	private fun removeItem(item: ScheduleUnit) {
-		val old = getData().toMutableList()
-		old.remove(item)
-		setData(old)
-	}
+	private fun removeItem(item: ScheduleUnit) =
+		getData().toMutableList().run {
+			remove(item)
+			setData(this)
+		}
 }

@@ -4,7 +4,7 @@ import com.example.bookingagent.data.networking.user.models.EnvelopeLoginRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeLoginResponse
 import com.example.bookingagent.data.networking.user.models.EnvelopeUserDetailsRequest
 import com.example.bookingagent.data.networking.user.models.EnvelopeUserDetailsResponse
-import com.example.bookingagent.utils.apiHeaders
+import com.example.bookingagent.utils.ApiHeaders
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.HeaderMap
@@ -20,7 +20,7 @@ interface UserApi {
 	@POST("profile")
 	fun getUserProfile(
 		@Body envelopeUserDetailsRequest: EnvelopeUserDetailsRequest,
-		@HeaderMap headers: Map<String, String> = apiHeaders.map
+		@HeaderMap headers: Map<String, String> = ApiHeaders.map
 	): Single<EnvelopeUserDetailsResponse>
 
 }

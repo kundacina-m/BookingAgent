@@ -8,11 +8,11 @@ import com.example.bookingagent.data.networking.room.models.AddChangeRoomRequest
 fun RoomEntity.toRequest(accId: Int = this.id) =
 	AddChangeRoomRequest(
 		accId = accId,
-		roomNum = roomNum!!,
-		floor = floor!!,
-		price = price!!,
+		roomNum = roomNum,
+		floor = floor,
+		price = price,
 		images = images,
-		bedsNum = bedNums!!,
+		bedsNum = bedNums,
 		available = true,
 		timePrice = arrayListOf()
 	)

@@ -11,18 +11,18 @@ data class UserResponse(
 	@field:Element(name = "active")
 	var active: Boolean = true,
 	@field:Element(required = false, name = "email")
-	var email: String? = null,
+	var email: String = "",
 	@field:Element(required = false, name = "firstName")
-	var firstName: String? = null,
+	var firstName: String = "",
 	@field:Element(name = "lastName")
-	var lastName: String? = null,
+	var lastName: String = "",
 	@field:Element(required = false, name = "adresa", type = AddressResponse::class)
-	var address: AddressResponse? = null,
+	var address: AddressResponse = AddressResponse(),
 	@field:Element(required = false, name = "password")
-	var password: String? = null,
+	var password: String = "",
 	@field:Element(name = "role", required = false)
-	var role: String? = null,
+	var role: String = "",
 	@field:Element(name = "userName")
-	var userName: String? = null
+	var userName: String = ""
 
 )

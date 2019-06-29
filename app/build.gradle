@@ -6,8 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-//apply plugin: 'check-naming-convention'
-
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -32,6 +30,10 @@ android {
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 		}
 	}
+    compileOptions {
+        targetCompatibility = '1.8'
+        sourceCompatibility = var
+    }
 }
 
 dependencies {
@@ -60,19 +62,15 @@ dependencies {
 	implementation 'com.squareup.retrofit2:retrofit:2.3.0'
 	implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
+	// Simple xml converter
 	implementation('com.squareup.retrofit2:converter-simplexml:2.1.0') {
 		exclude group: 'stax', module: 'stax-api'
 		exclude group: 'stax', module: 'stax'
 		exclude group: 'xpp3', module: 'xpp3'
 	}
 
+	// Workmanager
 	implementation 'android.arch.work:work-runtime-ktx:1.0.1'
-
-	// Tikxml
-	//	implementation 'com.github.Tickaroo.tikxml:annotation:0.8.15'
-	//	implementation 'com.github.Tickaroo.tikxml:core:0.8.15'
-	//	kapt 'com.github.Tickaroo.tikxml:processor-common:0.8.15'
-	//	kapt 'com.github.Tickaroo.tikxml:processor:0.8.15'
 
 	// Room - Data Persistence
 	implementation 'android.arch.persistence.room:runtime:1.1.1'
@@ -122,10 +120,6 @@ dependencies {
 	// Google auto value
 	implementation "com.google.auto.value:auto-value-annotations:1.6.2"
 	kapt "com.google.auto.value:auto-value:1.6.2"
-}
 
-//checkNamingConvention {
-//
-//    configFile = "$project.rootDir/milan.json"
-//}
+}
 

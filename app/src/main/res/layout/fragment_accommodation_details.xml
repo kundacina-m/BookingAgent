@@ -93,7 +93,7 @@
 			android:layout_marginStart="24dp"
 			android:text="Rating:"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/tvCancellingFee"/>
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelCancellingDays"/>
 
 		<TextView
 			android:id="@+id/tvRating"
@@ -147,6 +147,19 @@
 			android:layout_marginStart="16dp"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/tvLabelToRooms"/>
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelToRooms" android:layout_marginTop="12dp"/>
+		<TextView
+			android:text="Cancelling days:"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/tvLabelCancellingDays"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelCancellingFee"
+			app:layout_constraintStart_toStartOf="@+id/tvLabelCancellingFee"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/tvCancellingDays"
+			app:layout_constraintTop_toBottomOf="@+id/tvLabelCancellingFee"
+			app:layout_constraintStart_toEndOf="@+id/tvLabelCancellingDays" android:layout_marginStart="8dp"/>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

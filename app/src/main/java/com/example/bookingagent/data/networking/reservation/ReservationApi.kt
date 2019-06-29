@@ -4,7 +4,7 @@ import com.example.bookingagent.data.networking.reservation.models.EnvelopeGetRe
 import com.example.bookingagent.data.networking.reservation.models.EnvelopeGetReservationResponse
 import com.example.bookingagent.data.networking.reservation.models.EnvelopeSuccessfulReservationRequest
 import com.example.bookingagent.data.networking.reservation.models.EnvelopeSuccessfulReservationResponse
-import com.example.bookingagent.utils.apiHeaders
+import com.example.bookingagent.utils.ApiHeaders
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.HeaderMap
@@ -15,13 +15,13 @@ interface ReservationApi {
 	@POST("reservation")
 	fun getAllReservations(
 		@Body envelopeGetReservationRequest: EnvelopeGetReservationRequest,
-		@HeaderMap headers: Map<String, String> = apiHeaders.map
+		@HeaderMap headers: Map<String, String> = ApiHeaders.map
 	): Single<EnvelopeGetReservationResponse>
 
 	@POST("reservation")
 	fun successfulReservation(
 		@Body envelopeSuccessfulReservationRequest: EnvelopeSuccessfulReservationRequest,
-		@HeaderMap headers: Map<String, String> = apiHeaders.map
+		@HeaderMap headers: Map<String, String> = ApiHeaders.map
 	): Single<EnvelopeSuccessfulReservationResponse>
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -77,10 +78,14 @@ abstract class BaseFragment<VM : ViewModel, R : Routes> : DaggerFragment() {
 		Navigation.findNavController(activity!!, com.example.bookingagent.R.id.nav_host_fragment).run {
 			NavigationUI.setupActionBarWithNavController(activity!! as AppCompatActivity, this)
 		}
+		actionBar?.setDisplayHomeAsUpEnabled(up)
 	}
 
 	protected fun setActionBarTitle(title: String) {
 		actionBar?.title = title
 	}
+
+	protected fun showToast(message: String) =
+		Toast.makeText(activity!!,message,Toast.LENGTH_SHORT).show()
 
 }

@@ -18,14 +18,13 @@ import javax.inject.Inject
 class MessagesRepository @Inject constructor(val messageDao: MessageDao, val resMessDao: ResMessDao,
 	val messageApi: MessageApi) {
 
-	fun addMessage(resId: Int, message: MessageEntity) {
+	fun addMessage(resId: Int, message: MessageEntity) =
 		Single.just(messageDao.addMessage(message))
 			.subscribeOn(Schedulers.io())
 			.subscribeBy {
 				if (it > 0)
 					resMessDao.addResMess(ResMessEntity(resId, message.id))
 			}
-	}
 
 	fun getAllMessagedFromDB() =
 		resMessDao.getReservationsThatHaveMessages().toSealed()
@@ -43,6 +42,11 @@ class MessagesRepository @Inject constructor(val messageDao: MessageDao, val res
 
 	fun deleteMessage(messageId: Int) =
 		messageApi.deleteMessage(EnvelopeDeleteMessageRequest(DeleteMessageRequest(messageId))).toSealed()
+
+	fun deleteAllMessages() {
+		messageDao.nukeMessageTable()
+		resMessDao.nukeResMessTable()
+	}
 
 	// endregion NETWORK
 

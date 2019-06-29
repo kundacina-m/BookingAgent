@@ -1,6 +1,8 @@
 package com.example.bookingagent.screens.messages
 
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import base.BaseFragment
@@ -10,6 +12,7 @@ import com.example.bookingagent.data.model.MessageThread
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_messages.rvMessages
+import kotlinx.android.synthetic.main.toolbar_main.*
 
 class MessagesFragment : BaseFragment<MessagesViewModel, MessagesRoutes>() {
 
@@ -40,8 +43,14 @@ class MessagesFragment : BaseFragment<MessagesViewModel, MessagesRoutes>() {
 
 	override fun initView() {
 		setupRecyclerView()
+		setActionBar(toolbar_top,false)
 		viewModel.getAllMessages()
 
+	}
+
+	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+		menu.clear()
+		super.onCreateOptionsMenu(menu, inflater)
 	}
 
 	private fun setupRecyclerView() {

@@ -15,4 +15,10 @@ interface ReservationDao {
 
 	@Query("SELECT * from ReservationEntity")
 	fun getAllReservations(): Flowable<List<ReservationEntity>>
+
+	@Query("UPDATE ReservationEntity SET reservationUsed =:used where id = :id")
+	fun updateUsedInReservation(id: Int, used: Boolean)
+
+	@Query("DELETE from ReservationEntity")
+	fun nukeReservationTable()
 }

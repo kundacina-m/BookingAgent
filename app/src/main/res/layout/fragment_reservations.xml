@@ -6,6 +6,8 @@
 	android:orientation="vertical"
 	tools:context=".screens.reservations.list.ReservationsFragment">
 
+	<include layout="@layout/toolbar_main"/>
+
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/rvReservations"
 		android:layout_width="match_parent"

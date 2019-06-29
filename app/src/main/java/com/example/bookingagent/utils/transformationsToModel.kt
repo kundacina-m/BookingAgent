@@ -1,10 +1,22 @@
 package com.example.bookingagent.utils
 
-import com.example.bookingagent.data.db.entities.*
-import com.example.bookingagent.data.model.*
+import com.example.bookingagent.data.db.entities.AccommodationEntity
+import com.example.bookingagent.data.db.entities.MessageEntity
+import com.example.bookingagent.data.db.entities.ReservationEntity
+import com.example.bookingagent.data.db.entities.RoomEntity
+import com.example.bookingagent.data.db.entities.UserEntity
+import com.example.bookingagent.data.model.Address
+import com.example.bookingagent.data.model.OccupiedTime
+import com.example.bookingagent.data.model.ScheduleUnit
+import com.example.bookingagent.data.model.Service
 import com.example.bookingagent.data.networking.accommodation.models.AddChangeAccommodationRequest
-import com.example.bookingagent.data.networking.utilresponse.*
-import java.util.GregorianCalendar
+import com.example.bookingagent.data.networking.utilresponse.AccommodationResponse
+import com.example.bookingagent.data.networking.utilresponse.MessageResponse
+import com.example.bookingagent.data.networking.utilresponse.ReservationResponse
+import com.example.bookingagent.data.networking.utilresponse.RoomResponse
+import com.example.bookingagent.data.networking.utilresponse.UserResponse
+import java.util.*
+import kotlin.collections.ArrayList
 
 fun AddChangeAccommodationRequest.toAccommodationModel(
     idAcc: Int, idAddress: Int, rating: Float = 0f,
@@ -69,10 +81,12 @@ fun ArrayList<String>.toScheduleModel(): ArrayList<ScheduleUnit> {
     val listOfSchedule = arrayListOf<ScheduleUnit>()
     this.forEach { schedule ->
         schedule.split("~").also { splitted ->
+            val start = splitted[1].asDate()
+            val end = splitted[2].asDate()
             listOfSchedule.add(
                 ScheduleUnit(
-                    GregorianCalendar(), GregorianCalendar(),
-                    splitted[0].toFloat()
+                    GregorianCalendar().apply { time = start }, GregorianCalendar().apply { time = end },
+                            splitted[0].toFloat()
                 )
             )
         }
@@ -82,10 +96,12 @@ fun ArrayList<String>.toScheduleModel(): ArrayList<ScheduleUnit> {
 
 fun ArrayList<String>.toOccupiedModel(): ArrayList<OccupiedTime> {
     val listOfOccupation = arrayListOf<OccupiedTime>()
-    this.forEach { time ->
-        time.split("~").also { splitted ->
+    this.forEach { date ->
+        date.split("~").also { splitted ->
+            val start = splitted[0].asDate()
+            val end = splitted[1].asDate()
             listOfOccupation.add(
-                OccupiedTime(GregorianCalendar(), GregorianCalendar())
+                OccupiedTime(GregorianCalendar().apply { time = start }, GregorianCalendar().apply { time = end })
             )
         }
     }
@@ -93,17 +109,16 @@ fun ArrayList<String>.toOccupiedModel(): ArrayList<OccupiedTime> {
 }
 
 fun ArrayList<String>.toServicesModel(): ArrayList<Service> {
-        val listOfServices = arrayListOf<Service>()
-        this?.forEach {
-            it.split("~").also { splitted ->
-                listOfServices.add(
-                    Service(1, splitted[0], splitted[1], splitted[2].toFloat())
-                )
-            }
+    val listOfServices = arrayListOf<Service>()
+    this.forEach {
+        it.split("~").also { splitted ->
+            listOfServices.add(
+                Service(1, splitted[0], splitted[1], splitted[2].toFloat())
+            )
         }
-        return listOfServices
+    }
+    return listOfServices
 }
-
 
 fun UserResponse.toUserModel() =
     UserEntity(
@@ -111,17 +126,18 @@ fun UserResponse.toUserModel() =
         email = email,
         firstname = firstName,
         lastname = lastName,
-        password = if (password.isNullOrBlank()) "" else password,
+        password = password,
         username = userName,
         address = Address(
-            id = address?.id,
-            num = address?.num,
-            zipCode = address?.zipCode,
-            street = address?.street,
-            city = address?.city,
-            longitude = address?.longitude,
-            latitude = address?.latitude
-        )
+            id = address.id,
+            num = address.num,
+            zipCode = address.zipCode,
+            street = address.street,
+            city = address.city,
+            longitude = address.longitude,
+            latitude = address.latitude
+        ),
+        token = ApiHeaders.map["Authorization"]!!
     )
 
 fun ReservationResponse.toReservationModel() =
@@ -157,7 +173,6 @@ fun MessageResponse.toMessageModel() =
         content = content,
         sender = sender
     )
-
 
 fun AccommodationEntity.addId(accId: Int) =
     AccommodationEntity(

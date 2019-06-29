@@ -3,6 +3,7 @@ package com.example.bookingagent.screens.reservations.list
 import android.view.View
 import base.BaseViewHolder
 import com.example.bookingagent.data.db.entities.ReservationEntity
+import com.example.bookingagent.utils.asString
 import kotlinx.android.synthetic.main.item_reservation.view.btUsed
 import kotlinx.android.synthetic.main.item_reservation.view.tvAccommodationName
 import kotlinx.android.synthetic.main.item_reservation.view.tvBedNum
@@ -23,7 +24,7 @@ class ReservationsViewHolder(itemView: View) : BaseViewHolder<ReservationEntity>
 			tvOnName.text = (dataItem.firstname + " " + dataItem.lastname)
 			tvFrom.text = dataItem.from
 			tvTo.text = dataItem.to
-			tvPrice.text = dataItem.price.toString()
+			tvPrice.text = dataItem.price.asString()
 			btUsed.isEnabled = !dataItem.reservationUsed
 		}
 

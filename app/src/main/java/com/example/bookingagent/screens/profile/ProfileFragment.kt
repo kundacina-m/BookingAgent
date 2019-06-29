@@ -1,24 +1,48 @@
 package com.example.bookingagent.screens.profile
 
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.utils.WrappedResponse
-import kotlinx.android.synthetic.main.fragment_profile.*
+import com.example.bookingagent.utils.ApiHeaders
+import kotlinx.android.synthetic.main.fragment_profile.tvCity
+import kotlinx.android.synthetic.main.fragment_profile.tvEmail
+import kotlinx.android.synthetic.main.fragment_profile.tvFullName
+import kotlinx.android.synthetic.main.fragment_profile.tvStreet
+import kotlinx.android.synthetic.main.fragment_profile.tvUsername
+import kotlinx.android.synthetic.main.toolbar_main.*
 
 class ProfileFragment : BaseFragment<ProfileViewModel, ProfileRoutes>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_profile
 
-    override fun setObservers() {
-
+    override fun setObservers() =
         viewModel.userInfo.observe(this, Observer {
             when (it) {
                 is WrappedResponse.OnSuccess -> fillViewWithData(it.item)
+                is WrappedResponse.OnError -> {
+                    showToast("Error issued while fetching user info!")
+                    Log.d("ERROR",it.error.toString())
+                }
             }
         })
+
+    override fun initView() {
+        setActionBar(toolbar_top,false)
+        fetchData()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun fetchData() =
+        viewModel.getUserInfo(ApiHeaders.map["Authorization"])
 
     private fun fillViewWithData(userDetails: UserEntity) {
         tvUsername.text = userDetails.username
@@ -27,11 +51,4 @@ class ProfileFragment : BaseFragment<ProfileViewModel, ProfileRoutes>() {
         tvStreet.text = (userDetails.address?.street + " " + userDetails.address?.num)
         tvCity.text = userDetails.address?.city
     }
-
-    override fun initView() {
-
-
-        viewModel.getUserInfo()
-    }
-
 }

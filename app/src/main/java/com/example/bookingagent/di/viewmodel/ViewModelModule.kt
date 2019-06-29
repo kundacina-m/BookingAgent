@@ -19,10 +19,6 @@ import com.example.bookingagent.screens.messages.thread.MessageThreadFragment
 import com.example.bookingagent.screens.messages.thread.MessageThreadViewModel
 import com.example.bookingagent.screens.profile.ProfileFragment
 import com.example.bookingagent.screens.profile.ProfileViewModel
-import com.example.bookingagent.screens.register.RegisterFragment
-import com.example.bookingagent.screens.register.RegisterViewModel
-import com.example.bookingagent.screens.reservations.details.ReservationDetailsFragment
-import com.example.bookingagent.screens.reservations.details.ReservationDetailsViewModel
 import com.example.bookingagent.screens.reservations.list.ReservationsFragment
 import com.example.bookingagent.screens.reservations.list.ReservationsViewModel
 import com.example.bookingagent.screens.rooms.add.AddRoomFragment
@@ -47,11 +43,6 @@ abstract class ViewModelModule {
 	@IntoMap
 	@ViewModelKey(LoginFragment::class, LoginViewModel::class)
 	internal abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
-
-	@Binds
-	@IntoMap
-	@ViewModelKey(RegisterFragment::class, RegisterViewModel::class)
-	internal abstract fun bindRegisterViewModel(registerViewModel: RegisterViewModel): ViewModel
 
 	@Binds
 	@IntoMap
@@ -116,12 +107,6 @@ abstract class ViewModelModule {
 	@IntoMap
 	@ViewModelKey(RoomsFragment::class, RoomsViewModel::class)
 	internal abstract fun bindRoomsViewModel(roomsViewModel: RoomsViewModel): ViewModel
-
-	@Binds
-	@IntoMap
-	@ViewModelKey(ReservationDetailsFragment::class, ReservationDetailsViewModel::class)
-	internal abstract fun bindReservationDetailsViewModel(
-		reservationDetailsViewModel: ReservationDetailsViewModel): ViewModel
 
 	@Binds
 	@IntoMap

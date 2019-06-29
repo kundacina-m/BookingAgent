@@ -4,9 +4,8 @@ import com.example.bookingagent.utils.RequestError.HttpError
 import com.example.bookingagent.utils.RequestError.NoInternetError
 import com.example.bookingagent.utils.RequestError.UnknownError
 import retrofit2.HttpException
+import java.net.ConnectException
 import java.net.UnknownHostException
-
-typealias OnWrappedResponse<T> = (WrappedResponse<T>) -> Unit
 
 sealed class WrappedResponse<out T> {
 
@@ -27,6 +26,7 @@ object RequestErrorParser {
 		when (exception) {
 			is HttpException -> HttpError(exception.code(), exception.message())
 			is UnknownHostException -> NoInternetError(exception)
+			is ConnectException -> NoInternetError(exception)
 			else -> UnknownError(exception)
 		}
 

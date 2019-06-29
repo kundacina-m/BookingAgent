@@ -11,23 +11,26 @@ import kotlinx.android.synthetic.main.item_image.view.ivImage
 
 class ImagesViewHolder(itemView: View) : BaseViewHolder<String>(itemView) {
 	override fun bind(dataItem: String) {
-		val imageByteArray = Base64.decode(dataItem, Base64.DEFAULT)
-
-		val options = RequestOptions()
-			.centerCrop()
-			.diskCacheStrategy(DiskCacheStrategy.ALL)
-			.priority(Priority.HIGH)
 
 		Glide.with(itemView.context)
 			.asBitmap()
-			.load(imageByteArray)
-			.apply(options)
+			.load(Base64.decode(dataItem, Base64.DEFAULT))
+			.apply(imgConfig())
 			.into(itemView.ivImage)
 
+		onImgClickListener(dataItem)
+	}
+
+	private fun onImgClickListener(dataItem: String) =
 		itemView.ivImage.setOnClickListener {
 			ImageDialog.build(itemView.context) {
 				base64 = dataItem
 			}.show()
 		}
-	}
+
+	private fun imgConfig() =
+		RequestOptions()
+			.centerCrop()
+			.diskCacheStrategy(DiskCacheStrategy.ALL)
+			.priority(Priority.HIGH)
 }

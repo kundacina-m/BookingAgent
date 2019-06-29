@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class RoomsRoutes @Inject constructor(val navigationController: NavigationController) : Routes() {
 
-	fun navigateToSelectedRoom(accId: Int, roomId : Int) =
+	fun navigateToSelectedRoom(accId: Int, roomId: Int) =
 		RoomsFragmentDirections.actionRoomsFragmentToRoomDetailsFragment(
 			accId = accId,
 			roomId = roomId

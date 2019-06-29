@@ -22,4 +22,7 @@ interface RoomDao {
 
 	@Update
 	fun updateRoom(roomEntity: RoomEntity): Int
+
+	@Query("DELETE from RoomEntity")
+	fun nukeRoomTable()
 }

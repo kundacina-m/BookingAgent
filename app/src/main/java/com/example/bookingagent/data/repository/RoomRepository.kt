@@ -16,45 +16,51 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class RoomRepository @Inject constructor(
-	private val roomApi: RoomApi,
-	private val roomDao: RoomDao,
-	private val accRoomDao: AccRoomDao) {
+    private val roomApi: RoomApi,
+    private val roomDao: RoomDao,
+    private val accRoomDao: AccRoomDao
+) {
 
-	// region NETWORK
+    // region NETWORK
 
-	fun addRoom(accId: Int, roomEntity: RoomEntity) =
-		roomApi.addRoom(EnvelopeAddChangeRoomRequest(roomEntity.toRequest(accId))).toSealed()
+    fun addRoom(accId: Int, roomEntity: RoomEntity) =
+        roomApi.addRoom(EnvelopeAddChangeRoomRequest(roomEntity.toRequest(accId))).toSealed()
 
-	fun editRoom(roomEntity: RoomEntity) =
-		roomApi.editRoom(EnvelopeAddChangeRoomRequest(roomEntity.toRequest())).toSealed()
+    fun editRoom(roomEntity: RoomEntity) =
+        roomApi.editRoom(EnvelopeAddChangeRoomRequest(roomEntity.toRequest())).toSealed()
 
-	fun deleteRoom(id: Int) =
-		roomApi.deleteRoom(EnvelopeDeleteRoomRequest(DeleteRoomRequest(id = id.toInt()))).toSealed()
+    fun deleteRoom(id: Int) =
+        roomApi.deleteRoom(EnvelopeDeleteRoomRequest(DeleteRoomRequest(id = id.toInt()))).toSealed()
 
-	// endregion NETWORK
+    // endregion NETWORK
 
-	// region DB
+    // region DB
 
-	fun addRoomToDB(roomEntity: RoomEntity) =
-		Single.just(roomDao.addRoom(roomEntity)).toSealed()
+    fun addRoomToDB(roomEntity: RoomEntity) =
+        Single.just(roomDao.addRoom(roomEntity)).toSealed()
 
-	fun getAllRoomsByAccId(accId: Int) =
-		accRoomDao.getRoomsByAccId(accId).toSealed()
+    fun getAllRoomsByAccId(accId: Int) =
+        accRoomDao.getRoomsByAccId(accId).toSealed()
 
-	fun addAccRoomRow(accId: Int, roomId: Int) =
-		Completable.create {
-			accRoomDao.addAccRoomRow(AccRoom(accId, roomId))
-			it.onComplete()
-		}.subscribeOn(Schedulers.io()).subscribe()!!
+    fun addAccRoomRow(accId: Int, roomId: Int) =
+        Completable.create {
+            accRoomDao.addAccRoomRow(AccRoom(accId, roomId))
+            it.onComplete()
+        }.subscribeOn(Schedulers.io()).subscribe()!!
 
-	fun getRoom(id: Int) =
-		roomDao.getRoomById(id).toSealed()
+    fun getRoom(id: Int) =
+        roomDao.getRoomById(id).toSealed()
 
-	fun deleteRoomFromDB(id: Int) =
-		Single.just(roomDao.deleteRoom(id)).toSealed()
+    fun deleteRoomFromDB(id: Int) =
+        Single.just(roomDao.deleteRoom(id)).toSealed()
 
-	fun updateRoomInDB(roomEntity: RoomEntity) =
-		Single.just(roomDao.updateRoom(roomEntity)).toSealed()
+    fun updateRoomInDB(roomEntity: RoomEntity) =
+        Single.just(roomDao.updateRoom(roomEntity)).toSealed()
 
-	// endregion DB
+    fun deleteAllRooms() {
+        roomDao.nukeRoomTable()
+        accRoomDao.nukeAccRoomTable()
+    }
+
+    // endregion DB
 }

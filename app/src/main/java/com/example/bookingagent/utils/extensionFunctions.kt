@@ -1,11 +1,15 @@
 package com.example.bookingagent.utils
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.icu.text.DecimalFormat
 import android.util.Base64
+import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import io.reactivex.Flowable
@@ -63,3 +67,36 @@ fun Date.asString(): String =
 
 fun Fragment.showToast(message: String) =
 	Toast.makeText(this.activity, message, Toast.LENGTH_SHORT).show()
+
+fun RecyclerView.isGone(visibility: Boolean) =
+	if (visibility) this.visibility = View.VISIBLE else this.visibility = View.GONE
+
+fun RecyclerView.isHidden(visibility: Boolean) =
+	if (visibility) this.visibility = View.VISIBLE else this.visibility = View.INVISIBLE
+
+fun TextView.isGone(visibility: Boolean) =
+	if (visibility) this.visibility = View.VISIBLE else this.visibility = View.GONE
+
+fun TextView.isHidden(visibility: Boolean) =
+	if (visibility) this.visibility = View.VISIBLE else this.visibility = View.INVISIBLE
+
+fun Float.asString() =
+	String.format("%.2f",this) + "$"
+
+fun String.asDate() =
+	SimpleDateFormat("yyyy-MM-dd").parse(this)
+
+fun String.compressBase64(): String {
+	Base64.decode(this.toByteArray(), Base64.DEFAULT).also {
+		BitmapFactory.decodeByteArray(it, 0, it.size, BitmapFactory.Options().apply { inPurgeable = true }).run {
+			if (height <= 200 && width <= 200) return this@compressBase64
+			Bitmap.createScaledBitmap(this, 200, 200, false)
+			ByteArrayOutputStream().also { baos ->
+				compress(Bitmap.CompressFormat.PNG, 100, baos)
+				return Base64.encodeToString(baos.toByteArray(), Base64.NO_WRAP)
+			}
+		}
+	}
+}
+
+//		("#,###.00")

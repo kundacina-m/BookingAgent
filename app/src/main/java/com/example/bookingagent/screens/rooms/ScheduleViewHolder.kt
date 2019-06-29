@@ -20,7 +20,7 @@ class ScheduleViewHolder(itemView: View) : BaseViewHolder<ScheduleUnit>(itemView
 
 	private fun populateView(dataItem: ScheduleUnit) =
 		itemView.run {
-			tvPrice.text = dataItem.price.toString()
+			tvPrice.text = dataItem.price.asString()
 			tvCheckIn.text = dataItem.checkIn.time.asString()
 			tvCheckOut.text = dataItem.checkOut.time.asString()
 		}

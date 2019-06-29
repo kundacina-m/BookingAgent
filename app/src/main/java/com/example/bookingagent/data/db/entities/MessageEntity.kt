@@ -10,10 +10,10 @@ import kotlinx.android.parcel.Parcelize
 data class MessageEntity(
 
 	@PrimaryKey
-	val id: Int,
-	val firstname: String,
-	val lastname: String,
-	val content: String,
-	val agentEmail: String,
-	val sender: String
+	val id: Int = 0,
+	val firstname: String = "",
+	val lastname: String = "",
+	val content: String = "",
+	val agentEmail: String = "",
+	val sender: String = ""
 ) : Parcelable

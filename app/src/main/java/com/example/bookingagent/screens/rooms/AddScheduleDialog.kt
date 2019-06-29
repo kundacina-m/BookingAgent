@@ -15,8 +15,8 @@ import java.util.GregorianCalendar
 
 class AddScheduleDialog private constructor(private val builder: Builder) : Dialog(builder.context) {
 
-	lateinit var checkInDay: GregorianCalendar
-	lateinit var checkOutDay: GregorianCalendar
+	private lateinit var checkInDay: GregorianCalendar
+	private lateinit var checkOutDay: GregorianCalendar
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -27,20 +27,14 @@ class AddScheduleDialog private constructor(private val builder: Builder) : Dial
 		val month = cldr.get(Calendar.MONTH)
 		val year = cldr.get(Calendar.YEAR)
 
-		etCheckIn.setOnFocusChangeListener { _, focused ->
+		onCheckinTouched(year,month,day)
+		onCheckoutTouched(year,month,day)
+		setOnButtonClickListeners()
 
-			if (focused) {
+	}
 
-				// date picker dialog
-				val picker = DatePickerDialog(builder.context,
-					DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-						etCheckIn.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
-						checkInDay = GregorianCalendar(year, monthOfYear, dayOfMonth)
-					}, year, month, day)
-				picker.show()
-			}
-		}
 
+	private fun onCheckoutTouched(year: Int, month: Int, day: Int) =
 		etCheckOut.setOnFocusChangeListener { _, focused ->
 			if (focused) {
 
@@ -55,18 +49,30 @@ class AddScheduleDialog private constructor(private val builder: Builder) : Dial
 			}
 		}
 
+	private fun onCheckinTouched(year: Int, month: Int, day: Int) =
+		etCheckIn.setOnFocusChangeListener { _, focused ->
 
-		btConfirm.setOnClickListener {
-			builder.confirmedTag.invoke(checkInDay, checkOutDay, etPrice.text.toString
-			().toFloat())
-			this.dismiss()
+			if (focused) {
+
+				// date picker dialog
+				val picker = DatePickerDialog(builder.context,
+					DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+						etCheckIn.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
+						checkInDay = GregorianCalendar(year, monthOfYear, dayOfMonth)
+					}, year, month, day)
+				picker.show()
+			}
 		}
 
+	private fun setOnButtonClickListeners(){
+		btConfirm.setOnClickListener {
+			builder.confirmedTag.invoke(checkInDay, checkOutDay, etPrice.text.toString().toFloat())
+			this.dismiss()
+		}
 
 		btCancel.setOnClickListener {
 			this.dismiss()
 		}
-
 	}
 
 	companion object {

@@ -9,5 +9,5 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "res", reference = "http://xml/reservation")
 @SoapRequest
 data class DeleteMessageRequest(
-    @field:Element(name = "res:messageId") val messageId: Int
+	@field:Element(name = "res:messageId") val messageId: Int
 )

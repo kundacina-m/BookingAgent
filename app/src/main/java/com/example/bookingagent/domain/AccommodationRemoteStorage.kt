@@ -9,9 +9,12 @@ import io.reactivex.Single
 
 interface AccommodationRemoteStorage {
 
-	fun addAccommodation(accommodationEntity: AccommodationEntity): Single<WrappedResponse<EnvelopeAddChangeAccommodationResponse>>
+	fun addAccommodation(
+		accommodationEntity: AccommodationEntity): Single<WrappedResponse<EnvelopeAddChangeAccommodationResponse>>
+
 	fun getAccommodations(): Single<WrappedResponse<EnvelopeGetAccommodationResponse>>
 	fun deleteAccommodation(id: Int): Single<WrappedResponse<EnvelopeDeleteAccommodationResponse>>
-	fun editAccommodation(accommodationEntity: AccommodationEntity): Single<WrappedResponse<EnvelopeAddChangeAccommodationResponse>>
+	fun editAccommodation(
+		accommodationEntity: AccommodationEntity): Single<WrappedResponse<EnvelopeAddChangeAccommodationResponse>>
 
 }

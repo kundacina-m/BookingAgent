@@ -12,21 +12,29 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val userDao: UserDao, private val userApi: UserApi) {
 
-	fun addUser(userEntity: UserEntity) =
-		Single.just(userDao.addUser(userEntity))
 
-	fun getUser(username: String) =
-		userDao.getUser(username).subscribeOn(Schedulers.io())
+    // region NETWORK
 
-	fun removeUser(userEntity: UserEntity) {
-		userDao.deleteUser(userEntity)
-	}
+    fun loginUser(username: String, password: String): Single<WrappedResponse<EnvelopeLoginResponse>> =
+        userApi.loginUser(EnvelopeLoginRequest(LoginRequest(username, password))).toSealed()
 
-	fun loginUser(loginRequest: EnvelopeLoginRequest): Single<WrappedResponse<EnvelopeLoginResponse>> =
-		userApi.loginUser(loginRequest).toSealed()
+    fun getUserProfile(): Single<WrappedResponse<EnvelopeUserDetailsResponse>> =
+        userApi.getUserProfile(EnvelopeUserDetailsRequest(UserDetailsRequest())).toSealed()
 
-	fun getUserProfile() : Single<WrappedResponse<EnvelopeUserDetailsResponse>> =
-		userApi.getUserProfile(EnvelopeUserDetailsRequest(UserDetailsRequest())).toSealed()
+    // endregion NETWORK
 
+
+    // region DB
+
+    fun addUser(userEntity: UserEntity) =
+        Single.just(userDao.addUser(userEntity))
+
+    fun loginUserByDB(username: String, password: String) =
+        userDao.getUserToken(username,password).subscribeOn(Schedulers.io()).toSealed()
+
+    fun getUserProfileFromDB(token: String) =
+        userDao.getUserByToken(token).toSealed()
+
+    // endregion DB
 
 }

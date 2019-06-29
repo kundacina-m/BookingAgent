@@ -9,7 +9,7 @@ import com.example.bookingagent.data.model.Service
 data class AccommodationEntity(
 
 	@PrimaryKey
-	var id: Int,
+	var id: Int = 0,
 	var name: String? = "",
 	var description: String? = "",
 	var address: Address,

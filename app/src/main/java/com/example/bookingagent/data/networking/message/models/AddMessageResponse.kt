@@ -9,5 +9,5 @@ import org.simpleframework.xml.Root
 @Namespace(prefix = "ns2", reference = "http://xml/reservation")
 @SoapResponse
 data class AddMessageResponse(
-    @field:Element(name = "messageId") var messageId: Int = 0
+	@field:Element(name = "messageId") var messageId: Int = 0
 )

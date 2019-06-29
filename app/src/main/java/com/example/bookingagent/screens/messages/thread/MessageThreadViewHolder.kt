@@ -3,7 +3,7 @@ package com.example.bookingagent.screens.messages.thread
 import android.graphics.Color
 import android.view.View
 import android.widget.RelativeLayout
-import androidx.core.view.marginRight
+import android.widget.RelativeLayout.LayoutParams
 import base.BaseViewHolder
 import com.example.bookingagent.data.db.entities.MessageEntity
 import kotlinx.android.synthetic.main.item_message_thread.view.tvContent
@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_message_thread.view.tvContent
 class MessageThreadViewHolder(itemView: View) : BaseViewHolder<MessageEntity>(itemView) {
 	override fun bind(dataItem: MessageEntity) {
 
-		val params = itemView.tvContent.layoutParams as RelativeLayout.LayoutParams
+		val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
 
 		if (dataItem.sender == "user") {
 			itemView.tvContent.setBackgroundColor(Color.parseColor("#e7d5d5"))

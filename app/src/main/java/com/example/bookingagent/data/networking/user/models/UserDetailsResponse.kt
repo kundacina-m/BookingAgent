@@ -11,7 +11,7 @@ import org.simpleframework.xml.Root
 @SoapResponse
 data class UserDetailsResponse(
 
-    @Namespace(prefix = "ns3", reference = "http://korisnik.com")
-    @field:Element(required = false, type = UserResponse::class, name = "Korisnik")
-    var userResponse: UserResponse? = null
+	@Namespace(prefix = "ns3", reference = "http://korisnik.com")
+	@field:Element(required = false, type = UserResponse::class, name = "Korisnik")
+	var userResponse: UserResponse? = null
 )

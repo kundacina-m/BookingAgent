@@ -16,17 +16,19 @@ class AddServiceDialog private constructor(private val builder: Builder) : Dialo
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.dialog_add_service)
 
+		setOnButtonClickListeners()
+
+	}
+
+	private fun setOnButtonClickListeners(){
 		btConfirm.setOnClickListener {
-			builder.confirmedService.invoke(etName.text.toString(), etDescription.text.toString(), etPrice.text.toString
-			().toFloat())
+			builder.confirmedService.invoke(etName.text.toString(), etDescription.text.toString(), etPrice.text.toString().toFloat())
 			this.dismiss()
 		}
-
 
 		btCancel.setOnClickListener {
 			this.dismiss()
 		}
-
 	}
 
 	companion object {

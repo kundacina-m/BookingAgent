@@ -13,7 +13,8 @@ import java.util.ArrayList
 data class GetAccommodationResponse(
 
 	@Namespace(prefix = "ns3", reference = "http://accomodation.com")
-	@field:ElementList(required = false, inline = true, type = AccommodationResponse::class, name = "ns3:Smestaj", entry =
-	"Smestaj")
+	@field:ElementList(required = false, inline = true, type = AccommodationResponse::class, name = "ns3:Smestaj",
+		entry =
+		"Smestaj")
 	var accommodationResponse: ArrayList<AccommodationResponse>? = null
 )

@@ -6,8 +6,8 @@
 
 	<ImageView
 		android:id="@+id/ivImage"
-		android:layout_margin="8dp"
 		android:layout_width="100dp"
-		android:layout_height="100dp"/>
+		android:layout_height="100dp"
+		android:layout_margin="8dp"/>
 
 </LinearLayout>

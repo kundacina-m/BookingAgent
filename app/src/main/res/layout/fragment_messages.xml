@@ -6,6 +6,8 @@
 	android:orientation="vertical"
 	tools:context=".screens.messages.MessagesFragment">
 
+	<include layout="@layout/toolbar_main"/>
+
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/rvMessages"
 		android:layout_width="match_parent"

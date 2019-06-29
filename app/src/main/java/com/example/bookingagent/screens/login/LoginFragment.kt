@@ -4,64 +4,80 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import base.BaseFragment
 import com.example.bookingagent.R
-import com.example.bookingagent.utils.RequestError.UnknownError
+import com.example.bookingagent.utils.RequestError.*
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
+import com.example.bookingagent.utils.ApiHeaders
+import com.example.bookingagent.utils.asString
 import kotlinx.android.synthetic.main.fragment_login.btLogin
 import kotlinx.android.synthetic.main.fragment_login.etPassword
 import kotlinx.android.synthetic.main.fragment_login.etUsername
-import kotlinx.android.synthetic.main.fragment_login.tvToRegistration
 
 class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
 
-	override fun getLayoutId(): Int = R.layout.fragment_login
+    override fun getLayoutId(): Int = R.layout.fragment_login
 
-	override fun setObservers() {
-		viewModel.identityVerification.observe(this, Observer {
-			when (it) {
-				true -> navigateToHome()
-				false -> Log.d(TAG, "setObservers: Wrong information")
-			}
-		})
+    override fun setObservers() {
+        viewModel.loginFromDBresponse.observe(this, Observer {
+            when (it) {
+                is OnSuccess -> onLoginSuccessfully(it.item)
+                is OnError -> Log.d("ERROR","${it.error}")
+            }
+        })
 
-		viewModel.loginResponse.observe(this, Observer {
-			when (it) {
-				is OnSuccess -> Log.d(TAG, "setObservers: OnSuccess")
-				is OnError -> {
-					val error = it.error as UnknownError
-					Log.e(TAG, "setObservers: " + error.t)
-				}
-			}
-		})
-	}
+        viewModel.loginBackendResponse.observe(this, Observer {
+            when (it) {
+                is OnSuccess -> onLoginSuccessfully(it.item)
+                is OnError -> handleError(it)
+            }
+        })
+    }
 
-	private fun navigateToHome() {
-		navigation.navigateToHome()
-	}
+    private fun onLoginSuccessfully(token: String) {
+        ApiHeaders.addToken(token)
+        navigateToHome()
+    }
 
-	override fun initView() {
+    private fun navigateToHome() =
+        navigation.navigateToHome()
 
-		setupListeners()
-	}
 
-	private fun setupListeners() {
-		tvToRegistration.setOnClickListener {
-			navigation.navigateToRegister()
-		}
+    override fun initView() {
+        setupListeners()
+    }
 
-		btLogin.setOnClickListener {
-			checkProvidedInformation()
-		}
-	}
+    private fun setupListeners() =
+        btLogin.setOnClickListener {
+            login()
+        }
 
-	private fun checkProvidedInformation() {
-		val password = etPassword.text.toString()
+    private fun login(loginOnBackend: Boolean = true) =
+        validateLoginInfo().run {
+            first?.let {
+                if (loginOnBackend) viewModel.loginUserOnBackend(first!!, second!!)
+                else viewModel.loginUserByDB(first!!, second!!)
+            }
+        }
 
-		if (password.length >= 0) {
-			val username = etUsername.text.toString()
-			//			viewModel.checkIfUserExists(UserEntity(username, password))
-			viewModel.loginUserOnBackend(username, password)
-		}
-	}
+    private fun validateLoginInfo() : Pair<String?,String?>{
+        val password = etPassword.asString()
+        val username = etUsername.asString()
+
+        if (username.length < 4) { showToast("Username too short!") ; return Pair(null,null) }
+        if (password.length < 4) { showToast("Password too short!") ; return Pair(null,null) }
+
+        return Pair(username,password)
+    }
+
+    private fun handleError(error: OnError<String>) {
+        when (error.error) {
+            is NoInternetError -> login(loginOnBackend = false)
+            is HttpError -> showToast("You have entered wrong credentials!")
+            is UnknownError -> {
+                login(loginOnBackend = false)
+                showToast("Failure in SOAP communication")
+            }
+        }
+    }
 
 }

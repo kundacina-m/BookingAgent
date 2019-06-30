@@ -19,6 +19,7 @@ import com.example.bookingagent.screens.accommodations.AddServiceDialog
 import com.example.bookingagent.screens.accommodations.ServicesAdapter
 import com.example.bookingagent.screens.rooms.ImagesAdapter
 import com.example.bookingagent.utils.*
+import com.example.bookingagent.utils.RequestError.*
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import kotlinx.android.synthetic.main.fragment_add_accommodation.btAddImage
@@ -40,6 +41,7 @@ import kotlinx.android.synthetic.main.fragment_add_accommodation.sp_categories
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 import java.io.ByteArrayOutputStream
 import java.io.FileWriter
+import java.lang.UnknownError
 
 class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAccommodationRoutes>() {
 
@@ -57,7 +59,7 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
         viewModel.addingAccommodation.observe(this, Observer {
             when (it) {
                 is OnSuccess -> navigation.navigateToAccommodations()
-                is OnError -> Log.d(TAG, "initView: OnError")
+                is OnError -> handleError(it.error)
             }
         })
     }
@@ -190,6 +192,14 @@ class AddAccommodationFragment : BaseFragment<AddAccommodationViewModel, AddAcco
             etNum.asString().isEmpty() -> showToast("You must enter street number!")
             imagesAdapter.getData().isEmpty() -> showToast("You must add at least one image!")
             else -> addAccommodation()
+        }
+    }
+
+    private fun handleError(error: RequestError) {
+        when (error){
+            is NoInternetError -> showToast("Can't complete request, no Internet connection")
+            is HttpError -> showToast("Bad request")
+            is UnknownError -> showToast("There is issue with server, request was not processed")
         }
     }
 

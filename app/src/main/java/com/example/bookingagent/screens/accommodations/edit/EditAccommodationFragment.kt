@@ -56,7 +56,7 @@ class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditA
 		viewModel.editStatus.observe(this, Observer {
 			when (it) {
 				is OnSuccess -> navigation.navigateToAccommodationDetails()
-				is OnError -> Log.d(TAG, "setObservers: ERROR")
+				is OnError -> handleError(it.error)
 			}
 		})
 
@@ -201,6 +201,14 @@ class EditAccommodationFragment : BaseFragment<EditAccommodationViewModel, EditA
 			etNum.asString().isEmpty() -> showToast("You must enter street number!")
 			imagesAdapter.getData().isEmpty() -> showToast("You must add at least one image!")
 			else -> editAccommodation()
+		}
+	}
+
+	private fun handleError(error: RequestError) {
+		when (error){
+			is RequestError.NoInternetError -> showToast("Can't complete request, no Internet connection")
+			is RequestError.HttpError -> showToast("Bad request")
+			is UnknownError -> showToast("There is issue with server, request was not processed")
 		}
 	}
 }

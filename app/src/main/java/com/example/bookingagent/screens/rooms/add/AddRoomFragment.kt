@@ -15,12 +15,9 @@ import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.model.OccupiedTime
 import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.screens.rooms.*
-import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
+import com.example.bookingagent.utils.*
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
-import com.example.bookingagent.utils.asString
-import com.example.bookingagent.utils.compressBase64
-import com.example.bookingagent.utils.toBase64
 import kotlinx.android.synthetic.main.fragment_add_room.*
 import kotlinx.android.synthetic.main.toolbar_main.toolbar_top
 import java.util.GregorianCalendar
@@ -54,7 +51,7 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
             roomAddedResponse.observe(this@AddRoomFragment, Observer {
                 when (it) {
                     is OnSuccess -> navigation.navigateToRoomsList()
-                    is OnError -> Log.d(TAG, "setObservers: ERROR")
+                    is OnError -> handleError(it.error)
                 }
             })
         }
@@ -177,6 +174,14 @@ class AddRoomFragment : BaseFragment<AddRoomViewModel, AddRoomRoutes>() {
             etBedNums.asString().isEmpty() -> showToast("You must enter beds number!")
             etPrice.asString().isEmpty() -> showToast("You must enter price!")
             else -> viewModel.addRoom(args.accId, createRoom())
+        }
+    }
+
+    private fun handleError(error: RequestError) {
+        when (error){
+            is RequestError.NoInternetError -> showToast("Can't complete request, no Internet connection")
+            is RequestError.HttpError -> showToast("Bad request")
+            is UnknownError -> showToast("There is issue with server, request was not processed")
         }
     }
 }

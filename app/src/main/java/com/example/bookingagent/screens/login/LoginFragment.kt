@@ -8,12 +8,15 @@ import com.example.bookingagent.utils.RequestError.*
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
 import com.example.bookingagent.utils.ApiHeaders
+import com.example.bookingagent.utils.Cache
 import com.example.bookingagent.utils.asString
 import kotlinx.android.synthetic.main.fragment_login.btLogin
 import kotlinx.android.synthetic.main.fragment_login.etPassword
 import kotlinx.android.synthetic.main.fragment_login.etUsername
 
 class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
+
+    private lateinit var password:String
 
     override fun getLayoutId(): Int = R.layout.fragment_login
 
@@ -34,6 +37,7 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
     }
 
     private fun onLoginSuccessfully(token: String) {
+        Cache.cachePass(password)
         ApiHeaders.addToken(token)
         navigateToHome()
     }
@@ -66,6 +70,8 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
         if (username.length < 4) { showToast("Username too short!") ; return Pair(null,null) }
         if (password.length < 4) { showToast("Password too short!") ; return Pair(null,null) }
 
+        this.password = password
+
         return Pair(username,password)
     }
 
@@ -75,7 +81,7 @@ class LoginFragment : BaseFragment<LoginViewModel, LoginRoutes>() {
             is HttpError -> showToast("You have entered wrong credentials!")
             is UnknownError -> {
                 login(loginOnBackend = false)
-                showToast("Failure in SOAP communication")
+                showToast("There is issue with server, request was not processed")
             }
         }
     }

@@ -57,7 +57,7 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
 
     private fun onAccommodationDetails(accommodationEntity: AccommodationEntity) {
         this.accommodationEntity = accommodationEntity
-        actionBarSetup()
+        setActionBar(toolbar_top, true)
         populateViewWithData()
     }
 
@@ -71,11 +71,6 @@ class AccommodationDetailsFragment : BaseFragment<AccommodationDetailsViewModel,
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = this@AccommodationDetailsFragment.imagesAdapter
         }
-    }
-
-    private fun actionBarSetup() {
-        setActionBar(toolbar_top, true)
-        actionBar?.title = accommodationEntity.name
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

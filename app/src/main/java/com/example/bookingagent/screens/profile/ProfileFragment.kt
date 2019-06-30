@@ -9,11 +9,7 @@ import com.example.bookingagent.R
 import com.example.bookingagent.data.db.entities.UserEntity
 import com.example.bookingagent.utils.WrappedResponse
 import com.example.bookingagent.utils.ApiHeaders
-import kotlinx.android.synthetic.main.fragment_profile.tvCity
-import kotlinx.android.synthetic.main.fragment_profile.tvEmail
-import kotlinx.android.synthetic.main.fragment_profile.tvFullName
-import kotlinx.android.synthetic.main.fragment_profile.tvStreet
-import kotlinx.android.synthetic.main.fragment_profile.tvUsername
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 class ProfileFragment : BaseFragment<ProfileViewModel, ProfileRoutes>() {
@@ -46,9 +42,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel, ProfileRoutes>() {
 
     private fun fillViewWithData(userDetails: UserEntity) {
         tvUsername.text = userDetails.username
-        tvFullName.text = (userDetails.firstname + " " + userDetails.lastname)
+        tvFirstName.text = userDetails.firstname
+        tvLastName.text = userDetails.lastname
         tvEmail.text = userDetails.email
-        tvStreet.text = (userDetails.address?.street + " " + userDetails.address?.num)
-        tvCity.text = userDetails.address?.city
+        tvStreet.text = (userDetails.address.street + " " + userDetails.address?.num)
+        tvCity.text = userDetails.address.city
     }
 }

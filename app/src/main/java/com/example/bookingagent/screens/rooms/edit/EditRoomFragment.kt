@@ -15,14 +15,11 @@ import com.example.bookingagent.data.db.entities.RoomEntity
 import com.example.bookingagent.data.model.OccupiedTime
 import com.example.bookingagent.data.model.ScheduleUnit
 import com.example.bookingagent.screens.rooms.*
-import com.example.bookingagent.utils.FILE_CHOOSER_IMAGE
+import com.example.bookingagent.utils.*
 import com.example.bookingagent.utils.RequestError.HttpError
 import com.example.bookingagent.utils.RequestError.UnknownError
 import com.example.bookingagent.utils.WrappedResponse.OnError
 import com.example.bookingagent.utils.WrappedResponse.OnSuccess
-import com.example.bookingagent.utils.asString
-import com.example.bookingagent.utils.compressBase64
-import com.example.bookingagent.utils.toBase64
 import kotlinx.android.synthetic.main.fragment_edit_room.*
 import kotlinx.android.synthetic.main.fragment_edit_room.btAddImage
 import kotlinx.android.synthetic.main.fragment_edit_room.btAddSchedule
@@ -66,10 +63,7 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
             editStatus.observe(this@EditRoomFragment, Observer {
                 when (it) {
                     is OnSuccess -> navigation.navigateToRooms()
-                    is OnError -> when (it.error) {
-                        is UnknownError -> Log.d(TAG, "setObservers: ${it.error.t}")
-                        is HttpError -> Log.d(TAG, "setObservers: ${it.error.message}")
-                    }
+                    is OnError -> handleError(it.error)
                 }
             })
         }
@@ -205,6 +199,14 @@ class EditRoomFragment : BaseFragment<EditRoomViewModel, EditRoomRoutes>() {
             etPrice.asString().isEmpty() -> showToast("You must enter price!")
             else -> viewModel.editRoom(createRoom())
 
+        }
+    }
+
+    private fun handleError(error: RequestError) {
+        when (error){
+            is RequestError.NoInternetError -> showToast("Can't complete request, no Internet connection")
+            is HttpError -> showToast("Bad request")
+            is java.lang.UnknownError -> showToast("There is issue with server, request was not processed")
         }
     }
 

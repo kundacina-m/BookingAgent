@@ -1,6 +1,7 @@
 package com.example.bookingagent
 
 import android.content.Context
+import androidx.multidex.MultiDex
 import com.example.bookingagent.data.repository.AccommodationRepository
 import com.example.bookingagent.data.repository.MessagesRepository
 import com.example.bookingagent.data.repository.ReservationRepository
@@ -39,10 +40,10 @@ class App : DaggerApplication() {
         }
     }
 
-//    override fun attachBaseContext(base: Context) {
-//        super.attachBaseContext(base)
-//        MultiDex.install(this)
-//    }
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
 
 
 }

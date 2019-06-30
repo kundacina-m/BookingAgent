@@ -63,7 +63,7 @@ fun EditText.asString() =
 	this.text.toString()
 
 fun Date.asString(): String =
-	SimpleDateFormat("dd. MMMM yyyy", Locale.getDefault()).format(this)
+	SimpleDateFormat("dd. MMM yyyy", Locale.getDefault()).format(this)
 
 fun Fragment.showToast(message: String) =
 	Toast.makeText(this.activity, message, Toast.LENGTH_SHORT).show()

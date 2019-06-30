@@ -17,7 +17,8 @@ android {
 	compileSdkVersion 28
 	defaultConfig {
 		applicationId "com.example.bookingagent"
-		minSdkVersion 21
+		minSdkVersion 19
+		multiDexEnabled true
 		targetSdkVersion 28
 		versionCode 1
 		versionName "1.0"
@@ -43,6 +44,7 @@ dependencies {
 	implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 	kapt project(':soap_processing')
 
+	implementation 'com.android.support:multidex:1.0.3'
 
 	// Kotlin
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

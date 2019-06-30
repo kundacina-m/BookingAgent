@@ -55,6 +55,7 @@ class MessageThreadFragment : BaseFragment<MessageThreadViewModel, MessageThread
 		setRecyclerView()
 
 		btSendMessage.setOnClickListener {
+			if (etMessage.asString() != "")
 			sendMessage(etMessage.asString())
 			etMessage.setText("")
 		}
@@ -67,7 +68,9 @@ class MessageThreadFragment : BaseFragment<MessageThreadViewModel, MessageThread
 	private fun onMessagesReceived(list: List<MessageEntity>) {
 		adapter.setData(list)
 		rvMessageThread.scrollToPosition(adapter.itemCount - 1)
+		if (list.isNotEmpty())
 		actionBar?.title = list[0].firstname + " " + list[0].lastname
+		else navigation.navigateBack()
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
